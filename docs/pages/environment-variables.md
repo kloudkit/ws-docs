@@ -1,0 +1,60 @@
+---
+outline: deep
+---
+
+# Environment Variables
+
+Enhance extensibility by leveraging environment variables to override default configurations.
+
+## `WS_` Prefix
+
+Please note that environment variables used *solely* by the workspace a are prefixed with
+`WS_`.
+The only exception are environment variables that are identical to what the underlying tool uses.
+
+For example, the `GIT_COMMITTER_NAME` variable does  not contain the `WS_` prefix, since it
+is defined by the underlying tool *(`git` in this case)* and not the workspace.
+However, `WS_ROOT` is only used by the workspace, therefore it contains the prefix.
+
+## Variables
+
+### Workspace Variables
+
+| ENV                            | Description                                                     | Read More       |
+| ------------------------------ | --------------------------------------------------------------- | --------------- |
+| `WS_COMMENTS_DISABLE_FONT`     | Disable the custom comments font                                | [→][fonts]      |
+| `WS_CONFIGURE_DOCKER`          | Attempt to auto-configure docker                                | [→][docker]     |
+| `WS_ENTRYPOINT_ARGS`           | Additional arguments to be passed to the entrypoint script      |                 |
+| `WS_EXTRA_CA_CERT_ENDPOINTS`   | Extra CA endpoints to install at startup *(delimited by space)* | [→][ca]         |
+| `WS_EXTRA_CA_CERT_INSECURE`    | Use insecure communication when installing CA endpoints         | [→][ca]         |
+| `WS_EXTRA_FEATURES`            | Extra features to install at startup *(delimited by space)*     | [→][features]   |
+| `WS_EXTRA_VS_EXTENSIONS`       | Extra extensions to install at startup *(delimited by space)*   | [→][extensions] |
+| `WS_EXTRA_VS_EXTENSIONS_DIR`   | Directory of extensions to install at startup *(`*.vsix`)*      | [→][extensions] |
+| `WS_PASSWORD`                  | Password for login authentication                               | [→][auth]       |
+| `WS_PASSWORD_HASHED`           | Hashed *(`argon2`)* password for login authentication           | [→][auth]       |
+| `WS_PROMPT_DISABLE_DOCKER`     | Disable the `docker` module of the terminal prompt              | [→][terminal]   |
+| `WS_PROMPT_DISABLE_HOSTNAME`   | Disable the `hostname` module of the terminal prompt            | [→][terminal]   |
+| `WS_PROMPT_DISABLE_KUBERNETES` | Disable the `kubernetes` module of the terminal prompt          | [→][terminal]   |
+| `WS_PROMPT_DISABLE_NODEJS`     | Disable the `nodejs` module of the terminal prompt              | [→][terminal]   |
+| `WS_PROMPT_DISABLE_PYTHON`     | Disable the `python` module of the terminal prompt              | [→][terminal]   |
+| `WS_ROOT`                      | Root directory for the workspace *(default: `/workspace`)*      |                 |
+| `WS_ZSH_PLUGINS`               | Specifies the `zsh` plugins to be enabled in each session       | [→][terminal]   |
+| `WS_ZSH_EXTRA_PLUGINS`         | Adds additional `zsh` plugins to the existing defaults          | [→][terminal]   |
+
+### Tool Variables
+
+| ENV                   | Description                                  |
+| --------------------- | -------------------------------------------- |
+| `EDITOR`              | Default terminal editor  *(default: `code`)* |
+| `GIT_COMMITTER_NAME`  | Name to be used in `~/.gitconfig`            |
+| `GIT_COMMITTER_EMAIL` | Email to be used in `~/.gitconfig`           |
+| `PAGER`               | Default terminal pager *(default: `less`)*   |
+| `TZ`                  | Define the timezone                          |
+
+[auth]: /editor/authentication
+[ca]: /pages/enterprise-ca
+[docker]: /tools/docker
+[extensions]: /editor/extensions
+[fonts]: /editor/theme-and-fonts
+[features]: /editor/features
+[terminal]: /editor/terminal

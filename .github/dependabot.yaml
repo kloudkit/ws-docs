@@ -1,0 +1,22 @@
+---
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 🔼
+    labels:
+      - "type: dependency 🔼"
+      - "type: documentation 📚"
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: 🔼
+    labels:
+      - "area: cicd 👷‍♂️"
+      - "type: dependency 🔼"

@@ -1,0 +1,128 @@
+---
+name: 📚 Documentation CI
+
+on:
+  push:
+
+permissions:
+  contents: read
+  deployments: write
+  packages: write
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: 🧹 Lint
+    runs-on: ubuntu-latest
+    if: github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]'
+
+    steps:
+      - name: 📁 Checkout repository
+        uses: actions/checkout@v4
+
+      - uses: pre-commit/action@v3.0.1
+
+  build:
+    name: 📚 Build Documentation
+    runs-on: ubuntu-latest
+    needs:
+      - lint
+
+    steps:
+      - name: 📁 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔵 Setup NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+          cache-dependency-path: yarn.lock
+
+      - name: ⏬ Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: 👷‍♂️ Build
+        run: yarn run docs:build
+
+      - name: 🔼 Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: .vitepress/dist
+
+  docker:
+    name: 🐳 Docker Build
+    runs-on: ubuntu-latest
+    needs:
+      - build
+
+    steps:
+      - name: 📁 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🔽 Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: .vitepress/dist
+          merge-multiple: true
+
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+
+      - name: 🔑 Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📃 Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}
+          flavor: |
+            latest=false
+          tags: |
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+            type=semver,pattern=v{{version}}
+            type=semver,pattern=v{{major}}.{{minor}}
+
+      - name: 🐳 Docker Build & Push
+        uses: docker/build-push-action@v5
+        id: docker_build
+        with:
+          context: .
+          labels: ${{ steps.meta.outputs.labels }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+
+  deploy:
+    name: 🚀 Deploy Documentation
+    runs-on: ubuntu-latest
+    needs:
+      - build
+
+    steps:
+      - name: 🔽 Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          path: build
+          merge-multiple: true
+
+      - name: ⛅ Deploy to Cloudflare
+        uses: cloudflare/pages-action@v1
+        with:
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          directory: build
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          projectName: workspace-documentation
+          wranglerVersion: "3"
