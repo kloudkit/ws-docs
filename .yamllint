@@ -1,0 +1,19 @@
+---
+extends: default
+
+rules:
+  braces:
+    forbid: non-empty
+
+  brackets:
+    forbid: non-empty
+
+  line-length:
+    max: 100
+
+  quoted-strings:
+    quote-type: double
+    required: only-when-needed
+
+  truthy:
+    check-keys: false

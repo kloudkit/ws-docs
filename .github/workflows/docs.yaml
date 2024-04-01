@@ -1,0 +1,59 @@
+---
+name: 📚 Deploy Documentation
+
+on:
+  push:
+    paths:
+      - docs/**
+      - .github/workflows/docs.yaml
+      - package.json
+      - yarn.lock
+
+permissions:
+  contents: read
+  deployments: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: 🧹 Lint
+    uses: ./.github/workflows/reuse-lint.yaml
+
+  deploy:
+    name: 📚 Deploy Documentation
+    runs-on: ubuntu-latest
+    if: github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]'
+    needs:
+      - lint
+
+    steps:
+      - name: 📁 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔵 Setup NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+          cache-dependency-path: yarn.lock
+
+      - name: ⏬ Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: 👷‍♂️ Build
+        run: yarn run docs:build
+
+      - name: 🚀 Deploy Documentation
+        uses: cloudflare/pages-action@v1
+        with:
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          directory: docs/.vitepress/dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          projectName: workspace-documentation
+          wranglerVersion: "3"
