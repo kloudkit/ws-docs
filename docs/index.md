@@ -40,6 +40,13 @@ features:
 
 ---
 
+```sh
+# TL-DR; ⚡ Power your batteries now!
+docker pul ghcr.io/kloudkit/workspace:latest
+```
+
+---
+
 Over the past decade, both companies and individual developers have increasingly embraced
 cloud-based workflows for CI, deployment, testing, and staging.
 Yet, the shift of actual development processes to the cloud has lagged behind.

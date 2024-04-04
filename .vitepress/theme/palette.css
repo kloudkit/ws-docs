@@ -16,6 +16,12 @@ aside.VPSidebar,
   scrollbar-gutter: stable;
 }
 
+.VPHome .vp-doc.container .language-sh {
+  margin: 3em auto;
+  width: 625px;
+  font-size: 130%;
+}
+
 .VPDoc.has-aside .content .content-container {
   max-width: 740px;
 }
@@ -24,6 +30,6 @@ aside.VPSidebar,
   margin: 3em 0;
 }
 
-.vp-doc p > em {
+.vp-doc p > em.small {
   font-size: 85%;
 }
