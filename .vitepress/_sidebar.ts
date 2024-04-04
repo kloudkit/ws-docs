@@ -15,15 +15,16 @@ export default [
   {
     text: 'Settings',
     items: [
-      { text: 'Autoload Scripts', link: '/pages/autoload-scripts' },
-      { text: 'Environment Variables', link: '/pages/environment-variables' },
-      { text: 'Enterprise CA', link: '/pages/enterprise-ca' },
-      { text: 'Secret Injection', link: '/pages/secrets' },
+      { text: 'Autoload Scripts', link: '/settings/autoload-scripts' },
+      { text: 'Environment Variables', link: '/settings/environment-variables' },
+      { text: 'Enterprise CA', link: '/settings/enterprise-ca' },
+      { text: 'Secret Injection', link: '/settings/secrets' },
     ]
   },
 
   {
     text: 'Tools',
+    link: '/tools',
     items: [
       { text: 'docker', link: '/tools/docker' },
       { text: 'git', link: '/tools/git' },

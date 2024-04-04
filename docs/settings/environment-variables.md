@@ -52,7 +52,7 @@ However, `WS_ROOT` is only used by the workspace, therefore it contains the pref
 | `TZ`                  | Define the timezone                          |
 
 [auth]: /editor/authentication
-[ca]: /pages/enterprise-ca
+[ca]: /settings/enterprise-ca
 [docker]: /tools/docker
 [extensions]: /editor/extensions
 [fonts]: /editor/theme-and-fonts

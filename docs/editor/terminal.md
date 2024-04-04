@@ -83,6 +83,7 @@ docker run \
 
 The table below describes the pre-configured shell components
 *(some also have customized settings)* and their respective license.
+
 👏 Many thanks to the amazing developers of these components.
 
 | Name                                 | License       |

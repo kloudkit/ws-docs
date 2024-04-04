@@ -43,11 +43,38 @@ ws feature install php
 As mentioned above, all features are backed by Ansible playbooks.
 All playbooks are stored in the `/features` root directory.
 
-The directory location can be overridden using the `--root` flag when installing:
+The directory location can be overridden using the `--root` flag when installing.
+The example below will look for a *playbook* at `/alternate/php.yaml`:
 
 ```sh
 ws feature install php --root /alternate
 ```
+
+## Custom Features
+
+You can create your own custom *playbook* by using the starter template below.
+Make sure not to change the `hosts: workspace`, as it is defined to target the current
+workspace session.
+
+::: code-group
+
+```yaml [playbook]
+# /alternate/custom.yaml
+- name: Install a custom feature
+  gather_facts: false
+  hosts: workspace
+
+  tasks:
+    - name: Just saying hello
+      ansible.builtin.debug:
+        msg: Hello world! 👋
+```
+
+```sh [install]
+ws feature install custom --root /alternate
+```
+
+:::
 
 ## Available Features
 

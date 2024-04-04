@@ -102,6 +102,7 @@ infringes on the [terms of use](https://aka.ms/vsmarketplace-ToU).
 
 The table below describes the preinstalled extensions *(some also have customized settings)*
 and their respective license.
+
 👏 Many thanks to the amazing developers of these extensions.
 
 | Name                                                | License                   |
