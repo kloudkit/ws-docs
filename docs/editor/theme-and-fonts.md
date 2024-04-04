@@ -77,6 +77,7 @@ Download the missing font and install them on your machine:
 ## Licenses
 
 The table below describes the pre-package fonts and their respective license.
+
 👏 Many thanks to the amazing designers of these fonts.
 
 | Name                | License  |

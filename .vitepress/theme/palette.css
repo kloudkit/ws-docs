@@ -1,20 +1,29 @@
-:root {
-  --vp-c-black: #232634;
-
-  --vp-font-family-mono: 'Fira Code', ui-monospace, Menlo,
-    Consolas, 'Courier New', monospace;
-
-  --vp-button-brand-text: #232634;
-  --vp-button-brand-hover-text: #292c3c;
-  --vp-button-brand-active-text: #292c3c;
-  --vp-button-brand-bg: #81c8be;
-  --vp-button-brand-hover-bg: #99d1db;
-  --vp-button-brand-active-bg: #99d1db;
+.dark {
+  --vp-c-bg: var(--vp-c-black);
+  --vp-c-bg-alt: var(--vp-c-black-2);
+  --vp-c-bg-elv: var(--vp-c-gray-3);
+  --vp-c-bg-soft: var(--vp-c-gray-2);
 }
 
-.dark {
-  --vp-c-bg: #232634;
-  --vp-c-bg-alt: #292c3c;
-  --vp-c-bg-elv: #303446;
-  --vp-c-bg-soft: #414559;
+body {
+  font-size: 18px;
+}
+
+aside.VPSidebar,
+.vp-doc pre {
+  scrollbar-width: thin;
+  scrollbar-color: var(--vp-c-bg-soft) transparent;
+  scrollbar-gutter: stable;
+}
+
+.VPDoc.has-aside .content .content-container {
+  max-width: 740px;
+}
+
+.vp-doc .custom-block {
+  margin: 3em 0;
+}
+
+.vp-doc p > em {
+  font-size: 85%;
 }

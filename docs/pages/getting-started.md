@@ -34,6 +34,15 @@ Run the command below to deploy an
 docker run -p 8080:8080 ghcr.io/kloudkit/workspace:latest
 ```
 
+```yaml [compose]
+version: '3.8'
+services:
+  workspace:
+    image: ghcr.io/kloudkit/workspace:latest
+    ports:
+      - 8080:8080
+```
+
 ```yaml [kubernetes]
 apiVersion: apps/v1
 kind: Deployment

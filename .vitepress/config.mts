@@ -38,6 +38,7 @@ export default defineConfig({
   markdown: {
     config: md => {
       md.use(markdownItFootnote)
-    }
+    },
+    theme: 'catppuccin-frappe'
   }
 })

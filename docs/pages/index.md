@@ -4,8 +4,8 @@
 
 ## Overview
 
-Run your customized and pre-configured version of [VS Code][] using Docker, Kubernetes, or
-OpenShift and access it in the browser *(or via `ssh`)*.
+Run your customized and pre-configured version of [VS Code][] *(powered by Coder)* using
+Docker, Kubernetes, or OpenShift and access it in the browser *(or via `ssh`)*.
 
 ## Addons
 
