@@ -4,6 +4,8 @@ import DefaultTheme   from 'vitepress/theme'
 import './style.css'
 import './palette.css'
 import '@fontsource/fira-code/400.css'
+import '@fontsource/fira-code/600.css'
+import '@fontsource/victor-mono/400-italic.css'
 
 
 export default {

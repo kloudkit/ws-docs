@@ -27,9 +27,18 @@ aside.VPSidebar,
 }
 
 .vp-doc .custom-block {
-  margin: 3em 0;
+  margin: 3em;
 }
 
-.vp-doc p > em.small {
+.vp-doc em.small {
   font-size: 85%;
+}
+
+.DocSearch {
+  --docsearch-primary-color: var(--vp-c-brand-1) !important;
+}
+
+.shiki span[style="color:#737994;font-style:italic;"] {
+  font-family: 'Victor Mono';
+  font-size: 80%;
 }

@@ -42,7 +42,7 @@ features:
 
 ```sh
 # TL-DR; ⚡ Power your batteries now!
-docker pul ghcr.io/kloudkit/workspace:latest
+docker pull ghcr.io/kloudkit/workspace:latest
 ```
 
 ---

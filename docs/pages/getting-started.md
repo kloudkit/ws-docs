@@ -74,7 +74,6 @@ docker run -it --rm \
     -p 8080:8080 \
     -e GIT_COMMITTER_NAME="Joe Smith" \
     -e GIT_COMMITTER_EMAIL=j@smith.com \
-    -e OP_SERVICE_ACCOUNT_TOKEN=${OP_SERVICE_ACCOUNT_TOKEN} \
     -e TZ=Asia/Jerusalem \
     -v ./custom/ca:/usr/local/share/ca-certificates/workspace \
     -v /var/run/docker.sock:/var/run/docker.sock:ro \

@@ -43,13 +43,13 @@ However, `WS_ROOT` is only used by the workspace, therefore it contains the pref
 
 ### Tool Variables
 
-| ENV                   | Description                                  |
-| --------------------- | -------------------------------------------- |
-| `EDITOR`              | Default terminal editor  *(default: `code`)* |
-| `GIT_COMMITTER_NAME`  | Name to be used in `~/.gitconfig`            |
-| `GIT_COMMITTER_EMAIL` | Email to be used in `~/.gitconfig`           |
-| `PAGER`               | Default terminal pager *(default: `less`)*   |
-| `TZ`                  | Define the timezone                          |
+| ENV                   | Description                                  | Read More |
+| --------------------- | -------------------------------------------- | --------- |
+| `EDITOR`              | Default terminal editor  *(default: `code`)* |           |
+| `GIT_COMMITTER_NAME`  | Name to be used in `~/.gitconfig`            | [→][git]  |
+| `GIT_COMMITTER_EMAIL` | Email to be used in `~/.gitconfig`           | [→][git]  |
+| `PAGER`               | Default terminal pager *(default: `less`)*   |           |
+| `TZ`                  | Define the timezone                          |           |
 
 [auth]: /editor/authentication
 [ca]: /settings/enterprise-ca
@@ -57,4 +57,5 @@ However, `WS_ROOT` is only used by the workspace, therefore it contains the pref
 [extensions]: /editor/extensions
 [fonts]: /editor/theme-and-fonts
 [features]: /editor/features
+[git]: /tools/git
 [terminal]: /editor/terminal
