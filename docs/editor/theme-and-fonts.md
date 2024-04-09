@@ -1,5 +1,8 @@
 ---
 outline: deep
+see:
+  - name: Terminal
+    link: /editor/terminal
 ---
 
 # Theme & Fonts

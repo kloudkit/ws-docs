@@ -1,3 +1,9 @@
+---
+see:
+  - name: features
+    link: /editor/features
+---
+
 # `ws-cli`
 
 > ⚡ CLI tool to charge the workspace batteries

@@ -43,17 +43,17 @@ An additional list of terminal specific tools can be found on the
 
 ## GoLang
 
-| Name                  | Version  | License  |
-| --------------------- | -------- | -------- |
-| **[dlv][]**           | `>=1.22` | MIT      |
-| **[Go][]**            | `>=1.21` | BSD 3    |
-| **[gotests][]**:      | `>=1.6`  | Apache 2 |
-| **[gomodifytags][]**: | `>=1.16` | MIT      |
-| **[goplay][]**:       | `>=1.0`  | MIT      |
-| **[gopls][]**:        | `>=0.14` | BSD      |
-| **[go-outline][]**:   | `>=0.0`  | MIT      |
-| **[impl][]**:         | `>=1.1`  | MIT      |
-| **[staticcheck][]**:  | `>=0.4`  | MIT      |
+| Name                 | Version  | License  |
+| -------------------- | -------- | -------- |
+| **[dlv][]**          | `>=1.22` | MIT      |
+| **[Go][]**           | `>=1.21` | BSD 3    |
+| **[gotests][]**      | `>=1.6`  | Apache 2 |
+| **[gomodifytags][]** | `>=1.16` | MIT      |
+| **[goplay][]**       | `>=1.0`  | MIT      |
+| **[gopls][]**        | `>=0.14` | BSD      |
+| **[go-outline][]**   | `>=0.0`  | MIT      |
+| **[impl][]**         | `>=1.1`  | MIT      |
+| **[staticcheck][]**  | `>=0.4`  | MIT      |
 
 ## NodeJS
 

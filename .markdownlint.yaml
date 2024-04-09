@@ -9,7 +9,8 @@ MD013:
   heading_line_length: 120
   code_blocks: false
 
-MD024: false
+MD024:
+  siblings_only: true
 
 MD033:
   allowed_elements:
