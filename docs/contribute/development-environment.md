@@ -50,6 +50,10 @@ git clone https://github.com/kloudkit/workspace
 git clone https://github.com/kloudkit/workspace-docs
 ```
 
+```sh [CLI]
+git clone https://github.com/kloudkit/ws-cli
+```
+
 :::
 
 ### 2. Install dependencies

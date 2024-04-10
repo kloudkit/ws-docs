@@ -42,3 +42,13 @@ aside.VPSidebar,
   font-family: 'Victor Mono';
   font-size: 80%;
 }
+
+.HomeRow {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 2fr 1fr;
+}
+
+.HomeRow.graphic-first {
+  grid-template-columns: 1fr 2fr;
+}

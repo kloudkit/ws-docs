@@ -47,6 +47,8 @@ docker pull ghcr.io/kloudkit/workspace:latest
 
 ---
 
+<!--@include: ./_home.html-->
+
 Over the past decade, both companies and individual developers have increasingly embraced
 cloud-based workflows for CI, deployment, testing, and staging.
 Yet, the shift of actual development processes to the cloud has lagged behind.

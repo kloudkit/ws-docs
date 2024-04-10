@@ -126,18 +126,15 @@ The trees below displays the main files and folders and their intended use.
 .
 ├── .github                 // Workflows, issue/pr templates, and other GitHub related assets
 ├── .gitignore              // Files to not track in `git`
-├── cmd                     // ws-cli command helper
-│   └── *
-├── go.mod                  // Golang package dependencies for cli (should be changed using `go`)
-├── go.sum                  // Current status of installed golang modules (should not be edited)
-├── main.go                 // ws-cli entrypoint
 └── src                     // The main directory for image assets and build steps
-    └── *
+    ├── build               // Helper scripts and dependency definitions
+    ├── home                // Directory mapped to `~` in the container
+    └── rootfs              // Directory mapped to `/` in the container
 ```
 
 ```text [Docs]
 .
-├── .github                 // Workflows, issue/pr templates, and other GitHub related assets
+├── .github                 // Workflows, pr templates, and other GitHub related assets
 ├── .gitignore              // Files to not track in `git`
 ├── .vitepress              // Configuration and theme for the website
 ├── docs                    // Resource root
@@ -148,6 +145,19 @@ The trees below displays the main files and folders and their intended use.
 ├── node_modules            // Node packages (git-ignored)
 ├── package.json            // Node package dependencies (should be changed using `npm`)
 └── yarn.lock               // Current status of installed npm modules (should not be edited)
+```
+
+```text [CLI]
+.
+├── .github                 // Workflows, pr templates, and other GitHub related assets
+├── .gitignore              // Files to not track in `git`
+├── cmd                     // Source for command helpers
+│   └── *
+├── internals               // Service classes to be used by commands
+│   └── *
+├── go.mod                  // Golang package dependencies (should be changed using `go`)
+├── go.sum                  // Current status of installed golang modules (should not be edited)
+└── main.go                 // CLI entrypoint
 ```
 
 :::
