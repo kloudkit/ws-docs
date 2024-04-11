@@ -1,7 +1,3 @@
----
-outline: deep
----
-
 # Contribution Workflow & Style Guides
 
 ::: tip

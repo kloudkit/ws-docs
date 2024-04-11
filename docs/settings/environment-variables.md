@@ -1,7 +1,3 @@
----
-outline: deep
----
-
 # Environment Variables
 
 Enhance extensibility by leveraging environment variables to override default configurations.
@@ -23,6 +19,7 @@ However, `WS_ROOT` is only used by the workspace, therefore it contains the pref
 | ENV                            | Description                                                     | Read More       |
 | ------------------------------ | --------------------------------------------------------------- | --------------- |
 | `WS_COMMENTS_DISABLE_FONT`     | Disable the custom comments font                                | [→][fonts]      |
+| `WS_DISABLE_SUDO`              | Disable `sudo` privileges                                       |                 |
 | `WS_CONFIGURE_DOCKER`          | Attempt to auto-configure docker                                | [→][docker]     |
 | `WS_ENTRYPOINT_ARGS`           | Additional arguments to be passed to the entrypoint script      |                 |
 | `WS_EXTRA_CA_CERT_ENDPOINTS`   | Extra CA endpoints to install at startup *(delimited by space)* | [→][ca]         |

@@ -1,7 +1,3 @@
----
-outline: deep
----
-
 # Authentication
 
 Given that the majority of users will integrate the *workspace* with an external

@@ -56,6 +56,22 @@ at the first successful match:
 This structure ensures a more organized and secure approach to managing SSH keys,
 simplifying what can otherwise have been considered a complex process.
 
+#### Example File structure
+
+```text
+~/.ssh
+├── config            // Workspace defined configurations
+├── config.local      // User defined overrides
+├── internal          // Internal IP range keys
+│   └── id_rsa
+├── github.com        // Keys for github.com only
+│   └── id_ecdsa
+├── kloudkit.com      // Keys for kloudkit.com only
+│   └── id_ed25519
+├── signingkey        // Private key for signing `git` commits
+└── signingkey.pub    // Public key for signing `git` commits
+```
+
 ### SSH Agent
 
 The `ssh-agent` is a background process that handles private keys used for public key

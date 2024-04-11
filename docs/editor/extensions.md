@@ -1,7 +1,3 @@
----
-outline: deep
----
-
 # VS Extensions
 
 ## Official Marketplace

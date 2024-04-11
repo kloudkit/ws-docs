@@ -1,5 +1,4 @@
 ---
-outline: deep
 see:
   - name: Terminal
     link: /editor/terminal
@@ -63,10 +62,10 @@ To start the server, execute the following command:
 
 ```sh
 # Default port: 38080
-ws fonts server
+ws fonts serve
 
 # Alternate port:
-ws fonts server --port 12345
+ws fonts serve --port 12345
 ```
 
 Download the missing font and install them on your machine:

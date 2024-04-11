@@ -1,3 +1,9 @@
+---
+see:
+  - name: ws-cli
+    link: /tools/ws-cli
+---
+
 # Autoload Scripts
 
 While we try to take care of most installations and configurations out of the box, we

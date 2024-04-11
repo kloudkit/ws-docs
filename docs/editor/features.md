@@ -1,7 +1,3 @@
----
-outline: deep
----
-
 # Extra Features
 
 It would be impossible to pre-install and configuring every possible package or feature,
