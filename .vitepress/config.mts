@@ -9,12 +9,15 @@ import sidebar from './_sidebar'
 export default defineConfig({
   title: 'Kloud Workspace',
   description: '🔋 A batteries included pre-configured development workspace',
+  appearance: 'force-dark',
   cleanUrls: true,
   srcDir: './docs',
 
   themeConfig: {
     nav,
     sidebar,
+
+    outline: 'deep',
 
     logo: '/favicon.ico',
 
