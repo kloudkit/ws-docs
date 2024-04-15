@@ -7,6 +7,20 @@
 Run your customized and pre-configured version of [VS Code][] *(powered by Coder)* using
 Docker, Kubernetes, or OpenShift and access it in the browser *(or via `ssh`)*.
 
+---
+
+Over the past decade, both companies and individual developers have increasingly embraced
+cloud-based workflows for CI, deployment, testing, and staging.
+Yet, the shift of actual development processes to the cloud has lagged behind.
+Despite the convenience and efficiency the cloud offers, developers have largely clung to
+the familiar comfort of the *desktop experience*, hesitating to move their development
+tools into the cloud.
+
+Recognizing this gap, *Kloud Workspace* was tailored to facilitate this transition.
+By packaging the widely-used *VSCode* IDE as a Docker container *(powered by Coder)*,
+and integrating the latest development environments along with essential tools and
+extensions, we offer a seamless bridge to the cloud.
+
 ## Addons
 
 The *workspace* is tailored for both development and DevOps purposes.

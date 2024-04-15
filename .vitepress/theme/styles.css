@@ -46,9 +46,10 @@ aside.VPSidebar,
 .HomeRow {
   display: grid;
   gap: 32px;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  margin: 2em 0;
 }
 
-.HomeRow.graphic-first {
-  grid-template-columns: 1fr 2fr;
+.HomeRow img {
+  border-radius: 12px;
 }

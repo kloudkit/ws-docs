@@ -1,5 +1,7 @@
 # Tools
 
+![Tools](/home/tools.png)
+
 The tables below describes the pre-installed CLI tools
 *(some also have customized settings)* and their respective license.
 An additional list of terminal specific tools can be found on the
@@ -23,7 +25,7 @@ An additional list of terminal specific tools can be found on the
 | **[tldr][]**         | `>=3.4`      | MIT      |
 | **[vim][]**          | `>=9`        | Vim      |
 | **[yamllint][]**     | `>=1.35`     | GPL 3    |
-| **[yq][]**           | `>=3.2`      | MIT      |
+| **[yq][]**           | `>=3.3`      | MIT      |
 
 ## Docker & Kubernetes
 
@@ -68,6 +70,7 @@ An additional list of terminal specific tools can be found on the
 | --------------------- | -------- | -------- |
 | **[docker-py][]**     | `>=7.0`  | Apache 2 |
 | **[kubernetes-py][]** | `>=29.0` | Apache 2 |
+| **[netaddr][]**       | `>=1.2`  | Custom   |
 | **[pre-commit][]**    | `>=3.7`  | MIT      |
 | **[pylint][]**        | `>=3.1`  | GPL 2    |
 | **[Python][]**        | `>=3.11` | PSF      |
@@ -100,6 +103,7 @@ An additional list of terminal specific tools can be found on the
 [kubernetes-py]: https://github.com/kubernetes-client/python
 [jq]: https://jqlang.github.io/jq
 [markdownlint]: https://github.com/igorshubovych/markdownlint-cli
+[netaddr]: https://github.com/netaddr/netaddr
 [NodeJS]: https://github.com/nodejs/node
 [oc]: https://github.com/openshift/oc
 [op]: https://developer.1password.com/docs/cli

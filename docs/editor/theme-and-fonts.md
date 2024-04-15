@@ -6,6 +6,18 @@ see:
 
 # Theme & Fonts
 
+![Design](/home/design.png)
+
+## Theme
+
+We selected the captivating [*Catppuccin Frappe*][Catppuccin] palette as our theme and
+for all colored outputs.
+This choice was driven by the palette's warm and soothing color scheme, which not only
+enhances aesthetic appeal but also improves visibility and readability.
+
+These colors contribute to a more engaging and pleasant user interface, creating an
+environment that is both inviting and comfortable for extended viewing.
+
 ## Fonts
 
 All typography was carefully selected according to its intended place of use, such as in
@@ -78,16 +90,18 @@ Download the missing font and install them on your machine:
 
 ## Licenses
 
-The table below describes the pre-package fonts and their respective license.
+The table below describes the pre-package fonts *(& themes)* and their respective license.
 
 👏 Many thanks to the amazing designers of these fonts.
 
 | Name                | License  |
 | ------------------- | -------- |
+| **[Catppuccin][]**  | MIT      |
 | **[FiraCode][]**    | OFL 1.1  |
 | **[MesloLGS][]**    | Apache 2 |
 | **[Victor Mono][]** | OFL 1.1  |
 
+[Catppuccin]: https://github.com/catppuccin/catppuccin
 [FiraCode]: https://github.com/tonsky/FiraCode
 [MesloLGS]: https://github.com/romkatv/powerlevel10k-media
 [Victor Mono]: https://github.com/rubjo/victor-mono
