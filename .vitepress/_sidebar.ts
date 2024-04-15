@@ -28,6 +28,7 @@ export default [
     items: [
       { text: 'docker', link: '/tools/docker' },
       { text: 'git', link: '/tools/git' },
+      { text: 'kind', link: '/tools/kind' },
       { text: 'ssh', link: '/tools/ssh' },
       { text: 'ws-cli', link: '/tools/ws-cli' },
     ]

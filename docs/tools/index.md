@@ -38,7 +38,7 @@ An additional list of terminal specific tools can be found on the
 | **[hadolint][]**       | `>=2.12` | GPL 3    |
 | **[Helm][]**           | `>=3.14` | Apache 2 |
 | **[Helm Diff][]**      | `>=3.9`  | Apache 2 |
-| **[kind][]**           | `>=0.20` | Apache 2 |
+| **[kind][]**           | `>=0.22` | Apache 2 |
 | **[kubectl][]**        | `>=1.29` | Apache 2 |
 | **[KubeLinter][]**     | `>=0.6`  | Apache 2 |
 | **[oc][]**             | `>=4.6`  | Apache 2 |
