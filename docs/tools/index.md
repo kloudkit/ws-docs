@@ -19,6 +19,7 @@ An additional list of terminal specific tools can be found on the
 | **[cspell][]**       | `>=8.6`      | MIT      |
 | **[Git][]**          | `>=2.39`     | GPL 2    |
 | **[jq][]**           | `>=1.7`      | MIT      |
+| **[lsof][]**         | `>=4.95`     | Custom   |
 | **[markdownlint][]** | `>=0.39`     | MIT      |
 | **[op][]**           | `>=2.25`     | ~        |
 | **[ShellCheck][]**   | `>=0.10`     | GPL 3    |
@@ -102,6 +103,7 @@ An additional list of terminal specific tools can be found on the
 [KubeLinter]: https://github.com/stackrox/kube-linter
 [kubernetes-py]: https://github.com/kubernetes-client/python
 [jq]: https://jqlang.github.io/jq
+[lsof]: https://github.com/lsof-org/lsof
 [markdownlint]: https://github.com/igorshubovych/markdownlint-cli
 [netaddr]: https://github.com/netaddr/netaddr
 [NodeJS]: https://github.com/nodejs/node

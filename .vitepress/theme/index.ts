@@ -1,6 +1,7 @@
 import { h }          from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme   from 'vitepress/theme'
+import Home           from './Home.vue'
 import SeeAlso        from './SeeAlso.vue'
 import './styles.css'
 import './variables.css'
@@ -13,7 +14,8 @@ export default {
   extends: DefaultTheme,
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
-      'aside-outline-after': () => h(SeeAlso)
+      'aside-outline-after': () => h(SeeAlso),
+      'home-features-after': () => h(Home)
     })
   },
   enhanceApp({ app, router, siteData }) {}

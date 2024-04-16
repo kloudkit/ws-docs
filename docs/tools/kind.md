@@ -13,15 +13,21 @@ Docker container as *nodes*.
 It is primarily used for testing Kubernetes itself, or for developing Kubernetes
 applications in a local environment.
 
-::: warn
+::: warning
+
 The documentation below assumes you are **not** using [`sysbox`][sysbox] as you Docker
 runtime.
+
 :::
 
 ## Custom Configuration
 
-Custom configuration can be stored in a `yaml` file of your choice and used with
-the `kind create cluster --config my-config.yaml`.
+Custom configuration can be stored in a `yaml` file of your choice.
+To create a cluster with the custom configuration, execute the following command:
+
+```sh
+kind create cluster --config my-config.yaml
+```
 
 ### Cluster IP
 
@@ -33,7 +39,7 @@ address resolves to the internal address of the current *workspace*.
 To make the cluster accessible on the network of the running host, change the listening
 address to `0.0.0.0` *(or to a specific host IP)*:
 
-```yaml
+```yaml{4}
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 networking:
@@ -44,7 +50,7 @@ networking:
 Once deployed, you will need to update the `KUBECONFIG` to communicate with the API server
 using the host IP for the `cluster.server` address.
 
-```yaml
+```yaml{4}
 apiVersion: v1
 clusters:
 - cluster:

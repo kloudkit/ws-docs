@@ -18,11 +18,3 @@ hero:
       text: Documentation
       link: /pages/
 ---
-
-<!-- markdownlint-disable MD041 -->
-```sh
-# TL-DR; ⚡ Power your batteries now!
-docker pull ghcr.io/kloudkit/workspace:latest
-```
-
-<!--@include: ./_home.html-->
