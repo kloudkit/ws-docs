@@ -1,5 +1,4 @@
 import { defineConfig } from 'vitepress'
-import markdownItFootnote from 'markdown-it-footnote'
 import italicSmallRenderer from './_italicSmallRenderer'
 import dockerSVG from './_dockerSVG'
 import nav from './_nav'
@@ -41,7 +40,6 @@ export default defineConfig({
 
   markdown: {
     config: md => {
-      md.use(markdownItFootnote)
       md.use(italicSmallRenderer)
     },
     theme: 'catppuccin-frappe'

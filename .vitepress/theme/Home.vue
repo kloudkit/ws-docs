@@ -128,6 +128,10 @@
   font-size: 130%;
 }
 
+.vp-doc p {
+  text-align: left;
+}
+
 .HomeRow {
   padding: 2em 0;
 }

@@ -20,6 +20,11 @@
   --vp-c-brand-3: var(--ws-sky);
   --vp-c-brand-soft: #81c8be33;
 
+  --vp-font-family-base: "Chinese Quotes", "Fira Sans", ui-sans-serif,
+    system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji", "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
   --vp-font-family-mono: 'Fira Code', ui-monospace, Menlo,
     Consolas, 'Courier New', monospace;
 

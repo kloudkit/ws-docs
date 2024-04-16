@@ -20,6 +20,11 @@ aside.VPSidebar,
   max-width: 740px;
 }
 
+.vp-doc p {
+  line-height: 30px;
+  text-align: justify;
+}
+
 .vp-doc .custom-block {
   margin: 3em;
 }

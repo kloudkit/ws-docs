@@ -98,10 +98,12 @@ The table below describes the pre-package fonts *(& themes)* and their respectiv
 | ------------------- | -------- |
 | **[Catppuccin][]**  | MIT      |
 | **[FiraCode][]**    | OFL 1.1  |
+| **[Fira Sans][]**   | OFL 1.1  |
 | **[MesloLGS][]**    | Apache 2 |
 | **[Victor Mono][]** | OFL 1.1  |
 
 [Catppuccin]: https://github.com/catppuccin/catppuccin
 [FiraCode]: https://github.com/tonsky/FiraCode
+[Fira Sans]: https://github.com/mozilla/Fira
 [MesloLGS]: https://github.com/romkatv/powerlevel10k-media
 [Victor Mono]: https://github.com/rubjo/victor-mono

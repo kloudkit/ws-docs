@@ -88,3 +88,5 @@ An `ssh-agent` daemon is started by default when the *workspace* is first booted
 An SSH server can be configured to launch upon workspace startup.
 All configurations within `/etc/ssh/sshd_config` have undergone a thorough review and
 carefully tuned to strengthen security measures.
+
+For security purposes, the server is published on the non-default port `2222`.
