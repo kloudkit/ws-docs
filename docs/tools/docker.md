@@ -16,6 +16,12 @@ You can read more about this topic by running a simple Google search for
 [`"run docker in docker"`](https://www.google.com/search?q=run+docker+in+docker).
 :::
 
+Throughout this page, we will refer to the diagram below which illustrates the basic
+Docker architecture.
+The subsequent sections might present a partial perspective of the complete architecture.
+
+![Docker architecture](/docker/architecture.png)
+
 ## Docker In Docker
 
 Docker In Docker *(also known as dind)* allows developers to run a Docker container within
@@ -45,6 +51,8 @@ docker run \
 
 ### 2. Mounting the Docker Socket From the Host
 
+![Host mount](/docker/host-mount.png)
+
 ```sh{2}
 docker run \
   -v /var/run/docker.sock:/var/run/docker.sock:ro \
@@ -52,6 +60,8 @@ docker run \
 ```
 
 ### 3. Connect to a Remote Host *(TCP)*
+
+![TCP](/docker/tcp.png)
 
 Assuming you have access to a remote host running docker, you can set the value of
 `DOCKER_HOST` as follows:
@@ -67,6 +77,8 @@ pregenerated key-pairs.
 
 ### 4. Connect to a Remote Host *(SSH)*
 
+![SSH](/docker/ssh.png)
+
 Assuming you have SSH access to a [remote host running docker][protect-ssh], you can set
 the value of `DOCKER_HOST` as follows:
 
@@ -80,7 +92,9 @@ This method is optimized by the workspace as we internally configure a persisten
 `ssh-agent` behind the scenes for a quicker connection experience.
 For more information, visit our documentation on [`ssh`](/tools/ssh)
 
-### 5. Use [`docker:dind`][] Running on a Remote Host
+### 5. Use [`docker:dind`][dind] Running on a Remote Host
+
+![DIND](/docker/dind.png)
 
 This process is split into 3 steps:
 
@@ -98,6 +112,7 @@ This process is split into 3 steps:
       --privileged \
       --name dind \
       --net dind \
+      -v workspace:/workspace:ro \
       -e DOCKER_TLS_CERTDIR="" \
       docker:dind
     ```
@@ -107,6 +122,7 @@ This process is split into 3 steps:
     ```sh
     docker run \
       -e DOCKER_HOST=tcp://dind:2375 \
+      -v workspace:/workspace \
       --net dind \
       ghcr.io/kloudkit/workspace:latest
     ```
@@ -132,6 +148,6 @@ docker run \
   ghcr.io/kloudkit/workspace:latest
 ```
 
-[`docker:dind`]: https://hub.docker.com/_/docker/tags?page=1&name=dind
+[dind]: https://hub.docker.com/_/docker/tags?page=1&name=dind
 [protect-tls]: https://docs.docker.com/engine/security/protect-access/#use-tls-https-to-protect-the-docker-daemon-socket
 [protect-ssh]: https://docs.docker.com/engine/security/protect-access/#use-ssh-to-protect-the-docker-daemon-socket

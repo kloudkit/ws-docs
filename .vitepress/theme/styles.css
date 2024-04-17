@@ -25,6 +25,10 @@ aside.VPSidebar,
   text-align: justify;
 }
 
+.vp-doc p img {
+  margin: 0 auto;
+}
+
 .vp-doc .custom-block {
   margin: 3em;
 }
