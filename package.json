@@ -6,7 +6,7 @@
   },
   "devDependencies": {
     "@fontsource/fira-code": "^5.0.17",
-    "@fontsource/fira-sans": "^5.0.19",
+    "@fontsource/fira-sans": "^5.0.20",
     "@fontsource/victor-mono": "^5.0.12",
     "vitepress": "^1.1.0",
     "vue": "^3.4.21"

@@ -281,10 +281,10 @@
   resolved "https://registry.npmjs.org/@fontsource/fira-code/-/fira-code-5.0.17.tgz"
   integrity sha512-Ai0qE5PWvm6ETny7ToAitwdhYtO3YrNIHoa0arPquXxpnlRSB+OsJfhKnfgDKm6WMmCnxKOfsIslbVw5PqQvvQ==
 
-"@fontsource/fira-sans@^5.0.19":
-  version "5.0.19"
-  resolved "https://registry.yarnpkg.com/@fontsource/fira-sans/-/fira-sans-5.0.19.tgz#38c2c5ee41b5862bb216c95e4a07ae5de6d29243"
-  integrity sha512-6hTOV2mgGx2OCyuXwjCPSfvQra4aw4t6rDCvembo8VHIVALOwEH6rmHrITDAVhxjP6p+51I0+9j+x6JD155G5w==
+"@fontsource/fira-sans@^5.0.20":
+  version "5.0.20"
+  resolved "https://registry.yarnpkg.com/@fontsource/fira-sans/-/fira-sans-5.0.20.tgz#92d22b1289f932db1bca7bd20902544fb9706252"
+  integrity sha512-inmUjoKPrgnO4uUaZTAgP0b6YdhDfA52axHXvdTwgLvwd2kn3ZgK52UZoxD0VnrvTOjLA/iE4oC0tNtz4nyb5g==
 
 "@fontsource/victor-mono@^5.0.12":
   version "5.0.12"
