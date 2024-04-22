@@ -286,10 +286,10 @@
   resolved "https://registry.yarnpkg.com/@fontsource/fira-sans/-/fira-sans-5.0.19.tgz#38c2c5ee41b5862bb216c95e4a07ae5de6d29243"
   integrity sha512-6hTOV2mgGx2OCyuXwjCPSfvQra4aw4t6rDCvembo8VHIVALOwEH6rmHrITDAVhxjP6p+51I0+9j+x6JD155G5w==
 
-"@fontsource/victor-mono@^5.0.12":
-  version "5.0.12"
-  resolved "https://registry.yarnpkg.com/@fontsource/victor-mono/-/victor-mono-5.0.12.tgz#40427be05e6ce5f201e78a18db3cb507a6251457"
-  integrity sha512-pPIXOAdv028xI5HoxgsagRarsGOcUL7INg3+4sS0eiiZ99Mje46TEyAuoBCMhYpocjjTJuXqJFG98yqtJFCkkA==
+"@fontsource/victor-mono@^5.0.13":
+  version "5.0.13"
+  resolved "https://registry.yarnpkg.com/@fontsource/victor-mono/-/victor-mono-5.0.13.tgz#2d15366d3309c91c07591921abd1f00da020ed22"
+  integrity sha512-WdKQC1+N5Ts+3CidQ3FsRFgJ7/c8gY5zCDxXhWZWwvH5AJJmbDGHVB8XWnHtDF5+Ca7yuzixB57oK8HkuTisug==
 
 "@jridgewell/sourcemap-codec@^1.4.15":
   version "1.4.15"
