@@ -125,6 +125,7 @@ The trees below displays the main files and folders and their intended use.
 └── src                     // The main directory for image assets and build steps
     ├── build               // Helper scripts and dependency definitions
     ├── home                // Directory mapped to `~` in the container
+    ├── ipc-server          // IPC server extension for Kloud Workspace
     └── rootfs              // Directory mapped to `/` in the container
 ```
 
@@ -139,6 +140,7 @@ The trees below displays the main files and folders and their intended use.
 │   └── public
 │       └── *               // Static assets
 ├── node_modules            // Node packages (git-ignored)
+├── nginx.conf              // nginx configurations
 ├── package.json            // Node package dependencies (should be changed using `npm`)
 └── yarn.lock               // Current status of installed npm modules (should not be edited)
 ```

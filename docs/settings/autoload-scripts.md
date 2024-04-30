@@ -34,6 +34,12 @@ These scripts are executed as follows:
 - Executed in lexicographical order.
 - Scripts are executed as the `kloud` user.
 
+```sh{2}
+docker run \
+  -v /my-entrypoint-scripts:/entrypoint \
+  ghcr.io/kloudkit/workspace
+```
+
 ### Available Languages
 
 Feel free to write you entrypoint scripts in the language of your choice, considering it
@@ -41,13 +47,13 @@ is installed in the workspace.
 
 By default, the workspace supports the following languages *(defined using shebangs)*:
 
-- Ansible: `#!/usr/bin/env -S ansible-playbook -K`
-- Bash: `#!/bin/bash`
-- Golang: `//usr/bin/env go run $0 $@; exit $?`
-- NodeJS: `#!/usr/bin/env node`
-- POSIX: `#!/bin/sh`
-- Python: `#!/usr/bin/env python`
-- zsh: `#!/bin/zsh`
+- **Ansible:** `#!/usr/bin/env -S ansible-playbook -K`
+- **Bash:** `#!/bin/bash`
+- **Golang:** `//usr/bin/env go run $0 $@; exit $?`
+- **NodeJS:** `#!/usr/bin/env node`
+- **POSIX:** `#!/bin/sh`
+- **Python:** `#!/usr/bin/env python`
+- **zsh:** `#!/bin/zsh`
 
 ### Helper Functions
 

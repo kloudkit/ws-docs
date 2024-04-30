@@ -25,6 +25,7 @@ export default [
   {
     text: 'Tools',
     link: '/tools',
+    collapsed: true,
     items: [
       { text: 'docker', link: '/tools/docker' },
       { text: 'git', link: '/tools/git' },
