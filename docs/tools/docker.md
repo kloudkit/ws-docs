@@ -64,11 +64,11 @@ docker run \
 ![TCP](/docker/tcp.png)
 
 Assuming you have access to a remote host running docker, you can set the value of
-`DOCKER_HOST` as follows:
+`DOCKER_HOST` as follows *(replace `<remote>` with your node's IP)*:
 
 ```sh{2}
 docker run \
-  -e DOCKER_HOST=tcp://remote:2375 \
+  -e DOCKER_HOST=tcp://<remote>:2375 \
   ghcr.io/kloudkit/workspace:latest
 ```
 
@@ -80,11 +80,12 @@ pregenerated key-pairs.
 ![SSH](/docker/ssh.png)
 
 Assuming you have SSH access to a [remote host running docker][protect-ssh], you can set
-the value of `DOCKER_HOST` as follows:
+the value of `DOCKER_HOST` as follows
+*(replace `<remote>` and `<user>` with your node's IP and username)*:
 
 ```sh{2}
 docker run \
-  -e DOCKER_HOST=ssh://user@remote \
+  -e DOCKER_HOST=ssh://<user>@<remote> \
   ghcr.io/kloudkit/workspace:latest
 ```
 

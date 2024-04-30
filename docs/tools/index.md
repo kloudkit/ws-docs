@@ -26,7 +26,7 @@ An additional list of terminal specific tools can be found on the
 | **[tldr][]**         | `>=3.4`      | MIT      |
 | **[vim][]**          | `>=9`        | Vim      |
 | **[yamllint][]**     | `>=1.35`     | GPL 3    |
-| **[yq][]**           | `>=3.3`      | MIT      |
+| **[yq][]**           | `>=3.4`      | MIT      |
 
 ## Docker & Kubernetes
 
@@ -49,7 +49,7 @@ An additional list of terminal specific tools can be found on the
 | Name                 | Version  | License  |
 | -------------------- | -------- | -------- |
 | **[dlv][]**          | `>=1.22` | MIT      |
-| **[Go][]**           | `>=1.21` | BSD 3    |
+| **[Go][]**           | `>=1.22` | BSD 3    |
 | **[gotests][]**      | `>=1.6`  | Apache 2 |
 | **[gomodifytags][]** | `>=1.16` | MIT      |
 | **[goplay][]**       | `>=1.0`  | MIT      |
@@ -75,7 +75,7 @@ An additional list of terminal specific tools can be found on the
 | **[pre-commit][]**    | `>=3.7`  | MIT      |
 | **[pylint][]**        | `>=3.1`  | GPL 2    |
 | **[Python][]**        | `>=3.11` | PSF      |
-| **[ruff][]**          | `>=0.3`  | MIT      |
+| **[ruff][]**          | `>=0.4`  | MIT      |
 
 [ansible-core]: https://github.com/ansible/ansible
 [ansible-lint]: https://github.com/ansible-community/ansible-lint

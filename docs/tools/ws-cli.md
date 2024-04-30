@@ -27,6 +27,18 @@ This feature allows for quick access to your workspace root with a minimal comma
 
 ## Commands
 
+### Clipboard *(`ws clipboard`)*
+
+- **`copy` *(alias `cp`)*:** Copy piped input to the clipboard.
+- **`paste`:** Paste the clipboard content to the terminal.
+
+```sh
+cat /some-file | ws clipboard copy
+
+# Alias
+echo "hello world" | pbcopy
+```
+
 ### Logging *(`ws log`)*
 
 - **`log debug`:** Log a *debug* message to the console.

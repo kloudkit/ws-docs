@@ -27,6 +27,7 @@ export default [
     link: '/tools',
     collapsed: true,
     items: [
+      { text: 'ansible', link: '/tools/ansible' },
       { text: 'docker', link: '/tools/docker' },
       { text: 'git', link: '/tools/git' },
       { text: 'kind', link: '/tools/kind' },
