@@ -20,7 +20,7 @@ An additional list of terminal specific tools can be found on the
 | **[Git][]**          | `>=2.39`     | GPL 2    |
 | **[jq][]**           | `>=1.7`      | MIT      |
 | **[lsof][]**         | `>=4.95`     | Custom   |
-| **[markdownlint][]** | `>=0.39`     | MIT      |
+| **[markdownlint][]** | `>=0.40`     | MIT      |
 | **[op][]**           | `>=2.25`     | ~        |
 | **[ShellCheck][]**   | `>=0.10`     | GPL 3    |
 | **[tldr][]**         | `>=3.4`      | MIT      |
@@ -72,6 +72,7 @@ An additional list of terminal specific tools can be found on the
 | **[docker-py][]**     | `>=7.0`  | Apache 2 |
 | **[kubernetes-py][]** | `>=29.0` | Apache 2 |
 | **[netaddr][]**       | `>=1.2`  | Custom   |
+| **[passlib][]**       | `>=1.7`  | BSD      |
 | **[pre-commit][]**    | `>=3.7`  | MIT      |
 | **[pylint][]**        | `>=3.1`  | GPL 2    |
 | **[Python][]**        | `>=3.11` | PSF      |
@@ -109,6 +110,7 @@ An additional list of terminal specific tools can be found on the
 [NodeJS]: https://github.com/nodejs/node
 [oc]: https://github.com/openshift/oc
 [op]: https://developer.1password.com/docs/cli
+[passlib]: https://foss.heptapod.net/python-libs/passlib
 [pre-commit]: https://github.com/pre-commit/pre-commit
 [pylint]: https://github.com/PyCQA/pylint
 [Python]: https://python.org

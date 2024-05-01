@@ -21,7 +21,6 @@ However, `WS_ROOT` is only used by the workspace, therefore it contains the pref
 | `WS_COMMENTS_DISABLE_FONT`     | Disable the custom comments font                                | [→][fonts]      |
 | `WS_DISABLE_SUDO`              | Disable `sudo` privileges                                       |                 |
 | `WS_CONFIGURE_DOCKER`          | Attempt to auto-configure docker                                | [→][docker]     |
-| `WS_ENTRYPOINT_ARGS`           | Additional arguments to be passed to the entrypoint script      |                 |
 | `WS_EXTRA_CA_CERT_ENDPOINTS`   | Extra CA endpoints to install at startup *(delimited by space)* | [→][ca]         |
 | `WS_EXTRA_CA_CERT_INSECURE`    | Use insecure communication when installing CA endpoints         | [→][ca]         |
 | `WS_EXTRA_FEATURES`            | Extra features to install at startup *(delimited by space)*     | [→][features]   |
@@ -29,11 +28,13 @@ However, `WS_ROOT` is only used by the workspace, therefore it contains the pref
 | `WS_EXTRA_VS_EXTENSIONS_DIR`   | Directory of extensions to install at startup *(`*.vsix`)*      | [→][extensions] |
 | `WS_PASSWORD`                  | Password for login authentication                               | [→][auth]       |
 | `WS_PASSWORD_HASHED`           | Hashed *(`argon2`)* password for login authentication           | [→][auth]       |
+| `WS_PROXY_DOMAIN`              | Specify a domain name for proxying services' ports              | [→][ports]      |
 | `WS_PROMPT_DISABLE_DOCKER`     | Disable the `docker` module of the terminal prompt              | [→][terminal]   |
 | `WS_PROMPT_DISABLE_HOSTNAME`   | Disable the `hostname` module of the terminal prompt            | [→][terminal]   |
 | `WS_PROMPT_DISABLE_KUBERNETES` | Disable the `kubernetes` module of the terminal prompt          | [→][terminal]   |
 | `WS_PROMPT_DISABLE_NODEJS`     | Disable the `nodejs` module of the terminal prompt              | [→][terminal]   |
 | `WS_PROMPT_DISABLE_PYTHON`     | Disable the `python` module of the terminal prompt              | [→][terminal]   |
+| `WS_PROMPT_DISABLE_USER`       | Disable the user module of the terminal prompt                  | [→][terminal]   |
 | `WS_ROOT`                      | Root directory for the workspace *(default: `/workspace`)*      |                 |
 | `WS_ZSH_PLUGINS`               | Specifies the `zsh` plugins to be enabled in each session       | [→][terminal]   |
 | `WS_ZSH_EXTRA_PLUGINS`         | Adds additional `zsh` plugins to the existing defaults          | [→][terminal]   |
@@ -55,4 +56,5 @@ However, `WS_ROOT` is only used by the workspace, therefore it contains the pref
 [fonts]: /editor/theme-and-fonts
 [features]: /editor/features
 [git]: /tools/git
+[ports]: /editor/port-forwarding
 [terminal]: /editor/terminal

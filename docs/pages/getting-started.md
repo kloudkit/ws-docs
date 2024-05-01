@@ -7,11 +7,14 @@ Get started, make sure the the *bare-minimum* system requirements are met:
 - 2GB RAM.
 - 2 vCPUs.
 - WebSockets enabled.
+- Linux OS *(Windows with WSL or Docker Desktop can also be used)*.
 
 ::: tip
 The minimum requirements takes into consideration the overhead need to run the Docker engine.
 For enhanced performance, consider allocating **4GB RAM** and **4 vCPUs** *(or more)*, as these
 upgrades will contribute to improved overall system responsiveness and efficiency.
+
+Although Windows OS can be used, Linux is the recommended choice for optimal use.
 :::
 
 ## Usage

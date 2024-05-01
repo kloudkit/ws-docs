@@ -34,6 +34,7 @@ To *opt-out* of some of the prompt modules, you can set any of the following env
 - **`WS_PROMPT_DISABLE_KUBERNETES`:** Disable the `kubernetes` module of the terminal prompt.
 - **`WS_PROMPT_DISABLE_NODEJS`:** Disable the `nodejs` module of the terminal prompt.
 - **`WS_PROMPT_DISABLE_PYTHON`:** Disable the `python` module of the terminal prompt.
+- **`WS_PROMPT_DISABLE_USER`:** Disable the user module of the terminal prompt.
 
 For example, to disable the Docker and Python modules, you could add the following lines
 to your deployment:

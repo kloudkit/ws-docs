@@ -7,6 +7,7 @@ export default [
       { text: 'Authentication', link: '/editor/authentication'},
       { text: 'Extensions', link: '/editor/extensions'},
       { text: 'Extra Features', link: '/editor/features'},
+      { text: 'Port Forwarding', link: '/editor/port-forwarding'},
       { text: 'Settings', link: '/editor/settings'},
       { text: 'Theme & Fonts', link: '/editor/theme-and-fonts'},
       { text: 'Terminal', link: '/editor/terminal'},

@@ -64,5 +64,5 @@ A useful example could be when executing a *reverse tunnel* to the remote node:
 ```sh
 ws_node_ip=$(ws get ip --node)
 
-ssh -R "3001:${ws_node_ip}:3001" "${ws_node_ip}"
+ssh -N -R "3001:${ws_node_ip}:3001" "${ws_node_ip}"
 ```
