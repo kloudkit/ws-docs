@@ -65,13 +65,13 @@ Refer to the specific [documentation for `ws-cli`](/tools/ws-cli) for more detai
 
 Similar to entrypoint scripts, the workspace will load startup scripts for every new shell
 session.
-On shell startup, the predefined scripts stored in `~/.oh-my-zsh/custom/*` are executed in
+On shell startup, the predefined scripts stored in `/usr/lib/ohmyzsh/custom/*` are executed in
 lexicographical order.
 
 To add additional functionality during startup, mount your scripts to `~/.session/*.zsh`.
 These scripts are executed as follows:
 
-- Only scripts with an executable file permission *(i.e. `+x`)* are considered.
+- Both executable and not executable scripts are considered.
 - Only `.zsh` are considered.
 - Executed in lexicographical order.
 - Scripts are executed as the `kloud` user.

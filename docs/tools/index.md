@@ -13,14 +13,14 @@ An additional list of terminal specific tools can be found on the
 
 | Name                 | Version      | License  |
 | -------------------- | ------------ | -------- |
-| **[ansible-core][]** | `>=2.16`     | GPL 3    |
-| **[ansible-lint][]** | `>=24.2`     | MIT      |
+| **[ansible-core][]** | `>=2.17`     | GPL 3    |
+| **[ansible-lint][]** | `>=24.5`     | MIT      |
 | **[cloudflared][]**  | `>=2024.2.1` | Apache 2 |
 | **[cspell][]**       | `>=8.6`      | MIT      |
 | **[Git][]**          | `>=2.39`     | GPL 2    |
 | **[jq][]**           | `>=1.7`      | MIT      |
 | **[lsof][]**         | `>=4.95`     | Custom   |
-| **[markdownlint][]** | `>=0.40`     | MIT      |
+| **[markdownlint][]** | `>=0.41`     | MIT      |
 | **[op][]**           | `>=2.25`     | ~        |
 | **[ShellCheck][]**   | `>=0.10`     | GPL 3    |
 | **[tldr][]**         | `>=3.4`      | MIT      |
@@ -69,12 +69,12 @@ An additional list of terminal specific tools can be found on the
 
 | Name                  | Version  | License  |
 | --------------------- | -------- | -------- |
-| **[docker-py][]**     | `>=7.0`  | Apache 2 |
+| **[docker-py][]**     | `>=7.1`  | Apache 2 |
 | **[kubernetes-py][]** | `>=29.0` | Apache 2 |
 | **[netaddr][]**       | `>=1.2`  | Custom   |
 | **[passlib][]**       | `>=1.7`  | BSD      |
 | **[pre-commit][]**    | `>=3.7`  | MIT      |
-| **[pylint][]**        | `>=3.1`  | GPL 2    |
+| **[pylint][]**        | `>=3.2`  | GPL 2    |
 | **[Python][]**        | `>=3.11` | PSF      |
 | **[ruff][]**          | `>=0.4`  | MIT      |
 
