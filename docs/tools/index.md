@@ -23,6 +23,7 @@ An additional list of terminal specific tools can be found on the
 | **[markdownlint][]** | `>=0.41`     | MIT      |
 | **[op][]**           | `>=2.25`     | ~        |
 | **[ShellCheck][]**   | `>=0.10`     | GPL 3    |
+| **[taskfile][]**     | `>=3.37`     | MIT      |
 | **[tldr][]**         | `>=3.4`      | MIT      |
 | **[vim][]**          | `>=9`        | Vim      |
 | **[yamllint][]**     | `>=1.35`     | GPL 3    |
@@ -39,6 +40,7 @@ An additional list of terminal specific tools can be found on the
 | **[hadolint][]**       | `>=2.12` | GPL 3    |
 | **[Helm][]**           | `>=3.14` | Apache 2 |
 | **[Helm Diff][]**      | `>=3.9`  | Apache 2 |
+| **[k9s][]**            | `>=0.32` | Apache 2 |
 | **[kind][]**           | `>=0.22` | Apache 2 |
 | **[kubectl][]**        | `>=1.29` | Apache 2 |
 | **[KubeLinter][]**     | `>=0.6`  | Apache 2 |
@@ -99,6 +101,7 @@ An additional list of terminal specific tools can be found on the
 [Helm]: https://github.com/helm/helm
 [Helm Diff]: https://github.com/databus23/helm-diff
 [impl]: https://github.com/josharian/impl
+[k9s]: https://github.com/derailed/k9s
 [kind]: https://github.com/kubernetes-sigs/kind
 [kubectl]: https://github.com/kubernetes/kubectl
 [KubeLinter]: https://github.com/stackrox/kube-linter
@@ -117,6 +120,7 @@ An additional list of terminal specific tools can be found on the
 [ruff]: https://github.com/charliermarsh/ruff
 [ShellCheck]: https://github.com/koalaman/shellcheck
 [staticcheck]: https://github.com/dominikh/go-tools
+[taskfile]: https://github.com/go-task/task
 [tldr]: https://github.com/tldr-pages/tldr-node-client
 [vim]: https://github.com/vim/vim
 [yamllint]: https://github.com/adrienverge/yamllint
