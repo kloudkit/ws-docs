@@ -29,14 +29,10 @@ This feature allows for quick access to your workspace root with a minimal comma
 
 ### Clipboard *(`ws clipboard`)*
 
-- **`copy` *(alias `cp`)*:** Copy piped input to the clipboard.
 - **`paste`:** Paste the clipboard content to the terminal.
 
 ```sh
-cat /some-file | ws clipboard copy
-
-# Alias
-echo "hello world" | pbcopy
+ws clipboard paste > out.txt
 ```
 
 ### Logging *(`ws log`)*

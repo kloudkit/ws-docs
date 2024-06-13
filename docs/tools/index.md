@@ -14,7 +14,7 @@ An additional list of terminal specific tools can be found on the
 | Name                 | Version      | License  |
 | -------------------- | ------------ | -------- |
 | **[ansible-core][]** | `>=2.17`     | GPL 3    |
-| **[ansible-lint][]** | `>=24.5`     | MIT      |
+| **[ansible-lint][]** | `>=24.6`     | MIT      |
 | **[cloudflared][]**  | `>=2024.2.1` | Apache 2 |
 | **[cspell][]**       | `>=8.6`      | MIT      |
 | **[Git][]**          | `>=2.39`     | GPL 2    |
@@ -72,7 +72,7 @@ An additional list of terminal specific tools can be found on the
 | Name                  | Version  | License  |
 | --------------------- | -------- | -------- |
 | **[docker-py][]**     | `>=7.1`  | Apache 2 |
-| **[kubernetes-py][]** | `>=29.0` | Apache 2 |
+| **[kubernetes-py][]** | `>=30.1` | Apache 2 |
 | **[netaddr][]**       | `>=1.2`  | Custom   |
 | **[passlib][]**       | `>=1.7`  | BSD      |
 | **[pre-commit][]**    | `>=3.7`  | MIT      |
