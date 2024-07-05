@@ -89,7 +89,9 @@ For more information, visit our [contribution guide](/contribute/).
 
 | Feature   | Description                             |
 | --------- | --------------------------------------- |
+| `conan`   | conan CLI and related tools             |
 | `dotnet`  | dagger.io CLI and SDK                   |
 | `dagger`  | Jupyter packages and related extensions |
+| `gcloud`  | gcloud CLI for GCP                      |
 | `jupyter` | .NET framework and related extensions   |
 | `php`     | PHP and related extensions              |

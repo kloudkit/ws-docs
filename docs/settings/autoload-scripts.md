@@ -1,5 +1,7 @@
 ---
 see:
+  - name: terminal
+    link: /editor/terminal
   - name: ws-cli
     link: /tools/ws-cli
 ---

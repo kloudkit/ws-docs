@@ -78,7 +78,7 @@ An additional list of terminal specific tools can be found on the
 | **[pre-commit][]**    | `>=3.7`  | MIT      |
 | **[pylint][]**        | `>=3.2`  | GPL 2    |
 | **[Python][]**        | `>=3.11` | PSF      |
-| **[ruff][]**          | `>=0.4`  | MIT      |
+| **[ruff][]**          | `>=0.5`  | MIT      |
 
 [ansible-core]: https://github.com/ansible/ansible
 [ansible-lint]: https://github.com/ansible-community/ansible-lint

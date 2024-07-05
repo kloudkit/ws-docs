@@ -96,8 +96,10 @@ jobs:
             type=semver,pattern=v{{major}}.{{minor}}
 
       - name: 🐳 Docker Build & Push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         id: docker_build
+        env:
+          DOCKER_BUILD_NO_SUMMARY: true
         with:
           context: .
           labels: ${{ steps.meta.outputs.labels }}
