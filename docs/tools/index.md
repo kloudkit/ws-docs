@@ -34,6 +34,7 @@ An additional list of terminal specific tools can be found on the
 | Name                   | Version  | License  |
 | ---------------------- | -------- | -------- |
 | **[buildx][]**         | `>=0.13` | Apache 2 |
+| **[crane][]**          | `>=0.20` | Apache 2 |
 | **[Docker][]**         | `>=25`   | Apache 2 |
 | **[Docker compose][]** | `>=2.26` | Apache 2 |
 | **[dive][]**           | `>=0.12` | MIT      |
@@ -84,6 +85,7 @@ An additional list of terminal specific tools can be found on the
 [ansible-lint]: https://github.com/ansible-community/ansible-lint
 [buildx]: https://github.com/docker/buildx
 [cloudflared]: https://github.com/cloudflare/cloudflared
+[crane]: https://github.com/google/go-containerregistry
 [cspell]: https://github.com/streetsidesoftware/cspell
 [dive]: https://github.com/wagoodman/dive
 [dlv]: https://github.com/go-delve/delve/cmd/dlv
