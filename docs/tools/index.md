@@ -14,7 +14,7 @@ An additional list of terminal specific tools can be found on the
 | Name                 | Version      | License  |
 | -------------------- | ------------ | -------- |
 | **[ansible-core][]** | `>=2.17`     | GPL 3    |
-| **[ansible-lint][]** | `>=24.6`     | MIT      |
+| **[ansible-lint][]** | `>=24.7`     | MIT      |
 | **[cloudflared][]**  | `>=2024.2.1` | Apache 2 |
 | **[cspell][]**       | `>=8.6`      | MIT      |
 | **[Git][]**          | `>=2.39`     | GPL 2    |
@@ -52,7 +52,7 @@ An additional list of terminal specific tools can be found on the
 | Name                 | Version  | License  |
 | -------------------- | -------- | -------- |
 | **[dlv][]**          | `>=1.22` | MIT      |
-| **[Go][]**           | `>=1.22` | BSD 3    |
+| **[Go][]**           | `>=1.23` | BSD 3    |
 | **[gotests][]**      | `>=1.6`  | Apache 2 |
 | **[gomodifytags][]** | `>=1.16` | MIT      |
 | **[goplay][]**       | `>=1.0`  | MIT      |
@@ -76,10 +76,10 @@ An additional list of terminal specific tools can be found on the
 | **[kubernetes-py][]** | `>=30.1` | Apache 2 |
 | **[netaddr][]**       | `>=1.2`  | Custom   |
 | **[passlib][]**       | `>=1.7`  | BSD      |
-| **[pre-commit][]**    | `>=3.7`  | MIT      |
+| **[pre-commit][]**    | `>=3.8`  | MIT      |
 | **[pylint][]**        | `>=3.2`  | GPL 2    |
 | **[Python][]**        | `>=3.11` | PSF      |
-| **[ruff][]**          | `>=0.5`  | MIT      |
+| **[ruff][]**          | `>=0.6`  | MIT      |
 
 [ansible-core]: https://github.com/ansible/ansible
 [ansible-lint]: https://github.com/ansible-community/ansible-lint

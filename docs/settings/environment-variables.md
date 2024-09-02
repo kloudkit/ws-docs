@@ -28,6 +28,7 @@ However, `WS_ROOT` is only used by the workspace, therefore it contains the pref
 | `WS_EXTRA_VS_EXTENSIONS_DIR`   | Directory of extensions to install at startup *(`*.vsix`)*      | [→][extensions] |
 | `WS_PASSWORD`                  | Password for login authentication                               | [→][auth]       |
 | `WS_PASSWORD_HASHED`           | Hashed *(`argon2`)* password for login authentication           | [→][auth]       |
+| `WS_PORT`                      | Specify the server port *(default: `8080`)*                     |                 |
 | `WS_PROXY_DOMAIN`              | Specify a domain name for proxying services' ports              | [→][ports]      |
 | `WS_PROMPT_DISABLE_DOCKER`     | Disable the `docker` module of the terminal prompt              | [→][terminal]   |
 | `WS_PROMPT_DISABLE_HOSTNAME`   | Disable the `hostname` module of the terminal prompt            | [→][terminal]   |
