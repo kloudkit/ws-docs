@@ -95,3 +95,4 @@ For more information, visit our [contribution guide](/contribute/).
 | `gcloud`  | gcloud CLI for GCP                      |
 | `jupyter` | .NET framework and related extensions   |
 | `php`     | PHP and related extensions              |
+| `restic`  | Restic CLI and related tools            |

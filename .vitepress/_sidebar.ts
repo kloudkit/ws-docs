@@ -26,11 +26,12 @@ export default [
   {
     text: 'Tools',
     link: '/tools',
-    collapsed: true,
+    collapsed: false,
     items: [
       { text: 'ansible', link: '/tools/ansible' },
       { text: 'docker', link: '/tools/docker' },
       { text: 'git', link: '/tools/git' },
+      { text: 'go', link: '/tools/go' },
       { text: 'kind', link: '/tools/kind' },
       { text: 'ssh', link: '/tools/ssh' },
       { text: 'ws-cli', link: '/tools/ws-cli' },

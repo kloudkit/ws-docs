@@ -21,7 +21,7 @@ By packaging the widely-used *VSCode* IDE as a Docker container *(powered by Cod
 and integrating the latest development environments along with essential tools and
 extensions, we offer a seamless bridge to the cloud.
 
-## Addons
+## Add-ons
 
 The *workspace* is tailored for both development and DevOps purposes.
 It ships with a set of preinstalled tools, meticulously curated to streamline and enhance

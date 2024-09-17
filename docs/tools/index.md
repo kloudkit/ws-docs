@@ -39,11 +39,11 @@ An additional list of terminal specific tools can be found on the
 | **[Docker compose][]** | `>=2.26` | Apache 2 |
 | **[dive][]**           | `>=0.12` | MIT      |
 | **[hadolint][]**       | `>=2.12` | GPL 3    |
-| **[Helm][]**           | `>=3.14` | Apache 2 |
+| **[Helm][]**           | `>=3.15` | Apache 2 |
 | **[Helm Diff][]**      | `>=3.9`  | Apache 2 |
 | **[k9s][]**            | `>=0.32` | Apache 2 |
-| **[kind][]**           | `>=0.22` | Apache 2 |
-| **[kubectl][]**        | `>=1.29` | Apache 2 |
+| **[kind][]**           | `>=0.24` | Apache 2 |
+| **[kubectl][]**        | `>=1.30` | Apache 2 |
 | **[KubeLinter][]**     | `>=0.6`  | Apache 2 |
 | **[oc][]**             | `>=4.6`  | Apache 2 |
 
@@ -51,21 +51,21 @@ An additional list of terminal specific tools can be found on the
 
 | Name                 | Version  | License  |
 | -------------------- | -------- | -------- |
-| **[dlv][]**          | `>=1.22` | MIT      |
+| **[dlv][]**          | `>=1.23` | MIT      |
 | **[Go][]**           | `>=1.23` | BSD 3    |
 | **[gotests][]**      | `>=1.6`  | Apache 2 |
-| **[gomodifytags][]** | `>=1.16` | MIT      |
+| **[gomodifytags][]** | `>=1.17` | MIT      |
 | **[goplay][]**       | `>=1.0`  | MIT      |
-| **[gopls][]**        | `>=0.14` | BSD      |
+| **[gopls][]**        | `>=0.16` | BSD      |
 | **[go-outline][]**   | `>=0.0`  | MIT      |
-| **[impl][]**         | `>=1.1`  | MIT      |
-| **[staticcheck][]**  | `>=0.4`  | MIT      |
+| **[impl][]**         | `>=1.4`  | MIT      |
+| **[staticcheck][]**  | `>=0.5`  | MIT      |
 
 ## NodeJS
 
 | Name           | Version   | License |
 | -------------- | --------- | ------- |
-| **[NodeJS][]** | `>=20.11` | MIT     |
+| **[NodeJS][]** | `>=20.17` | MIT     |
 | **[yarn][]**   | `>=1.22`  | BSD 2   |
 
 ## Python
