@@ -1,7 +1,7 @@
 ---
 see:
   - name: Ansible
-    link: /tools/ansi
+    link: /tools/ansible
 ---
 
 # Extra Features
@@ -50,6 +50,18 @@ The example below will look for a *playbook* at `/alternate/php.yaml`:
 
 ```sh
 ws feature install php --root /alternate
+```
+
+### Optional Variables
+
+As mentioned above, features are installed using *playbooks*.
+Some playbooks also offer the option to pass extra variables.
+
+To do this, use the `--opt` flag *(equivalent to Ansible's `--extra-vars`)*, zero or more
+times, as shown in the example below:
+
+```sh
+ws feature install dagger --opt dagger_version=0.13.3
 ```
 
 ## Custom Features

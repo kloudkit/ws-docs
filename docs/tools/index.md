@@ -63,21 +63,22 @@ An additional list of terminal specific tools can be found on the
 
 ## NodeJS
 
-| Name           | Version   | License |
-| -------------- | --------- | ------- |
-| **[NodeJS][]** | `>=20.17` | MIT     |
-| **[yarn][]**   | `>=1.22`  | BSD 2   |
+| Name           | Version   | License      |
+| -------------- | --------- | ------------ |
+| **[NodeJS][]** | `>=20.17` | MIT          |
+| **[npm][]**    | `>=10.8`  | Artistic-2.0 |
+| **[yarn][]**   | `>=1.22`  | BSD 2        |
 
 ## Python
 
 | Name                  | Version  | License  |
 | --------------------- | -------- | -------- |
 | **[docker-py][]**     | `>=7.1`  | Apache 2 |
-| **[kubernetes-py][]** | `>=30.1` | Apache 2 |
+| **[kubernetes-py][]** | `>=31.0` | Apache 2 |
 | **[netaddr][]**       | `>=1.2`  | Custom   |
 | **[passlib][]**       | `>=1.7`  | BSD      |
 | **[pre-commit][]**    | `>=3.8`  | MIT      |
-| **[pylint][]**        | `>=3.2`  | GPL 2    |
+| **[pylint][]**        | `>=3.3`  | GPL 2    |
 | **[Python][]**        | `>=3.11` | PSF      |
 | **[ruff][]**          | `>=0.6`  | MIT      |
 
@@ -113,6 +114,7 @@ An additional list of terminal specific tools can be found on the
 [markdownlint]: https://github.com/igorshubovych/markdownlint-cli
 [netaddr]: https://github.com/netaddr/netaddr
 [NodeJS]: https://github.com/nodejs/node
+[npm]: https://github.com/npm/cli
 [oc]: https://github.com/openshift/oc
 [op]: https://developer.1password.com/docs/cli
 [passlib]: https://foss.heptapod.net/python-libs/passlib
