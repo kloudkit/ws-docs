@@ -1,4 +1,4 @@
-ARG tag=1.25.5
+ARG tag=1.27.2
 
 FROM nginx:${tag}
 COPY nginx.conf /etc/nginx/conf.d/default.conf
