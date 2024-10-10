@@ -49,7 +49,7 @@ is installed in the workspace.
 
 By default, the workspace supports the following languages *(defined using shebangs)*:
 
-- **Ansible:** `#!/usr/bin/env -S ansible-playbook -K`
+- **Ansible:** `#!/usr/bin/env -S ansible-playbook`
 - **Bash:** `#!/bin/bash`
 - **Golang:** `//usr/bin/env go run $0 $@; exit $?`
 - **NodeJS:** `#!/usr/bin/env node`
