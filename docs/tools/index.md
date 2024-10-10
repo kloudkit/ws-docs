@@ -24,7 +24,6 @@ An additional list of terminal specific tools can be found on the
 | **[op][]**           | `>=2.25`     | ~        |
 | **[ShellCheck][]**   | `>=0.10`     | GPL 3    |
 | **[taskfile][]**     | `>=3.37`     | MIT      |
-| **[tldr][]**         | `>=3.4`      | MIT      |
 | **[vim][]**          | `>=9`        | Vim      |
 | **[yamllint][]**     | `>=1.35`     | GPL 3    |
 | **[yq][]**           | `>=3.4`      | MIT      |
@@ -77,10 +76,11 @@ An additional list of terminal specific tools can be found on the
 | **[kubernetes-py][]** | `>=31.0` | Apache 2 |
 | **[netaddr][]**       | `>=1.2`  | Custom   |
 | **[passlib][]**       | `>=1.7`  | BSD      |
-| **[pre-commit][]**    | `>=3.8`  | MIT      |
+| **[pre-commit][]**    | `>=4.0`  | MIT      |
 | **[pylint][]**        | `>=3.3`  | GPL 2    |
 | **[Python][]**        | `>=3.11` | PSF      |
 | **[ruff][]**          | `>=0.6`  | MIT      |
+| **[uv][]**            | `>=0.4`  | MIT      |
 
 [ansible-core]: https://github.com/ansible/ansible
 [ansible-lint]: https://github.com/ansible-community/ansible-lint
@@ -125,7 +125,7 @@ An additional list of terminal specific tools can be found on the
 [ShellCheck]: https://github.com/koalaman/shellcheck
 [staticcheck]: https://github.com/dominikh/go-tools
 [taskfile]: https://github.com/go-task/task
-[tldr]: https://github.com/tldr-pages/tldr-node-client
+[uv]: https://github.com/astral-sh/uv
 [vim]: https://github.com/vim/vim
 [yamllint]: https://github.com/adrienverge/yamllint
 [yarn]: https://github.com/yarnpkg/yarn
