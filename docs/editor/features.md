@@ -6,10 +6,10 @@ see:
 
 # Extra Features
 
-It would be impossible to pre-install and configuring every possible package or feature,
-while maintain a flexible *workspace* footprint.
-Therefore, we developed an *opt-in* method to seamlessly install and configure additional
-features at the user's discretion.
+Pre-installing and configuring every possible package would compromise a flexible
+*workspace* footprint.
+Instead, we developed an *opt-in* method to seamlessly install and configure features at
+your discretion.
 
 Behind the scenes, we are simply running an *Ansible playbook* in order to install the
 desired feature.
@@ -21,8 +21,8 @@ You can choose the method that best fits your needs.
 
 ### Install at Boot
 
-Upon workspace startup, we evaluate the value of the `WS_EXTRA_FEATURES` environment
-variable in order to automate the installation of additional *features*.
+During startup, the workspace evaluates the `WS_EXTRA_FEATURES` environment variable to
+determine which *features* to install automatically.
 
 ```sh{2}
 docker run \
@@ -32,7 +32,7 @@ docker run \
 
 ### Manual Installation
 
-Manual installing features is as easy as running a simple command line prompt.
+To manually install a feature, run the following command:
 
 ```sh
 # Help information
@@ -55,7 +55,7 @@ ws feature install php --root /alternate
 ### Optional Variables
 
 As mentioned above, features are installed using *playbooks*.
-Some playbooks also offer the option to pass extra variables.
+Certain playbooks support additional variables for customization.
 
 To do this, use the `--opt` flag *(equivalent to Ansible's `--extra-vars`)*, zero or more
 times, as shown in the example below:
@@ -66,15 +66,21 @@ ws feature install dagger --opt dagger_version=0.13.3
 
 ## Custom Features
 
-You can create your own custom *playbook* by using the starter template below.
-Make sure not to change the `hosts: workspace`, as it is defined to target the current
-workspace session.
+You can create custom *playbooks* for specific needs.
+The template below offers a starting point.
+Ensure that `hosts: workspace` remains unchanged, as this targets the active workspace
+session.
+
+::: tip
+It may also help to explicitly mention that the custom playbook template can be saved as
+`cool.yaml` in the `/alternate` directory.
+:::
 
 ::: code-group
 
 ```yaml [playbook]
-# /alternate/custom.yaml
-- name: Install a custom feature
+# /alternate/cool.yaml
+- name: Install a cool new feature
   gather_facts: false
   hosts: workspace
 
@@ -85,7 +91,7 @@ workspace session.
 ```
 
 ```sh [install]
-ws feature install custom --root /alternate
+ws feature install custom --feature cool --root /alternate
 ```
 
 :::
@@ -93,18 +99,19 @@ ws feature install custom --root /alternate
 ## Available Features
 
 ::: info
-Have in mind a feature we didn't think about yet?
+Have a feature in mind that we haven’t covered?
+Feel free to suggest it or contribute directly.
 
-Feel free to make submit a suggestion or actively contribute the feature yourself.
 For more information, visit our [contribution guide](/contribute/).
 :::
 
 | Feature   | Description                             |
 | --------- | --------------------------------------- |
-| `conan`   | conan CLI and related tools             |
-| `dotnet`  | dagger.io CLI and SDK                   |
-| `dagger`  | Jupyter packages and related extensions |
-| `gcloud`  | gcloud CLI for GCP                      |
-| `jupyter` | .NET framework and related extensions   |
+| `conan`   | Conan CLI and related tools             |
+| `dagger`  | dagger.io CLI and SDK                   |
+| `dotnet`  | .NET framework and related extensions   |
+| `gcloud`  | Google Cloud CLI for GCP                |
+| `gh`      | GitHub CLI                              |
+| `jupyter` | Jupyter packages and related extensions |
 | `php`     | PHP and related extensions              |
-| `restic`  | Restic CLI and related tools            |
+| `restic`  | Restic CLI                              |

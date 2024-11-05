@@ -35,6 +35,24 @@ This feature allows for quick access to your workspace root with a minimal comma
 ws clipboard paste > out.txt
 ```
 
+### Configurations *(`ws config`)*
+
+Many configuration files are defined globally *(in `~` or `/etc`)* and are used
+system-wide without needing to be included in the project root.
+However, this approach may not work in *CI* environments or on other machines
+*(when not using the workspace image)*, as they might lack these global configurations.
+
+To address this, you can use `wp config cp` to copy the current global configuration into
+your project root.
+
+- **`markdownlint`:** Copy markdownlint configuration to the project.
+- **`ruff`:** Copy ruff configuration to the project.
+- **`yamllint`:** Copy yamllint configuration to the project.
+
+```sh
+ws config cp ruff
+```
+
 ### Logging *(`ws log`)*
 
 - **`log debug`:** Log a *debug* message to the console.

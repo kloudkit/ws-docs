@@ -6,10 +6,10 @@ see:
 
 # Ansible
 
-> Ansible is popular automation tool that simplifies IT tasks, such as configuration management,
-> application deployment, and orchestration.
-> It uses declarative YAML syntax to ensure systems and applications are set up consistently and
-> reliably across diverse environments.
+> Ansible is popular automation tool that simplifies IT tasks, such as configuration
+> management, application deployment, and orchestration.
+> It uses declarative YAML syntax to ensure systems and applications are set up
+> consistently and reliably across diverse environments.
 
 ## Overview
 
@@ -20,8 +20,8 @@ right out of the box.
 ## Setting User Configurations
 
 The *workspace* includes basic configurations in the `/etc/ansible/ansible.cfg` file.
-You can completely override these settings by creating your own `ansible.cfg` in your playbook's
-directory or through environment variables.
+You can completely override these settings by creating your own `ansible.cfg` in your
+playbook's directory or through environment variables.
 
 We recommend using environment variables, since their values are merged with those in the
 `/etc/ansible/ansible.cfg` *(instead of completely overriding them)*.

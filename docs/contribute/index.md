@@ -17,15 +17,15 @@ Either open a GitHub issue or submit a pull request. **All contributions are wel
 - [Security Advisory →](https://github.com/kloudkit/workspace/security/advisories/new)
 
 Ready to contribute?
-Make sure you have a look at our [contribution workflow](/contribute/contribution-workflow) and
-conventions before you get started.
+Make sure you have a look at our [contribution workflow](/contribute/contribution-workflow)
+and conventions before you get started.
 
 ## Documentation
 
 > Documentation was proudly generated using [VitePress](https://vitepress.dev/).
 
-To improve an existing documentation page, just click on the **Edit this page on GitHub** link on
-the bottom left.
+To improve an existing documentation page, just click on the **Edit this page on GitHub**
+link on the bottom left.
 
-If you have any suggestions or improvements, please follow the links above to create an *Issue* or
-*PR*.
+If you have any suggestions or improvements, please follow the links above to create an
+*Issue* or *PR*.
