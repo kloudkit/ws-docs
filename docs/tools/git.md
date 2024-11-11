@@ -12,7 +12,7 @@ As such, a few features are provided out-of-the-box:
 
 The configuration lookup sequence is as follows:
 
-- **Workspace level *(`~/.config/git/config`)*:** sane default configurations, aliases,
+- **Workspace level *(`/etc/gitconfig`)*:** sane default configurations, aliases,
     and filters *(should not be overridden by the user)*.
 - **User level *(`~/.gitconfig`)*:** allowing users to define their personal preferences
     and override configurations found in the *workspace level* file.

@@ -10,5 +10,8 @@
     "@fontsource/victor-mono": "^5.1.0",
     "vitepress": "^1.4.5",
     "vue": "^3.5.12"
+  },
+  "dependencies": {
+    "@catppuccin/vitepress": "^0.1.0"
   }
 }

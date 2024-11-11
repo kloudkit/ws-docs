@@ -41,9 +41,9 @@ An additional list of terminal specific tools can be found on the
 | **[Helm][]**           | `>=3.15` | Apache 2 |
 | **[Helm Diff][]**      | `>=3.9`  | Apache 2 |
 | **[k9s][]**            | `>=0.32` | Apache 2 |
-| **[kind][]**           | `>=0.24` | Apache 2 |
+| **[kind][]**           | `>=0.25` | Apache 2 |
 | **[kubectl][]**        | `>=1.30` | Apache 2 |
-| **[KubeLinter][]**     | `>=0.6`  | Apache 2 |
+| **[KubeLinter][]**     | `>=0.7`  | Apache 2 |
 | **[oc][]**             | `>=4.6`  | Apache 2 |
 
 ## GoLang
@@ -80,7 +80,7 @@ An additional list of terminal specific tools can be found on the
 | **[pylint][]**        | `>=3.3`  | GPL 2    |
 | **[Python][]**        | `>=3.11` | PSF      |
 | **[ruff][]**          | `>=0.7`  | MIT      |
-| **[uv][]**            | `>=0.4`  | MIT      |
+| **[uv][]**            | `>=0.5`  | MIT      |
 
 [ansible-core]: https://github.com/ansible/ansible
 [ansible-lint]: https://github.com/ansible-community/ansible-lint
