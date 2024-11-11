@@ -64,8 +64,8 @@ An additional list of terminal specific tools can be found on the
 
 | Name           | Version   | License      |
 | -------------- | --------- | ------------ |
-| **[NodeJS][]** | `>=20.17` | MIT          |
-| **[npm][]**    | `>=10.8`  | Artistic-2.0 |
+| **[NodeJS][]** | `>=22.11` | MIT          |
+| **[npm][]**    | `>=10.9`  | Artistic-2.0 |
 | **[yarn][]**   | `>=1.22`  | BSD 2        |
 
 ## Python

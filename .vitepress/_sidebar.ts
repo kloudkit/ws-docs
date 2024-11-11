@@ -5,6 +5,7 @@ export default [
     text: 'Editor',
     items: [
       { text: 'Authentication', link: '/editor/authentication'},
+      { text: 'Aliases', link: '/editor/aliases'},
       { text: 'Extensions', link: '/editor/extensions'},
       { text: 'Extra Features', link: '/editor/features'},
       { text: 'Port Forwarding', link: '/editor/port-forwarding'},
