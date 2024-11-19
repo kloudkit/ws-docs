@@ -8,9 +8,9 @@ To handle this, you can create a `go.work` file at `/workspace/go.work` with the
 following content:
 
 ```go
-go 1.23.1
+go 1.23.3
 
-toolchain go1.23.1
+toolchain go1.23.3
 
 use (
   /workspace/project

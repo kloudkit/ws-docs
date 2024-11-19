@@ -64,6 +64,10 @@ ws config cp ruff
 The `log *` functions can be supplied with an optional `--indent=*` flag, indicating the
 desired number of indentations for prefixing the message.
 
+### Information *(`ws info`)*
+
+Retrieve workspace-related information, including versions and installations.
+
 ### Feature Installation *(`ws feature`)*
 
 See our [dedicated section on installing features](/editor/features).

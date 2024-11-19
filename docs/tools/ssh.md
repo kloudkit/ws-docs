@@ -13,15 +13,15 @@ see:
 Using SSH to connect to remote servers and services is a common task for developers.
 The workspace comes equipped with user-friendly and standard configurations for utilizing
 SSH to connect with remote servers.
- These configurations are all located within `~/.ssh/config`.
+These configurations are all located within `/etc/ssh/ssh_config`.
 
 ### User Overrides
 
 Users have the flexibility to enhance or modify the default SSH configurations by editing
-the `~/.ssh/config.local` file.
-Any settings defined in `~/.ssh/config.local` are prioritized and processed before the
-main configuration file *(`~/.ssh/config`)*, enabling users to customize their settings
-without altering the primary configuration.
+the `~/.ssh/config` file.
+Any settings defined in `~/.ssh/config` are prioritized and processed before the
+main configuration file *(`/etc/ssh/ssh_config`)*, enabling users to customize their
+settings without altering the primary configuration.
 
 This approach ensures that user-overrides or additions seamlessly take precedence.
 
@@ -35,9 +35,9 @@ appropriate key-pair based on its location within the `~/.ssh` directory.
 The strategy employs the following order for key-pair selection, with the process halting
 at the first successful match:
 
-- **User defined:** keys explicitly specified by the user in `~/.ssh/config.local`
+- **User defined:** keys explicitly specified by the user in `~/.ssh/config`
     [see below](#user-overrides).
-- **Global:** keys located directly within the `~/.ssh` directory:
+- **Global:** keys located directly within the `/etc/ssh/ssh_config` directory:
   - `~/.ssh/id_ecdsa`
   - `~/.ssh/id_ed25519`
   - `~/.ssh/id_rsa`
@@ -59,17 +59,17 @@ simplifying what can otherwise have been considered a complex process.
 #### Example File structure
 
 ```text
-~/.ssh
-├── config            // Workspace defined configurations
-├── config.local      // User defined overrides
-├── internal          // Internal IP range keys
-│   └── id_rsa
-├── github.com        // Keys for github.com only
-│   └── id_ecdsa
-├── kloudkit.com      // Keys for kloudkit.com only
-│   └── id_ed25519
-├── signingkey        // Private key for signing `git` commits
-└── signingkey.pub    // Public key for signing `git` commits
+├── /etc/ssh/ssh_config   // Workspace defined configurations
+└── ~/.ssh
+    ├── config            // User defined overrides
+    ├── internal          // Internal IP range keys
+    │   └── id_rsa
+    ├── github.com        // Keys for github.com only
+    │   └── id_ecdsa
+    ├── kloudkit.com      // Keys for kloudkit.com only
+    │   └── id_ed25519
+    ├── signingkey        // Private key for signing `git` commits
+    └── signingkey.pub    // Public key for signing `git` commits
 ```
 
 ### SSH Agent

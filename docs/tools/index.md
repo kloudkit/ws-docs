@@ -15,7 +15,6 @@ An additional list of terminal specific tools can be found on the
 | -------------------- | ------------ | -------- |
 | **[ansible-core][]** | `>=2.17`     | GPL 3    |
 | **[ansible-lint][]** | `>=24.7`     | MIT      |
-| **[cloudflared][]**  | `>=2024.2.1` | Apache 2 |
 | **[cspell][]**       | `>=8.6`      | MIT      |
 | **[Git][]**          | `>=2.39`     | GPL 2    |
 | **[jq][]**           | `>=1.7`      | MIT      |
@@ -85,7 +84,6 @@ An additional list of terminal specific tools can be found on the
 [ansible-core]: https://github.com/ansible/ansible
 [ansible-lint]: https://github.com/ansible-community/ansible-lint
 [buildx]: https://github.com/docker/buildx
-[cloudflared]: https://github.com/cloudflare/cloudflared
 [crane]: https://github.com/google/go-containerregistry
 [cspell]: https://github.com/streetsidesoftware/cspell
 [dive]: https://github.com/wagoodman/dive

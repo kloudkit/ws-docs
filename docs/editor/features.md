@@ -105,13 +105,14 @@ Feel free to suggest it or contribute directly.
 For more information, visit our [contribution guide](/contribute/).
 :::
 
-| Feature   | Description                             |
-| --------- | --------------------------------------- |
-| `conan`   | Conan CLI and related tools             |
-| `dagger`  | dagger.io CLI and SDK                   |
-| `dotnet`  | .NET framework and related extensions   |
-| `gcloud`  | Google Cloud CLI for GCP                |
-| `gh`      | GitHub CLI                              |
-| `jupyter` | Jupyter packages and related extensions |
-| `php`     | PHP and related extensions              |
-| `restic`  | Restic CLI                              |
+| Feature       | Description                             |
+| ------------- | --------------------------------------- |
+| `conan`       | Conan CLI and related tools             |
+| `cloudflared` | Cloudflare tunnel CLI                   |
+| `dagger`      | dagger.io CLI and SDK                   |
+| `dotnet`      | .NET framework and related extensions   |
+| `gcloud`      | Google Cloud CLI for GCP                |
+| `gh`          | GitHub CLI                              |
+| `jupyter`     | Jupyter packages and related extensions |
+| `php`         | PHP and related extensions              |
+| `restic`      | Restic CLI                              |
