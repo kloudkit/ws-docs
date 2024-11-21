@@ -1,6 +1,6 @@
 # Git
 
-![Git logo](/tools/git.svg 'class=doc-image')
+![Git logo](/tools/git.svg 'attrs={class="doc-image"}')
 
 `git` is at the core of every developer's workflow, at tool that cannot be ignored.
 As such, a few features are provided out-of-the-box:

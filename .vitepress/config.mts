@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import imageClassRenderer from "./_imageClassRenderer";
+import imageAttributeRenderer from './_imageAttributeRenderer'
 import italicSmallRenderer from './_italicSmallRenderer'
 import dockerSVG from './_dockerSVG'
 import nav from './_nav'
@@ -46,7 +46,7 @@ export default defineConfig({
 
   markdown: {
     config: md => {
-      md.use(imageClassRenderer);
+      md.use(imageAttributeRenderer)
       md.use(italicSmallRenderer)
     },
     theme: 'catppuccin-frappe'
