@@ -20,7 +20,7 @@ Throughout this page, we will refer to the diagram below which illustrates the b
 Docker architecture.
 The subsequent sections might present a partial perspective of the complete architecture.
 
-![Docker architecture](/docker/architecture.png)
+![Docker architecture](/tools/docker/architecture.png)
 
 ## Docker In Docker
 
@@ -51,7 +51,7 @@ docker run \
 
 ### 2. Mounting the Docker Socket From the Host
 
-![Host mount](/docker/host-mount.png)
+![Host mount](/tools/docker/host-mount.png)
 
 ```sh{2}
 docker run \
@@ -61,7 +61,7 @@ docker run \
 
 ### 3. Connect to a Remote Host *(TCP)*
 
-![TCP](/docker/tcp.png)
+![TCP](/tools/docker/tcp.png)
 
 Assuming you have access to a remote host running docker, you can set the value of
 `DOCKER_HOST` as follows *(replace `<remote>` with your node's IP)*:
@@ -77,7 +77,7 @@ pregenerated key-pairs.
 
 ### 4. Connect to a Remote Host *(SSH)*
 
-![SSH](/docker/ssh.png)
+![SSH](/tools/docker/ssh.png)
 
 Assuming you have SSH access to a [remote host running docker][protect-ssh], you can set
 the value of `DOCKER_HOST` as follows
@@ -95,7 +95,7 @@ For more information, visit our documentation on [`ssh`](/tools/ssh)
 
 ### 5. Use [`docker:dind`][dind] Running on a Remote Host
 
-![DIND](/docker/dind.png)
+![DIND](/tools/docker/dind.png)
 
 This process is split into 3 steps:
 

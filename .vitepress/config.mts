@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import imageClassRenderer from "./_imageClassRenderer";
 import italicSmallRenderer from './_italicSmallRenderer'
 import dockerSVG from './_dockerSVG'
 import nav from './_nav'
@@ -36,7 +37,7 @@ export default defineConfig({
       next: false,
       prev: false
     },
-    
+
     footer: {
       message: 'Released under the MIT License.',
       copyright: `Copyright &copy; ${new Date().getFullYear()} KloudKIT`
@@ -45,6 +46,7 @@ export default defineConfig({
 
   markdown: {
     config: md => {
+      md.use(imageClassRenderer);
       md.use(italicSmallRenderer)
     },
     theme: 'catppuccin-frappe'

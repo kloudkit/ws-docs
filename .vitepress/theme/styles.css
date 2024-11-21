@@ -30,6 +30,18 @@ aside.VPSidebar,
   font-size: 85%;
 }
 
+.vp-doc .doc-image {
+  width: 200px;
+  float: right;
+  margin-left: 20px;
+}
+
+.vp-doc .doc-image.right {
+  float: inherit;
+  margin-left: inherit;
+  margin-right: 20px;
+}
+
 .shiki span[style="color:#737994;font-style:italic;"] {
   font-family: 'Victor Mono';
   font-size: 80%;
