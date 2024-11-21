@@ -32,6 +32,11 @@ export default defineConfig({
       text: 'Edit this page on GitHub'
     },
 
+    docFooter: {
+      next: false,
+      prev: false
+    },
+    
     footer: {
       message: 'Released under the MIT License.',
       copyright: `Copyright &copy; ${new Date().getFullYear()} KloudKIT`

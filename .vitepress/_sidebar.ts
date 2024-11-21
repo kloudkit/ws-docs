@@ -25,9 +25,8 @@ export default [
   },
 
   {
-    text: 'Tools',
+    text: 'Tools &mdash; Overview',
     link: '/tools',
-    collapsed: false,
     items: [
       { text: 'ansible', link: '/tools/ansible' },
       { text: 'docker', link: '/tools/docker' },

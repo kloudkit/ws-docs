@@ -17,4 +17,8 @@ hero:
     - theme: alt
       text: Documentation
       link: /pages/
+
+    - theme: alt
+      text: Contribute
+      link: /contribute/
 ---
