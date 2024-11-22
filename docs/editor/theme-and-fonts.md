@@ -45,7 +45,7 @@ This choice is made to inject a distinctive stylistic touch, clearly differentia
 comments from code.
 
 ::: warning
-The *Victor Mono* font is not available as *TrueType* font.
+The *Victor Mono* font is not available as a *TrueType* font.
 :::
 
 #### Opt-out

@@ -1,6 +1,6 @@
 # GoLang
 
-![GoLang logo](/tools/golang.svg 'attrs={class="doc-image"}')
+![GoLang logo](/icons/golang.svg) {.doc-image}
 
 When developing in Go, VS Code expects the project root to be at the workspace root
 *(e.g., `/workspace`)*.

@@ -6,6 +6,8 @@ see:
 
 # Terminal
 
+![Terminal logo](/icons/terminal.svg) {.doc-image}
+
 The *workspace*'s terminal experience isn't just about getting things done, but about
 embarking on an exquisite journey through the digital expanse, where beauty and
 functionality align like the stars in the sky.

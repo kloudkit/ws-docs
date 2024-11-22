@@ -37,11 +37,11 @@
           We've got you covered with the top three programming languages.
         </p>
 
-        <ul>
-          <li>Python</li>
-          <li>Node.js</li>
-          <li>GoLang</li>
-        </ul>
+        <div class="lang">
+          <img src="/icons/nodejs.svg">
+          <img src="/icons/python.svg">
+          <img src="/icons/golang.svg">
+        </div>
       </div>
     </div>
   </div>
@@ -130,6 +130,11 @@
 
 .vp-doc p {
   text-align: left;
+}
+
+.lang {
+  display: flex;
+  justify-content: space-around;
 }
 
 .HomeRow {

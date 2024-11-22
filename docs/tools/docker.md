@@ -2,6 +2,8 @@
 
 ## Overview
 
+![Docker logo](/icons/docker.svg) {.doc-image}
+
 The workspace comes pre-packaged with all the requirements to run Docker.
 
 It is important to understand that the concept of running Docker from within an existing

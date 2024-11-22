@@ -13,6 +13,15 @@ aside.VPSidebar,
   max-width: 740px;
 }
 
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4,
+.vp-doc h5,
+.vp-doc h6 {
+  clear: both;
+}
+
 .vp-doc p {
   line-height: 30px;
   text-align: justify;
@@ -30,16 +39,9 @@ aside.VPSidebar,
   font-size: 85%;
 }
 
-.vp-doc .doc-image {
-  width: 200px;
+.vp-doc p.doc-image {
   float: right;
-  margin-left: 20px;
-}
-
-.vp-doc .doc-image.right {
-  float: inherit;
-  margin-left: inherit;
-  margin-right: 20px;
+  margin: 0.75em 1.5em;
 }
 
 .shiki span[style="color:#737994;font-style:italic;"] {

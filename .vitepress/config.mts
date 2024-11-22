@@ -1,5 +1,5 @@
+import { attrs } from '@mdit/plugin-attrs'
 import { defineConfig } from 'vitepress'
-import imageAttributeRenderer from './_imageAttributeRenderer'
 import italicSmallRenderer from './_italicSmallRenderer'
 import dockerSVG from './_dockerSVG'
 import nav from './_nav'
@@ -46,8 +46,8 @@ export default defineConfig({
 
   markdown: {
     config: md => {
-      md.use(imageAttributeRenderer)
       md.use(italicSmallRenderer)
+      md.use(attrs, {})
     },
     theme: 'catppuccin-frappe'
   }
