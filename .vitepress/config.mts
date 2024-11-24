@@ -39,7 +39,7 @@ export default defineConfig({
     },
 
     footer: {
-      message: 'Released under the MIT License.',
+      message: 'Released under the MIT License',
       copyright: `Copyright &copy; ${new Date().getFullYear()} KloudKIT`
     },
   },

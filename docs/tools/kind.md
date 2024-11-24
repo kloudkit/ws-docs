@@ -2,7 +2,7 @@
 see:
   - name: Docker
     link: /tools/docker
-  - name: All Configuration Options
+  - name: Kind Configuration Options
     link: https://kind.sigs.k8s.io/docs/user/configuration
 ---
 

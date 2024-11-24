@@ -3,7 +3,8 @@
     <div class="language-sh">
       <button title="Copy Code" class="copy"></button>
       <span class="lang">sh</span>
-      <pre class="shiki catppuccin-frappe vp-code"><code><span class="line"><span style="color:#737994;font-style:italic;"># TL-DR; ⚡ Power your batteries now!</span></span>
+      <pre
+        class="shiki catppuccin-frappe vp-code"><code><span class="line"><span style="color:#737994;font-style:italic;"># TL-DR; ⚡ Power your batteries now!</span></span>
 <span class="line"></span><span class="line"><span style="color:#8CAAEE;font-style:italic;">docker</span><span style="color:#A6D189;"> pull</span><span style="color:#A6D189;"> ghcr.io/kloudkit/workspace:latest</span></span></code></pre>
     </div>
   </div>
@@ -38,9 +39,9 @@
         </p>
 
         <div class="lang">
-          <img src="/icons/nodejs.svg">
-          <img src="/icons/python.svg">
-          <img src="/icons/golang.svg">
+          <img width="120px" src="/icons/nodejs.svg">
+          <img width="130px" src="/icons/python.svg">
+          <img width="150px" src="/icons/golang.svg">
         </div>
       </div>
     </div>
