@@ -44,7 +44,7 @@ aside.VPSidebar,
   margin: 0.75em 1.5em;
 }
 
-.vp-doc p img.doc-image-inline {
+.vp-doc img.doc-image-inline {
   float: none;
   display: inline-block;
   margin: 0;
