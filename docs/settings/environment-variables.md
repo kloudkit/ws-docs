@@ -1,6 +1,13 @@
 # Environment Variables
 
-Enhance extensibility by leveraging environment variables to override default configurations.
+![Dotenv logo](/icons/dotenv.svg) {.doc-image}
+
+The *workspace* follows the *convention over configuration* principle, providing sensible
+defaults.
+However, nearly all settings can be customized or extended using environment variables.
+
+This approach enhances flexibility, allowing default configurations to be overridden as
+needed.
 
 ## `WS_` Prefix
 

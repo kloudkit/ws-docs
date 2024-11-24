@@ -95,8 +95,9 @@ Once installed, you will immediately benefit from:
 ### Auto-Detected SPA
 
 In many cases, the ability to install the SPA will be detected automatically.
-If you see a *screen with an downward pointing arrow* icon in your address, just click and
-you are ready to go.
+If you see a *screen with an downward pointing arrow* icon in your address
+![install-desktop](/icons/install-desktop.svg){.doc-image-inline}, just click and you are
+ready to go.
 
 ![Chrome toolbar](/chrome-toolbar.png)
 

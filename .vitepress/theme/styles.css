@@ -27,10 +27,6 @@ aside.VPSidebar,
   text-align: justify;
 }
 
-.vp-doc p img {
-  margin: 0 auto;
-}
-
 .vp-doc .custom-block {
   margin: 3em;
 }
@@ -39,9 +35,20 @@ aside.VPSidebar,
   font-size: 85%;
 }
 
+.vp-doc p img {
+  margin: 0 auto;
+}
+
 .vp-doc p.doc-image {
   float: right;
   margin: 0.75em 1.5em;
+}
+
+.vp-doc p img.doc-image-inline {
+  float: none;
+  display: inline-block;
+  margin: 0;
+  height: 24px;
 }
 
 .shiki span[style="color:#737994;font-style:italic;"] {
