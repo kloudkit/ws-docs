@@ -4,6 +4,8 @@
 
 ## How Can I Contribute?
 
+The *Workspace* is an open source project, and so by its very nature, welcomes contributions.
+
 - *Did you find a bug?*
 - *Want to improve the functionality?*
 - *Have any idea to improve performance?*
