@@ -2,6 +2,8 @@
 
 ## Our Pledge
 
+![Conduct](/icons/conduct.svg) {.doc-image style="width:200px"}
+
 We as members, contributors, and leaders pledge to make participation in our community a
 harassment-free experience for everyone, regardless of age, body size, visible or invisible
 disability, ethnicity, sex characteristics, gender identity and expression, level of experience,
@@ -115,4 +117,5 @@ Community Impact Guidelines were inspired by
 
 For answers to common questions about this code of conduct, see the FAQ at
 <https://www.contributor-covenant.org/faq>.
+
 Translations are available at <https://www.contributor-covenant.org/translations>.

@@ -58,18 +58,23 @@ git clone https://github.com/kloudkit/ws-cli
 
 ### 2. Install dependencies
 
-```sh
-# For linting
+::: code-group
+
+```sh [Linting (optional)]
 pip install pre-commit
+```
 
-# For documentation
+```sh [Documentation]
 yarn install
+```
 
-# For CLI
+```sh [CLI]
 go install
 ```
 
-### 3. *(Optional)* Setup `pre-commit`
+:::
+
+### 3. Linting *(Optional)*
 
 ```sh
 pre-commit run --all-files

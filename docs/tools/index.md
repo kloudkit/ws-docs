@@ -1,13 +1,16 @@
 # Tools
 
-![Tools](/home/tools.png)
+The tables below provide details about the pre-installed CLI tools, including their respective
+licenses.
+Some of these tools also feature custom configurations to enhance their functionality and
+integration with the *workspace*.
 
-The tables below describes the pre-installed CLI tools
-*(some also have customized settings)* and their respective license.
-An additional list of terminal specific tools can be found on the
-[terminal](/editor/terminal#licenses) documentation page.
+For more information about terminal-specific tools, refer to the
+[terminal documentation page](/editor/terminal#licenses).
 
-👏 Many thanks to the amazing developers of these tools.
+👏 A heartfelt thank you to the talented developers behind these incredible tools!
+
+![Tools](/home/tools.png){width=450px}
 
 ## CLI Tools
 

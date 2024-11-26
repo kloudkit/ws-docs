@@ -2,6 +2,17 @@ export default [
   { text: 'Introduction', link: '/pages' },
   { text: 'Getting Started', link: '/pages/getting-started' },
   {
+    text: 'Get Involved',
+    collapsed: true,
+    items: [
+      { text: 'Contribute', link: '/contribute/' },
+      { text: 'Code of Conduct', link: '/contribute/code-of-conduct' },
+      { text: 'Workflow', link: '/contribute/contribution-workflow' },
+      { text: 'Development Environment', link: '/contribute/development-environment' },
+      { text: 'Security Advisory', link: '/contribute/security-advisory' }
+    ]
+  },
+  {
     text: 'Editor',
     items: [
       { text: 'Authentication', link: '/editor/authentication'},

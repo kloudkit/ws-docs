@@ -50,15 +50,14 @@ See our [dedicated section on the terminal](/editor/terminal).
 
 ## License
 
-::: info 👏 Thanks
+::: info 👏 THANKS
 Many thanks to [Coder's `code-server`](https://code-server.dev/) for providing the solid
 foundation that serves as the cornerstone and enables this project's extensions.
 :::
 
-[![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge&link=https://github.com/kloudkit/workspace?tab=MIT-1-ov-file#MIT-1-ov-file)][Workspace]
+This project is licensed under the [**MIT License**][Workspace].
 
-This project is licensed under the
-[**MIT License**](https://github.com/kloudkit/workspace?tab=MIT-1-ov-file#MIT-1-ov-file).
+![License](/icons/mit.svg) {.doc-image-inline style="width:100px"}
 
 [VS Code]: https://github.com/Microsoft/vscode
 [Workspace]: https://github.com/kloudkit/workspace?tab=MIT-1-ov-file#MIT-1-ov-file
