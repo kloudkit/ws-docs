@@ -19,17 +19,17 @@ Before you begin, check your prerequisites meet the minimum requirements version
 
 ```sh [Python]
 $ python --version
-Python 3.9.10
+Python 3.11.2
 ```
 
 ```sh [NodeJS]
 $ node --version
-v20.10.0
+v22.11.0
 ```
 
 ```sh [Golang]
 $ go version
-go version go1.21.6 linux/amd64
+go version go1.23.3 linux/amd64
 ```
 
 :::

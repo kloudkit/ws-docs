@@ -6,7 +6,7 @@ see:
 
 # Ansible
 
-![Ansible logo](/icons/ansible.svg) {.doc-image}
+![Ansible logo](/icons/ansible.svg){.doc-image}
 
 > Ansible is a popular automation tool that simplifies IT tasks, such as configuration
 > management, application deployment, and orchestration.

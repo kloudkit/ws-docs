@@ -2,7 +2,7 @@
 
 ## Overview
 
-![Enterprise CA icon](/icons/enterprise-ca.svg) {.doc-image}
+![Enterprise CA icon](/icons/enterprise-ca.svg){.doc-image}
 
 Many companies implement a *MITM (Man-in-the-Middle) firewall* as part of a strict and
 secure network infrastructure using a self-hosted *CA (certificate authority)*.

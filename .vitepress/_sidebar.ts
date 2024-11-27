@@ -21,6 +21,7 @@ export default [
       { text: 'Extra Features', link: '/editor/features'},
       { text: 'Port Forwarding', link: '/editor/port-forwarding'},
       { text: 'Settings', link: '/editor/settings'},
+      { text: 'Storage', link: '/editor/storage'},
       { text: 'Theme & Fonts', link: '/editor/theme-and-fonts'},
       { text: 'Terminal', link: '/editor/terminal'},
     ]
@@ -34,7 +35,6 @@ export default [
       { text: 'Secret Injection', link: '/settings/secrets' },
     ]
   },
-
   {
     text: 'Tools &mdash; Overview',
     link: '/tools',

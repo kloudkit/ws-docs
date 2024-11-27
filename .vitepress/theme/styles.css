@@ -39,7 +39,7 @@ aside.VPSidebar,
   margin: 0 auto;
 }
 
-.vp-doc p.doc-image {
+.vp-doc img.doc-image {
   float: right;
   margin: 0.75em 1.5em;
 }

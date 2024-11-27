@@ -120,42 +120,42 @@ The trees below displays the main files and folders and their intended use.
 
 ```text [Workspace]
 .
-├── .github                 // Workflows, issue/pr templates, and other GitHub related assets
-├── .gitignore              // Files to not track in `git`
-└── src                     // The main directory for image assets and build steps
-    ├── build               // Helper scripts and dependency definitions
-    ├── home                // Directory mapped to `~` in the container
-    ├── ipc-server          // IPC server extension for Kloud Workspace
-    └── rootfs              // Directory mapped to `/` in the container
+├── .github           # Workflows, issue/pr templates, and other GitHub related assets
+├── .gitignore        # Files to not track in `git`
+└── src               # The main directory for image assets and build steps
+    ├── build         # Helper scripts and dependency definitions
+    ├── home          # Directory mapped to `~` in the container
+    ├── ipc-server    # IPC server extension for Kloud Workspace
+    └── rootfs        # Directory mapped to `/` in the container
 ```
 
 ```text [Docs]
 .
-├── .github                 // Workflows, pr templates, and other GitHub related assets
-├── .gitignore              // Files to not track in `git`
-├── .vitepress              // Configuration and theme for the website
-├── docs                    // Resource root
-│   ├── *.md                // Actual documentation files
-│   ├── index.md            // Documentation entrypoint
+├── .github           # Workflows, pr templates, and other GitHub related assets
+├── .gitignore        # Files to not track in `git`
+├── .vitepress        # Configuration and theme for the website
+├── docs              # Resource root
+│   ├── *.md          # Actual documentation files
+│   ├── index.md      # Documentation entrypoint
 │   └── public
-│       └── *               // Static assets
-├── node_modules            // Node packages (git-ignored)
-├── nginx.conf              // nginx configurations
-├── package.json            // Node package dependencies (should be changed using `npm`)
-└── yarn.lock               // Current status of installed npm modules (should not be edited)
+│       └── *         # Static assets
+├── node_modules      # Node packages (git-ignored)
+├── nginx.conf        # nginx configurations
+├── package.json      # Node package dependencies (should be changed using `npm`)
+└── yarn.lock         # Current status of installed npm modules (should not be edited)
 ```
 
 ```text [CLI]
 .
-├── .github                 // Workflows, pr templates, and other GitHub related assets
-├── .gitignore              // Files to not track in `git`
-├── cmd                     // Source for command helpers
+├── .github           # Workflows, pr templates, and other GitHub related assets
+├── .gitignore        # Files to not track in `git`
+├── cmd               # Source for command helpers
 │   └── *
-├── internals               // Service classes to be used by commands
+├── internals         # Service classes to be used by commands
 │   └── *
-├── go.mod                  // Golang package dependencies (should be changed using `go`)
-├── go.sum                  // Current status of installed golang modules (should not be edited)
-└── main.go                 // CLI entrypoint
+├── go.mod            # Golang package dependencies (should be changed using `go`)
+├── go.sum            # Current status of installed golang modules (should not be edited)
+└── main.go           # CLI entrypoint
 ```
 
 :::

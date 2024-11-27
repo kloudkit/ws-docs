@@ -15,10 +15,10 @@ hero:
       link: /pages/getting-started
 
     - theme: alt
-      text: Documentation
+      text: Documentation 📚
       link: /pages/
 
     - theme: alt
-      text: Contribute
+      text: Get Involved
       link: /contribute/
 ---

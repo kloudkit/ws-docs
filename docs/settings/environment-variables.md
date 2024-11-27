@@ -1,6 +1,6 @@
 # Environment Variables
 
-![Dotenv logo](/icons/dotenv.svg) {.doc-image}
+![Dotenv logo](/icons/dotenv.svg){.doc-image}
 
 The *workspace* follows the *convention over configuration* principle, providing sensible
 defaults.

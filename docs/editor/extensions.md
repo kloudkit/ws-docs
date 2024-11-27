@@ -2,7 +2,7 @@
 
 ## Official Marketplace
 
-![VSCode logo](/icons/vscode.svg) {.doc-image}
+![VSCode logo](/icons/vscode.svg){.doc-image}
 
 According to the VS Code Marketplace [Terms of Use](https://aka.ms/vsmarketplace-ToU), you
 may only install and use Marketplace Offerings with Visual Studio Products and Services.

@@ -2,7 +2,7 @@
 
 ## Overview
 
-![Docker logo](/icons/docker.svg) {.doc-image}
+![Docker logo](/icons/docker.svg){.doc-image}
 
 The workspace comes pre-packaged with all the requirements to run Docker.
 

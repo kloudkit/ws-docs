@@ -4,7 +4,7 @@
 ⚠️ Please do not file GitHub issues for security vulnerabilities as they are public! ⚠️
 :::
 
-![Security](/icons/security.svg) {.doc-image style="width:150px"}
+![Security](/icons/security.svg){.doc-image width=150px}
 
 KloudKIT places security at the forefront of its operations, demonstrating a strong commitment to
 upholding the highest standards of protection.
