@@ -2,6 +2,7 @@
 see:
   - name: Ansible Configurations
     link: https://docs.ansible.com/ansible/latest/reference_appendices/config.html
+    target: _blank
 ---
 
 # Ansible
