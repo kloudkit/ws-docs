@@ -52,7 +52,7 @@ In this model, a repository has two main branches:
 The previous two branches are the starting points for any project.
 They are very important and should be protected against accidental deletion and merging.
 Only authorized contributors or project owners should be given the responsibility to merge
-changes from other branches -- such as the feature branch, which we’ll discuss later --
+changes from other branches &mdash; such as the feature branch, which we’ll discuss later &mdash;
 to the `develop` or `main` branches.
 :::
 
@@ -62,15 +62,18 @@ Apart from the two abovementioned primary branches, there are other branches in 
     develop branch after a feature is complete.
     The conventional naming of this branch starts with `feature/*` in lower-kebab-case
     *(i.e. `feature/some-new-super-cool-feature`)*.
+
     This branch is mostly created and used by developers collaborating with teams.
     The purpose of the feature branch is to develop small modules of a feature in a
     project.
+
     The lifetime of a feature branch ends once it merges with the develop branch.
     Features are generally not published to the remote repository, unless multiple
     developers or teams are working on the same feature.
 
 2. **Hotfix:** The hotfix branch is derived from the master branch and merged back after
     completion to the develop and master branches.
+
     By convention, the name of this branch starts with `hotfix/*` in lower-kebab-case
     *(i.e. `hotfix/oops-we-found-a-not-so-cool-bug`)*.
     This branch is created and used after a particular version of product is released to
@@ -120,42 +123,42 @@ The trees below displays the main files and folders and their intended use.
 
 ```text [Workspace]
 .
-├── .github           # Workflows, issue/pr templates, and other GitHub related assets
-├── .gitignore        # Files to not track in `git`
-└── src               # The main directory for image assets and build steps
-    ├── build         # Helper scripts and dependency definitions
-    ├── home          # Directory mapped to `~` in the container
-    ├── ipc-server    # IPC server extension for Kloud Workspace
-    └── rootfs        # Directory mapped to `/` in the container
+├── .github         # Workflows, issue/pr templates, and other GitHub related assets
+├── .gitignore      # Files to not track in `git`
+└── src             # The main directory for image assets and build steps
+    ├── build       # Helper scripts and dependency definitions
+    ├── home        # Directory mapped to `~` in the container
+    ├── ipc-server  # IPC server extension for Kloud Workspace
+    └── rootfs      # Directory mapped to `/` in the container
 ```
 
 ```text [Docs]
 .
-├── .github           # Workflows, pr templates, and other GitHub related assets
-├── .gitignore        # Files to not track in `git`
-├── .vitepress        # Configuration and theme for the website
-├── docs              # Resource root
-│   ├── *.md          # Actual documentation files
-│   ├── index.md      # Documentation entrypoint
+├── .github         # Workflows, pr templates, and other GitHub related assets
+├── .gitignore      # Files to not track in `git`
+├── .vitepress      # Configuration and theme for the website
+├── docs            # Resource root
+│   ├── *.md        # Actual documentation files
+│   ├── index.md    # Documentation entrypoint
 │   └── public
-│       └── *         # Static assets
-├── node_modules      # Node packages (git-ignored)
-├── nginx.conf        # nginx configurations
-├── package.json      # Node package dependencies (should be changed using `npm`)
-└── yarn.lock         # Current status of installed npm modules (should not be edited)
+│       └── *       # Static assets
+├── node_modules    # Node packages (git-ignored)
+├── nginx.conf      # nginx configurations
+├── package.json    # Node package dependencies (should be changed using `npm`)
+└── yarn.lock       # Current status of installed npm modules (should not be edited)
 ```
 
 ```text [CLI]
 .
-├── .github           # Workflows, pr templates, and other GitHub related assets
-├── .gitignore        # Files to not track in `git`
-├── cmd               # Source for command helpers
+├── .github         # Workflows, pr templates, and other GitHub related assets
+├── .gitignore      # Files to not track in `git`
+├── cmd             # Source for command helpers
 │   └── *
-├── internals         # Service classes to be used by commands
+├── internals       # Service classes to be used by commands
 │   └── *
-├── go.mod            # Golang package dependencies (should be changed using `go`)
-├── go.sum            # Current status of installed golang modules (should not be edited)
-└── main.go           # CLI entrypoint
+├── go.mod          # Golang package dependencies (should be changed using `go`)
+├── go.sum          # Current status of installed golang modules (should not be edited)
+└── main.go         # CLI entrypoint
 ```
 
 :::

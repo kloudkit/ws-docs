@@ -10,6 +10,8 @@ see:
 
 ## Theme
 
+![Catppuccin](/icons/catppuccin.svg){.doc-image width=300px}
+
 We selected the captivating [*Catppuccin Frappe*][Catppuccin] palette as our theme and
 for all colored outputs.
 This choice was driven by the palette's warm and soothing color scheme, which not only

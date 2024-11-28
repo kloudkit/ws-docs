@@ -24,6 +24,8 @@ and conventions before you get started.
 
 ## Documentation
 
+![VitePress](/icons/vitepress.svg){.doc-image width=150px}
+
 > Documentation was proudly generated using [VitePress](https://vitepress.dev/).
 
 To improve an existing documentation page, just click on the **Edit this page on GitHub**
