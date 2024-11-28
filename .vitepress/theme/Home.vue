@@ -38,7 +38,7 @@
           We've got you covered with the top three programming languages.
         </p>
 
-        <div class="lang">
+        <div class="d-grid">
           <img width="120px" src="/icons/nodejs.svg">
           <img width="130px" src="/icons/python.svg">
           <img width="150px" src="/icons/golang.svg">
@@ -107,15 +107,19 @@
         </p>
 
         <p class="lead">
-          Deployable on any platform:
+          Deployable on any platform.
         </p>
 
-        <ul>
-          <li>Docker</li>
-          <li>Kubernetes</li>
-          <li>OpenShift</li>
-          <li>Any cloud provider</li>
-        </ul>
+        <div class="d-grid">
+          <img width="150px" src="/icons/docker.svg">
+          <img width="130px" src="/icons/k8s.svg">
+          <img width="150px" src="/icons/gcp.svg">
+
+          <img width="175px" src="/icons/openshift.svg">
+          <img width="150px" src="/icons/aws.svg">
+          <img width="135px" src="/icons/azure.svg">
+        </div>
+
       </div>
     </div>
   </div>
@@ -133,9 +137,11 @@
   text-align: left;
 }
 
-.lang {
-  display: flex;
-  justify-content: space-around;
+.d-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
 }
 
 .HomeRow {
