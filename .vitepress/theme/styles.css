@@ -51,6 +51,13 @@ aside.VPSidebar,
   height: 24px;
 }
 
+.vp-doc img.doc-image-shadow {
+  border-radius: 1em;
+  box-shadow: 0 4px 6px 0 var(--vp-c-bg-alt),
+    0 1px 3px -1px var(--vp-c-bg-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 .shiki span[style="color:#737994;font-style:italic;"] {
   font-family: 'Victor Mono';
   font-size: 80%;

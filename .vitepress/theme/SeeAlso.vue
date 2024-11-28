@@ -9,8 +9,13 @@ const { frontmatter } = useData()
     <div class="see-also-title">See Also</div>
 
     <ul>
-      <li v-for="{ name, link } in frontmatter.see">
-        <a class="see-also-link" :href="link">{{ name }}</a>
+      <li v-for="{ name, link, target } in frontmatter.see">
+        <a
+          class="see-also-link"
+          :class="{'vp-external-link-icon': target === '_blank'}"
+          :href="link"
+          :target="target ?? '_self'"
+          v-text="name" />
       </li>
     </ul>
   </div>
@@ -30,6 +35,7 @@ const { frontmatter } = useData()
 }
 
 .see-also-link {
+  display: block;
   color: var(--vp-c-text-2);
   white-space: nowrap;
   overflow: hidden;

@@ -45,10 +45,11 @@ future updates and configurations related to the editor that come with
 
 To add or override existing defaults create a `settings.json` in a `.vscode` directory
 at the root of your project *(usually `/workspace/.vscode/settings.json`)*.
-
 These settings will take precedence over the [*user settings*](#user-settings).
 
-![settings.gif](/settings/settings.gif)
+The animation below displays the various tabs and the creation of the `.vscode` directory:
+
+![Settings animation](/settings/settings.gif){.doc-image-shadow}
 
 ## Important Notes
 
