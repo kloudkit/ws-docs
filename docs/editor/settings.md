@@ -48,6 +48,8 @@ at the root of your project *(usually `/workspace/.vscode/settings.json`)*.
 
 These settings will take precedence over the [*user settings*](#user-settings).
 
+![settings.gif](/settings/settings.gif)
+
 ## Important Notes
 
 - Exercise caution when modifying the `settings.json` file, as incorrect changes may
