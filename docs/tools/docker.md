@@ -1,4 +1,11 @@
-# Using Docker
+---
+see:
+  - name: Docker in Docker
+    link: https://www.google.com/search?q=run+docker+in+docker
+    target: _blank
+---
+
+# Docker in Workspace
 
 ## Overview
 
@@ -6,9 +13,9 @@
 
 The workspace comes pre-packaged with all the requirements to run Docker.
 
-It is important to understand that the concept of running Docker from within an existing
-container *(workspace)* is not something that is supported natively by Docker.
-Nonetheless, there are a few ways methods of execution that should suite your needs.
+Running Docker within an existing container *(workspace)* is not natively supported by
+Docker.
+However, there are alternative methods to achieve this, each with its trade-offs.
 
 ::: info
 Since this topic is widely documented online, we will not delve into the various risks and
@@ -24,6 +31,12 @@ The subsequent sections might present a partial perspective of the complete arch
 
 ![Docker architecture](/tools/docker/architecture.png)
 
+::: warning
+The documentation below is tailored for use on a Linux host.
+Running Docker on Windows may introduce various discrepancies that could impact the
+applicability and effectiveness of the provided solutions.
+:::
+
 ## Docker In Docker
 
 Docker In Docker *(also known as dind)* allows developers to run a Docker container within
@@ -32,9 +45,9 @@ an already running Docker container, in order to create sandboxed container envi
 There are five possible methods to accomplish this:
 
 ::: warning CAVEAT
-Options `#2`, `#3`, `#4`, and `#5` utilize different forms of remote connections to the
-Docker daemon running on the remote host.
-As such, all *paths* and *ports* are relative to the remote host and not the running
+Options `#3`, `#4`, `#5`, and `#6` utilize different forms of remote connections to the
+Docker daemon running on the **remote host**.
+As such, all *paths* and *ports* are relative to the **remote host** and not the running
 workspace.
 
 If your intention is solely to utilize Docker for building purposes, feel free to ignore
@@ -43,25 +56,44 @@ the information provided above.
 
 ### 1. Use [`sysbox`](https://github.com/nestybox/sysbox) ***(suggested)***
 
+`Sysbox` is the recommended method for securely running Docker in Docker.
+It enables containers to act as virtual machines by improving isolation without
+requiring privileged mode.
+
 Once `sysbox` is installed, run the workspace using the `sysbox-runc` runtime:
 
-```sh{2}
+```sh{2,3}
 docker run \
   --runtime=sysbox-runc \
+  -e WS_CONFIGURE_DOCKER=1 \
   ghcr.io/kloudkit/workspace:latest
 ```
 
-### 2. Mounting the Docker Socket From the Host
+### 2. Run `dockerd` in the Container
+
+This approach allows you to start the Docker daemon *(`dockerd`)* directly within the
+container.
+However, this requires the container to run in **privileged** mode:
+
+```sh{2,3}
+docker run \
+  --privileged \
+  -e WS_CONFIGURE_DOCKER=1 \
+  ghcr.io/kloudkit/workspace:latest
+```
+
+### 3. Mounting the Docker Socket From the Host
 
 ![Host mount](/tools/docker/host-mount.png)
 
-```sh{2}
+```sh{2,3}
 docker run \
   -v /var/run/docker.sock:/var/run/docker.sock:ro \
+  -e WS_CONFIGURE_DOCKER=1 \
   ghcr.io/kloudkit/workspace:latest
 ```
 
-### 3. Connect to a Remote Host *(TCP)*
+### 4. Connect to a Remote Host *(TCP)*
 
 ![TCP](/tools/docker/tcp.png)
 
@@ -77,7 +109,7 @@ docker run \
 Alternately, you can run the command above [securely][protect-tls] using port `2376` and
 pregenerated key-pairs.
 
-### 4. Connect to a Remote Host *(SSH)*
+### 5. Connect to a Remote Host *(SSH)*
 
 ![SSH](/tools/docker/ssh.png)
 
@@ -95,7 +127,7 @@ This method is optimized by the workspace as we internally configure a persisten
 `ssh-agent` behind the scenes for a quicker connection experience.
 For more information, visit our documentation on [`ssh`](/tools/ssh)
 
-### 5. Use [`docker:dind`][dind] Running on a Remote Host
+### 6. Use [`docker:dind`][dind] Running on a Remote Host
 
 ![DIND](/tools/docker/dind.png)
 
@@ -137,9 +169,10 @@ variable from within a running workspace.
 
 ## Automatically Configure the Docker Daemon
 
-Certain methods mentioned earlier *(`#1` and `#2`)* may require additional user
+Certain methods mentioned earlier *(`#1`, `#2`, and `#3`)* may require additional user
 permissions for interacting with the Docker socket.
-In certain instances *(specifically, `#1`)*, the daemon may not be running upon startup.
+In certain instances *(specifically, `#1` and`#2`)*, the daemon may not be running upon
+startup.
 
 To streamline the process, during initialization, assign the `WS_CONFIGURE_DOCKER`
 environment variable to effortlessly grant all required permissions and initiate the
