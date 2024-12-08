@@ -1,5 +1,9 @@
 # Authentication
 
+The animation below displays how to login to the *workspace*:
+
+![authentication-login](/editor/authentication-login.gif)
+
 Given that the majority of users will integrate the *workspace* with an external
 authentication provider *(or deploy on a local machine)*, the default deployment is
 configured to not require authentication.
@@ -10,6 +14,8 @@ The following sections will help you setup our *opt-in* authentication mechanism
 Remember to click `Sign out` at the bottom of the `File` menu when you are done working,
 as your login session won't expire automatically.
 :::
+
+![authentication-logout](/editor/authentication-logout.gif)
 
 ## Password Authentication
 
