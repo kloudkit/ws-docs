@@ -21,6 +21,12 @@ The Kloud *workspace* comes pre-configured with `ansible-core`, `ansible-lint`, 
 extensions for Ansible, and popular community collections, all ready to use right out of
 the box.
 
+::: danger
+The workspace includes the latest versions of Ansible preinstalled, which no longer
+supports *Python 3.6* on target machines.
+To proceed, you must upgrade the target to *Python 3.7* or later.
+:::
+
 ## Setting User Configurations
 
 The *workspace* includes default settings in the `/etc/ansible/ansible.cfg` file.

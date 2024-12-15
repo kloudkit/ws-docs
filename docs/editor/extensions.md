@@ -107,7 +107,6 @@ and their respective license.
 | --------------------------------------------------- | ------------------------- |
 | **[Catppuccin.catppuccin-vsc][]**                   | MIT                       |
 | **[charliermarsh.ruff][]**                          | MIT                       |
-| **[coolbear.systemd-unit-file][]**                  | MIT                       |
 | **[DavidAnson.vscode-markdownlint][]**              | MIT                       |
 | **[EditorConfig.EditorConfig][]**                   | MIT                       |
 | **[exiasr.hadolint][]**                             | MIT                       |
@@ -133,7 +132,6 @@ and their respective license.
 
 [Catppuccin.catppuccin-vsc]: https://marketplace.visualstudio.com/items/Catppuccin.catppuccin-vsc/license
 [charliermarsh.ruff]: https://marketplace.visualstudio.com/items/charliermarsh.ruff/license
-[coolbear.systemd-unit-file]: https://marketplace.visualstudio.com/items/coolbear.systemd-unit-file/license
 [DavidAnson.vscode-markdownlint]: https://marketplace.visualstudio.com/items/DavidAnson.vscode-markdownlint/license
 [EditorConfig.EditorConfig]: https://marketplace.visualstudio.com/items/EditorConfig.EditorConfig/license
 [exiasr.hadolint]: https://marketplace.visualstudio.com/items/exiasr.hadolint/license

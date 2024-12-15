@@ -16,15 +16,15 @@ For more information about terminal-specific tools, refer to the
 
 | Name                 | Version      | License  |
 | -------------------- | ------------ | -------- |
-| **[ansible-core][]** | `>=2.17`     | GPL 3    |
-| **[ansible-lint][]** | `>=24.7`     | MIT      |
+| **[ansible-core][]** | `>=2.18`     | GPL 3    |
+| **[ansible-lint][]** | `>=24.12`    | MIT      |
 | **[cspell][]**       | `>=8.6`      | MIT      |
 | **[Git][]**          | `>=2.39`     | GPL 2    |
 | **[jq][]**           | `>=1.7`      | MIT      |
 | **[lsof][]**         | `>=4.95`     | Custom   |
-| **[markdownlint][]** | `>=0.41`     | MIT      |
-| **[op][]**           | `>=2.25`     | ~        |
-| **[ShellCheck][]**   | `>=0.10`     | GPL 3    |
+| **[markdownlint][]** | `>=0.43`     | MIT      |
+| **[op][]**           | `>=2.30`     | ~        |
+| **[ShellCheck][]**   | `>=0.9`      | GPL 3    |
 | **[taskfile][]**     | `>=3.37`     | MIT      |
 | **[vim][]**          | `>=9`        | Vim      |
 | **[yamllint][]**     | `>=1.35`     | GPL 3    |
@@ -46,7 +46,7 @@ For more information about terminal-specific tools, refer to the
 | **[kind][]**           | `>=0.25` | Apache 2 |
 | **[kubectl][]**        | `>=1.30` | Apache 2 |
 | **[KubeLinter][]**     | `>=0.7`  | Apache 2 |
-| **[oc][]**             | `>=4.6`  | Apache 2 |
+| **[oc][]**             | `>=4.17` | Apache 2 |
 
 ## GoLang
 
