@@ -25,6 +25,7 @@ However, `WS_ROOT` is only used by the workspace, therefore it contains the pref
 
 | ENV                            | Description                                                     | Read More       |
 | ------------------------------ | --------------------------------------------------------------- | --------------- |
+| `WS_CLONE_WORKSPACE_REPO`      | Clone a repository to the workspace directory on startup        | [→][git]        |
 | `WS_COMMENTS_DISABLE_FONT`     | Disable the custom comments font                                | [→][fonts]      |
 | `WS_DISABLE_SUDO`              | Disable `sudo` privileges                                       |                 |
 | `WS_CONFIGURE_DOCKER`          | Attempt to auto-configure docker                                | [→][docker]     |

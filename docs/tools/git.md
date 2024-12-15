@@ -9,6 +9,7 @@ As such, a few features are provided out-of-the-box:
 - Common and useful aliases.
 - User identity injection via environment variables.
 - Auto-configured signature key for signed commits.
+- Automatic cloning of a remote repository on startup.
 
 ## Configured Lookup
 
@@ -35,6 +36,22 @@ automatically configure user-level settings.
     setting of `[commit.gpgsign]` and `[commit.tag]` configurations to `true`.
 - **`~/.ssh/signingkey`:** this is the private counterpart to `~/.ssh/signingkey.pub`,
     used in the signing process.
+
+## Automated Workspace Cloning
+
+In various scenarios, a *workspace* instance may need to automatically clone a remote
+repository during startup.
+Common use cases include *CI*, short-lived instances used during integration testing, or
+environments in the cloud where persistent volumes are costly or impractical.
+
+To facilitate this, you can provide the environment variable `WS_CLONE_WORKSPACE_REPO`.
+If specified, the *workspace* will clone the repository into `WS_ROOT`
+*(default: `/workspace`)* if the directory is empty.
+
+::: info
+If the repository requires authentication, ensure the necessary credentials are already
+configured within the container before startup *(using other autoload scripts)*.
+:::
 
 ## Aliases
 
