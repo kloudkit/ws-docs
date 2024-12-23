@@ -4,7 +4,7 @@
 
 ## Overview
 
-Run your customized and pre-configured version of [VS Code][] *(powered by Coder)* using
+Run your customized and pre-configured version of [VSCode][] *(powered by Coder)* using
 Docker, Kubernetes, or OpenShift and access it in the browser *(or via `ssh`)*.
 
 ---
@@ -59,5 +59,5 @@ This project is licensed under the [**MIT License**][Workspace].
 
 ![License](/icons/mit.svg) {.doc-image-inline style="width:100px"}
 
-[VS Code]: https://github.com/Microsoft/vscode
+[VSCode]: https://github.com/Microsoft/vscode
 [Workspace]: https://github.com/kloudkit/workspace?tab=MIT-1-ov-file#MIT-1-ov-file

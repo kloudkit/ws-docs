@@ -8,6 +8,8 @@ see:
 
 # Kind
 
+![Kind logo](/icons/kind.png){.doc-image width=200px}
+
 Kind *(Kubernetes IN Docker)* is a tool for running local Kubernetes clusters using
 Docker container as *nodes*.
 It is primarily used for testing Kubernetes itself, or for developing Kubernetes
@@ -15,8 +17,8 @@ applications in a local environment.
 
 ::: warning
 
-The documentation below assumes you are **not** using [`sysbox`][sysbox] as you Docker
-runtime.
+The documentation below assumes you are **not** using [`sysbox`][sysbox] or
+[`dockerd`][dockerd] as you Docker runtime.
 
 :::
 
@@ -60,4 +62,5 @@ clusters:
 # ... more custom configurations follow
 ```
 
+[dockerd]: /tools/docker
 [sysbox]: /tools/docker#_1-use-sysbox-suggested

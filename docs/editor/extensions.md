@@ -4,7 +4,7 @@
 
 ![VSCode logo](/icons/vscode.svg){.doc-image}
 
-According to the VS Code Marketplace [Terms of Use](https://aka.ms/vsmarketplace-ToU), you
+According to the VSCode Marketplace [Terms of Use](https://aka.ms/vsmarketplace-ToU), you
 may only install and use Marketplace Offerings with Visual Studio Products and Services.
 
 > Marketplace Offerings are intended for use only with Visual Studio Products and
@@ -81,7 +81,7 @@ docker run \
 
 ## Privately Hosted Gallery
 
-If you own a marketplace that implements the VS Code Extension Gallery API, you can point
+If you own a marketplace that implements the VSCode Extension Gallery API, you can point
 the workspace to it by setting `$EXTENSIONS_GALLERY`.
 For example:
 
@@ -92,7 +92,7 @@ docker run \
 ```
 
 ::: warning
-We strongly discourage you from setting this to the official VS Code Marketplace, since it
+We strongly discourage you from setting this to the official VSCode Marketplace, since it
 infringes on the [terms of use](https://aka.ms/vsmarketplace-ToU).
 :::
 

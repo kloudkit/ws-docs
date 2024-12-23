@@ -1,6 +1,6 @@
-# GoLang
+# Rust
 
-![GoLang logo](/icons/golang.svg){.doc-image width=160px}
+![Rust logo](/icons/rust.svg){.doc-image width=150px}
 
 When developing in Rust, VSCode expects the project root to be located at the workspace
 root *(e.g., /workspace)*.
@@ -10,26 +10,27 @@ structures.
 
 ## Creating a Workspace Configuration
 
-To handle such scenarios, you can create a `go.work` file at `/workspace/go.work` with
-the following content:
+To handle such scenarios, you can create a `Cargo.toml` file at `/workspace/Cargo.toml`
+with the following content:
 
-```go
-go 1.23.3
-
-toolchain go1.23.3
-
-use (
-  /workspace/project
-  /workspace/team/project
-  /workspace/hobby
-)
+```toml
+[workspace]
+resolver = "2"
+members = [
+  "/workspace/project",
+  "/workspace/team/project",
+  "hobby",
+]
 ```
 
 This setup allows you to work with multiple projects simultaneously, even if they are
 located at varying depths within the workspace.
 
+The `members` attribute, lists the projects included in the workspace.
+These can be defined using either relative or absolute paths.
+
 ::: info
-A `go.work.sum` file will be generated alongside the `go.work` file.
+A `Cargo.lock` file will be generated alongside the `Cargo.toml` file.
 This file contains the checksums of the downloaded dependencies, ensuring consistency
 across builds.
 :::
