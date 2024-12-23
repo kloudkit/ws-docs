@@ -43,7 +43,7 @@ For more information about terminal-specific tools, refer to the
 | **[Helm][]**           | `>=3.15` | Apache 2 |
 | **[Helm Diff][]**      | `>=3.9`  | Apache 2 |
 | **[k9s][]**            | `>=0.32` | Apache 2 |
-| **[kind][]**           | `>=0.25` | Apache 2 |
+| **[kind][]**           | `>=0.26` | Apache 2 |
 | **[kubectl][]**        | `>=1.30` | Apache 2 |
 | **[KubeLinter][]**     | `>=0.7`  | Apache 2 |
 | **[oc][]**             | `>=4.17` | Apache 2 |

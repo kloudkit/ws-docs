@@ -116,3 +116,4 @@ For more information, visit our [contribution guide](/contribute/).
 | `jupyter`     | Jupyter packages and related extensions |
 | `php`         | PHP and related extensions              |
 | `restic`      | Restic CLI                              |
+| `rust`        | Rust and Cargo                          |

@@ -44,6 +44,7 @@ export default [
       { text: 'git', link: '/tools/git' },
       { text: 'go', link: '/tools/go' },
       { text: 'kind', link: '/tools/kind' },
+      { text: 'rust', link: '/tools/rust' },
       { text: 'ssh', link: '/tools/ssh' },
       { text: 'ws-cli', link: '/tools/ws-cli' },
     ]
