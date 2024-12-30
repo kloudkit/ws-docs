@@ -323,10 +323,10 @@
   resolved "https://registry.yarnpkg.com/@fontsource/fira-sans/-/fira-sans-5.1.0.tgz#708a54c390c201834af361aad219ec1f79b980dd"
   integrity sha512-qfAjF5WcrL6qQh9eIWLK7lOh9wbCgCnVWh2Nu2gozrTgsUgYBLR8sbCGYwlK1K0yZoQsR2i9VSiQ16wwPCBkSw==
 
-"@fontsource/victor-mono@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@fontsource/victor-mono/-/victor-mono-5.1.0.tgz#8a74f590fe92d305196e23ffb48b370df2d396db"
-  integrity sha512-FBlGHyiyz+vbuTHRgby2PXsmXIKG+/UWeaRnc3t70DXpG/ffzcdmnHWEh6Avk48HZ3d6h/HVzEX3XW6A6jdUuw==
+"@fontsource/victor-mono@^5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@fontsource/victor-mono/-/victor-mono-5.1.1.tgz#cdb94c7ec744ff338de20f6d662a0f738be5368f"
+  integrity sha512-hcKeS1lC6tzvwTdM/KixXM644xDNS3E4pWPoxQx/ooHp4HkyN0Ku9sVQKhysBJC5hW0zMWRoBYPL0pZUEAdnVA==
 
 "@iconify-json/simple-icons@^1.2.10":
   version "1.2.12"
