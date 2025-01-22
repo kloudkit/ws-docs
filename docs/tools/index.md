@@ -81,7 +81,7 @@ For more information about terminal-specific tools, refer to the
 | **[pre-commit][]**    | `>=4.0`  | MIT      |
 | **[pylint][]**        | `>=3.3`  | GPL 2    |
 | **[Python][]**        | `>=3.11` | PSF      |
-| **[ruff][]**          | `>=0.7`  | MIT      |
+| **[ruff][]**          | `>=0.9`  | MIT      |
 | **[uv][]**            | `>=0.5`  | MIT      |
 
 [ansible-core]: https://github.com/ansible/ansible
