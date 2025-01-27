@@ -24,7 +24,7 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/kloudkit/workspace' },
-      { icon: { svg: dockerSVG }, link: 'https://github.com/kloudkit/workspace/pkgs/container/workspace' }
+      { icon: { svg: dockerSVG }, link: 'https://ghcr.io/kloudkit/workspace' }
     ],
 
     editLink: {

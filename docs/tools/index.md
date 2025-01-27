@@ -17,12 +17,12 @@ For more information about terminal-specific tools, refer to the
 | Name                 | Version      | License  |
 | -------------------- | ------------ | -------- |
 | **[ansible-core][]** | `>=2.18`     | GPL 3    |
-| **[ansible-lint][]** | `>=24.12`    | MIT      |
+| **[ansible-lint][]** | `>=25.1`    | MIT      |
 | **[cspell][]**       | `>=8.6`      | MIT      |
 | **[Git][]**          | `>=2.39`     | GPL 2    |
 | **[jq][]**           | `>=1.7`      | MIT      |
 | **[lsof][]**         | `>=4.95`     | Custom   |
-| **[markdownlint][]** | `>=0.43`     | MIT      |
+| **[markdownlint][]** | `>=0.44`     | MIT      |
 | **[op][]**           | `>=2.30`     | ~        |
 | **[ShellCheck][]**   | `>=0.9`      | GPL 3    |
 | **[taskfile][]**     | `>=3.37`     | MIT      |
@@ -75,10 +75,10 @@ For more information about terminal-specific tools, refer to the
 | Name                  | Version  | License  |
 | --------------------- | -------- | -------- |
 | **[docker-py][]**     | `>=7.1`  | Apache 2 |
-| **[kubernetes-py][]** | `>=31.0` | Apache 2 |
+| **[kubernetes-py][]** | `>=32.0` | Apache 2 |
 | **[netaddr][]**       | `>=1.2`  | Custom   |
 | **[passlib][]**       | `>=1.7`  | BSD      |
-| **[pre-commit][]**    | `>=4.0`  | MIT      |
+| **[pre-commit][]**    | `>=4.1`  | MIT      |
 | **[pylint][]**        | `>=3.3`  | GPL 2    |
 | **[Python][]**        | `>=3.11` | PSF      |
 | **[ruff][]**          | `>=0.9`  | MIT      |
