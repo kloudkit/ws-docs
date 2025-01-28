@@ -35,6 +35,8 @@ glyphs.
 
 ### Editor
 
+![Fira code](/editor/theme-and-fonts/fira-code.png){.doc-image width=300px}
+
 We utilize the [FiraCode][] font in the editor.
 It is favored for its programming-friendly ligatures that enhance readability and improve
 coding syntax visually.

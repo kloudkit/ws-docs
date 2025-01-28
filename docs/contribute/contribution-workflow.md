@@ -10,6 +10,8 @@ By participating, you are expected to uphold this code.
 
 ## We Develop with GitHub
 
+![Github](/icons/github.svg){.doc-image width=200px}
+
 We utilize GitHub's services at the core of our development:
 
 - To host code.

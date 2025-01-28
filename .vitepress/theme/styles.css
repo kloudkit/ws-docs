@@ -2,6 +2,11 @@ body {
   font-size: 18px;
 }
 
+.vp-doc table {
+  width: 100%;
+  display: table;
+}
+
 aside.VPSidebar,
 .vp-doc pre {
   scrollbar-width: thin;
