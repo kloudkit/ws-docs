@@ -36,11 +36,11 @@ For more information about terminal-specific tools, refer to the
 | ---------------------- | -------- | -------- |
 | **[buildx][]**         | `>=0.13` | Apache 2 |
 | **[crane][]**          | `>=0.20` | Apache 2 |
-| **[Docker][]**         | `>=25`   | Apache 2 |
-| **[Docker compose][]** | `>=2.26` | Apache 2 |
+| **[Docker][]**         | `>=27`   | Apache 2 |
+| **[Docker compose][]** | `>=2.32` | Apache 2 |
 | **[dive][]**           | `>=0.12` | MIT      |
 | **[hadolint][]**       | `>=2.12` | GPL 3    |
-| **[Helm][]**           | `>=3.15` | Apache 2 |
+| **[Helm][]**           | `>=3.16` | Apache 2 |
 | **[Helm Diff][]**      | `>=3.9`  | Apache 2 |
 | **[k9s][]**            | `>=0.32` | Apache 2 |
 | **[kind][]**           | `>=0.26` | Apache 2 |
@@ -66,7 +66,7 @@ For more information about terminal-specific tools, refer to the
 
 | Name           | Version   | License      |
 | -------------- | --------- | ------------ |
-| **[NodeJS][]** | `>=22.11` | MIT          |
+| **[NodeJS][]** | `>=22.13` | MIT          |
 | **[npm][]**    | `>=10.9`  | Artistic-2.0 |
 | **[yarn][]**   | `>=1.22`  | BSD 2        |
 
