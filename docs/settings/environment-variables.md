@@ -29,6 +29,7 @@ However, `WS_ROOT` is only used by the workspace, therefore it contains the pref
 | `WS_COMMENTS_DISABLE_FONT`     | Disable the custom comments font                                | [→][fonts]      |
 | `WS_DISABLE_SUDO`              | Disable `sudo` privileges                                       |                 |
 | `WS_CONFIGURE_DOCKER`          | Attempt to auto-configure docker                                | [→][docker]     |
+| `WS_CONFIGURE_HELM`            | Autoload helm repository cache                                  | [→][helm]       |
 | `WS_EXTRA_CA_CERT_ENDPOINTS`   | Extra CA endpoints to install at startup *(delimited by space)* | [→][ca]         |
 | `WS_EXTRA_CA_CERT_INSECURE`    | Use insecure communication when installing CA endpoints         | [→][ca]         |
 | `WS_EXTRA_FEATURES`            | Extra features to install at startup *(delimited by space)*     | [→][features]   |
@@ -62,6 +63,7 @@ However, `WS_ROOT` is only used by the workspace, therefore it contains the pref
 [ca]: /settings/enterprise-ca
 [docker]: /tools/docker
 [extensions]: /editor/extensions
+[helm]: /tools/helm
 [fonts]: /editor/theme-and-fonts
 [features]: /editor/features
 [git]: /tools/git

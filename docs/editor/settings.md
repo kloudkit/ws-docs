@@ -28,8 +28,7 @@ The process of overriding and appending can be managed within the
 
 ### User Settings
 
-The user-specific settings, are located in the
-`~/.local/share/code-server/User/settings.json` file.
+The user-specific settings, are located in the `~/.local/share/workspace/User/settings.json` file.
 As mentioned above, these settings should be considered a base-line of default to append
 to, any desired changes should be handled at the *workspace* level.
 

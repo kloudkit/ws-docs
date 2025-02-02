@@ -83,7 +83,7 @@ This approach simplifies volume management by utilizing *sub-paths* within the w
 The following demonstrates this practice
 *(note that the paths and names are provided for illustrative purposes only)*:
 
-```yaml{5,9}
+```yaml{5,9,13}
 # Pod specs
 volumeMounts:
   - name: data
@@ -93,6 +93,10 @@ volumeMounts:
   - name: data
     mountPath: /home/kloud/.cache/history
     subPath: history
+
+  - name: data
+    mountPath: /home/kloud/.config/helm
+    subPath: helm
 
 volumes:
   - name: data

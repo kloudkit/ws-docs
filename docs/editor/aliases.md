@@ -18,6 +18,11 @@ predefined command patterns.
 For example, instead of typing `ls -l` every time, you can create an alias `ll` to
 execute it.
 
+::: tip
+If you need to bypass an alias and run the original command, you can prefix it with `\`.
+Using the example above, to use the original `ls` command, use `\ls`.
+:::
+
 ## Pre-Configured Aliases
 
 The *workspace's* shell environments comes packed with automatically configured aliases.

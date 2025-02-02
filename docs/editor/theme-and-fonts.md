@@ -35,8 +35,7 @@ glyphs.
 
 ### Editor
 
-![Fira code](/editor/theme-and-fonts/fira-code.png){.doc-image width=300px}
-
+![Fira code](/editor/theme-and-fonts/fira-code.svg){.doc-image width=300px}
 We utilize the [FiraCode][] font in the editor.
 It is favored for its programming-friendly ligatures that enhance readability and improve
 coding syntax visually.
@@ -63,6 +62,11 @@ docker run \
   -e WS_COMMENTS_DISABLE_FONT=1 \
   ghcr.io/kloudkit/workspace:latest
 ```
+
+The animation below shows comments in the default font and how they appear when the font
+is opted out.
+
+![Comment font toggle](/editor/theme-and-fonts/comment-font-toggle.gif){.doc-image-shadow}
 
 ## Installing on a Local Machine
 
