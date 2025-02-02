@@ -43,6 +43,7 @@ export default [
       { text: 'docker', link: '/tools/docker' },
       { text: 'git', link: '/tools/git' },
       { text: 'go', link: '/tools/go' },
+      { text: 'helm', link: '/tools/helm' },
       { text: 'kind', link: '/tools/kind' },
       { text: 'rust', link: '/tools/rust' },
       { text: 'ssh', link: '/tools/ssh' },

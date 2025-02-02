@@ -24,8 +24,8 @@ Although Windows OS can be used, Linux is the recommended choice for optimal use
 Start coding now!
 
 Run the command below to deploy an
-[*ephemeral*](https://www.merriam-webster.com/dictionary/ephemeral) container running on port
-`8080`.
+[*ephemeral*](https://www.merriam-webster.com/dictionary/ephemeral) container running on
+port `8080`.
 
 ::: code-group
 
