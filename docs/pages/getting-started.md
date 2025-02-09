@@ -10,11 +10,29 @@ Get started, make sure the the *bare-minimum* system requirements are met:
 - Linux OS *(Windows with WSL or Docker Desktop can also be used)*.
 
 ::: tip
-The minimum requirements takes into consideration the overhead need to run the Docker engine.
-For enhanced performance, consider allocating **4GB RAM** and **4 vCPUs** *(or more)*, as these
-upgrades will contribute to improved overall system responsiveness and efficiency.
+The minimum requirements takes into consideration the overhead need to run the Docker
+engine.
+For enhanced performance, consider allocating **4GB RAM** and **4 vCPUs** *(or more)*, as
+these upgrades will contribute to improved overall system responsiveness and efficiency.
 
 Although Windows OS can be used, Linux is the recommended choice for optimal use.
+:::
+
+### ARM Architecture Support
+
+![ARM](/icons/arm.svg){.doc-image width=150px}
+
+We provide support for **ARM** systems—such as Apple M-series *(M1, M2, etc.)*, NVIDIA's
+Jetsons line, and Raspberry Pis.
+
+If Docker detects an ARM-based host, it will automatically pull the appropriate
+ARM-compatible image from our multi-architecture releases.
+
+::: tip
+We only publish ARM-based images on specific tagged releases *(e.g., `v0.0.x`)*.
+The `latest` tag does **not** include ARM images.
+
+To run on ARM, be sure to use a versioned tag.
 :::
 
 ## Usage
