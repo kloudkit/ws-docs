@@ -42,8 +42,8 @@ For more information about terminal-specific tools, refer to the
 | **[hadolint][]**       | `>=2.12` | GPL 3    |
 | **[Helm][]**           | `>=3.16` | Apache 2 |
 | **[Helm Diff][]**      | `>=3.9`  | Apache 2 |
-| **[k9s][]**            | `>=0.32` | Apache 2 |
-| **[kind][]**           | `>=0.26` | Apache 2 |
+| **[k9s][]**            | `>=0.40` | Apache 2 |
+| **[kind][]**           | `>=0.27` | Apache 2 |
 | **[kubectl][]**        | `>=1.30` | Apache 2 |
 | **[KubeLinter][]**     | `>=0.7`  | Apache 2 |
 | **[oc][]**             | `>=4.17` | Apache 2 |
@@ -82,7 +82,7 @@ For more information about terminal-specific tools, refer to the
 | **[pylint][]**        | `>=3.3`  | GPL 2    |
 | **[Python][]**        | `>=3.11` | PSF      |
 | **[ruff][]**          | `>=0.9`  | MIT      |
-| **[uv][]**            | `>=0.5`  | MIT      |
+| **[uv][]**            | `>=0.6`  | MIT      |
 
 [ansible-core]: https://github.com/ansible/ansible
 [ansible-lint]: https://github.com/ansible-community/ansible-lint
