@@ -2,6 +2,8 @@
 see:
   - name: Ansible
     link: /tools/ansible
+  - name: APT
+    link: /tools/apt
 ---
 
 # Extra Features
