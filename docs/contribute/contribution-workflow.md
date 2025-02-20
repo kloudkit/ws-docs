@@ -39,6 +39,8 @@ The workflow typically follows a branching model based on the
 This means that complete feature branches will be purposed for merge into the original
 project maintainer's repository.
 
+![Gitflow](/contribute/contribution-workflow/gitflow.png)
+
 In this model, a repository has two main branches:
 
 1. **Main:** This is a highly stable branch that is always production-ready and contains
