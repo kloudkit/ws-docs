@@ -23,6 +23,26 @@ following environment variables:
 - **`WS_APT_DISABLE_DEBIAN_REPO`:**: Disables the default Debian repository.
 - **`WS_APT_DISABLE_EXTRAS_REPO`:**: Disables the additional extra *(3rd-party)* repository.
 
+### Custom Sources
+
+Users can add custom repository sources by setting the `WS_APT_EXTRA_DEBIAN_REPOS`
+environment variable.
+The variable can contain one or more repositories, separated by semicolons *(`;`)*.
+
+```sh{2}
+docker run \
+  -e WS_APT_EXTRA_DEBIAN_REPOS="deb [signed-by=/custom.gpg] https://custom.package bookworm main" \
+  ghcr.io/kloudkit/workspace:latest
+```
+
+### Update Repository Cache
+
+You can optionally trigger a package cache update by setting the `WS_APT_UPDATE_REPOS`
+environment variable to a *truthy* value *(either `1` or `true`)*.
+
+Update will occur after adding custom sources to ensures that any newly added
+repositories are immediately available for package installations.
+
 ## Default Configurations
 
 The *workspace* is configured with several default settings to ensure optimal performance.
