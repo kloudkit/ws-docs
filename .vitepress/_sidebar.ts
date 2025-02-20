@@ -40,6 +40,7 @@ export default [
     link: '/tools',
     items: [
       { text: 'ansible', link: '/tools/ansible' },
+      { text: 'apt', link: '/tools/apt' },
       { text: 'docker', link: '/tools/docker' },
       { text: 'git', link: '/tools/git' },
       { text: 'go', link: '/tools/go' },
