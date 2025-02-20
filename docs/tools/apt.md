@@ -1,3 +1,9 @@
+---
+see:
+  - name: APT
+    link: /editor/features
+---
+
 # APT Manager
 
 ![Debian logo](/icons/debian.svg){.doc-image width=200px}
@@ -20,8 +26,8 @@ installations.
 If you need to disable any of the repository sources, you can do so by setting the
 following environment variables:
 
-- **`WS_APT_DISABLE_DEBIAN_REPO`:**: Disables the default Debian repository.
-- **`WS_APT_DISABLE_EXTRAS_REPO`:**: Disables the additional extra *(3rd-party)* repository.
+- **`WS_APT_DISABLE_DEBIAN_REPO`:** Disables the default Debian repository.
+- **`WS_APT_DISABLE_EXTRAS_REPO`:** Disables the additional extra *(3rd-party)* repository.
 
 ### Custom Sources
 
@@ -56,3 +62,24 @@ Notable configurations include:
 - APT will avoid overwriting existing files during package installations.
   This ensures that user-defined settings and files are retained without interruption
   during updates or installs.
+
+## Extra Packages
+
+Upon *workspace* startup, we evaluate the value of `WS_APT_EXTRA_PACKAGES` environment
+variable to automate the installation of additional *user-defined* packages.
+
+The `WS_APT_EXTRA_PACKAGES` variable can contain one or more space-delimited package
+names as demonstrated below:
+
+```sh{2}
+docker run \
+  -e WS_APT_EXTRA_PACKAGES="cmake nano" \
+  ghcr.io/kloudkit/workspace:latest
+```
+
+::: tip
+Some packages are already available as [**features**](/editor/features), which include
+additional setup steps that enhance their usage and functionality.
+
+We recommend reviewing the available features before opting for manual package installation.
+:::
