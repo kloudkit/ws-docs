@@ -27,6 +27,8 @@ However, `WS_ROOT` is only used by the workspace, therefore it contains the pref
 | ------------------------------ | --------------------------------------------------------------- | --------------- |
 | `WS_APT_DISABLE_DEBIAN_REPO`   | Disables the default Debian repository                          | [→][apt]        |
 | `WS_APT_DISABLE_EXTRAS_REPO`   | Disables the additional extra *(3rd-party)* repository          | [→][apt]        |
+| `WS_APT_EXTRA_DEBIAN_REPOS`    | Extra repository source definitions                             | [→][apt]        |
+| `WS_APT_UPDATE_REPOS`          | Update APT repository cache                                     | [→][apt]        |
 | `WS_CLONE_WORKSPACE_REPO`      | Clone a repository to the workspace directory on startup        | [→][git]        |
 | `WS_COMMENTS_DISABLE_FONT`     | Disable the custom comments font                                | [→][fonts]      |
 | `WS_DISABLE_SUDO`              | Disable `sudo` privileges                                       |                 |
