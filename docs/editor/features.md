@@ -119,3 +119,4 @@ For more information, visit our [contribution guide](/contribute/).
 | `php`         | PHP and related extensions              |
 | `restic`      | Restic CLI                              |
 | `rust`        | Rust and Cargo                          |
+| `terraform`   | Terraform                               |
