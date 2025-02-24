@@ -7,7 +7,7 @@ import sidebar             from './_sidebar'
 
 export default defineConfig({
   title: 'Kloud Workspace',
-  description: '🔋 A batteries included pre-configured development workspace',
+  description: '🔋 A batteries included pre-configured development workspace inside a Docker container',
   appearance: 'force-dark',
   cleanUrls: true,
   srcDir: './docs',

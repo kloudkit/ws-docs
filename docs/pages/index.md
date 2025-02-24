@@ -1,6 +1,6 @@
 # Kloud Workspace
 
-> 🔋 A batteries included pre-configured development workspace
+> 🔋 A batteries included pre-configured development workspace inside a Docker container
 
 ## Overview
 
