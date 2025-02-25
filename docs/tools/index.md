@@ -53,14 +53,14 @@ For more information about terminal-specific tools, refer to the
 | Name                 | Version  | License  |
 | -------------------- | -------- | -------- |
 | **[dlv][]**          | `>=1.23` | MIT      |
-| **[Go][]**           | `>=1.23` | BSD 3    |
+| **[Go][]**           | `>=1.24` | BSD 3    |
 | **[gotests][]**      | `>=1.6`  | Apache 2 |
 | **[gomodifytags][]** | `>=1.17` | MIT      |
 | **[goplay][]**       | `>=1.0`  | MIT      |
-| **[gopls][]**        | `>=0.16` | BSD      |
+| **[gopls][]**        | `>=0.17` | BSD      |
 | **[go-outline][]**   | `>=0.0`  | MIT      |
 | **[impl][]**         | `>=1.4`  | MIT      |
-| **[staticcheck][]**  | `>=0.5`  | MIT      |
+| **[staticcheck][]**  | `>=0.6`  | MIT      |
 
 ## NodeJS
 
