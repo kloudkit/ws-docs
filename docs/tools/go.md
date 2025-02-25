@@ -14,9 +14,9 @@ To handle such scenarios, you can create a `go.work` file at `/workspace/go.work
 the following content:
 
 ```go
-go 1.23.3
+go 1.24.0
 
-toolchain go1.23.3
+toolchain go1.24.0
 
 use (
   /workspace/project

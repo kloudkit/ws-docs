@@ -29,7 +29,7 @@ v22.11.0
 
 ```sh [Golang]
 $ go version
-go version go1.23.3 linux/amd64
+go version go1.24.0 linux/amd64
 ```
 
 :::
