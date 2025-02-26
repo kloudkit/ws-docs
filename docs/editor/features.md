@@ -107,16 +107,18 @@ Feel free to suggest it or contribute directly.
 For more information, visit our [contribution guide](/contribute/).
 :::
 
-| Feature       | Description                             |
-| ------------- | --------------------------------------- |
-| `conan`       | Conan CLI and related tools             |
-| `cloudflared` | Cloudflare tunnel CLI                   |
-| `dagger`      | dagger.io CLI and SDK                   |
-| `dotnet`      | .NET framework and related extensions   |
-| `gcloud`      | Google Cloud CLI for GCP                |
-| `gh`          | GitHub CLI                              |
-| `jupyter`     | Jupyter packages and related extensions |
-| `php`         | PHP and related extensions              |
-| `restic`      | Restic CLI                              |
-| `rust`        | Rust and Cargo                          |
-| `terraform`   | Terraform                               |
+| Feature       | Description                               |
+| ------------- | ----------------------------------------- |
+| `conan`       | Conan CLI and related tools               |
+| `cloudflared` | Cloudflare tunnel CLI                     |
+| `dagger`      | dagger.io CLI and SDK                     |
+| `dotnet`      | .NET framework and related extensions     |
+| `gcloud`      | Google Cloud CLI for GCP                  |
+| `gh`          | GitHub CLI                                |
+| `jf`          | JFrog CLI                                 |
+| `jupyter`     | Jupyter packages and related extensions   |
+| `php`         | PHP and related extensions                |
+| `rclone`      | rclone CLI                                |
+| `restic`      | Restic CLI                                |
+| `rust`        | Rust and Cargo                            |
+| `terraform`   | Terraform packages and related extensions |
