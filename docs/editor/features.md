@@ -109,8 +109,9 @@ For more information, visit our [contribution guide](/contribute/).
 
 | Feature       | Description                               |
 | ------------- | ----------------------------------------- |
-| `conan`       | Conan CLI and related tools               |
 | `cloudflared` | Cloudflare tunnel CLI                     |
+| `conan`       | Conan CLI and related tools               |
+| `cpp`         | C++ and related tools                     |
 | `dagger`      | dagger.io CLI and SDK                     |
 | `dotnet`      | .NET framework and related extensions     |
 | `gcloud`      | Google Cloud CLI for GCP                  |
