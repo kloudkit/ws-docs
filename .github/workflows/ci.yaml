@@ -103,11 +103,12 @@ jobs:
         with:
           context: .
           labels: ${{ steps.meta.outputs.labels }}
-          push: true
+          push: ${{ github.ref == 'refs/heads/main' }}
           tags: ${{ steps.meta.outputs.tags }}
 
   deploy:
     name: 🚀 Deploy Documentation
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs:
       - build
