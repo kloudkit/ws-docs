@@ -318,10 +318,10 @@
   resolved "https://registry.yarnpkg.com/@fontsource/fira-code/-/fira-code-5.1.1.tgz#a58a7606e6fb904682fc42cb852169b258b4ced6"
   integrity sha512-w9b1CtWyfdyZP2Y/j7Z86SNYtLXMZ4yGtxrtw0qejjrGuzoasEoMhgdLJOwX9exrpKRVFaecKjcAuWkvmvOITw==
 
-"@fontsource/fira-sans@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/@fontsource/fira-sans/-/fira-sans-5.1.1.tgz#cde0f3b38536d27c57fdc7d9784fca23946eda94"
-  integrity sha512-LdbPwcMEADFjbcMx5sdPcyLi0NnEzP34YO+4d2eOeIKjCu1SyJiG/bBz5K07qm4pyhh2cQveifhFrG7gQDG9wQ==
+"@fontsource/fira-sans@^5.2.5":
+  version "5.2.5"
+  resolved "https://registry.yarnpkg.com/@fontsource/fira-sans/-/fira-sans-5.2.5.tgz#3db23558395c14c04cabd410df03e29719288676"
+  integrity sha512-N+GrTGOTIeYE/Wi5tY0RAnc1Tl3ddCdwfZQncvA1zH/lOpKerj9ZS5nfniSXDZ9wrXFRdWTH7anyrRDc+cMpCg==
 
 "@fontsource/victor-mono@^5.1.1":
   version "5.1.1"
