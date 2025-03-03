@@ -1,8 +1,8 @@
-import { defineConfig }    from 'vitepress'
+import { defineConfig } from 'vitepress'
 import italicSmallRenderer from './_italicSmallRenderer'
-import dockerSVG           from './_dockerSVG'
-import nav                 from './_nav'
-import sidebar             from './_sidebar'
+import dockerSVG from './_dockerSVG'
+import nav from './_nav'
+import sidebar from './_sidebar'
 
 
 export default defineConfig({
@@ -48,5 +48,11 @@ export default defineConfig({
       md.use(italicSmallRenderer)
     },
     theme: 'catppuccin-frappe'
+  },
+
+  vite: {
+    server: {
+      allowedHosts: true
+    }
   }
 })
