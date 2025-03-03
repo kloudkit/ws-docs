@@ -27,6 +27,8 @@ a Python-based project.
 
 ![Prompt](/prompt.png)
 
+![Prompt animation](/terminal/prompt.gif){.doc-image-shadow}
+
 Some users find the descriptive prompt to be too noisy.
 To *opt-out* of some of the prompt modules, you can set any of the following environment
 `env` variables to a *truthy* value *(either `1` or `true`)*:
@@ -54,8 +56,10 @@ Many CLI tools feature colorization by default
 *(matching the [color theme](/editor/theme-and-fonts))*, enhancing your experience with
 improved readability.
 
-![Colorful Output](/colorful-output.png)
-![Colorful Output 2](/colorful-output-2.png)
+![Ls animation](/terminal/ls.gif){.doc-image-shadow}<br>
+![Ip animation](/terminal/ip-a.gif){.doc-image-shadow}<br>
+![Tree animation](/terminal/tree.gif){.doc-image-shadow}<br>
+![Cat animation](/terminal/cat.gif){.doc-image-shadow}<br>
 
 ### ZSH
 
