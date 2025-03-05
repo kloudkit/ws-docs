@@ -25,9 +25,7 @@ Modules are shown based on the specific context of the prompt.
 For instance, the Python module appears only when your current working directory includes
 a Python-based project.
 
-![Prompt](/prompt.png)
-
-![Prompt animation](/terminal/prompt.gif){.doc-image-shadow}
+![Prompt](/editor/terminal/prompt.gif){.doc-image-shadow}
 
 Some users find the descriptive prompt to be too noisy.
 To *opt-out* of some of the prompt modules, you can set any of the following environment
@@ -56,10 +54,13 @@ Many CLI tools feature colorization by default
 *(matching the [color theme](/editor/theme-and-fonts))*, enhancing your experience with
 improved readability.
 
-![Ls animation](/terminal/ls.gif){.doc-image-shadow}<br>
-![Ip animation](/terminal/ip-a.gif){.doc-image-shadow}<br>
-![Tree animation](/terminal/tree.gif){.doc-image-shadow}<br>
-![Cat animation](/terminal/cat.gif){.doc-image-shadow}<br>
+![Ls animation](/editor/terminal/ls.gif){.doc-image-shadow}
+
+![Ip animation](/editor/terminal/ip-a.gif){.doc-image-shadow}
+
+![Tree animation](/editor/terminal/tree.gif){.doc-image-shadow}
+
+![Cat animation](/editor/terminal/cat.gif){.doc-image-shadow}
 
 ### ZSH
 
