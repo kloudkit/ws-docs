@@ -8,9 +8,9 @@ see:
 
 # Kind
 
-![Kind logo](/icons/kind.png){.doc-image width=200px}
-
 ## Overview
+
+![Kind logo](/icons/kind.png){.doc-image width=200px}
 
 Kind *(Kubernetes IN Docker)* is a tool for running local Kubernetes clusters using Docker
 containers as nodes.
