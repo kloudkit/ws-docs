@@ -122,4 +122,5 @@ For more information, visit our [contribution guide](/contribute/).
 | `rclone`      | rclone CLI                                |
 | `restic`      | Restic CLI                                |
 | `rust`        | Rust and Cargo                            |
+| `talos`       | Talos CLI                                 |
 | `terraform`   | Terraform packages and related extensions |

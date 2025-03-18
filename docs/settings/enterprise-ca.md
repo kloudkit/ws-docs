@@ -82,3 +82,4 @@ that require the abovementioned bundles and are set automatically *(system-wide)
 - `NODE_EXTRA_CA_CERTS`
 - `PIP_CERT`
 - `REQUESTS_CA_BUNDLE`
+- `SSL_CERT_FILE`

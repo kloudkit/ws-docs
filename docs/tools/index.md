@@ -27,7 +27,7 @@ For more information about terminal-specific tools, refer to the
 | **[ShellCheck][]**   | `>=0.9`      | GPL 3    |
 | **[taskfile][]**     | `>=3.37`     | MIT      |
 | **[vim][]**          | `>=9`        | Vim      |
-| **[yamllint][]**     | `>=1.35`     | GPL 3    |
+| **[yamllint][]**     | `>=1.36`     | GPL 3    |
 | **[yq][]**           | `>=3.4`      | MIT      |
 
 ## Docker & Kubernetes
@@ -81,7 +81,7 @@ For more information about terminal-specific tools, refer to the
 | **[pre-commit][]**    | `>=4.1`  | MIT      |
 | **[pylint][]**        | `>=3.3`  | GPL 2    |
 | **[Python][]**        | `>=3.11` | PSF      |
-| **[ruff][]**          | `>=0.9`  | MIT      |
+| **[ruff][]**          | `>=0.11` | MIT      |
 | **[uv][]**            | `>=0.6`  | MIT      |
 
 [ansible-core]: https://github.com/ansible/ansible
