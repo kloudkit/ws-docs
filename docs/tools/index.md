@@ -78,7 +78,7 @@ For more information about terminal-specific tools, refer to the
 | **[kubernetes-py][]** | `>=32.0` | Apache 2 |
 | **[netaddr][]**       | `>=1.2`  | Custom   |
 | **[passlib][]**       | `>=1.7`  | BSD      |
-| **[pre-commit][]**    | `>=4.1`  | MIT      |
+| **[pre-commit][]**    | `>=4.2`  | MIT      |
 | **[pylint][]**        | `>=3.3`  | GPL 2    |
 | **[Python][]**        | `>=3.11` | PSF      |
 | **[ruff][]**          | `>=0.11` | MIT      |

@@ -174,14 +174,49 @@ permissions for interacting with the Docker socket.
 In certain instances *(specifically, `#1` and`#2`)*, the daemon may not be running upon
 startup.
 
-To streamline the process, during initialization, assign the `WS_CONFIGURE_DOCKER`
-environment variable to effortlessly grant all required permissions and initiate the
-daemon *(if necessary)*:
+To speed up the process, during initialization, assign the `WS_CONFIGURE_DOCKER`
+environment variable to effortlessly initiate the daemon *(if necessary)*:
 
 ```sh{2}
 docker run \
   -e WS_CONFIGURE_DOCKER=1 \
   ghcr.io/kloudkit/workspace:latest
+```
+
+### Docker Group
+
+By default, the group assigned to `docker` is `999`.
+When working with host mounts, it's essential to ensure that the `docker.sock` file on
+the host is accessible within the container.
+
+To make sure the container has the necessary group access to the Docker socket, you can
+use the `--group-add` flag.
+This allows you to match the group from the host system to the group inside the
+container, ensuring the container has the appropriate permissions, as seen below:
+
+```sh{2}
+docker run \
+  --group-add=8888
+  -v /var/run/docker.sock:/var/run/docker.sock:ro \
+  -e WS_CONFIGURE_DOCKER=1 \
+  ghcr.io/kloudkit/workspace:latest
+```
+
+Make sure to replace `8888` with the appropriate group ID from your host system.
+You can find the group ID associated with `docker.sock` by checking the permissions:
+
+```sh
+ls -l /var/run/docker.sock
+```
+
+The same can be achieved in Kubernetes by using `supplementalGroups`:
+
+```yaml{3,4}
+# ...
+securityContext:
+  supplementalGroups:
+    - 8888
+# ...
 ```
 
 [dind]: https://hub.docker.com/_/docker/tags?page=1&name=dind
