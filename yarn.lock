@@ -313,10 +313,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.21.5.tgz#acad351d582d157bb145535db2a6ff53dd514b5c"
   integrity sha512-tQd/1efJuzPC6rCFwEvLtci/xNFcTZknmXs98FYDfGE4wP9ClFV98nyKrzJKVPMhdDnjzLhdUyMX4PsQAPjwIw==
 
-"@fontsource/fira-code@^5.1.1":
-  version "5.2.5"
-  resolved "https://registry.yarnpkg.com/@fontsource/fira-code/-/fira-code-5.2.5.tgz#8ed9744955b487fa6fa76ab1747b19ecbb15e54b"
-  integrity sha512-Rn9PJoyfRr5D6ukEhZpzhpD+rbX2rtoz9QjkOuGxqFxrL69fQvhadMUBxQIOuTF4sTTkPRSKlAEpPjTKaI12QA==
+"@fontsource/fira-code@^5.2.6":
+  version "5.2.6"
+  resolved "https://registry.yarnpkg.com/@fontsource/fira-code/-/fira-code-5.2.6.tgz#bbd724c902f081cf95177cfee8d6049fc854f535"
+  integrity sha512-wCkIpPm0BqlkCPLYeY4Vui96ODmVUV0/GpEe3OfJ4v8EJn/BF2SlyxvarFsTs1CKiGjrO2cXlIZbBrKi9F+hUQ==
 
 "@fontsource/fira-sans@^5.1.1":
   version "5.2.5"
