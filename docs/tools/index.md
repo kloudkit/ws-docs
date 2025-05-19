@@ -14,21 +14,22 @@ For more information about terminal-specific tools, refer to the
 
 ## CLI Tools
 
-| Name                 | Version      | License  |
-| -------------------- | ------------ | -------- |
-| **[ansible-core][]** | `>=2.18`     | GPL 3    |
-| **[ansible-lint][]** | `>=25.1`    | MIT      |
-| **[cspell][]**       | `>=8.6`      | MIT      |
-| **[Git][]**          | `>=2.39`     | GPL 2    |
-| **[jq][]**           | `>=1.7`      | MIT      |
-| **[lsof][]**         | `>=4.95`     | Custom   |
-| **[markdownlint][]** | `>=0.44`     | MIT      |
-| **[op][]**           | `>=2.30`     | ~        |
-| **[ShellCheck][]**   | `>=0.9`      | GPL 3    |
-| **[taskfile][]**     | `>=3.37`     | MIT      |
-| **[vim][]**          | `>=9`        | Vim      |
-| **[yamllint][]**     | `>=1.36`     | GPL 3    |
-| **[yq][]**           | `>=3.4`      | MIT      |
+| Name                 | Version  | License |
+| -------------------- | -------- | ------- |
+| **[ansible-core][]** | `>=2.18` | GPL 3   |
+| **[ansible-lint][]** | `>=25.2` | MIT     |
+| **[cspell][]**       | `>=9.0`  | MIT     |
+| **[envsubst][gpl]**  | `>=0.21` | GPL 3   |
+| **[Git][]**          | `>=2.39` | GPL 2   |
+| **[jq][]**           | `>=1.6`  | MIT     |
+| **[lsof][]**         | `>=4.95` | Custom  |
+| **[markdownlint][]** | `>=0.44` | MIT     |
+| **[op][]**           | `>=2.30` | ~       |
+| **[ShellCheck][]**   | `>=0.9`  | GPL 3   |
+| **[taskfile][]**     | `>=3.37` | MIT     |
+| **[vim][]**          | `>=9`    | Vim     |
+| **[yamllint][]**     | `>=1.37` | GPL 3   |
+| **[yq][]**           | `>=3.4`  | MIT     |
 
 ## Docker & Kubernetes
 
@@ -38,11 +39,11 @@ For more information about terminal-specific tools, refer to the
 | **[crane][]**          | `>=0.20` | Apache 2 |
 | **[Docker][]**         | `>=27`   | Apache 2 |
 | **[Docker compose][]** | `>=2.32` | Apache 2 |
-| **[dive][]**           | `>=0.12` | MIT      |
+| **[dive][]**           | `>=0.13` | MIT      |
 | **[hadolint][]**       | `>=2.12` | GPL 3    |
 | **[Helm][]**           | `>=3.16` | Apache 2 |
 | **[Helm Diff][]**      | `>=3.9`  | Apache 2 |
-| **[k9s][]**            | `>=0.40` | Apache 2 |
+| **[k9s][]**            | `>=0.50` | Apache 2 |
 | **[kind][]**           | `>=0.27` | Apache 2 |
 | **[kubectl][]**        | `>=1.30` | Apache 2 |
 | **[KubeLinter][]**     | `>=0.7`  | Apache 2 |
@@ -101,6 +102,7 @@ For more information about terminal-specific tools, refer to the
 [goplay]: https://github.com/haya14busa/goplay/cmd/goplay
 [gopls]: https://github.com/golang/tools
 [go-outline]: https://github.com/ramya-rao-a/go-outline
+[gpl]: https://gnu.org/licenses/gpl.html
 [hadolint]: https://github.com/hadolint/hadolint
 [Helm]: https://github.com/helm/helm
 [Helm Diff]: https://github.com/databus23/helm-diff
