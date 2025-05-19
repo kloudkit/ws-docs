@@ -187,7 +187,6 @@
     "@babel/helper-string-parser" "^7.25.9"
     "@babel/helper-validator-identifier" "^7.25.9"
 
-<<<<<<< HEAD
 "@babel/types@^7.27.1":
   version "7.27.1"
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.27.1.tgz#9defc53c16fc899e46941fc6901a9eea1c9d8560"
@@ -200,12 +199,6 @@
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@catppuccin/vitepress/-/vitepress-0.1.2.tgz#e9a43cfe84801c952def4f373b1ab8f8a07cb546"
   integrity sha512-dqhgo6U6GWbgh3McAgwemUC8Y2Aj48rRcQx/9iuPzBPAgo7NA3yi7ZcR0wolAENMmoOMAHBV+rz/5DfiGxtZLA==
-=======
-"@catppuccin/vitepress@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@catppuccin/vitepress/-/vitepress-0.1.1.tgz#f32fbc73810c43a47b27007c83bf1170efdc8b9b"
-  integrity sha512-CylSuSDnPD7GubvX8/IiJ8oOrbokDsQw8qYtgQdj/JTKhGnKnS11WXoOsOB+bHK1djzqWpOAVO5tQCQHobi1bw==
->>>>>>> b2b0d2b44f0bc66c64e8d15216477cbe8b13f75a
 
 "@docsearch/css@3.8.2":
   version "3.8.2"

@@ -23,7 +23,7 @@ For more information about terminal-specific tools, refer to the
 | **[Git][]**          | `>=2.39` | GPL 2   |
 | **[jq][]**           | `>=1.6`  | MIT     |
 | **[lsof][]**         | `>=4.95` | Custom  |
-| **[markdownlint][]** | `>=0.44` | MIT     |
+| **[markdownlint][]** | `>=0.45` | MIT     |
 | **[op][]**           | `>=2.30` | ~       |
 | **[ShellCheck][]**   | `>=0.9`  | GPL 3   |
 | **[taskfile][]**     | `>=3.37` | MIT     |
@@ -44,7 +44,7 @@ For more information about terminal-specific tools, refer to the
 | **[Helm][]**           | `>=3.16` | Apache 2 |
 | **[Helm Diff][]**      | `>=3.9`  | Apache 2 |
 | **[k9s][]**            | `>=0.50` | Apache 2 |
-| **[kind][]**           | `>=0.27` | Apache 2 |
+| **[kind][]**           | `>=0.28` | Apache 2 |
 | **[kubectl][]**        | `>=1.30` | Apache 2 |
 | **[KubeLinter][]**     | `>=0.7`  | Apache 2 |
 | **[oc][]**             | `>=4.17` | Apache 2 |
