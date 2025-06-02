@@ -10,6 +10,6 @@
     "@fontsource/fira-sans": "^5.1.1",
     "@fontsource/victor-mono": "^5.1.1",
     "vitepress": "^1.6.3",
-    "vue": "^3.5.14"
+    "vue": "^3.5.16"
   }
 }
