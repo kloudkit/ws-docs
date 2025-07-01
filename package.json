@@ -7,9 +7,9 @@
   "devDependencies": {
     "@catppuccin/vitepress": "^0.1.2",
     "@fontsource/fira-code": "^5.2.6",
-    "@fontsource/fira-sans": "^5.1.1",
-    "@fontsource/victor-mono": "^5.1.1",
+    "@fontsource/fira-sans": "^5.2.6",
+    "@fontsource/victor-mono": "^5.2.6",
     "vitepress": "^1.6.3",
-    "vue": "^3.5.14"
+    "vue": "^3.5.17"
   }
 }

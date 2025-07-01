@@ -17,7 +17,7 @@ For more information about terminal-specific tools, refer to the
 | Name                 | Version  | License |
 | -------------------- | -------- | ------- |
 | **[ansible-core][]** | `>=2.18` | GPL 3   |
-| **[ansible-lint][]** | `>=25.2` | MIT     |
+| **[ansible-lint][]** | `>=25.6` | MIT     |
 | **[cspell][]**       | `>=9.0`  | MIT     |
 | **[envsubst][gpl]**  | `>=0.21` | GPL 3   |
 | **[Git][]**          | `>=2.39` | GPL 2   |
@@ -44,7 +44,7 @@ For more information about terminal-specific tools, refer to the
 | **[Helm][]**           | `>=3.16` | Apache 2 |
 | **[Helm Diff][]**      | `>=3.9`  | Apache 2 |
 | **[k9s][]**            | `>=0.50` | Apache 2 |
-| **[kind][]**           | `>=0.28` | Apache 2 |
+| **[kind][]**           | `>=0.29` | Apache 2 |
 | **[kubectl][]**        | `>=1.30` | Apache 2 |
 | **[KubeLinter][]**     | `>=0.7`  | Apache 2 |
 | **[oc][]**             | `>=4.17` | Apache 2 |
@@ -53,12 +53,12 @@ For more information about terminal-specific tools, refer to the
 
 | Name                 | Version  | License  |
 | -------------------- | -------- | -------- |
-| **[dlv][]**          | `>=1.23` | MIT      |
+| **[dlv][]**          | `>=1.25` | MIT      |
 | **[Go][]**           | `>=1.24` | BSD 3    |
 | **[gotests][]**      | `>=1.6`  | Apache 2 |
 | **[gomodifytags][]** | `>=1.17` | MIT      |
 | **[goplay][]**       | `>=1.0`  | MIT      |
-| **[gopls][]**        | `>=0.17` | BSD      |
+| **[gopls][]**        | `>=0.19` | BSD      |
 | **[go-outline][]**   | `>=0.0`  | MIT      |
 | **[impl][]**         | `>=1.4`  | MIT      |
 | **[staticcheck][]**  | `>=0.6`  | MIT      |
@@ -76,13 +76,13 @@ For more information about terminal-specific tools, refer to the
 | Name                  | Version  | License  |
 | --------------------- | -------- | -------- |
 | **[docker-py][]**     | `>=7.1`  | Apache 2 |
-| **[kubernetes-py][]** | `>=32.0` | Apache 2 |
+| **[kubernetes-py][]** | `>=33.1` | Apache 2 |
 | **[netaddr][]**       | `>=1.2`  | Custom   |
 | **[passlib][]**       | `>=1.7`  | BSD      |
 | **[pre-commit][]**    | `>=4.2`  | MIT      |
 | **[pylint][]**        | `>=3.3`  | GPL 2    |
 | **[Python][]**        | `>=3.11` | PSF      |
-| **[ruff][]**          | `>=0.11` | MIT      |
+| **[ruff][]**          | `>=0.12` | MIT      |
 | **[uv][]**            | `>=0.6`  | MIT      |
 
 [ansible-core]: https://github.com/ansible/ansible
