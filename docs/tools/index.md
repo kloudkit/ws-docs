@@ -69,6 +69,7 @@ For more information about terminal-specific tools, refer to the
 | -------------- | --------- | ------------ |
 | **[NodeJS][]** | `>=22.13` | MIT          |
 | **[npm][]**    | `>=10.9`  | Artistic-2.0 |
+| **[pnpm][]**   | `>=10.12` | MIT          |
 | **[yarn][]**   | `>=1.22`  | BSD 2        |
 
 ## Python
@@ -121,6 +122,7 @@ For more information about terminal-specific tools, refer to the
 [oc]: https://github.com/openshift/oc
 [op]: https://developer.1password.com/docs/cli
 [passlib]: https://foss.heptapod.net/python-libs/passlib
+[pnpm]: https://github.com/pnpm/pnpm
 [pre-commit]: https://github.com/pre-commit/pre-commit
 [pylint]: https://github.com/PyCQA/pylint
 [Python]: https://python.org
