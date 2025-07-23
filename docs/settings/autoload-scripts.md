@@ -50,12 +50,12 @@ is installed in the workspace.
 By default, the workspace supports the following languages *(defined using shebangs)*:
 
 - **Ansible:** `#!/usr/bin/env -S ansible-playbook`
-- **Bash:** `#!/bin/bash`
+- **Bash:** `#!/usr/bin/env bash`
 - **Golang:** `//usr/bin/env go run $0 $@; exit $?`
 - **NodeJS:** `#!/usr/bin/env node`
 - **POSIX:** `#!/bin/sh`
 - **Python:** `#!/usr/bin/env python`
-- **zsh:** `#!/bin/zsh`
+- **zsh:** `#!/usr/bin/env zsh`
 
 ### Helper Functions
 

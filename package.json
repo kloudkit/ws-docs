@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "create-dependencies-docs": "node scripts/create-dependencies-docs.mjs",
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"
@@ -9,6 +10,7 @@
     "@fontsource/fira-code": "^5.2.6",
     "@fontsource/fira-sans": "^5.2.6",
     "@fontsource/victor-mono": "^5.2.6",
+    "js-yaml": "^4.1.0",
     "vitepress": "^1.6.3",
     "vue": "^3.5.17"
   }

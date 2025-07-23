@@ -47,6 +47,18 @@ jobs:
       - name: ⏬ Install Dependencies
         run: yarn install --frozen-lockfile
 
+      - name: 🔗 Create dependencies docs
+        run: |
+          api_url="https://api.github.com/repos/kloudkit/workspace/contents/src/build/dependencies/dependencies.yaml?ref=main"
+
+          curl -sSL \
+            -H "Authorization: Bearer ${{ secrets.KLOUDKIT_ORG_PAT }}" \
+            -H "Accept: application/vnd.github.v3.raw" \
+            -o "scripts/dependencies.yaml" \
+            "$api_url"
+
+          npm run create-dependencies-docs
+
       - name: 👷‍♂️ Build
         run: yarn run docs:build
 
