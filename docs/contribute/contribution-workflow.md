@@ -129,11 +129,18 @@ The trees below displays the main files and folders and their intended use.
 .
 ├── .github         # Workflows, issue/pr templates, and other GitHub related assets
 ├── .gitignore      # Files to not track in `git`
-└── src             # The main directory for image assets and build steps
-    ├── build       # Helper scripts and dependency definitions
-    ├── home        # Directory mapped to `~` in the container
-    ├── ipc-server  # IPC server extension for Kloud Workspace
-    └── rootfs      # Directory mapped to `/` in the container
+├── renovate.json   # Track dependency versions
+├── src             # The main directory for image assets and build steps
+│   ├── build       # Helper scripts and dependency definitions
+│   ├── home        # Directory mapped to `~` in the container
+│   ├── ipc-server  # IPC server extension for Kloud Workspace
+│   └── rootfs      # Directory mapped to `/` in the container
+└── tests           # Test bench
+    ├── browser     # Browser tests using playwright
+    ├── helpers     # Fixtures, consts, utilities, and test bootstrapping
+    ├── integration # Integration tests using Docker
+    ├── scripts     # Helper scripts
+    └── stubs       # Stub *(dummy)* data used for tests
 ```
 
 ```text [Docs]
@@ -149,6 +156,7 @@ The trees below displays the main files and folders and their intended use.
 ├── node_modules    # Node packages (git-ignored)
 ├── nginx.conf      # nginx configurations
 ├── package.json    # Node package dependencies (should be changed using `npm`)
+├── scripts         # Helper scripts
 └── yarn.lock       # Current status of installed npm modules (should not be edited)
 ```
 

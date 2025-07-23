@@ -16,7 +16,7 @@ const short = version => {
     return ''
   }
 
-  return `>=${match[1]}.${match[2]}`
+  return `\`>=${match[1]}.${match[2]}\``
 }
 
 const groups = new Map()
@@ -50,7 +50,7 @@ for (const group of [...groups.keys()].sort()) {
     .forEach(([name, meta]) => {
       const version = meta.version ? short(meta.version) : ''
 
-      sections.push(`| **[${name}][]** | \`${version}\` | ${meta.license ?? ''} |`)
+      sections.push(`| **[${name}][]** | ${version} | ${meta.license ?? ''} |`)
       links.push(`[${name}]: ${meta.home}`)
     })
 

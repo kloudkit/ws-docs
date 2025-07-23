@@ -89,27 +89,5 @@ docker run \
 
 :::
 
-## Licenses
-
-The table below describes the pre-configured shell components
-*(some also have customized settings)* and their respective license.
-
-👏 Many thanks to the amazing developers of these components.
-
-| Name                                 | License       |
-| ------------------------------------ | ------------- |
-| **[bat][]**                          | Apache 2, MIT |
-| **[eza][]**                          | MIT           |
-| **[fzf][]**                          | MIT           |
-| **[oh-my-zsh][]**                    | MIT           |
-| **[starship][]**                     | ISC           |
-| **[zsh-autosuggestions][]**          | MIT           |
-| **[zsh/fzf History Search][search]** | MIT           |
-
-[bat]: https://github.com/sharkdp/bat
-[eza]: https://github.com/eza-community/eza
-[fzf]: https://github.com/junegunn/fzf
 [oh-my-zsh]: https://ohmyz.sh
-[search]: https://github.com/joshskidmore/zsh-fzf-history-search
 [starship]: https://starship.rs
-[zsh-autosuggestions]: https://github.com/zsh-users/zsh-autosuggestions

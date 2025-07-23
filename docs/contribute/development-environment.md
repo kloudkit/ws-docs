@@ -91,3 +91,41 @@ If you choose to skip this step, thats OK, we will run it for you during *CI*.
 ```sh
 yarn run docs:dev
 ```
+
+## Testing
+
+Ensure your local environment meets the minimum requirements before running tests:
+
+- **Python:** `>=3.11`
+- **Docker:** `>=25`
+
+### 1. Install Test Dependencies
+
+Install the required Python packages for testing:
+
+```sh
+pip install -r tests/requirements.txt
+```
+
+### 2. Run Tests
+
+When executing tests for the first time, the test suite will build a Docker testing
+image *(`ghcr.io/kloudkit/workspace:tests`)* automatically.
+
+```sh
+pytest
+```
+
+### 3. Optional Execution Flags
+
+- **Custom Docker Tag:** Use the `--ws-tag` flag to specify a custom Docker image tag.
+
+  ```sh
+  pytest --ws-tag=my-custom-tag
+  ```
+
+- **Force Image Rebuild:** Add the `--ws-rebuild` flag to rebuild the Docker image.
+
+  ```sh
+  pytest --ws-rebuild
+  ```
