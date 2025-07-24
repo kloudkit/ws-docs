@@ -46,6 +46,7 @@ export default [
       { text: 'go', link: '/tools/go' },
       { text: 'helm', link: '/tools/helm' },
       { text: 'kind', link: '/tools/kind' },
+      { text: 'python', link: '/tools/python' },
       { text: 'rust', link: '/tools/rust' },
       { text: 'ssh', link: '/tools/ssh' },
       { text: 'ws-cli', link: '/tools/ws-cli' },
