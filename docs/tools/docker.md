@@ -13,7 +13,7 @@ see:
 
 The workspace comes pre-packaged with all the requirements to run Docker.
 
-Running Docker within an existing container *(workspace)* is not natively supported by
+Running Docker inside an existing Kloud Workspace container is not natively supported by
 Docker.
 However, there are alternative methods to achieve this, each with its trade-offs.
 

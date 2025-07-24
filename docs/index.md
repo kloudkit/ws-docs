@@ -4,7 +4,9 @@ layout: home
 hero:
   name: Kloud Workspace
   text: Your kit to the cloud
-  tagline: 🔋 A batteries included pre-configured development workspace inside a Docker container
+  tagline: >-
+    🔋 A batteries included pre-configured development
+    workspace inside a Docker container
 
   image:
     src: /logo.png

@@ -11,13 +11,13 @@ These settings manifest at two levels:
 
 ::: warning
 The term [*workspace settings*](#workspace-settings) mentioned earlier specifically
-pertains to VSCode's settings and should not be confused with *Kloud's Workspace*.
+pertains to VSCode's settings and should not be confused with Kloud Workspace.
 
 To avoid any potential confusion, this document will consistently use the term
-*Kloud's Workspace* when referring to the workspace image.
+Kloud Workspace when referring to the workspace image.
 :::
 
-*Kloud's Workspace* comes pre-configured with sane configuration that cover a wide-range
+**Kloud Workspace** comes pre-configured with sane configuration that cover a wide-range
 of use-cases at the [*user settings*](#user-settings) level.
 If you wish to modify the pre-configured settings or use your own, follow the
 process of overriding the [*workspace settings*](#workspace-settings).
@@ -37,7 +37,7 @@ It is important to note, that changes made to these settings will be reset the n
 time the workspace container is launched.
 By mounting a volume to the settings directory, you ***opt-out*** of receiving
 future updates and configurations related to the editor that come with
-*Kloud's Workspace*.
+Kloud Workspace.
 :::
 
 ### Workspace Settings
@@ -53,9 +53,9 @@ The animation below displays the various tabs and the creation of the `.vscode` 
 ## Important Notes
 
 - Exercise caution when modifying the `settings.json` file, as incorrect changes may
-    impact the functionality of *Kloud's Workspace*.
+    impact the functionality of Kloud Workspace.
 - Some settings may require a window refresh before taking effect.
 - Certain settings may come bundled with additional tool-based configurations that
-    effect how the tool interacts with *Kloud's Workspace*.
+    effect how the tool interacts with Kloud Workspace.
 - If you feel there should be additional pre-configured settings, feel free to open
     a [pull request](/contribute/).

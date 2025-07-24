@@ -16,7 +16,7 @@ Despite the convenience and efficiency the cloud offers, developers have largely
 the familiar comfort of the *desktop experience*, hesitating to move their development
 tools into the cloud.
 
-Recognizing this gap, *Kloud Workspace* was tailored to facilitate this transition.
+Recognizing this gap, Kloud Workspace was tailored to facilitate this transition.
 By packaging the widely-used *VSCode* IDE as a Docker container *(powered by Coder)*,
 and integrating the latest development environments along with essential tools and
 extensions, we offer a seamless bridge to the cloud.

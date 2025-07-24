@@ -19,21 +19,21 @@ Please note that some Visual Studio Code extensions have licenses that restrict 
 to the official Visual Studio Code builds and therefore do not work with our workspace.
 :::
 
-## Installing User Defined Extensions
+## Installing User-Defined Extensions
 
 Recognizing your individual preferences for VSCode extensions, we provide two methods for
 ensuring your workspace retains custom installed extensions across restarts.
 
 ::: tip
-Kloud's workspace is always evolving.
-In order to gain the most from all the new features and upgrades, we suggest using the
+Kloud Workspace is always evolving.
+To gain the most from all the new features and upgrades, we suggest using the
 [`"Install at Boot"`](#install-at-boot) method.
 :::
 
 ### Install at Boot
 
-Upon workspace startup, we evaluate the value of multiple environment variables in order
-to automate the installation of additional *user-defined* VSCode extensions.
+Upon startup, Kloud Workspace evaluates several environment variables to automate the
+installation of additional *user-defined* VSCode extensions.
 Both options below can be used in unison:
 
 - **`WS_EXTRA_VS_EXTENSIONS`:** One or more space delimited extension names.
@@ -58,13 +58,13 @@ docker run \
 
 ### Persistent Extensions
 
-You can take full control of the workspace extensions by a persistent volume to the
+You can take full control of the workspace extensions by using a persistent volume to the
 `/extensions` directory.
-When using a *named volume* the initial content of `/extensions` from the deployed image
+When using a *named volume*, the initial content of `/extensions` from the deployed image
 is copied over to the volume.
 
 ::: warning NOTICE
-It is important to note, that by mounting a volume to the extensions directory, you
+It is important to note that by mounting a volume for the extensions directory, you
 ***opt-out*** of receiving future updates, installs, and changes to the prepackaged
 extensions that come with the workspace.
 :::
@@ -92,8 +92,8 @@ docker run \
 ```
 
 ::: warning
-We strongly discourage you from setting this to the official VSCode Marketplace, since it
-infringes on the [terms of use](https://aka.ms/vsmarketplace-ToU).
+We strongly discourage you from setting this for the official VSCode Marketplace, since
+it infringes on the [terms of use](https://aka.ms/vsmarketplace-ToU).
 :::
 
 ## Prepackaged Extensions

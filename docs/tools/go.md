@@ -8,7 +8,7 @@ root *(e.g., /workspace)*.
 However, this isn't always the case, especially when dealing with complex project
 structures.
 
-## Creating a Workspace Configuration
+## Creating Workspace Configuration
 
 To handle such scenarios, you can create a `go.work` file at `/workspace/go.work` with
 the following content:

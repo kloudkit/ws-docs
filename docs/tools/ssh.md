@@ -11,8 +11,8 @@ see:
 ## Client
 
 Using SSH to connect to remote servers and services is a common task for developers.
-The workspace comes equipped with user-friendly and standard configurations for utilizing
-SSH to connect with remote servers.
+Kloud Workspace includes user-friendly, standardized SSH configurations to connect with
+remote servers.
 These configurations are all located within `/etc/ssh/ssh_config`.
 
 ### User Overrides
@@ -35,7 +35,7 @@ appropriate key-pair based on its location within the `~/.ssh` directory.
 The strategy employs the following order for key-pair selection, with the process halting
 at the first successful match:
 
-- **User defined:** keys explicitly specified by the user in `~/.ssh/config`
+- **User-defined:** keys explicitly specified by the user in `~/.ssh/config`
     [see below](#user-overrides).
 - **Global:** keys located directly within the `/etc/ssh/ssh_config` directory:
   - `~/.ssh/id_ecdsa`
@@ -56,12 +56,12 @@ at the first successful match:
 This structure ensures a more organized and secure approach to managing SSH keys,
 simplifying what can otherwise have been considered a complex process.
 
-#### Example File structure
+#### Example File Structure
 
 ```text
 ├── /etc/ssh/ssh_config   // Workspace defined configurations
 └── ~/.ssh
-    ├── config            // User defined overrides
+    ├── config            // User-defined overrides
     ├── internal          // Internal IP range keys
     │   └── id_rsa
     ├── github.com        // Keys for github.com only

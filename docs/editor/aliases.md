@@ -25,16 +25,17 @@ Using the example above, to use the original `ls` command, use `\ls`.
 
 ## Pre-Configured Aliases
 
-The *workspace's* shell environments comes packed with automatically configured aliases.
+Kloud Workspace's shell environments come packed with automatically configured aliases.
 These aliases are typically loaded from:
 
-- **Oh My Zsh Plugins**: depending on the active *oh-my-zsh* plugins that defined using
+- **Oh My Zsh Plugins:** depending on the active *oh-my-zsh* plugins that defined using
     `WS_ZSH_PLUGINS` *(see [terminal documentation](/editor/terminal) for more details)*.
-- **Workspace Configuration**: the workspace defines scripts in `/usr/lib/ohmyzsh/custom`.
+- **Kloud Workspace Configuration:** Scripts are defined within Kloud Workspace at
+    `/usr/lib/ohmyzsh/custom`.
 
-## User Defined Aliases
+## User-Defined Aliases
 
-You can define your own aliases by editing the session configuration files.
+You can define your aliases by editing the session configuration files.
 See the [autoload documentation](/settings/autoload-scripts) for more details.
 
 These aliases will be available whenever you start a new session, making it easier to

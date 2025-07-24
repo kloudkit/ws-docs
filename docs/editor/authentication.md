@@ -4,7 +4,7 @@ Given that the majority of users will integrate the *workspace* with an external
 authentication provider *(or deploy on a local machine)*, the default deployment is
 configured to not require authentication.
 
-The following sections will help you setup our *opt-in* authentication mechanism.
+The following sections will help you set up our *opt-in* authentication mechanism.
 
 ::: warning
 Remember to click `Sign out` at the bottom of the `File` menu when you are done working,
@@ -17,12 +17,12 @@ Passed authentication can be easily configured by setting an environment variabl
 deploying the *workspace*.
 Setting your password is as simple as defining an `env` variable:
 
-- **`WS_PASSWORD:`** plaintext password.
-- **`WS_PASSWORD_HASHED:`** hashed passwords *(will take precedence over plaintext)*.
+- **`WS_PASSWORD`:** plaintext password.
+- **`WS_PASSWORD_HASHED`:** hashed passwords *(will take precedence over plaintext)*.
 
 ::: info NOTE
-All sensitive `env` variables are purged prior to deploying the workspace, ensuring that
-your password is absent from future shell sessions.
+All sensitive environment variables are purged before deploying Kloud Workspace, ensuring
+that your password is absent from future shell sessions.
 :::
 
 ```sh{2}
@@ -51,5 +51,5 @@ docker run \
 
 ### Rate Limiting
 
-The workspace has a built-in throttling mechanism to rate limit password authentication
+The workspace has a built-in throttling mechanism to rate-limit password authentication
 attempts to two per minute and an additional twelve per hour.

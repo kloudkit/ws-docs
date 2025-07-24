@@ -9,20 +9,22 @@
 KloudKIT places security at the forefront of its operations, demonstrating a strong commitment to
 upholding the highest standards of protection.
 
-We rigorously implement and follow industry best practices, ensuring that the *workspace* is built
-with a safety-first approach, prioritizing the security of your data and operations.
+We rigorously implement and follow industry best practices, ensuring that the Kloud
+Workspace is built with a safety-first approach, prioritizing the security of your data
+and operations.
 
 ## Supported Versions
 
-The `latest` version of *Kloud Workspace* is supported and should be used.
+The `latest` version of Kloud Workspace is supported and should be used.
 
-You are encouraged to update the version of *Kloud Workspace* frequently.
-This way you, will benefit from the latest features, bug fixes, and **security fixes**.
+You are encouraged to update the version of Kloud Workspace frequently.
+This way, you will benefit from the latest features, bug fixes, and **security fixes**.
 
 ## Reporting a Vulnerability
 
-If you think you found a vulnerability, even if you are not sure about it, please report it right
-away using [a security advisory](https://github.com/kloudkit/workspace/security/advisories/new) or
+If you think you have found a vulnerability, even if you are not sure about it, please
+report it right away using
+[a security advisory](https://github.com/kloudkit/workspace/security/advisories/new) or
 via email <info@kloud.email>.
 
 It's better to discuss vulnerabilities privately and try to find a solution first.

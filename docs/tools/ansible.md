@@ -17,9 +17,8 @@ see:
 
 ## Overview
 
-The Kloud *workspace* comes pre-configured with `ansible-core`, `ansible-lint`, VSCode
-extensions for Ansible, and popular community collections, all ready to use right out of
-the box.
+Kloud Workspace is pre-configured with `ansible-core`, `ansible-lint`, VSCode extensions
+for Ansible, and popular community collections, all ready to use right out of the box.
 
 ::: danger
 The workspace includes the latest versions of Ansible preinstalled, which no longer
@@ -29,17 +28,17 @@ To proceed, you must upgrade the target to *Python 3.7* or later.
 
 ## Setting User Configurations
 
-The *workspace* includes default settings in the `/etc/ansible/ansible.cfg` file.
+Kloud Workspace includes default settings in the `/etc/ansible/ansible.cfg` file.
 You can override these configurations by creating your own `ansible.cfg` in your
 playbook's directory or by using environment variables.
 
 We recommend using environment variables, as their values are merged with those in the
 `/etc/ansible/ansible.cfg` *(instead of fully replacing them)*.
 
-## Triggering Playbooks for the Workspace
+## Triggering Playbooks for Kloud Workspace
 
-The *workspace* includes a default inventory file *(`/etc/ansible/hosts`)* with a group
-named `workspace` that runs on `localhost` with root privileges.
+Kloud Workspace includes a default Ansible inventory file *(`/etc/ansible/hosts`)* with a
+group named `workspace` that runs on `localhost` with root privileges.
 This can be used to trigger playbooks in the current workspace environment.
 
 ```yaml

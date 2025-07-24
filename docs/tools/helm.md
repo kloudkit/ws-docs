@@ -11,14 +11,14 @@ see:
 
 ![HELM logo](/icons/helm.svg){.doc-image width=200px}
 
-The Kloud *workspace* comes pre-installed with `helm`, auto-completion, the `helm diff`
-plugin, and VSCode extensions for Kubernetes *(which integrates with HELM)*, all ready to
-use right out of the box.
+Kloud Workspace comes pre-installed with `helm`, auto-completion, the `helm diff` plugin,
+and VSCode extensions for Kubernetes *(which integrates with HELM)*, all ready to use
+right out of the box.
 
 ## Persisting Configurations
 
-The Kloud *workspace* runs in a Docker container, so any custom HELM configurations—such
-as added repositories and credentials—will not automatically persist after the container
+Kloud Workspace runs in a Docker container, so any custom HELM configurations—such as
+added repositories and credentials—will not automatically persist after the container
 stops.
 
 To retain these configurations across workspace restarts or updates:

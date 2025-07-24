@@ -82,8 +82,8 @@ pre-commit install
 ```
 
 ::: tip
-This step is automatically run on all *PR*s and *commits*.
-If you choose to skip this step, thats OK, we will run it for you during *CI*.
+This step is automatically run on all pull requests and commits.
+If you choose to skip this step, that's OK, we will run it for you during *CI*.
 :::
 
 ### 4. Run a local development *(docs)* server

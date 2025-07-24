@@ -1,13 +1,13 @@
 # Port Forwarding
 
-When developing within a *workspace* *(container)*, ports exposed by the running instance
-are not accessible externally by default, due to Docker's network isolation settings,
-which are implemented for security reasons.
+When developing within a Kloud Workspace *(container)*, ports exposed by the running
+instance are not accessible externally by default, due to Docker's network isolation
+settings, which are implemented for security reasons.
 
 To enable external connections, specific network configurations or port forwarding must
 be set up.
 
-Ports published within the *workspace* are automatically detected and accessible through
+Ports published within Kloud Workspace are automatically detected and accessible through
 an internal proxy.
 A notification will appear in the bottom-right corner of the workspace, providing quick
 access to the published service.
@@ -15,16 +15,16 @@ access to the published service.
 ![Published ports popup](/port-forwarding.png)
 
 The following sections outline the available methods for enabling access to services
-running inside the *workspace* instance.
+running inside the Kloud Workspace instance.
 
 ## Access Methods
 
 ### Subpath Access *(enabled by default)*
 
-All published ports in the *workspace* are accessible through a subpath format as
+All published ports in Kloud Workspace are accessible through a subpath format as
 `/proxy/<port>/`.
 
-For example, if your *workspace* is deployed at `127.0.0.1` and you run the `pyserver`
+For example, if your Kloud Workspace is deployed at `127.0.0.1` and you run the `pyserver`
 command in the terminal *(which deploys a file index server on port `8000`)*, you can
 access the server at `127.0.0.1/proxy/8000`.
 
@@ -54,7 +54,7 @@ docker run \
   ghcr.io/kloudkit/workspace:latest
 ```
 
-In the configuration above, if your *workspace* is hosted at `ws.dev` and you run the
+In the configuration above, if your Kloud Workspace is hosted at `ws.dev` and you run the
 `pyserver` command *(which launches a file index server on port `8000`)*, you can access
 the server at `8000.ws.dev`.
 
@@ -68,7 +68,7 @@ This method is useful for testing or development environments.
 ::: warning
 This configuration only affects your local machine and does not impact external DNS
 servers.
-⚠ Avoid using this method in production environments.
+⚠️ Avoid using this method in production environments.
 :::
 
 To map a domain name to your local machine *(IP: 127.0.0.1)*:
@@ -85,11 +85,11 @@ To map a domain name to your local machine *(IP: 127.0.0.1)*:
    The output should show the IP `127.0.0.1`.
 
 ::: tip
-Avoid using TLDs like `.dev` or `.new` as they require a *SSL* certificate.
+Avoid using TLDs like `.dev` or `.new` as they require an *SSL* certificate.
 :::
 
 A few important notes when using this workaround:
 
 - `/etc/hosts` does not support wildcard records *(i.e., `*.ws.test`)*.
   You must manually repeat the process for each port you intend to expose.
-- This method will only work if your *workspace* is published on port `80`.
+- This method will only work if Kloud Workspace is published on port `80`.

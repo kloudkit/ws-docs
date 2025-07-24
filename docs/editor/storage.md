@@ -28,8 +28,7 @@ whenever possible.
 
 ### Mounting a Named Volume
 
-To persist data using the *workspace* directory in a container, mount a volume to
-`/workspace`:
+To persist data in Kloud Workspace, mount a volume to the `/workspace` directory:
 
 ```sh{2}
 docker run \

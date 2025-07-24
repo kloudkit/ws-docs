@@ -13,17 +13,17 @@ Pre-installing and configuring every possible package would compromise a flexibl
 Instead, we developed an *opt-in* method to seamlessly install and configure features at
 your discretion.
 
-Behind the scenes, we are simply running an *Ansible playbook* in order to install the
-desired feature.
+Behind the scenes, we are simply running an *Ansible playbook* to install the desired
+feature.
 
 ## Installing Features
 
-We provide two methods for installing additional features in the *workspace*.
+We provide two methods for installing additional features in the Kloud Workspace.
 You can choose the method that best fits your needs.
 
 ### Install at Boot
 
-During startup, the workspace evaluates the `WS_EXTRA_FEATURES` environment variable to
+Kloud Workspace evaluates the `WS_EXTRA_FEATURES` environment variable at startup to
 determine which *features* to install automatically.
 
 ```sh{2}
@@ -48,7 +48,7 @@ As mentioned above, all features are backed by Ansible playbooks.
 All playbooks are stored in the `/features` root directory.
 
 The directory location can be overridden with the `--root` flag when installing.
-In the example below we use `/alternate`, but any directory you have access to will work.
+In the example below, we use `/alternate`, but any directory you have access to will work.
 The command will look for a *playbook* at `/alternate/php.yaml`:
 
 ```sh

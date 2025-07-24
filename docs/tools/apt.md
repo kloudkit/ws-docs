@@ -8,7 +8,7 @@ see:
 
 ![Debian logo](/icons/debian.svg){.doc-image width=200px}
 
-The Kloud *workspace* comes pre-configured with a custom APT setup to provide robust and
+Kloud Workspace comes pre-configured with a custom APT setup to provide robust and
 efficient package management.
 
 These configurations are designed to enhance flexibility, reduce unnecessary
@@ -16,7 +16,7 @@ installations, and prevent the overwriting of user-defined files.
 
 ## Repository Sources
 
-By default, the *workspace* is set up with a range of additional repository sources
+By default, Kloud Workspace is set up with a range of additional repository sources
 alongside the standard ones.
 All extra sources are signed with `gpg` keys to ensure secure and verified package
 installations.
