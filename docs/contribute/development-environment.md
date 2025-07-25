@@ -4,7 +4,7 @@ We're really excited that you are interested in contributing to **Kloud Workspac
 Before submitting your contribution, please make sure to take a moment and read through
 the following guidelines:
 
-- [Code of Conduct →](https://github.com/kloudkit/workspace?tab=coc-ov-file#readme)
+- [Code of Conduct →](/contribute/code-of-conduct)
 - [Contribution Workflow *(Optional)* →](/contribute/contribution-workflow)
 
 ## Prerequisites
@@ -47,7 +47,7 @@ git clone https://github.com/kloudkit/workspace
 ```
 
 ```sh [Documentation]
-git clone https://github.com/kloudkit/workspace-docs
+git clone https://github.com/kloudkit/ws-docs
 ```
 
 ```sh [CLI]

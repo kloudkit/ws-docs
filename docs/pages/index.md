@@ -51,7 +51,7 @@ See our [dedicated section on the terminal](/editor/terminal).
 ## License
 
 ::: info 👏 THANKS
-Many thanks to [Coder's `code-server`](https://code-server.dev/) for providing the solid
+Many thanks to [Coder's `code-server`](https://code-server.dev) for providing the solid
 foundation that serves as the cornerstone and enables this project's extensions.
 :::
 

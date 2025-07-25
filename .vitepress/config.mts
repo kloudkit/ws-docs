@@ -23,12 +23,12 @@ export default defineConfig({
     search: { provider: 'local' },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/kloudkit/workspace' },
+      { icon: 'github', link: 'https://github.com/kloudkit/ws-meta' },
       { icon: { svg: dockerSVG }, link: 'https://ghcr.io/kloudkit/workspace' }
     ],
 
     editLink: {
-      pattern: 'https://github.com/kloudkit/workspace-docs/edit/main/docs/:path',
+      pattern: 'https://github.com/kloudkit/ws-docs/edit/main/docs/:path',
       text: 'Edit this page on GitHub'
     },
 

@@ -24,7 +24,7 @@ This way, you will benefit from the latest features, bug fixes, and **security f
 
 If you think you have found a vulnerability, even if you are not sure about it, please
 report it right away using
-[a security advisory](https://github.com/kloudkit/workspace/security/advisories/new) or
+[a security advisory](https://github.com/kloudkit/ws-meta/security/advisories/new) or
 via email <info@kloud.email>.
 
 It's better to discuss vulnerabilities privately and try to find a solution first.

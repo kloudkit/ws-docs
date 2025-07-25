@@ -14,9 +14,9 @@ Kloud Workspace is an open source project, and so by its very nature, welcomes c
 
 Either open a GitHub issue or submit a pull request. **All contributions are welcome.**
 
-- [Open an Issue →](https://github.com/kloudkit/workspace/issues/new/choose)
+- [Open an Issue →](https://github.com/kloudkit/ws-meta/issues/new/choose)
 - [Submit a PR →](https://github.com/kloudkit/workspace/compare)
-- [Security Advisory →](https://github.com/kloudkit/workspace/security/advisories/new)
+- [Security Advisory →](https://github.com/kloudkit/ws-meta/security/advisories/new)
 
 Ready to contribute?
 Make sure you have a look at our [contribution workflow](/contribute/contribution-workflow)
