@@ -37,8 +37,8 @@ export default [
   },
   {
     text: 'Tools &mdash; Overview',
-    link: '/tools',
     items: [
+      { text: 'Overview', link: '/tools/overview' },
       { text: 'ansible', link: '/tools/ansible' },
       { text: 'apt', link: '/tools/apt' },
       { text: 'docker', link: '/tools/docker' },

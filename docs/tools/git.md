@@ -2,7 +2,7 @@
 
 ![Git logo](/icons/git.svg){.doc-image}
 
-`git` is at the core of every developer's workflow, at tool that cannot be ignored.
+`git` is at the core of every developer's workflow, a tool that cannot be ignored.
 As such, a few features are provided out-of-the-box:
 
 - Sane defaults.
@@ -11,7 +11,7 @@ As such, a few features are provided out-of-the-box:
 - Auto-configured signature key for signed commits.
 - Automatic cloning of a remote repository on startup.
 
-## Configured Lookup
+## Configuration Lookup
 
 The configuration lookup sequence is as follows:
 
@@ -19,6 +19,25 @@ The configuration lookup sequence is as follows:
     and filters *(should not be overridden by the user)*.
 - **User level *(`~/.gitconfig`)*:** allowing users to define their personal preferences
     and override configurations found in the *workspace level* file.
+
+## Credential Cache
+
+By default, Git caches your credentials in memory for one hour *(3600 seconds)* using the
+built‑in credential helper:
+
+```ini
+[credential]
+  helper = cache --timeout=3600
+```
+
+When authenticating with a remote that requires basic authentication *(such as over HTTPS)*,
+Git will automatically reuse the cached credentials until the timeout expires.
+
+The cached username and password are reused until the timeout expires.
+
+Need a different duration?
+Set `WS_GIT_CREDENTIAL_CACHE_TIMEOUT` *(seconds)* before launching the container.
+Use `-1` to keep credentials for *one year*.
 
 ## Configuration Injection
 
@@ -29,6 +48,7 @@ automatically configure user-level settings.
 
 - **`GIT_COMMITTER_NAME`:** sets `[user.name]` in `~/.gitconfig` to the provided value.
 - **`GIT_COMMITTER_EMAIL`:** sets `[user.email]` in `~/.gitconfig` to the provided value.
+- **`WS_GIT_CREDENTIAL_CACHE_TIMEOUT`:** Overrides `[credential.helper]` timeout.
 
 ### Files
 

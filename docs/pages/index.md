@@ -38,7 +38,7 @@ For a full in-depth list, have a look at the various requirement definitions in
 
 ### Tools
 
-See our [dedicated section on CLI tools](/tools/).
+See our [dedicated section on CLI tools](/tools/overview).
 
 ### Extensions
 

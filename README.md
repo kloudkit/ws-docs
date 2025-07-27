@@ -8,6 +8,11 @@
 
 ---
 
+```sh
+# TL-DR; ⚡ Power your batteries now!
+docker run -p 8080:8080 ghcr.io/kloudkit/workspace:latest
+```
+
 ## Documentation
 
 The full guide *(including advanced usage and API reference)* is available at

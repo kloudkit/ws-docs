@@ -30,7 +30,7 @@
           seamless start of your coding tasks.
         </p>
 
-        <a href="/tools/">More →</a>
+        <a href="/tools/overview">More →</a>
 
         <h3>Languages</h3>
 
