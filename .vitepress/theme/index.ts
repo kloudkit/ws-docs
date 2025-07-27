@@ -1,8 +1,9 @@
 import { h }          from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme   from 'vitepress/theme-without-fonts'
-import Home           from './Home.vue'
-import SeeAlso        from './SeeAlso.vue'
+import Home           from './components/Home.vue'
+import RepoStars      from './components/RepoStars.vue'
+import SeeAlso        from './components/SeeAlso.vue'
 import './styles.css'
 import './variables.css'
 import '@catppuccin/vitepress/theme/frappe/teal.css'
@@ -22,7 +23,8 @@ export default {
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
       'aside-outline-after': () => h(SeeAlso),
-      'home-features-after': () => h(Home)
+      'home-features-after': () => h(Home),
+      'nav-bar-content-after': () => h(RepoStars)
     })
   },
   enhanceApp({ app, router, siteData }) {}

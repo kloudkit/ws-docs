@@ -133,11 +133,11 @@ jobs:
           merge-multiple: true
 
       - name: ⛅ Deploy to Cloudflare
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          directory: build
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          projectName: workspace-documentation
-          wranglerVersion: "3"
+          command: >-
+            pages deploy build
+            --project-name=workspace-documentation
