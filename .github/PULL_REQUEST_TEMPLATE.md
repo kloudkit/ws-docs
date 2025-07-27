@@ -1,31 +1,37 @@
 <!--
-  For Work In Progress Pull Requests, please use the Draft PR feature,
-  see https://github.blog/2019-02-14-introducing-draft-pull-requests/ for further details.
+  For Work In Progress Pull Requests, please use the Draft PR feature:
+  https://github.blog/2019-02-14-introducing-draft-pull-requests/
 
-  For a timely review/response, please avoid force-pushing additional
-  commits if your PR already received reviews or comments.
+  ❗ Tip: For a smoother review process, avoid force-pushing commits after reviews have started.
 
-  Before submitting a Pull Request, please ensure you've done the following:
-  - 👷‍♀️ Create small PRs. In most cases, this will be possible.
-  - ✅ Verify linting passes for your changes.
-  - 📝 Use descriptive commit messages.
+  ✅ Pre-Submission Checklist:
+  - Create small, focused PRs where possible.
+  - Ensure linting passes.
+  - Write clear and descriptive commit messages.
+  - Include related issue numbers where applicable.
 -->
 
 # Description
 
 <!--
-  Add a short description of the changes made during this PR.
+  Provide a concise overview of the changes introduced by this PR.
   Example:
-  This PR [adds/removes/fixes/replaces] the [feature/bug/etc].
+  This PR [adds/removes/fixes/updates] [feature/section] to improve [reason].
 
-  Closes: kloudkit/workspace#1
-  Related: kloudkit/workspace#4
+  Closes: kloudkit/ws-meta#[issue-number]
+  Related: kloudkit/ws-meta#[issue-number]
 -->
 
-## What type of PR is this? *(check all applicable)*
+## What type of PR is this? *(check all that apply)*
 
 - [ ] 🐛 Bug Fix
 - [ ] 📝 Documentation Update
-- [ ] 🎨 Style
-- [ ] 🏗 Build
-- [ ] ⏩ Revert
+- [ ] 🎨 Style *(formatting, missing semi-colons, etc.)*
+- [ ] 🏗 Build or Dependency
+- [ ] 🔄 Revert
+
+## Additional Context *(if any)*
+
+<!--
+  Add any screenshots, technical context, or details that would help reviewers understand the change.
+-->

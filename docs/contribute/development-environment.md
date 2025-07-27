@@ -116,6 +116,13 @@ image *(`ghcr.io/kloudkit/workspace:tests`)* automatically.
 pytest
 ```
 
+::: warning
+If you've updated the implementation code but haven't rebuilt the test image, the tests
+may run against an outdated image.
+
+Make sure to rebuild the image before running tests.
+:::
+
 ### 3. Optional Execution Flags
 
 - **Custom Docker Tag:** Use the `--ws-tag` flag to specify a custom Docker image tag.
