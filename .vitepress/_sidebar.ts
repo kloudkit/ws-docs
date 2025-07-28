@@ -36,7 +36,7 @@ export default [
     ]
   },
   {
-    text: 'Tools &mdash; Overview',
+    text: 'Tools',
     items: [
       { text: 'Overview', link: '/tools/overview' },
       { text: 'ansible', link: '/tools/ansible' },

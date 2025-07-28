@@ -25,11 +25,11 @@ However, `WS_ROOT` is only used by the workspace, therefore it contains the pref
 
 | ENV                               | Description                                                     | Read More       |
 | --------------------------------- | --------------------------------------------------------------- | --------------- |
-| `WS_APT_DISABLE_DEBIAN_REPO`      | Disables the default Debian repository                          | [→][apt]        |
-| `WS_APT_DISABLE_EXTRAS_REPO`      | Disables the additional extra *(3rd-party)* repository          | [→][apt]        |
-| `WS_APT_EXTRA_DEBIAN_REPOS`       | Extra repository source definitions                             | [→][apt]        |
-| `WS_APT_EXTRA_PACKAGES`           | Extra APT packages to install at startup *(delimited by space)* | [→][apt]        |
-| `WS_APT_UPDATE_REPOS`             | Update APT repository cache                                     | [→][apt]        |
+| `WS_APT_DISABLE_ADDITIONAL_REPO`  | Disables the additional third-party repository                  | [→][apt]        |
+| `WS_APT_ADDITIONAL_DEBIAN_REPOS`  | Additional repository source *(semicolon-delimited)*            | [→][apt]        |
+| `WS_APT_ADDITIONAL_GPG_KEYS`      | Additional GPG keys *(space-delimited name:url )*               | [→][apt]        |
+| `WS_APT_ADDITIONAL_PACKAGES`      | Additional APT packages to install *(space-delimited)*          | [→][apt]        |
+| `WS_APT_UPDATE_REPOS`             | Force an APT cache update before installing packages            | [→][apt]        |
 | `WS_CLONE_WORKSPACE_REPO`         | Clone a repository to the workspace directory on startup        | [→][git]        |
 | `WS_COMMENTS_DISABLE_FONT`        | Disable the custom comments font                                | [→][fonts]      |
 | `WS_DISABLE_SUDO`                 | Disable `sudo` privileges                                       |                 |
@@ -40,7 +40,7 @@ However, `WS_ROOT` is only used by the workspace, therefore it contains the pref
 | `WS_EXTRA_FEATURES`               | Extra features to install at startup *(delimited by space)*     | [→][features]   |
 | `WS_EXTRA_VS_EXTENSIONS`          | Extra extensions to install at startup *(delimited by space)*   | [→][extensions] |
 | `WS_EXTRA_VS_EXTENSIONS_DIR`      | Directory of extensions to install at startup *(`*.vsix`)*      | [→][extensions] |
-| `WS_GIT_CREDENTIAL_CACHE_TIMEOUT` | Git credential cache timeout in seconds *(default: 1 hour)*     | [→][git]        |
+| `WS_GIT_CREDENTIAL_CACHE_TIMEOUT` | Git credential cache timeout *(seconds, default: 3600)*         | [→][git]        |
 | `WS_PASSWORD`                     | Password for login authentication                               | [→][auth]       |
 | `WS_PASSWORD_HASHED`              | Hashed *(`argon2`)* password for login authentication           | [→][auth]       |
 | `WS_PORT`                         | Specify the server port *(default: `8080`)*                     |                 |

@@ -8,7 +8,7 @@ see:
 
 ![Debian logo](/icons/debian.svg){.doc-image width=200px}
 
-Kloud Workspace comes pre-configured with a custom APT setup to provide robust and
+**Kloud Workspace** comes pre-configured with a custom APT setup to provide robust and
 efficient package management.
 
 These configurations are designed to enhance flexibility, reduce unnecessary
@@ -23,28 +23,27 @@ installations.
 
 ### Disabling Sources
 
-If you need to disable any of the repository sources, you can do so by setting the
-following environment variables:
+If you need to disable any of the repository sources, set the following environment
+variables:
 
 - **`WS_APT_DISABLE_DEBIAN_REPO`:** Disables the default Debian repository.
-- **`WS_APT_DISABLE_EXTRAS_REPO`:** Disables the additional extra *(3rd-party)* repository.
+- **`WS_APT_DISABLE_ADDITIONAL_REPO`:** Disables the additional third-party repository.
 
 ### Custom Sources
 
-Users can add custom repository sources by setting the `WS_APT_EXTRA_DEBIAN_REPOS`
-environment variable.
-The variable can contain one or more repositories, separated by semicolons *(`;`)*.
+Add custom repository sources with `WS_APT_ADDITIONAL_DEBIAN_REPOS`.
+Supply one or more entries separated by semicolons *(`;`)*.
 
 ```sh{2}
 docker run \
-  -e WS_APT_EXTRA_DEBIAN_REPOS="deb [signed-by=/custom.gpg] https://custom.package bookworm main" \
+  -e WS_APT_ADDITIONAL_DEBIAN_REPOS="deb [signed-by=/custom.gpg] https://custom.package bookworm main" \
   ghcr.io/kloudkit/workspace:latest
 ```
 
 ### Update Repository Cache
 
 You can optionally trigger a package cache update by setting the `WS_APT_UPDATE_REPOS`
-environment variable to a *truthy* value *(either `1` or `true`)*.
+environment variable to a *truthy* value *(`1` or `true`)*.
 
 Update will occur after adding custom sources to ensures that any newly added
 repositories are immediately available for package installations.
@@ -63,17 +62,17 @@ Notable configurations include:
   This ensures that user-defined settings and files are retained without interruption
   during updates or installs.
 
-## Extra Packages
+## Additional Packages
 
-Upon *workspace* startup, we evaluate the value of `WS_APT_EXTRA_PACKAGES` environment
-variable to automate the installation of additional *user-defined* packages.
+Upon *workspace* startup, we evaluate the value of `WS_APT_ADDITIONAL_PACKAGES`
+environment variable to automate the installation of additional *user-defined* packages.
 
-The `WS_APT_EXTRA_PACKAGES` variable can contain one or more space-delimited package
-names as demonstrated below:
+`WS_APT_ADDITIONAL_PACKAGES` can contain one or more space-delimited package names as
+demonstrated below:
 
 ```sh{2}
 docker run \
-  -e WS_APT_EXTRA_PACKAGES="cmake nano" \
+  -e WS_APT_ADDITIONAL_PACKAGES="cmake nano" \
   ghcr.io/kloudkit/workspace:latest
 ```
 
@@ -83,3 +82,17 @@ additional setup steps that enhance their usage and functionality.
 
 We recommend reviewing the available features before opting for manual package installation.
 :::
+
+## Additional GPG Keys
+
+Some third-party repositories require you to trust their signing key.
+Provide extra keys with **`WS_APT_ADDITIONAL_GPG_KEYS`** as one or more
+space-delimited `name:url` pairs.
+
+Each key is downloaded at startup and stored in `/etc/apt/keyrings/<name>.gpg`.
+
+```sh{2}
+docker run \
+  -e WS_APT_ADDITIONAL_GPG_KEYS="mycorp:https://mycorp.com/pubkey.asc extras:http://extras.test/key2.asc" \
+  ghcr.io/kloudkit/workspace:latest
+```
