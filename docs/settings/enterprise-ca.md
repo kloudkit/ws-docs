@@ -80,6 +80,7 @@ that require the abovementioned bundles and are set automatically *(system-wide)
 - `COMPOSER_CAFILE`
 - `CURL_CA_BUNDLE`
 - `NODE_EXTRA_CA_CERTS`
+- `NPM_CONFIG_CAFILE`
 - `PIP_CERT`
 - `REQUESTS_CA_BUNDLE`
 - `SSL_CERT_FILE`

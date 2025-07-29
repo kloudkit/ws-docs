@@ -111,7 +111,6 @@ and their respective license.
 | **[EditorConfig.EditorConfig][]**                   | MIT                       |
 | **[exiasr.hadolint][]**                             | MIT                       |
 | **[golang.go][]**                                   | MIT, Apache 2, BSD, Other |
-| **[hashicorp.hcl][]**                               | MPL 2                     |
 | **[humao.rest-client][]**                           | MIT                       |
 | **[ludwhe.vscode-uuid][]**                          | ISC                       |
 | **[mikestead.dotenv][]**                            | MIT                       |
@@ -136,7 +135,6 @@ and their respective license.
 [EditorConfig.EditorConfig]: https://marketplace.visualstudio.com/items/EditorConfig.EditorConfig/license
 [exiasr.hadolint]: https://marketplace.visualstudio.com/items/exiasr.hadolint/license
 [golang.go]: https://marketplace.visualstudio.com/items/golang.go/license
-[hashicorp.hcl]: https://marketplace.visualstudio.com/items/hashicorp.hcl/license
 [humao.rest-client]: https://marketplace.visualstudio.com/items/humao.rest-client/license
 [ludwhe.vscode-uuid]: https://marketplace.visualstudio.com/items/ludwhe.vscode-uuid/license
 [mikestead.dotenv]: https://marketplace.visualstudio.com/items/mikestead.dotenv/license
