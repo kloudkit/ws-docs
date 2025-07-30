@@ -6,6 +6,10 @@ const dependencies = load(
   fs.readFileSync(resolve('scripts/dependencies.yaml'), 'utf8')
 )
 
+const groups = new Map()
+const sections = []
+const links = []
+
 const short = version => {
   if (!version) {
     return ''
@@ -19,8 +23,6 @@ const short = version => {
   return `\`>=${match[1]}.${match[2]}\``
 }
 
-const groups = new Map()
-
 for (const [name, meta] of Object.entries(dependencies.dependencies)) {
   if (!meta.group) {
     continue
@@ -32,9 +34,6 @@ for (const [name, meta] of Object.entries(dependencies.dependencies)) {
 
   existing.push([name, meta])
 }
-
-const sections = []
-const links = []
 
 for (const group of [...groups.keys()].sort()) {
   sections.push(

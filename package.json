@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "create-dependencies-docs": "node scripts/create-dependencies-docs.mjs",
+    "docs:generate-dynamic": "node scripts/create-dependencies-docs.mjs && node scripts/create-env-reference-docs.mjs",
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"

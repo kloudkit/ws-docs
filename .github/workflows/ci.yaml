@@ -40,24 +40,30 @@ jobs:
       - name: 🔵 Setup NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: yarn
           cache-dependency-path: yarn.lock
 
       - name: ⏬ Install Dependencies
         run: yarn install --frozen-lockfile
 
-      - name: 🔗 Create dependencies docs
+      - name: 🔗 Create dynamic docs
         run: |
-          api_url="https://api.github.com/repos/kloudkit/workspace/contents/src/build/dependencies/dependencies.yaml?ref=main"
+          base="https://api.github.com/repos/kloudkit/workspace/contents"
 
           curl -sSL \
             -H "Authorization: Bearer ${{ secrets.KLOUDKIT_ORG_PAT }}" \
             -H "Accept: application/vnd.github.v3.raw" \
             -o "scripts/dependencies.yaml" \
-            "$api_url"
+            "${api_url}/src/build/dependencies/dependencies.yaml?ref=main"
 
-          npm run create-dependencies-docs
+          curl -sSL \
+            -H "Authorization: Bearer ${{ secrets.KLOUDKIT_ORG_PAT }}" \
+            -H "Accept: application/vnd.github.v3.raw" \
+            -o "scripts/env.reference.yaml" \
+            "${api_url}/src/env.reference.yaml?ref=main"
+
+          npm run docs:generate-dynamic
 
       - name: 👷‍♂️ Build
         run: yarn run docs:build
