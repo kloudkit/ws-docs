@@ -108,20 +108,23 @@ Feel free to suggest it or contribute directly.
 For more information, visit our [contribution guide](/contribute/).
 :::
 
-| Feature       | Description                               |
-| ------------- | ----------------------------------------- |
-| `cloudflared` | Cloudflare tunnel CLI                     |
-| `conan`       | Conan CLI and related tools               |
-| `cpp`         | C++ and related tools                     |
-| `dagger`      | dagger.io CLI and SDK                     |
-| `dotnet`      | .NET framework and related extensions     |
-| `gcloud`      | Google Cloud CLI for GCP                  |
-| `gh`          | GitHub CLI                                |
-| `jf`          | JFrog CLI                                 |
-| `jupyter`     | Jupyter packages and related extensions   |
-| `php`         | PHP and related extensions                |
-| `rclone`      | rclone CLI                                |
-| `restic`      | Restic CLI                                |
-| `rust`        | Rust and Cargo                            |
-| `talos`       | Talos CLI                                 |
-| `terraform`   | Terraform packages and related extensions |
+| Feature       | Description                               | Since     |
+| ------------- | ----------------------------------------- | --------- |
+| `cloudflared` | Cloudflare tunnel CLI                     |           |
+| `codex`       | codex CLI                                 | *v0.0.20* |
+| `conan`       | Conan CLI and related tools               |           |
+| `cpp`         | C++ and related tools                     |           |
+| `dagger`      | dagger.io CLI and SDK                     |           |
+| `dotnet`      | .NET framework and related extensions     |           |
+| `gcloud`      | Google Cloud CLI for GCP                  |           |
+| `gh`          | GitHub CLI                                |           |
+| `jf`          | JFrog CLI                                 |           |
+| `jupyter`     | Jupyter packages and related extensions   |           |
+| `php`         | PHP and related extensions                |           |
+| `rclone`      | rclone CLI                                |           |
+| `restic`      | Restic CLI                                |           |
+| `rust`        | Rust and Cargo                            |           |
+| `snyk`        | Snyk CLI and related extension            | *v0.0.20* |
+| `sops`        | SOPS CLI                                  | *v0.0.20* |
+| `talos`       | Talos CLI                                 |           |
+| `terraform`   | Terraform packages and related extensions |           |
