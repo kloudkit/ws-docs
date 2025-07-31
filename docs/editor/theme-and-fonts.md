@@ -54,12 +54,12 @@ The *Victor Mono* font is not available as a *TrueType* font.
 #### Opt-out
 
 Some users may not favor this stylistic choice.
-To disable the custom comments font, set the `WS_COMMENTS_DISABLE_FONT` environment
-variable to a *truthy* value *(either `1` or `true`)*:
+To disable the custom comments font, set the `WS_EDITOR_COMMENTS_DISABLE_FONT`
+environment variable to a *truthy* value *(either `1` or `true`)*:
 
 ```sh{2}
 docker run \
-  -e WS_COMMENTS_DISABLE_FONT=1 \
+  -e WS_EDITOR_COMMENTS_DISABLE_FONT=1 \
   ghcr.io/kloudkit/workspace:latest
 ```
 

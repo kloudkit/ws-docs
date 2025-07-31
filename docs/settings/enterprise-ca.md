@@ -39,13 +39,13 @@ docker run \
 ### Install Certificate from HTTP Endpoint
 
 Alternatively, you can add your company's root CA via an *HTTP* endpoint.
-Use the `WS_EXTRA_CA_CERT_ENDPOINTS` environment variable to define one or more
+Use the `WS_CA_ADDITIONAL_CERT_ENDPOINTS` environment variable to define one or more
 *(space delimited)* endpoints pointing to the desired certificate.
 
 :::warning
 If your certificate is hosted on an insecure server you can use the
-`WS_EXTRA_CA_CERT_INSECURE` *(set to any value)* environment variable to ignore security
-checks.
+`WS_CA_ADDITIONAL_CERT_ALLOW_INSECURE` *(set to any value)* environment variable to ignore
+security checks.
 
 This may be deemed risky due to the certificate being acquired through an unsecured
 process that lacks `SSL/TLS` encryption.
@@ -57,13 +57,13 @@ Please make sure that you accept the risk.
 
 ```sh{2} [Single]
 docker run \
-  -e WS_EXTRA_CA_CERT_ENDPOINTS="http://my-company.com/shared-ca.pem" \
+  -e WS_CA_ADDITIONAL_CERT_ENDPOINTS="http://comp.me/shared-ca.pem" \
   ghcr.io/kloudkit/workspace
 ```
 
 ```sh{2} [Multiple]
 docker run \
-  -e WS_EXTRA_CA_CERT_ENDPOINTS="http://my-company.com/shared-1.pem http://other.com/ca.pem" \
+  -e WS_CA_ADDITIONAL_CERT_ENDPOINTS="http://comp.me/share-1.pem http://other.me/ca.pem" \
   ghcr.io/kloudkit/workspace
 ```
 

@@ -6,7 +6,7 @@ see:
     link: /tools/apt
 ---
 
-# Extra Features
+# Additional Features
 
 Pre-installing and configuring every possible package would compromise a flexible
 *workspace* footprint.
@@ -23,12 +23,12 @@ You can choose the method that best fits your needs.
 
 ### Install at Boot
 
-Kloud Workspace evaluates the `WS_EXTRA_FEATURES` environment variable at startup to
-determine which *features* to install automatically.
+Kloud Workspace evaluates the `WS_FEATURES_ADDITIONAL_FEATURES` environment variable at
+startup to determine which *features* to install automatically.
 
 ```sh{2}
 docker run \
-  -e WS_EXTRA_FEATURES="dotnet jupyter" \
+  -e WS_FEATURES_ADDITIONAL_FEATURES="dotnet jupyter" \
   ghcr.io/kloudkit/workspace:latest
 ```
 

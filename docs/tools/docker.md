@@ -65,7 +65,7 @@ Once `sysbox` is installed, run the workspace using the `sysbox-runc` runtime:
 ```sh{2,3}
 docker run \
   --runtime=sysbox-runc \
-  -e WS_CONFIGURE_DOCKER=1 \
+  -e WS_DOCKER_ENABLE_CLIENT=1 \
   ghcr.io/kloudkit/workspace:latest
 ```
 
@@ -78,7 +78,7 @@ However, this requires the container to run in **privileged** mode:
 ```sh{2,3}
 docker run \
   --privileged \
-  -e WS_CONFIGURE_DOCKER=1 \
+  -e WS_DOCKER_ENABLE_CLIENT=1 \
   ghcr.io/kloudkit/workspace:latest
 ```
 
@@ -89,7 +89,7 @@ docker run \
 ```sh{2,3}
 docker run \
   -v /var/run/docker.sock:/var/run/docker.sock:ro \
-  -e WS_CONFIGURE_DOCKER=1 \
+  -e WS_DOCKER_ENABLE_CLIENT=1 \
   ghcr.io/kloudkit/workspace:latest
 ```
 
@@ -174,12 +174,12 @@ permissions for interacting with the Docker socket.
 In certain instances *(specifically, `#1` and`#2`)*, the daemon may not be running upon
 startup.
 
-To speed up the process, during initialization, assign the `WS_CONFIGURE_DOCKER`
+To speed up the process, during initialization, assign the `WS_DOCKER_ENABLE_CLIENT`
 environment variable to effortlessly initiate the daemon *(if necessary)*:
 
 ```sh{2}
 docker run \
-  -e WS_CONFIGURE_DOCKER=1 \
+  -e WS_DOCKER_ENABLE_CLIENT=1 \
   ghcr.io/kloudkit/workspace:latest
 ```
 
@@ -198,7 +198,7 @@ container, ensuring the container has the appropriate permissions, as seen below
 docker run \
   --group-add=8888
   -v /var/run/docker.sock:/var/run/docker.sock:ro \
-  -e WS_CONFIGURE_DOCKER=1 \
+  -e WS_DOCKER_ENABLE_CLIENT=1 \
   ghcr.io/kloudkit/workspace:latest
 ```
 

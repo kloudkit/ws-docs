@@ -15,10 +15,10 @@ export default [
   {
     text: 'Editor',
     items: [
+      { text: 'Additional Features', link: '/editor/features'},
       { text: 'Authentication', link: '/editor/authentication'},
       { text: 'Aliases', link: '/editor/aliases'},
       { text: 'Extensions', link: '/editor/extensions'},
-      { text: 'Extra Features', link: '/editor/features'},
       { text: 'Port Forwarding', link: '/editor/port-forwarding'},
       { text: 'Settings', link: '/editor/settings'},
       { text: 'Storage', link: '/editor/storage'},
@@ -30,7 +30,7 @@ export default [
     text: 'Settings',
     items: [
       { text: 'Autoload Scripts', link: '/settings/autoload-scripts' },
-      { text: 'Environment Variables', link: '/settings/environment-variables' },
+      { text: 'Configuration', link: '/settings/configuration' },
       { text: 'Enterprise CA', link: '/settings/enterprise-ca' },
       { text: 'Secret Injection', link: '/settings/secrets' },
     ]

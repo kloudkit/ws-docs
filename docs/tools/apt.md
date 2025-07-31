@@ -18,7 +18,7 @@ installations, and prevent the overwriting of user-defined files.
 
 By default, Kloud Workspace is set up with a range of additional repository sources
 alongside the standard ones.
-All extra sources are signed with `gpg` keys to ensure secure and verified package
+All additional sources are signed with `gpg` keys to ensure secure and verified package
 installations.
 
 ### Disabling Sources
@@ -42,7 +42,7 @@ docker run \
 
 ### Update Repository Cache
 
-You can optionally trigger a package cache update by setting the `WS_APT_UPDATE_REPOS`
+You can optionally trigger a package cache update by setting the `WS_APT_UPDATE_CACHE`
 environment variable to a *truthy* value *(`1` or `true`)*.
 
 Update will occur after adding custom sources to ensures that any newly added
@@ -86,7 +86,7 @@ We recommend reviewing the available features before opting for manual package i
 ## Additional GPG Keys
 
 Some third-party repositories require you to trust their signing key.
-Provide extra keys with **`WS_APT_ADDITIONAL_GPG_KEYS`** as one or more
+Provide additional keys with **`WS_APT_ADDITIONAL_GPG_KEYS`** as one or more
 space-delimited `name:url` pairs.
 
 Each key is downloaded at startup and stored in `/etc/apt/keyrings/<name>.gpg`.

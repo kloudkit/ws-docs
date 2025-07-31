@@ -40,7 +40,7 @@ for (const group of [...groups.keys()].sort()) {
     `## ${group}`,
     '',
     '| Name | Version | License |',
-    '| ---- | ------- | ------- |',
+    '| --- | --- | --- |',
   )
 
   groups

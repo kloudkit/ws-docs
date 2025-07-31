@@ -78,8 +78,8 @@ pip install ipython
 Kloud Workspace already includes a custom IPython profile *(`/etc/ipython/ipython_config`)* whose
 prompt colors and syntax‑highlighting align with the Kloud Workspace's overall theme.
 
-Once IPython is installed it will pick up these settings automatically—no extra configuration
-required.
+Once IPython is installed it will pick up these settings automatically—no additional
+configuration required.
 
 [Pylance]: https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance
 [Jedi Language Server]: https://github.com/pappasam/jedi-language-server

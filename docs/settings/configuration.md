@@ -1,4 +1,4 @@
-# Environment Variables
+# Configuration
 
 ![Dotenv logo](/icons/dotenv.svg){.doc-image}
 
@@ -8,17 +8,20 @@ sensible defaults.
 Nearly every setting can be overridden with environment variables, giving you maximum
 flexibility.
 
-## `WS_<GROUP>` Prefix Convention
+All configuration is supplied **exclusively** through environment variables.
+No JSON, YAML, or CLI flags required. This makes the workspace fully *stateless* and
+cloud-friendly.
 
-::: tip
+Nearly every individual setting can still be overridden, giving you maximum flexibility.
+
+::: tip `WS_<GROUP>` Prefix Convention
+
 Variables that are consumed **solely** by Kloud Workspace start with `WS_<GROUP>_`
 followed by the name *(example: `WS_TERMINAL_ZSH_PLUGINS`)*.
 
-When a variable is also consumed by underlying tool, we keep its original name.
-Such variables can be reviewed in he [global variables](#global-variables) section.
+When a variable is also consumed by an underlying tool, we keep its original name.
+Such variables can be reviewed in the [global variables](#global-variables) section.
 :::
-
-## Variables
 
 <!--@include: ../partials/environment-variables.md -->
 

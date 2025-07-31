@@ -64,7 +64,7 @@ repository during startup.
 Common use cases include *CI*, short-lived instances used during integration testing, or
 environments in the cloud where persistent volumes are costly or impractical.
 
-To facilitate this, you can provide the environment variable `WS_CLONE_WORKSPACE_REPO`.
+To facilitate this, you can provide the environment variable `WS_GIT_CLONE_REPO`.
 If specified, the *workspace* will clone the repository into `WS_ROOT`
 *(default: `/workspace`)* if the directory is empty.
 

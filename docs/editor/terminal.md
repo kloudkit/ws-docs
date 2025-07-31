@@ -31,20 +31,20 @@ Some users find the descriptive prompt to be too noisy.
 To *opt-out* of some of the prompt modules, you can set any of the following environment
 `env` variables to a *truthy* value *(either `1` or `true`)*:
 
-- **`WS_PROMPT_DISABLE_DOCKER`:** Disable the `docker` module of the terminal prompt.
-- **`WS_PROMPT_DISABLE_HOSTNAME`:** Disable the `hostname` module of the terminal prompt.
-- **`WS_PROMPT_DISABLE_KUBERNETES`:** Disable the `kubernetes` module of the terminal prompt.
-- **`WS_PROMPT_DISABLE_NODEJS`:** Disable the `nodejs` module of the terminal prompt.
-- **`WS_PROMPT_DISABLE_PYTHON`:** Disable the `python` module of the terminal prompt.
-- **`WS_PROMPT_DISABLE_USER`:** Disable the user module of the terminal prompt.
+- **`WS_TERMINAL_PROMPT_HIDE_DOCKER_CONTEXT`:** Disable the `docker` module of the terminal prompt.
+- **`WS_TERMINAL_PROMPT_HIDE_HOSTNAME`:** Disable the `hostname` module of the terminal prompt.
+- **`WS_TERMINAL_PROMPT_HIDE_KUBERNETES_CONTEXT`:** Disable the `kubernetes` module of the terminal prompt.
+- **`WS_TERMINAL_PROMPT_HIDE_NODEJS_VERSION`:** Disable the `nodejs` module of the terminal prompt.
+- **`WS_TERMINAL_PROMPT_HIDE_PYTHON_VERSION`:** Disable the `python` module of the terminal prompt.
+- **`WS_TERMINAL_PROMPT_HIDE_USER`:** Disable the user module of the terminal prompt.
 
 For example, to disable the Docker and Python modules, you could add the following lines
 to your deployment:
 
 ```sh{2,3}
 docker run \
-  -e WS_PROMPT_DISABLE_DOCKER=1 \
-  -e WS_PROMPT_DISABLE_PYTHON=1 \
+  -e WS_TERMINAL_PROMPT_HIDE_DOCKER_CONTEXT=1 \
+  -e WS_TERMINAL_PROMPT_HIDE_PYTHON_VERSION=1 \
   ghcr.io/kloudkit/workspace:latest
 ```
 
@@ -71,7 +71,7 @@ Tools and programming languages within the *workspace* that have corresponding
 To modify the default set of plugins, adjust the `env` variables listed below:
 
 - **`WS_ZSH_PLUGINS`:** Specifies the `zsh` plugins to be enabled in each session.
-- **`WS_ZSH_EXTRA_PLUGINS`:** Adds additional `zsh` plugins to the existing defaults.
+- **`WS_ZSH_ADDITIONAL_PLUGINS`:** Adds additional `zsh` plugins to the existing defaults.
 
 ::: code-group
 
@@ -83,7 +83,7 @@ docker run \
 
 ```sh{2} [Append]
 docker run \
-  -e WS_ZSH_EXTRA_PLUGINS="php" \
+  -e WS_ZSH_ADDITIONAL_PLUGINS="php" \
   ghcr.io/kloudkit/workspace:latest
 ```
 

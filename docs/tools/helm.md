@@ -28,14 +28,14 @@ To retain these configurations across workspace restarts or updates:
   Mounting a volume or bind-mount to this location ensures your repositories,
   credentials, and related files remain intact even if the container is re-created.
 
-2. **Use the `WS_CONFIGURE_HELM` Environment Variable:**
+2. **Use the `WS_HELM_PRELOAD_CACHE` Environment Variable:**
   You can streamline the process of autoloading HELM’s repository cache by setting the
-  `WS_CONFIGURE_HELM` environment variable.
+  `WS_HELM_PRELOAD_CACHE` environment variable.
   This causes the workspace to automatically load your cached repos whenever it starts.
 
 ```sh
 docker run \
-  -e WS_CONFIGURE_HELM=1 \
+  -e WS_HELM_PRELOAD_CACHE=1 \
   -v helm:/home/kloud/.config/helm \
   ghcr.io/kloudkit/workspace:latest
 ```

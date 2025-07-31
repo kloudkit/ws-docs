@@ -17,8 +17,8 @@ Passed authentication can be easily configured by setting an environment variabl
 deploying the *workspace*.
 Setting your password is as simple as defining an `env` variable:
 
-- **`WS_PASSWORD`:** plaintext password.
-- **`WS_PASSWORD_HASHED`:** hashed passwords *(will take precedence over plaintext)*.
+- **`WS_AUTH_PASSWORD`:** plaintext password.
+- **`WS_AUTH_PASSWORD_HASHED`:** hashed passwords *(will take precedence over plaintext)*.
 
 ::: info NOTE
 All sensitive environment variables are purged before deploying Kloud Workspace, ensuring
@@ -27,7 +27,7 @@ that your password is absent from future shell sessions.
 
 ```sh{2}
 docker run \
-  -e WS_PASSWORD=super_duper_secret \
+  -e WS_AUTH_PASSWORD=super_duper_secret \
   ghcr.io/kloudkit/workspace:latest
 ```
 
@@ -45,7 +45,7 @@ Then deploy the workspace:
 
 ```sh{2}
 docker run \
-  -e WS_PASSWORD_HASHED="$argon2i$v=19$m=4096,t=3,p=1$z4DjJlJgI6S7fAdQC35ZQw$Rpu8CLMWedxJaH0eiFCetyoRbg+S8ow/RRyVCZzM6QE" \
+  -e WS_AUTH_PASSWORD_HASHED="$argon2i$v=19$m=4096,t=3,p=1$z4DjJlJgI6S7fAdQC35ZQw$Rpu8CLMWedxJaH0eiFCetyoRbg+S8ow/RRyVCZzM6QE" \
   ghcr.io/kloudkit/workspace:latest
 ```
 

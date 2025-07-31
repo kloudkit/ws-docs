@@ -36,21 +36,21 @@ Upon startup, Kloud Workspace evaluates several environment variables to automat
 installation of additional *user-defined* VSCode extensions.
 Both options below can be used in unison:
 
-- **`WS_EXTRA_VS_EXTENSIONS`:** One or more space delimited extension names.
-- **`WS_EXTRA_VS_EXTENSIONS_DIR`:** Directory of extensions with as `*.vsix`.
+- **`WS_EDITOR_ADDITIONAL_VS_EXTENSIONS`:** One or more space delimited extension names.
+- **`WS_EDITOR_ADDITIONAL_VS_EXTENSIONS_DIR`:** Directory of extensions with as `*.vsix`.
 
 ::: code-group
 
 ```sh{2} [list]
 docker run \
-  -e WS_EXTRA_VS_EXTENSIONS="dbaeumer.vscode-eslint esbenp.prettier-vscode" \
+  -e WS_EDITOR_ADDITIONAL_VS_EXTENSIONS="dbaeumer.vscode-eslint esbenp.prettier-vscode" \
   ghcr.io/kloudkit/workspace:latest
 ```
 
 ```sh{2,3} [directory]
 docker run \
-  -e WS_EXTRA_VS_EXTENSIONS_DIR=/extra-extensions \
-  -v /path/to/my-extra-extensions:/extra-extensions \
+  -e WS_EDITOR_ADDITIONAL_VS_EXTENSIONS_DIR=/additional-extensions \
+  -v /path/to/my-additional-extensions:/additional-extensions \
   ghcr.io/kloudkit/workspace:latest
 ```
 

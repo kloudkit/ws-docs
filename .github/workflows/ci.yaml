@@ -51,17 +51,17 @@ jobs:
         run: |
           base="https://api.github.com/repos/kloudkit/workspace/contents"
 
-          curl -sSL \
+          curl -sSfL \
             -H "Authorization: Bearer ${{ secrets.KLOUDKIT_ORG_PAT }}" \
             -H "Accept: application/vnd.github.v3.raw" \
             -o "scripts/dependencies.yaml" \
-            "${api_url}/src/build/dependencies/dependencies.yaml?ref=main"
+            "${base}/src/build/dependencies/dependencies.yaml?ref=main"
 
-          curl -sSL \
+          curl -sSfL \
             -H "Authorization: Bearer ${{ secrets.KLOUDKIT_ORG_PAT }}" \
             -H "Accept: application/vnd.github.v3.raw" \
             -o "scripts/env.reference.yaml" \
-            "${api_url}/src/env.reference.yaml?ref=main"
+            "${base}/src/rootfs/etc/workspace/env.reference.yaml?ref=main"
 
           npm run docs:generate-dynamic
 

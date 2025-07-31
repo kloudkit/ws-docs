@@ -15,8 +15,8 @@ Therefore, in addition to the predefined entrypoint scripts, we offer the abilit
 users defined entrypoint scripts to tailor the workspace experience.
 
 ::: info TIP
-Before creating extra entrypoint scripts, ensure that the objective you intend to achieve
-is not already addressed by built-in **[extendable configuration][]**.
+Before creating additional entrypoint scripts, ensure that the objective you intend to
+achieve is not already addressed by built-in **[extendable configuration][]**.
 :::
 
 Startup scripts are defined at two levels:

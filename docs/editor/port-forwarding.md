@@ -45,12 +45,12 @@ If adding DNS entries is not possible, refer to the [documentation below](#local
 a workaround you can implement on local systems.
 :::
 
-You can define the domain *(and subdomain)* structure using the `WS_PROXY_DOMAIN`
+You can define the domain *(and subdomain)* structure using the `WS_SERVER_PROXY_DOMAIN`
 environment variable:
 
 ```sh{2}
 docker run \
-  -e WS_PROXY_DOMAIN=ws.dev \
+  -e WS_SERVER_PROXY_DOMAIN=ws.dev \
   ghcr.io/kloudkit/workspace:latest
 ```
 
