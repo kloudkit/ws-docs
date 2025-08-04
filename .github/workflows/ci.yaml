@@ -20,7 +20,7 @@ jobs:
     if: github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]'
 
     steps:
-      - name: 📁 Checkout repository
+      - name: 📥 Checkout repository
         uses: actions/checkout@v4
 
       - uses: pre-commit/action@v3.0.1
@@ -32,7 +32,7 @@ jobs:
       - lint
 
     steps:
-      - name: 📁 Checkout repository
+      - name: 📥 Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -47,24 +47,6 @@ jobs:
       - name: ⏬ Install Dependencies
         run: yarn install --frozen-lockfile
 
-      - name: 🔗 Create dynamic docs
-        run: |
-          base="https://api.github.com/repos/kloudkit/workspace/contents"
-
-          curl -sSfL \
-            -H "Authorization: Bearer ${{ secrets.KLOUDKIT_ORG_PAT }}" \
-            -H "Accept: application/vnd.github.v3.raw" \
-            -o "scripts/dependencies.yaml" \
-            "${base}/src/build/dependencies/dependencies.yaml?ref=main"
-
-          curl -sSfL \
-            -H "Authorization: Bearer ${{ secrets.KLOUDKIT_ORG_PAT }}" \
-            -H "Accept: application/vnd.github.v3.raw" \
-            -o "scripts/env.reference.yaml" \
-            "${base}/src/rootfs/etc/workspace/env.reference.yaml?ref=main"
-
-          npm run docs:generate-dynamic
-
       - name: 👷‍♂️ Build
         run: yarn run docs:build
 
@@ -77,11 +59,12 @@ jobs:
   docker:
     name: 🐳 Docker Build
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     needs:
       - build
 
     steps:
-      - name: 📁 Checkout repository
+      - name: 📥 Checkout repository
         uses: actions/checkout@v4
 
       - name: 🔽 Download Artifact

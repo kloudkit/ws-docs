@@ -108,8 +108,8 @@ Feel free to suggest it or contribute directly.
 For more information, visit our [contribution guide](/contribute/).
 :::
 
-| Feature       | Description                               | Since     |
-| ------------- | ----------------------------------------- | --------- |
+| Feature       | Description                               |   Since   |
+| ------------- | ----------------------------------------- | :-------: |
 | `cloudflared` | Cloudflare tunnel CLI                     |           |
 | `codex`       | codex CLI                                 | *v0.0.20* |
 | `conan`       | Conan CLI and related tools               |           |

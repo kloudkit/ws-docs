@@ -3,7 +3,7 @@ import { resolve } from 'node:path'
 import { load } from 'js-yaml'
 
 const dependencies = load(
-  fs.readFileSync(resolve('scripts/dependencies.yaml'), 'utf8')
+  fs.readFileSync(resolve('docs/manifests/dependencies.yaml'), 'utf8')
 )
 
 const groups = new Map()
@@ -20,7 +20,7 @@ const short = version => {
     return ''
   }
 
-  return `\`>=${match[1]}.${match[2]}\``
+  return `<Badge type="info" text="${match[1]}.${match[2]}" />`
 }
 
 for (const [name, meta] of Object.entries(dependencies.dependencies)) {
@@ -40,7 +40,7 @@ for (const group of [...groups.keys()].sort()) {
     `## ${group}`,
     '',
     '| Name | Version | License |',
-    '| --- | --- | --- |',
+    '| --- | :---: | --- |',
   )
 
   groups

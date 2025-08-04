@@ -16,9 +16,11 @@ export default defineConfig({
     nav,
     sidebar,
 
-    outline: 'deep',
+    langMenuLabel: 'Version',
 
     logo: '/favicon.ico',
+
+    outline: 'deep',
 
     search: { provider: 'local' },
 
@@ -46,7 +48,15 @@ export default defineConfig({
     config: md => {
       md.use(italicSmallRenderer)
     },
-    theme: 'catppuccin-frappe'
+
+    theme: 'catppuccin-frappe',
+
+    container: {
+      tipLabel: '💡 TIP',
+      warningLabel: '⚠️ WARNING',
+      dangerLabel: '🚨 DANGER',
+      infoLabel: 'ℹ️ INFO',
+    }
   },
 
   vite: {

@@ -3,7 +3,7 @@ import { resolve } from 'node:path'
 import { load } from 'js-yaml'
 
 const configs = load(
-  fs.readFileSync(resolve('scripts/env.reference.yaml'), 'utf8')
+  fs.readFileSync(resolve('docs/manifests/env.reference.yaml'), 'utf8')
 )
 
 const sections = []
