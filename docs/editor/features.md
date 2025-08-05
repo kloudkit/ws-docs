@@ -46,7 +46,7 @@ ws feature install php
 
 As previously mentioned, all features are powered by Ansible playbooks.
 These playbooks are located in the `/usr/share/workspace/features` directory, as
-specified by the [`WS_FEATURES_DIR`](/configuration#ws-features-dir) environment
+specified by the [`WS_FEATURES_DIR`](/settings/configuration#ws-features-dir) environment
 variable *(which is not intended to be overridden)*.
 
 The directory location can be overridden with the `--root` flag when installing.
