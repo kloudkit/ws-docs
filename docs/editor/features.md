@@ -44,12 +44,14 @@ ws feature install -h
 ws feature install php
 ```
 
-As mentioned above, all features are backed by Ansible playbooks.
-All playbooks are stored in the `/features` root directory.
+As previously mentioned, all features are powered by Ansible playbooks.
+These playbooks are located in the `/usr/share/workspace/features` directory, as
+specified by the [`WS_FEATURES_DIR`](/configuration#ws-features-dir) environment
+variable *(which is not intended to be overridden)*.
 
 The directory location can be overridden with the `--root` flag when installing.
 In the example below, we use `/alternate`, but any directory you have access to will work.
-The command will look for a *playbook* at `/alternate/php.yaml`:
+The command will look for a playbook at `/alternate/php.yaml`:
 
 ```sh
 ws feature install php --root /alternate
@@ -57,7 +59,7 @@ ws feature install php --root /alternate
 
 ### Optional Variables
 
-As mentioned above, features are installed using *playbooks*.
+As mentioned above, features are installed using playbooks.
 Certain playbooks support additional variables for customization.
 
 To do this, use the `--opt` flag *(equivalent to Ansible's `--extra-vars`)*, zero or more
@@ -69,7 +71,7 @@ ws feature install dagger --opt dagger_version=0.13.3
 
 ## Custom Features
 
-You can create custom *playbooks* for specific needs.
+You can create custom playbooks for specific needs.
 The template below offers a starting point.
 Ensure that `hosts: workspace` remains unchanged, as this targets the active workspace
 session.
@@ -125,6 +127,6 @@ For more information, visit our [contribution guide](/contribute/).
 | `restic`      | Restic CLI                                |           |
 | `rust`        | Rust and Cargo                            |           |
 | `snyk`        | Snyk CLI and related extension            | *v0.0.20* |
-| `sops`        | SOPS CLI                                  | *v0.0.20* |
+| `sops`        | SOPS CLI                                  | *v0.0.21* |
 | `talos`       | Talos CLI                                 |           |
 | `terraform`   | Terraform packages and related extensions |           |

@@ -48,8 +48,8 @@ for (const [group, data] of Object.entries(configs.envs)) {
       ''
     )
 
-    if (meta.long_description) {
-      sections.push(meta.long_description.trim(), '')
+    if (meta.longDescription) {
+      sections.push(meta.longDescription.trim(), '')
     }
 
     const details = [

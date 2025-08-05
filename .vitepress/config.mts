@@ -16,8 +16,6 @@ export default defineConfig({
     nav,
     sidebar,
 
-    langMenuLabel: 'Version',
-
     logo: '/favicon.ico',
 
     outline: 'deep',
