@@ -32,6 +32,7 @@ export default [
       { text: 'Autoload Scripts', link: '/settings/autoload-scripts' },
       { text: 'Configuration', link: '/settings/configuration' },
       { text: 'Enterprise CA', link: '/settings/enterprise-ca' },
+      { text: 'HTTPS / TLS', link: '/settings/https' },
       { text: 'Secret Injection', link: '/settings/secrets' },
     ]
   },
