@@ -287,15 +287,6 @@ dependencies:
     package: github.com/cweill/gotests/gotests
     version: 1.6.0
 
-  helm:
-    cmd: helm version --short
-    datasource: deb
-    group: Docker & Kubernetes
-    home: https://github.com/helm/helm
-    license: Apache 2
-    track: false
-    version: 3.18.4
-
   hadolint:
     cmd: hadolint --version
     datasource: github-releases
@@ -304,6 +295,15 @@ dependencies:
     license: GPL 3
     package: hadolint/hadolint
     version: 2.12.0
+
+  helm:
+    cmd: helm version --short
+    datasource: deb
+    group: Docker & Kubernetes
+    home: https://github.com/helm/helm
+    license: Apache 2
+    track: false
+    version: 3.18.4
 
   helm-diff:
     cmd: helm diff version
