@@ -109,6 +109,7 @@ dependencies:
     home: https://curl.se
     license: MIT
     version: 7.88.1
+    track: false
 
   dbus-user-session:
     datasource: deb
@@ -346,6 +347,7 @@ dependencies:
     home: https://stedolan.github.io/jq
     license: MIT
     version: "1.6"
+    track: false
 
   k9s:
     cmd: k9s version
@@ -701,6 +703,7 @@ dependencies:
     home: https://www.gnu.org/software/wget
     license: GPL 3
     version: 1.21.3
+    track: false
 
   ws-cli:
     cmd: ws-cli --version
