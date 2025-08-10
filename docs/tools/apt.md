@@ -43,7 +43,7 @@ docker run \
 ### Update Repository Cache
 
 You can optionally trigger a package cache update by setting the `WS_APT_UPDATE_CACHE`
-environment variable to a *truthy* value *(`1` or `true`)*.
+environment variable to a either `1` or `true`.
 
 Update will occur after adding custom sources to ensures that any newly added
 repositories are immediately available for package installations.

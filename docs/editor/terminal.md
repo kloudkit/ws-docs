@@ -28,8 +28,8 @@ a Python-based project.
 ![Prompt](/editor/terminal/prompt.gif){.doc-image-shadow}
 
 Some users find the descriptive prompt to be too noisy.
-To *opt-out* of some of the prompt modules, you can set any of the following environment
-`env` variables to a *truthy* value *(either `1` or `true`)*:
+To *opt-out* of some of the prompt modules, you can set any of the following environment variables
+to either `1` or `true`:
 
 - **`WS_TERMINAL_PROMPT_HIDE_DOCKER_CONTEXT`:** Disable the `docker` module of the terminal prompt.
 - **`WS_TERMINAL_PROMPT_HIDE_HOSTNAME`:** Disable the `hostname` module of the terminal prompt.
