@@ -40,7 +40,7 @@ docker run \
 
 Alternatively, you can add your company's root CA via an *HTTP* endpoint.
 Use the `WS_CA_ADDITIONAL_CERT_ENDPOINTS` environment variable to define one or more
-*(space delimited)* endpoints pointing to the desired certificate.
+*(space-delimited)* endpoints pointing to the desired certificate.
 
 :::warning
 If your certificate is hosted on an insecure server you can use the

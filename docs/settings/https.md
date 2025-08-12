@@ -46,7 +46,7 @@ When a reverse proxy isn't feasible, let the container handle HTTPS directly.
 
 Available configuration values are as follows:
 
-- **`WS_SERVER_SSL_HOSTS`:** Space delimited DNS names for self-signed certificate.
+- **`WS_SERVER_SSL_HOSTS`:** Space-delimited DNS names for self-signed certificate.
 - **`WS_SERVER_SSL_KEY`:** Path or inline PEM for the private key.
 - **`WS_SERVER_SSL_CERT`:** Path or inline PEM for the server certificate.
 

@@ -58,6 +58,19 @@ In the configuration above, if your Kloud Workspace is hosted at `ws.dev` and yo
 `pyserver` command *(which launches a file index server on port `8000`)*, you can access
 the server at `8000.ws.dev`.
 
+#### Multiple domains *(since v0.0.22)*
+
+You can provide multiple proxy domains by passing a space-delimited list:
+
+```sh{2}
+docker run \
+  -e WS_SERVER_PROXY_DOMAIN="ws.dev local.ws.dev" \
+  ghcr.io/kloudkit/workspace:latest
+```
+
+With the configuration above, services will be available on both domains: `*.ws.dev` and
+`*.local.ws.dev`.
+
 ## Local DNS
 
 If you're unable to modify a DNS server, you can manually define *hostname-to-IP* mappings
@@ -68,21 +81,30 @@ This method is useful for testing or development environments.
 ::: warning
 This configuration only affects your local machine and does not impact external DNS
 servers.
-⚠️ Avoid using this method in production environments.
+
+Avoid using this method in production environments.
 :::
 
 To map a domain name to your local machine *(IP: 127.0.0.1)*:
 
 1. Open `/etc/hosts` for editing.
-2. Add a new entry at the end of the file. For example:
 
-   ```plaintext
-   127.0.0.1    ws.test
-   ```
+2. Add a new entry at the end of the file.
+    For example, for subdomain access to port `8000`:
 
-   Replace `ws.test` with your desired domain name.
-3. Verify the configuration by running `ping ws.test` in the terminal.
-   The output should show the IP `127.0.0.1`.
+    ```plaintext
+    127.0.0.1    8000.ws.test
+    ```
+
+    If you use multiple domains, add one line per domain:
+
+    ```plaintext
+    127.0.0.1    8000.ws.test
+    127.0.0.1    8000.local.ws.test
+    ```
+
+3. Verify the configuration by running `ping 8000.ws.test` in the terminal.
+    The output should show the IP `127.0.0.1`.
 
 ::: tip
 Avoid using TLDs like `.dev` or `.new` as they require an *SSL* certificate.
@@ -92,4 +114,4 @@ A few important notes when using this workaround:
 
 - `/etc/hosts` does not support wildcard records *(i.e., `*.ws.test`)*.
   You must manually repeat the process for each port you intend to expose.
-- This method will only work if Kloud Workspace is published on port `80`.
+- This method will only work if Kloud Workspace is published on port `80` or `443`.
