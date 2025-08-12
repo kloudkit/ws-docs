@@ -36,7 +36,7 @@ Upon startup, Kloud Workspace evaluates several environment variables to automat
 installation of additional *user-defined* VSCode extensions.
 Both options below can be used in unison:
 
-- **`WS_EDITOR_ADDITIONAL_VS_EXTENSIONS`:** One or more space delimited extension names.
+- **`WS_EDITOR_ADDITIONAL_VS_EXTENSIONS`:** One or more space-delimited extension names.
 - **`WS_EDITOR_ADDITIONAL_VS_EXTENSIONS_DIR`:** Directory of extensions with as `*.vsix`.
 
 ::: code-group

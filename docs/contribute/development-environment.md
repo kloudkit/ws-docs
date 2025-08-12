@@ -125,14 +125,21 @@ Make sure to rebuild the image before running tests.
 
 ### 3. Optional Execution Flags
 
-- **Custom Docker Tag:** Use the `--ws-tag` flag to specify a custom Docker image tag.
+- **Custom Docker Tag:** Use the `--shed-tag` flag to specify a custom Docker image tag.
 
   ```sh
-  pytest --ws-tag=my-custom-tag
+  pytest --shed-tag=my-custom-tag
   ```
 
-- **Force Image Rebuild:** Add the `--ws-rebuild` flag to rebuild the Docker image.
+- **Force Image Rebuild:** Add the `--shed-rebuild` flag to rebuild the Docker image.
 
   ```sh
-  pytest --ws-rebuild
+  pytest --shed-rebuild
+  ```
+
+- **Require Image:** Add the `--shed-require-image` flag to require an existing pre-built
+    Docker image.
+
+  ```sh
+  pytest --shed-rebuild
   ```

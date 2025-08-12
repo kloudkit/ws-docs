@@ -114,7 +114,8 @@ For more information, visit our [contribution guide](/contribute/).
 | ------------- | ----------------------------------------- | :-------: |
 | `cloudflared` | Cloudflare tunnel CLI                     |           |
 | `codex`       | codex CLI                                 | *v0.0.20* |
-| `conan`       | Conan CLI and related tools               |           |
+| `conan`       | Conan CLI and related tools               | *v0.0.21* |
+| `continue`    | cn CLI and continue extension             |           |
 | `cpp`         | C++ and related tools                     |           |
 | `dagger`      | dagger.io CLI and SDK                     |           |
 | `dotnet`      | .NET framework and related extensions     |           |
