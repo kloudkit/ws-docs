@@ -49,6 +49,9 @@ docker run \
   ghcr.io/kloudkit/workspace:latest
 ```
 
+![Settings animation](/editor/authentication/authentication.gif){.doc-image-shadow}
+
+
 ### Rate Limiting
 
 The workspace has a built-in throttling mechanism to rate-limit password authentication
