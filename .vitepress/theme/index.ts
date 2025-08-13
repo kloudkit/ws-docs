@@ -1,6 +1,8 @@
 import { h }          from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme   from 'vitepress/theme-without-fonts'
+import EnvVar         from './components/EnvVar.vue'
+import EnvVarSection  from './components/EnvVarSection.vue'
 import Home           from './components/Home.vue'
 import RepoStars      from './components/RepoStars.vue'
 import SeeAlso        from './components/SeeAlso.vue'
@@ -27,5 +29,8 @@ export default {
       'nav-bar-content-after': () => h(RepoStars)
     })
   },
-  enhanceApp({ app, router, siteData }) {}
+  enhanceApp({ app, router, siteData }) {
+    app.component('EnvVar', EnvVar)
+    app.component('EnvVarSection', EnvVarSection)
+  }
 } satisfies Theme

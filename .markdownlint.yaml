@@ -18,6 +18,8 @@ MD033:
     - kdb
     - pre
     - script
+    - EnvVar
+    - EnvVarSection
 
 MD034: false
 

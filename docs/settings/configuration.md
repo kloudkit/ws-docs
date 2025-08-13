@@ -13,21 +13,22 @@ No JSON, YAML, or CLI flags required. This makes the workspace fully *stateless*
 cloud-friendly.
 
 ::: tip `WS_<GROUP>` Prefix Convention
-
 Variables that are consumed **solely** by Kloud Workspace start with `WS_<GROUP>_`
-followed by the name *(example: `WS_TERMINAL_ZSH_PLUGINS`)*.
+followed by the name *(example: `WS_ZSH_PLUGINS`)*.
 
 When a variable is also consumed by an underlying tool, we keep its original name.
 Such variables can be reviewed in the [global variables](#global-variables) section.
 :::
 
 ::: tip Boolean Values
-
 To enable a boolean environment variable, set it to a *truthy* value, either `1` or `true`.
-
 :::
 
 <!--@include: ../partials/environment-variables.md -->
+
+## Deprecated
+
+<!--@include: ../partials/deprecated-variables.md -->
 
 ## Global Variables
 

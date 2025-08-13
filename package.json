@@ -3,7 +3,7 @@
   "scripts": {
     "prebuild": "npm run docs:generate-dynamic",
     "build": "vitepress build",
-    "docs:generate-dynamic": "node scripts/create-dependencies-docs.mjs && node scripts/create-env-reference-docs.mjs",
+    "docs:generate-dynamic": "node ./scripts/generate-all.mjs",
     "docs:dev": "vitepress dev",
     "docs:build": "npm run build",
     "docs:preview": "vitepress preview"
@@ -14,8 +14,10 @@
     "@fontsource/fira-sans": "^5.2.6",
     "@fontsource/victor-mono": "^5.2.6",
     "@types/js-yaml": "^4.0.9",
+    "@types/markdown-it": "^14.1.2",
     "@types/node": "^24.2.1",
     "js-yaml": "^4.1.0",
+    "markdown-it": "^14.1.0",
     "vitepress": "^1.6.4",
     "vue": "^3.5.17"
   }

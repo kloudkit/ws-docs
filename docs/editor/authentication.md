@@ -11,14 +11,16 @@ Remember to click `Sign out` at the bottom of the `File` menu when you are done 
 as your login session won't expire automatically.
 :::
 
+![Settings animation](/editor/authentication/authentication.gif){.doc-image-shadow}
+
 ## Password Authentication
 
 Passed authentication can be easily configured by setting an environment variable when
 deploying the *workspace*.
 Setting your password is as simple as defining an `env` variable:
 
-- **`WS_AUTH_PASSWORD`:** plaintext password.
-- **`WS_AUTH_PASSWORD_HASHED`:** hashed passwords *(will take precedence over plaintext)*.
+- <EnvVar group="auth" name="password" />
+- <EnvVar group="auth" name="password_hashed" />
 
 ::: info NOTE
 All sensitive environment variables are purged before deploying Kloud Workspace, ensuring
@@ -48,9 +50,6 @@ docker run \
   -e WS_AUTH_PASSWORD_HASHED="$argon2i$v=19$m=4096,t=3,p=1$z4DjJlJgI6S7fAdQC35ZQw$Rpu8CLMWedxJaH0eiFCetyoRbg+S8ow/RRyVCZzM6QE" \
   ghcr.io/kloudkit/workspace:latest
 ```
-
-![Settings animation](/editor/authentication/authentication.gif){.doc-image-shadow}
-
 
 ### Rate Limiting
 

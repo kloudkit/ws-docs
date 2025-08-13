@@ -48,7 +48,8 @@ automatically configure user-level settings.
 
 - **`GIT_COMMITTER_NAME`:** sets `[user.name]` in `~/.gitconfig` to the provided value.
 - **`GIT_COMMITTER_EMAIL`:** sets `[user.email]` in `~/.gitconfig` to the provided value.
-- **`WS_GIT_CREDENTIAL_CACHE_TIMEOUT`:** Overrides `[credential.helper]` timeout.
+- <EnvVar group="git" name="credential_cache_timeout" />
+- <EnvVar group="git" name="clone_repo" />
 
 ### Files
 

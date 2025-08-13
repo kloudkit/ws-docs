@@ -3,7 +3,7 @@ import { resolve } from 'node:path'
 import { load } from 'js-yaml'
 
 const dependencies = load(
-  fs.readFileSync(resolve('docs/manifests/dependencies.yaml'), 'utf8')
+  fs.readFileSync(resolve('.vitepress/data/dependencies.yaml'), 'utf8')
 )
 
 const groups = new Map()
