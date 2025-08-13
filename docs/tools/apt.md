@@ -26,8 +26,8 @@ installations.
 If you need to disable any of the repository sources, set the following environment
 variables:
 
-- **`WS_APT_DISABLE_DEBIAN_REPO`:** Disables the default Debian repository.
-- **`WS_APT_DISABLE_ADDITIONAL_REPO`:** Disables the additional third-party repository.
+- <EnvVar group="apt" name="disable_debian_repo" />
+- <EnvVar group="apt" name="disable_additional_repo" />
 
 ### Custom Sources
 

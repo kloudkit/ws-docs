@@ -31,12 +31,12 @@ Some users find the descriptive prompt to be too noisy.
 To *opt-out* of some of the prompt modules, you can set any of the following environment variables
 to either `1` or `true`:
 
-- **`WS_TERMINAL_PROMPT_HIDE_DOCKER_CONTEXT`:** Disable the `docker` module of the terminal prompt.
-- **`WS_TERMINAL_PROMPT_HIDE_HOSTNAME`:** Disable the `hostname` module of the terminal prompt.
-- **`WS_TERMINAL_PROMPT_HIDE_KUBERNETES_CONTEXT`:** Disable the `kubernetes` module of the terminal prompt.
-- **`WS_TERMINAL_PROMPT_HIDE_NODEJS_VERSION`:** Disable the `nodejs` module of the terminal prompt.
-- **`WS_TERMINAL_PROMPT_HIDE_PYTHON_VERSION`:** Disable the `python` module of the terminal prompt.
-- **`WS_TERMINAL_PROMPT_HIDE_USER`:** Disable the user module of the terminal prompt.
+- <EnvVar group="terminal" name="prompt_hide_docker_context" />
+- <EnvVar group="terminal" name="prompt_hide_hostname" />
+- <EnvVar group="terminal" name="prompt_hide_kubernetes_context" />
+- <EnvVar group="terminal" name="prompt_hide_nodejs_version" />
+- <EnvVar group="terminal" name="prompt_hide_python_version" />
+- <EnvVar group="terminal" name="prompt_hide_user" />
 
 For example, to disable the Docker and Python modules, you could add the following lines
 to your deployment:
@@ -70,8 +70,8 @@ Tools and programming languages within the *workspace* that have corresponding
 
 To modify the default set of plugins, adjust the `env` variables listed below:
 
-- **`WS_ZSH_PLUGINS`:** Specifies the `zsh` plugins to be enabled in each session.
-- **`WS_ZSH_ADDITIONAL_PLUGINS`:** Adds additional `zsh` plugins to the existing defaults.
+- <EnvVar group="zsh" name="plugins" />
+- <EnvVar group="zsh" name="additional_plugins" />
 
 ::: code-group
 
