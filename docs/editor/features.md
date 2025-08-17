@@ -29,7 +29,7 @@ startup to determine which *features* to install automatically.
 ```sh{2}
 docker run \
   -e WS_FEATURES_ADDITIONAL_FEATURES="dotnet jupyter" \
-  ghcr.io/kloudkit/workspace:latest
+  ghcr.io/kloudkit/workspace:v0.0.21
 ```
 
 ### Manual Installation

@@ -39,7 +39,7 @@ These scripts are executed as follows:
 ```sh{2}
 docker run \
   -v /my-entrypoint-scripts:/entrypoint \
-  ghcr.io/kloudkit/workspace
+  ghcr.io/kloudkit/workspace:v0.0.21
 ```
 
 ### Available Languages

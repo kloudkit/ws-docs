@@ -57,7 +57,7 @@ docker run -d \
   -e WS_SERVER_SSL_KEY=/certs/tls.key \
   -e WS_SERVER_SSL_CERT="-----BEGIN CERTIFICATE-----..." \
   -e WS_SERVER_PROXY_DOMAIN=ws.dev \
-  ghcr.io/kloudkit/workspace:latest
+  ghcr.io/kloudkit/workspace:v0.0.21
 ```
 
 [moz]: https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts/features_restricted_to_secure_contexts

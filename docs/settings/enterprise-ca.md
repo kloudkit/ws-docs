@@ -25,13 +25,13 @@ To add your company's root CA, all you need to do is mount the certificate
 ```sh{2} [Single]
 docker run \
   -v /path/on-host/ca.crt:/usr/local/share/ca-certificates/workspace/ca.crt \
-  ghcr.io/kloudkit/workspace
+  ghcr.io/kloudkit/workspace:v0.0.21
 ```
 
 ```sh{2} [Multiple]
 docker run \
   -v /folder/on-host:/usr/local/share/ca-certificates/workspace \
-  ghcr.io/kloudkit/workspace
+  ghcr.io/kloudkit/workspace:v0.0.21
 ```
 
 :::
@@ -58,13 +58,13 @@ Please make sure that you accept the risk.
 ```sh{2} [Single]
 docker run \
   -e WS_CA_ADDITIONAL_CERT_ENDPOINTS="http://comp.me/shared-ca.pem" \
-  ghcr.io/kloudkit/workspace
+  ghcr.io/kloudkit/workspace:v0.0.21
 ```
 
 ```sh{2} [Multiple]
 docker run \
   -e WS_CA_ADDITIONAL_CERT_ENDPOINTS="http://comp.me/share-1.pem http://other.me/ca.pem" \
-  ghcr.io/kloudkit/workspace
+  ghcr.io/kloudkit/workspace:v0.0.21
 ```
 
 :::

@@ -37,7 +37,7 @@ Supply one or more entries separated by semicolons *(`;`)*.
 ```sh{2}
 docker run \
   -e WS_APT_ADDITIONAL_DEBIAN_REPOS="deb [signed-by=/custom.gpg] https://custom.package bookworm main" \
-  ghcr.io/kloudkit/workspace:latest
+  ghcr.io/kloudkit/workspace:v0.0.21
 ```
 
 ### Update Repository Cache
@@ -73,7 +73,7 @@ demonstrated below:
 ```sh{2}
 docker run \
   -e WS_APT_ADDITIONAL_PACKAGES="cmake nano" \
-  ghcr.io/kloudkit/workspace:latest
+  ghcr.io/kloudkit/workspace:v0.0.21
 ```
 
 ::: tip
@@ -94,5 +94,5 @@ Each key is downloaded at startup and stored in `/etc/apt/keyrings/<name>.gpg`.
 ```sh{2}
 docker run \
   -e WS_APT_ADDITIONAL_GPG_KEYS="mycorp:https://mycorp.com/pubkey.asc extras:http://extras.test/key2.asc" \
-  ghcr.io/kloudkit/workspace:latest
+  ghcr.io/kloudkit/workspace:v0.0.21
 ```

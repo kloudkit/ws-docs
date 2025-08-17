@@ -1,0 +1,26 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":disableRateLimiting"
+  ],
+  "assignees": [ "kloud-bit" ],
+  "labels": [ "type: dependency 🔼" ],
+  "schedule": [ "every weekend" ],
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "🤖 Renovate Dashboard",
+  "commitMessageAction": "🔼 Bump",
+  "regexManagers": [
+    {
+      "fileMatch": [
+        "^docs\\/.*\\.md$",
+        "^README\\.md$"
+      ],
+      "matchStrings": [
+        "(?<depName>ghcr\\.io\\/kloudkit\\/workspace):(?<currentValue>v?\\d+\\.\\d+\\.\\d+)"
+      ],
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "semver"
+    }
+  ]
+}
