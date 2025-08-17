@@ -31,7 +31,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible/ansible-lint
     license: MIT
-    version: 25.7.0
+    version: 25.8.1
 
   bat:
     cmd: bat --version
@@ -67,14 +67,14 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible-collections/community.docker
     license: GPL 3
-    version: 4.6.2
+    version: 4.7.0
 
   community.general:
     datasource: galaxy-collection
     group: Ansible
     home: https://github.com/ansible-collections/community.general
     license: GPL 3
-    version: 11.1.1
+    version: 11.2.0
 
   containerd.io:
     cmd: containerd --version
@@ -123,7 +123,6 @@ dependencies:
     license: MPL 2
     package: dnsutils
     version: 9.18.33
-    track: false
 
   dive:
     cmd: dive -v
@@ -182,7 +181,7 @@ dependencies:
     group: CLI Tools
     home: https://waterlan.home.xs4all.nl/dos2unix.html
     license: BSD 2
-    version: 7.4.3
+    version: 7.4.2
 
   dumb-init:
     datasource: deb
@@ -228,7 +227,6 @@ dependencies:
     home: https://git-scm.com
     license: GPL 2
     version: 2.39.5
-    track: false
 
   gnupg:
     cmd: gpg --version
@@ -253,7 +251,7 @@ dependencies:
     home: https://github.com/golang/go
     license: BSD 3
     package: golang/go
-    version: 1.24.5
+    version: 1.25.0
 
   gomodifytags:
     datasource: go
@@ -372,7 +370,7 @@ dependencies:
     home: https://github.com/stackrox/kube-linter
     license: Apache 2
     package: stackrox/kube-linter
-    version: 0.7.4
+    version: 0.7.5
 
   kubectl:
     cmd: kubectl version --client=true
@@ -396,7 +394,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible-collections/kubernetes.core
     license: Apache 2
-    version: 6.0.0
+    version: 6.1.0
 
   less:
     cmd: less --version
@@ -472,7 +470,7 @@ dependencies:
     home: https://github.com/npm/cli
     license: Artistic 2
     package: npm/cli
-    version: 10.9.2
+    version: 11.5.2
 
   oc:
     cmd: oc version
@@ -530,7 +528,6 @@ dependencies:
     license: MIT
     package: python3-pip
     version: 23.0.1
-    track: false
 
   pnpm:
     cmd: pnpm --version
@@ -547,7 +544,7 @@ dependencies:
     home: https://github.com/pre-commit/pre-commit
     license: MIT
     package: pre-commit
-    version: 4.2.0
+    version: 4.3.0
 
   ps:
     cmd: ps --version
@@ -557,7 +554,6 @@ dependencies:
     license: GPL 2
     package: procps
     version: 4.0.2
-    track: false
 
   pylint:
     cmd: pylint --version
@@ -565,7 +561,7 @@ dependencies:
     group: Python
     home: https://github.com/pylint-dev/pylint
     license: GPL 2
-    version: 3.3.7
+    version: 3.3.8
 
   Python:
     cmd: python3 --version
@@ -593,7 +589,7 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/ruff
     license: MIT
-    version: 0.12.7
+    version: 0.12.9
 
   ShellCheck:
     cmd: shellcheck --version
@@ -651,7 +647,6 @@ dependencies:
     home: https://www.sudo.ws
     license: ISC
     version: 1.9.13
-    track: false
 
   taskfile:
     cmd: task --version
@@ -676,7 +671,7 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/uv
     license: MIT
-    version: 0.8.4
+    version: 0.8.11
 
   venv:
     datasource: deb
@@ -692,7 +687,6 @@ dependencies:
     home: https://www.vim.org
     license: Vim
     version: "9.0"
-    track: false
 
   wget:
     cmd: wget --version
@@ -708,7 +702,7 @@ dependencies:
     home: https://github.com/kloudkit/ws-cli
     license: MIT
     package: github.com/kloudkit/ws-cli
-    version: 0.0.29
+    version: 0.0.30
 
   yamllint:
     cmd: yamllint --version
