@@ -13,6 +13,7 @@
   "regexManagers": [
     {
       "fileMatch": [
+        "^\\.vitepress\\/.*\\.(?:vue|ts|mts)$",
         "^docs\\/.*\\.md$",
         "^README\\.md$"
       ],

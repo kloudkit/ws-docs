@@ -1,6 +1,5 @@
 import { defineConfig } from 'vitepress'
 import italicSmallRenderer from './_italicSmallRenderer'
-import DockerIcon from './theme/assets/DockerIcon'
 import nav from './_nav'
 import sidebar from './_sidebar'
 
@@ -21,10 +20,6 @@ export default defineConfig({
     outline: 'deep',
 
     search: { provider: 'local' },
-
-    socialLinks: [
-      { icon: { svg: DockerIcon }, link: 'https://ghcr.io/kloudkit/workspace' },
-    ],
 
     editLink: {
       pattern: 'https://github.com/kloudkit/ws-docs/edit/main/docs/:path',

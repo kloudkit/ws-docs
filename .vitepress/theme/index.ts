@@ -1,6 +1,7 @@
-import { h }          from 'vue'
+import { h, Fragment } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme   from 'vitepress/theme-without-fonts'
+import DockerIcon     from './components/DockerIcon.vue'
 import EnvVar         from './components/EnvVar.vue'
 import EnvVarSection  from './components/EnvVarSection.vue'
 import Home           from './components/Home.vue'
@@ -26,7 +27,7 @@ export default {
     return h(DefaultTheme.Layout, null, {
       'aside-outline-after': () => h(SeeAlso),
       'home-features-after': () => h(Home),
-      'nav-bar-content-after': () => h(RepoStars)
+      'nav-bar-content-after': () => h(Fragment, null, [h(DockerIcon), h(RepoStars)])
     })
   },
   enhanceApp({ app, router, siteData }) {
