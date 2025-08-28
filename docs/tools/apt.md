@@ -24,19 +24,18 @@ installations.
 ### Disabling Sources
 
 If you need to disable any of the repository sources, set the following environment
-variables:
+variable:
 
-- <EnvVar group="apt" name="disable_debian_repo" />
-- <EnvVar group="apt" name="disable_additional_repo" />
+- <EnvVar group="apt" name="disable_repos" />
 
 ### Custom Sources
 
-Add custom repository sources with `WS_APT_ADDITIONAL_DEBIAN_REPOS`.
+Add custom repository sources with `WS_APT_ADDITIONAL_REPOS`.
 Supply one or more entries separated by semicolons *(`;`)*.
 
 ```sh{2}
 docker run \
-  -e WS_APT_ADDITIONAL_DEBIAN_REPOS="deb [signed-by=/custom.gpg] https://custom.package bookworm main" \
+  -e WS_APT_ADDITIONAL_REPOS="deb [signed-by=/custom.gpg] https://custom.package bookworm main" \
   ghcr.io/kloudkit/workspace:v0.0.21
 ```
 

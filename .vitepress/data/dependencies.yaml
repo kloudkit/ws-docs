@@ -31,7 +31,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible/ansible-lint
     license: MIT
-    version: 25.8.1
+    version: 25.8.2
 
   bat:
     cmd: bat --version
@@ -74,7 +74,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible-collections/community.general
     license: GPL 3
-    version: 11.2.0
+    version: 11.2.1
 
   containerd.io:
     cmd: containerd --version
@@ -497,7 +497,7 @@ dependencies:
     license: Proprietary
     package: 1password-cli
     track: false
-    version: 2.31.1
+    version: 2.32.0
 
   openssh-server:
     datasource: deb
@@ -535,7 +535,7 @@ dependencies:
     group: NodeJS
     home: https://github.com/pnpm/pnpm
     license: MIT
-    version: 10.14.0
+    version: 10.15.0
 
   pre-commit:
     cmd: pre-commit --version
@@ -589,7 +589,7 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/ruff
     license: MIT
-    version: 0.12.9
+    version: 0.12.10
 
   ShellCheck:
     cmd: shellcheck --version
@@ -671,7 +671,7 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/uv
     license: MIT
-    version: 0.8.11
+    version: 0.8.13
 
   venv:
     datasource: deb
