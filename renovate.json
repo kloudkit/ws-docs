@@ -22,6 +22,15 @@
       ],
       "datasourceTemplate": "docker",
       "versioningTemplate": "semver"
+    },
+    {
+      "fileMatch": [ "^README\\.md$" ],
+      "matchStrings": [
+        "v(?<currentValue>\\d+\\.\\d+\\.\\d+)-dockertag"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "ghcr.io/kloudkit/workspace",
+      "versioningTemplate": "semver"
     }
   ]
 }

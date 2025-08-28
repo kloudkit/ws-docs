@@ -114,9 +114,37 @@ The following is a step-by-step example of this workflow:
 - Reference issues and pull requests at the end of the first line following a `,`
     *(i.e. `"Add feature log, closes #44"`)*.
 
-### Documentation Style Guide
+### `ws-cli` Output Style Guide
 
-- **TBD**
+#### Core Principles
+
+1. **Consistency**: All commands should follow identical formatting patterns.
+2. **Clarity**: Information hierarchy should be immediately apparent.
+3. **Scalability**: Styles should work across different terminal sizes.
+
+#### Color Palette
+
+Based on Catppuccin Frappe theme:
+
+- **Primary Text**: `frappe.Text().Hex` - Main content.
+- **Headers**: `frappe.Mauve().Hex` - Section titles.
+- **Keys/Labels**: `frappe.Teal().Hex` - Field names, important terms.
+- **Values**: `frappe.Text().Hex` - Data content.
+- **Success**: `frappe.Green().Hex` - Success messages.
+- **Warning**: `frappe.Yellow().Hex` - Warnings.
+- **Error**: `frappe.Red().Hex` - Error messages.
+- **Muted**: `frappe.Overlay0().Hex` - Help text, secondary info.
+- **Borders**: `frappe.Surface2().Hex` - Table borders.
+
+##### Background Colors
+
+- **Success Background**: `frappe.Green().Hex` - Success badges and highlights.
+- **Warning Background**: `frappe.Yellow().Hex` - Warning badges and highlights.
+- **Error Background**: `frappe.Red().Hex` - Error badges and highlights.
+- **Info Background**: `frappe.Blue().Hex` - Info badges and highlights.
+- **Tip Background**: `frappe.Mauve().Hex` - Tip badges and highlights.
+- **Muted Background**: `frappe.Surface0().Hex` - Subtle highlighting.
+- **Accent Background**: `frappe.Surface1().Hex` - Code blocks and emphasis.
 
 ### File Conventions
 

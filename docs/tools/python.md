@@ -46,7 +46,7 @@ If you need custom linting rules, add a `ruff.toml` file at your project’s roo
 You can also copy the default configuration with:
 
 ```bash
-ws-cli config cp ruff
+ws-cli template apply ruff
 ```
 
 For more details, refer to the [`ws-cli` documentation](/tools/ws-cli#configurations-ws-config).
