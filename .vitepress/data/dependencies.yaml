@@ -23,7 +23,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible/ansible
     license: GPL 3
-    version: 2.19.0
+    version: 2.19.1
 
   ansible-lint:
     cmd: ansible-lint --version
@@ -54,7 +54,7 @@ dependencies:
     license: Apache 2
     package: docker-buildx-plugin
     track: false
-    version: 0.26.0
+    version: 0.27.0
 
   catppuccin:
     datasource: pypi
@@ -139,7 +139,7 @@ dependencies:
     home: https://github.com/go-delve/delve/cmd/dlv
     license: MIT
     package: github.com/go-delve/delve/cmd/dlv
-    version: 1.25.1
+    version: 1.25.2
 
   docker:
     datasource: deb
@@ -361,7 +361,7 @@ dependencies:
     home: https://github.com/kubernetes-sigs/kind
     license: Apache 2
     package: kubernetes-sigs/kind
-    version: 0.29.0
+    version: 0.30.0
 
   kube-linter:
     cmd: kube-linter version
@@ -461,7 +461,7 @@ dependencies:
     home: https://nodejs.org
     license: MIT
     package: nodejs
-    version: 22.18.0
+    version: 22.19.0
 
   npm:
     cmd: npm --version
@@ -470,7 +470,7 @@ dependencies:
     home: https://github.com/npm/cli
     license: Artistic 2
     package: npm/cli
-    version: 11.5.2
+    version: 11.6.0
 
   oc:
     cmd: oc version
@@ -589,7 +589,7 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/ruff
     license: MIT
-    version: 0.12.10
+    version: 0.12.11
 
   ShellCheck:
     cmd: shellcheck --version
@@ -671,7 +671,7 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/uv
     license: MIT
-    version: 0.8.13
+    version: 0.8.15
 
   venv:
     datasource: deb
@@ -702,7 +702,7 @@ dependencies:
     home: https://github.com/kloudkit/ws-cli
     license: MIT
     package: github.com/kloudkit/ws-cli
-    version: 0.0.30
+    version: 0.0.33
 
   yamllint:
     cmd: yamllint --version
