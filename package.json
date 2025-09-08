@@ -12,7 +12,7 @@
     "@catppuccin/vitepress": "^0.1.2",
     "@fontsource/fira-code": "^5.2.6",
     "@fontsource/fira-sans": "^5.2.6",
-    "@fontsource/victor-mono": "^5.2.6",
+    "@fontsource/victor-mono": "^5.2.7",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^24.3.1",
     "js-yaml": "^4.1.0",
