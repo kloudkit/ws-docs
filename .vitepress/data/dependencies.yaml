@@ -23,7 +23,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible/ansible
     license: GPL 3
-    version: 2.19.1
+    version: 2.19.2
 
   ansible-lint:
     cmd: ansible-lint --version
@@ -35,11 +35,12 @@ dependencies:
 
   bat:
     cmd: bat --version
-    datasource: deb
+    datasource: github-releases
     group: CLI Tools
     home: https://github.com/sharkdp/bat
+    package: sharkdp/bat
     license: Apache 2
-    version: 0.22.1
+    version: 0.25.0
 
   build-essential:
     datasource: deb
@@ -74,7 +75,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible-collections/community.general
     license: GPL 3
-    version: 11.2.1
+    version: 11.3.0
 
   containerd.io:
     cmd: containerd --version
@@ -100,7 +101,7 @@ dependencies:
     group: CLI Tools
     home: https://github.com/streetsidesoftware/cspell
     license: MIT
-    version: 9.2.0
+    version: 9.2.1
 
   curl:
     cmd: curl --version
@@ -209,7 +210,7 @@ dependencies:
     home: https://github.com/junegunn/fzf
     license: MIT
     package: junegunn/fzf
-    version: 0.65.1
+    version: 0.65.2
 
   gettext:
     cmd: gettext -V
@@ -251,7 +252,7 @@ dependencies:
     home: https://github.com/golang/go
     license: BSD 3
     package: golang/go
-    version: 1.25.0
+    version: 1.25.1
 
   gomodifytags:
     datasource: go
@@ -292,7 +293,7 @@ dependencies:
     home: https://github.com/hadolint/hadolint
     license: GPL 3
     package: hadolint/hadolint
-    version: 2.12.0
+    version: 2.13.1
 
   helm:
     cmd: helm version --short
@@ -339,11 +340,12 @@ dependencies:
 
   jq:
     cmd: jq --version
-    datasource: deb
+    datasource: github-releases
     group: CLI Tools
     home: https://stedolan.github.io/jq
+    package: jqlang/jq
     license: MIT
-    version: "1.6"
+    version: 1.8.1
 
   k9s:
     cmd: k9s version
@@ -479,7 +481,7 @@ dependencies:
     home: https://github.com/openshift/oc
     license: Apache 2
     package: openshift/oc
-    version: 4.17.9
+    version: 4.19.0
 
   oh-my-zsh:
     datasource: github-releases
@@ -531,11 +533,12 @@ dependencies:
 
   pnpm:
     cmd: pnpm --version
-    datasource: npm
+    datasource: github-releases
     group: NodeJS
     home: https://github.com/pnpm/pnpm
     license: MIT
-    version: 10.15.0
+    package: pnpm/pnpm
+    version: 10.15.1
 
   pre-commit:
     cmd: pre-commit --version
@@ -589,16 +592,16 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/ruff
     license: MIT
-    version: 0.12.11
+    version: 0.12.12
 
   ShellCheck:
     cmd: shellcheck --version
-    datasource: deb
+    datasource: github-releases
     group: CLI Tools
     home: https://github.com/koalaman/shellcheck
     license: GPL 3
-    package: shellcheck
-    version: 0.9.0
+    package: koalaman/shellcheck
+    version: 0.11.0
 
   slirp4netns:
     cmd: slirp4netns --version
@@ -702,7 +705,7 @@ dependencies:
     home: https://github.com/kloudkit/ws-cli
     license: MIT
     package: github.com/kloudkit/ws-cli
-    version: 0.0.33
+    version: 0.0.34
 
   yamllint:
     cmd: yamllint --version
