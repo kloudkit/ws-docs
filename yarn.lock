@@ -339,24 +339,24 @@
   integrity sha512-tQd/1efJuzPC6rCFwEvLtci/xNFcTZknmXs98FYDfGE4wP9ClFV98nyKrzJKVPMhdDnjzLhdUyMX4PsQAPjwIw==
 
 "@fontsource/fira-code@^5.2.6":
-  version "5.2.6"
-  resolved "https://registry.yarnpkg.com/@fontsource/fira-code/-/fira-code-5.2.6.tgz#bbd724c902f081cf95177cfee8d6049fc854f535"
-  integrity sha512-wCkIpPm0BqlkCPLYeY4Vui96ODmVUV0/GpEe3OfJ4v8EJn/BF2SlyxvarFsTs1CKiGjrO2cXlIZbBrKi9F+hUQ==
+  version "5.2.7"
+  resolved "https://registry.yarnpkg.com/@fontsource/fira-code/-/fira-code-5.2.7.tgz#9ecbd909d53e7196a5d895b601747fe34491fc6a"
+  integrity sha512-tnB9NNund9TwIym8/7DMJe573nlPEQb+fKUV5GL8TBYXjIhDvL0D7mgmNVNQUPhXp+R7RylQeiBdkA4EbOHPGQ==
 
 "@fontsource/fira-sans@^5.2.6":
-  version "5.2.6"
-  resolved "https://registry.yarnpkg.com/@fontsource/fira-sans/-/fira-sans-5.2.6.tgz#ef77574be4100890e80db5fefc3ef5844240f028"
-  integrity sha512-WsqXZCzlbifRoOLppDr6pwMRrZ4U+e+mv+oRZLrZOvkTv/q63B1CIUW+lfaaJuP15YBhOV1OCxS+n1pP8d3IhQ==
+  version "5.2.7"
+  resolved "https://registry.yarnpkg.com/@fontsource/fira-sans/-/fira-sans-5.2.7.tgz#f16d508b9a6bb5329f1cdc1af69d501000766630"
+  integrity sha512-5DE4AealD/VnbwdzMgnpWfCttMQBbteNiK9DCJE7cVwZEbDTPLUoFDMMvxNQ498nZc5in7Mta9c/s+3Ehh0BAg==
 
 "@fontsource/victor-mono@^5.2.6":
-  version "5.2.6"
-  resolved "https://registry.yarnpkg.com/@fontsource/victor-mono/-/victor-mono-5.2.6.tgz#53f02e7441d7ee52b728a706e338ee413ba9fc19"
-  integrity sha512-+R0K61MmVbsFInNmPrRgLKqnZdhkHgrnr5aiLww0rpaNlDReddJTjabKndYuBnLimyyBSQZd6ouPYCGIizsUeA==
+  version "5.2.8"
+  resolved "https://registry.yarnpkg.com/@fontsource/victor-mono/-/victor-mono-5.2.8.tgz#b335dd3150cd234eca07ba3dd78915c5fc1ec9c6"
+  integrity sha512-8WYdXLzYNHvsvXWaGW4zs1hNu6RHUrQCVJplS9XKhZZNE1VqxPsm5zSbKQox4YuLZG1fV4fOxIt0SAc+YLGkjg==
 
 "@iconify-json/simple-icons@^1.2.21":
-  version "1.2.46"
-  resolved "https://registry.yarnpkg.com/@iconify-json/simple-icons/-/simple-icons-1.2.46.tgz#ea9326b48fabbc716026440c47cd9a8cea663e7c"
-  integrity sha512-MJfKQDhOMQD5Fc8PcTtCdFX0oBf/nKVfp69ScdEKIXW0JXELX5V2Ld45EsjShi8aJ6DNhdDtSDZvKuDnkDiKnw==
+  version "1.2.52"
+  resolved "https://registry.yarnpkg.com/@iconify-json/simple-icons/-/simple-icons-1.2.52.tgz#0e4d1dc7e70a96ac52709efe309e12c0be1bf23d"
+  integrity sha512-c41YOMzBhl3hp58WJLxT+Qq3UhBd8GZAMkbS8ddlCuIGLW0COGe2YSfOA2+poA8/bxLhUQODRNjAy3KhiAOtzA==
   dependencies:
     "@iconify/types" "*"
 
