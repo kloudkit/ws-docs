@@ -302,7 +302,7 @@ dependencies:
     home: https://github.com/helm/helm
     license: Apache 2
     track: false
-    version: 3.18.4
+    version: 3.19.0
 
   helm-diff:
     cmd: helm diff version
@@ -311,7 +311,7 @@ dependencies:
     home: https://github.com/databus23/helm-diff
     license: Apache 2
     package: databus23/helm-diff
-    version: 3.12.3
+    version: 3.13.0
     track: false
 
   htop:
@@ -705,7 +705,7 @@ dependencies:
     home: https://github.com/kloudkit/ws-cli
     license: MIT
     package: github.com/kloudkit/ws-cli
-    version: 0.0.34
+    version: 0.0.35
 
   yamllint:
     cmd: yamllint --version
