@@ -31,7 +31,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible/ansible-lint
     license: MIT
-    version: 25.8.2
+    version: 25.9.0
 
   bat:
     cmd: bat --version
@@ -55,7 +55,7 @@ dependencies:
     license: Apache 2
     package: docker-buildx-plugin
     track: false
-    version: 0.27.0
+    version: 0.28.0
 
   catppuccin:
     datasource: pypi
@@ -302,7 +302,7 @@ dependencies:
     home: https://github.com/helm/helm
     license: Apache 2
     track: false
-    version: 3.18.4
+    version: 3.19.0
 
   helm-diff:
     cmd: helm diff version
@@ -311,7 +311,7 @@ dependencies:
     home: https://github.com/databus23/helm-diff
     license: Apache 2
     package: databus23/helm-diff
-    version: 3.12.3
+    version: 3.13.0
     track: false
 
   htop:
@@ -354,7 +354,7 @@ dependencies:
     home: https://github.com/derailed/k9s
     license: Apache 2
     package: derailed/k9s
-    version: 0.50.9
+    version: 0.50.12
 
   kind:
     cmd: kind version
@@ -372,7 +372,7 @@ dependencies:
     home: https://github.com/stackrox/kube-linter
     license: Apache 2
     package: stackrox/kube-linter
-    version: 0.7.5
+    version: 0.7.6
 
   kubectl:
     cmd: kubectl version --client=true
@@ -538,7 +538,7 @@ dependencies:
     home: https://github.com/pnpm/pnpm
     license: MIT
     package: pnpm/pnpm
-    version: 10.15.1
+    version: 10.17.0
 
   pre-commit:
     cmd: pre-commit --version
@@ -592,7 +592,7 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/ruff
     license: MIT
-    version: 0.12.12
+    version: 0.13.1
 
   ShellCheck:
     cmd: shellcheck --version
@@ -658,7 +658,7 @@ dependencies:
     home: https://github.com/go-task/task
     license: MIT
     package: "@go-task/cli"
-    version: 3.44.1
+    version: 3.45.4
 
   unzip:
     cmd: (unzip -v) > >(cat) 2>&1
@@ -674,7 +674,7 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/uv
     license: MIT
-    version: 0.8.15
+    version: 0.8.19
 
   venv:
     datasource: deb
@@ -705,7 +705,7 @@ dependencies:
     home: https://github.com/kloudkit/ws-cli
     license: MIT
     package: github.com/kloudkit/ws-cli
-    version: 0.0.34
+    version: 0.0.35
 
   yamllint:
     cmd: yamllint --version
