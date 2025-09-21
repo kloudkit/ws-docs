@@ -36,34 +36,52 @@ docker run \
 
 :::
 
-### Install Certificate from HTTP Endpoint
+### Install Certificate from HTTPS Endpoint
 
-Alternatively, you can add your company's root CA via an *HTTP* endpoint.
+Alternatively, you can add your company's root CA via secure *HTTPS* endpoints.
 Use the `WS_CA_ADDITIONAL_CERT_ENDPOINTS` environment variable to define one or more
 *(space-delimited)* endpoints pointing to the desired certificate.
 
+::: code-group
+
+```sh{2} [Single]
+docker run \
+  -e WS_CA_ADDITIONAL_CERT_ENDPOINTS="https://corp.com/ca.pem" \
+  ghcr.io/kloudkit/workspace:v0.0.21
+```
+
+```sh{2} [Multiple]
+docker run \
+  -e WS_CA_ADDITIONAL_CERT_ENDPOINTS="https://corp.com/ca.pem https://alt.com/root.crt" \
+  ghcr.io/kloudkit/workspace:v0.0.21
+```
+
+:::
+
+### Install Certificate from Insecure Endpoint
+
+For trusted network environments, you can retrieve certificates from *HTTP* or
+insecure *HTTPS* endpoints using the `WS_CA_ADDITIONAL_CERT_INSECURE_ENDPOINTS`
+environment variable.
+
 :::warning
-If your certificate is hosted on an insecure server you can use the
-`WS_CA_ADDITIONAL_CERT_ALLOW_INSECURE` *(set to any value)* environment variable to ignore
-security checks.
+This variable supports both *HTTP* and *HTTPS* URLs. For *HTTPS* URLs, certificate
+validation is bypassed using insecure connections.
 
-This may be deemed risky due to the certificate being acquired through an unsecured
-process that lacks `SSL/TLS` encryption.
-
-Please make sure that you accept the risk.
+**Use only in fully trusted network environments.**
 :::
 
 ::: code-group
 
 ```sh{2} [Single]
 docker run \
-  -e WS_CA_ADDITIONAL_CERT_ENDPOINTS="http://comp.me/shared-ca.pem" \
+  -e WS_CA_ADDITIONAL_CERT_INSECURE_ENDPOINTS="http://corp.com/ca.pem" \
   ghcr.io/kloudkit/workspace:v0.0.21
 ```
 
 ```sh{2} [Multiple]
 docker run \
-  -e WS_CA_ADDITIONAL_CERT_ENDPOINTS="http://comp.me/share-1.pem http://other.me/ca.pem" \
+  -e WS_CA_ADDITIONAL_CERT_INSECURE_ENDPOINTS="http://corp.com/ca.pem https://untrusted.com/root.crt" \
   ghcr.io/kloudkit/workspace:v0.0.21
 ```
 

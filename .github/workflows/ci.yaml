@@ -39,10 +39,6 @@ jobs:
 
       - name: 🔵 Setup NodeJS
         uses: actions/setup-node@v5
-        with:
-          node-version: 22
-          cache: yarn
-          cache-dependency-path: yarn.lock
 
       - name: ⏬ Install Dependencies
         run: yarn install --frozen-lockfile
