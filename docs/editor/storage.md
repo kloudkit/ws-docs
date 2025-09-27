@@ -33,7 +33,7 @@ To persist data in Kloud Workspace, mount a volume to the `/workspace` directory
 ```sh{2}
 docker run \
   -v workspace:/workspace \
-  ghcr.io/kloudkit/workspace:v0.0.21
+  ghcr.io/kloudkit/workspace:v0.0.22
 ```
 
 In the command above:
