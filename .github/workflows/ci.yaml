@@ -64,7 +64,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: 🔽 Download Artifact
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           name: build
           path: .vitepress/dist
@@ -112,7 +112,7 @@ jobs:
 
     steps:
       - name: 🔽 Download Artifact
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           path: build
           merge-multiple: true
