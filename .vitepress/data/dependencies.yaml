@@ -23,7 +23,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible/ansible
     license: GPL 3
-    version: 2.19.2
+    version: 2.19.3
 
   ansible-lint:
     cmd: ansible-lint --version
@@ -31,7 +31,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible/ansible-lint
     license: MIT
-    version: 25.9.0
+    version: 25.9.2
 
   bat:
     cmd: bat --version
@@ -40,7 +40,7 @@ dependencies:
     home: https://github.com/sharkdp/bat
     package: sharkdp/bat
     license: Apache 2
-    version: 0.25.0
+    version: 0.26.0
 
   build-essential:
     datasource: deb
@@ -55,7 +55,7 @@ dependencies:
     license: Apache 2
     package: docker-buildx-plugin
     track: false
-    version: 0.28.0
+    version: 0.29.1
 
   catppuccin:
     datasource: pypi
@@ -68,14 +68,14 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible-collections/community.docker
     license: GPL 3
-    version: 4.7.0
+    version: 4.8.2
 
   community.general:
     datasource: galaxy-collection
     group: Ansible
     home: https://github.com/ansible-collections/community.general
     license: GPL 3
-    version: 11.3.0
+    version: 11.4.1
 
   containerd.io:
     cmd: containerd --version
@@ -101,7 +101,7 @@ dependencies:
     group: CLI Tools
     home: https://github.com/streetsidesoftware/cspell
     license: MIT
-    version: 9.2.1
+    version: 9.2.2
 
   curl:
     cmd: curl --version
@@ -166,7 +166,7 @@ dependencies:
     license: Apache 2
     package: docker-compose-plugin
     track: false
-    version: 2.39.1
+    version: 2.40.3
 
   docker-py:
     datasource: pypi
@@ -196,7 +196,7 @@ dependencies:
     home: https://github.com/eza-community/eza
     license: MIT
     track: false
-    version: 0.21.6
+    version: 0.23.4
 
   fuse-overlayfs:
     datasource: deb
@@ -210,7 +210,7 @@ dependencies:
     home: https://github.com/junegunn/fzf
     license: MIT
     package: junegunn/fzf
-    version: 0.65.2
+    version: 0.66.1
 
   gettext:
     cmd: gettext -V
@@ -284,7 +284,7 @@ dependencies:
     home: https://github.com/cweill/gotests/gotests
     license: Apache 2
     package: github.com/cweill/gotests/gotests
-    version: 1.6.0
+    version: 1.9.0
 
   hadolint:
     cmd: hadolint --version
@@ -293,7 +293,7 @@ dependencies:
     home: https://github.com/hadolint/hadolint
     license: GPL 3
     package: hadolint/hadolint
-    version: 2.13.1
+    version: 2.14.0
 
   helm:
     cmd: helm version --short
@@ -354,7 +354,7 @@ dependencies:
     home: https://github.com/derailed/k9s
     license: Apache 2
     package: derailed/k9s
-    version: 0.50.12
+    version: 0.50.16
 
   kind:
     cmd: kind version
@@ -381,7 +381,7 @@ dependencies:
     home: https://kubernetes.io/docs/tasks/tools
     license: Apache 2
     track: false
-    version: 1.33.3
+    version: 1.34.1
 
   kubernetes-py:
     datasource: pypi
@@ -389,14 +389,14 @@ dependencies:
     home: https://github.com/kubernetes-client/python
     license: Apache
     package: kubernetes
-    version: 33.1.0
+    version: 34.1.0
 
   kubernetes.core:
     datasource: galaxy-collection
     group: Ansible
     home: https://github.com/ansible-collections/kubernetes.core
     license: Apache 2
-    version: 6.1.0
+    version: 6.2.0
 
   less:
     cmd: less --version
@@ -463,7 +463,7 @@ dependencies:
     home: https://nodejs.org
     license: MIT
     package: nodejs
-    version: 22.19.0
+    version: 22.21.0
 
   npm:
     cmd: npm --version
@@ -472,7 +472,7 @@ dependencies:
     home: https://github.com/npm/cli
     license: Artistic 2
     package: npm/cli
-    version: 11.6.0
+    version: 11.6.2
 
   oc:
     cmd: oc version
@@ -538,7 +538,7 @@ dependencies:
     home: https://github.com/pnpm/pnpm
     license: MIT
     package: pnpm/pnpm
-    version: 10.17.0
+    version: 10.20.0
 
   pre-commit:
     cmd: pre-commit --version
@@ -564,7 +564,7 @@ dependencies:
     group: Python
     home: https://github.com/pylint-dev/pylint
     license: GPL 2
-    version: 3.3.8
+    version: 4.0.2
 
   Python:
     cmd: python3 --version
@@ -592,7 +592,7 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/ruff
     license: MIT
-    version: 0.13.1
+    version: 0.14.3
 
   ShellCheck:
     cmd: shellcheck --version
@@ -634,7 +634,7 @@ dependencies:
     home: https://starship.rs
     license: ISC
     package: starship/starship
-    version: 1.23.0
+    version: 1.24.0
 
   staticcheck:
     datasource: go
@@ -674,7 +674,7 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/uv
     license: MIT
-    version: 0.8.19
+    version: 0.9.7
 
   venv:
     datasource: deb
