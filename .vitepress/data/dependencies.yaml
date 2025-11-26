@@ -23,7 +23,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible/ansible
     license: GPL 3
-    version: 2.19.3
+    version: 2.19.4
 
   ansible-lint:
     cmd: ansible-lint --version
@@ -31,7 +31,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible/ansible-lint
     license: MIT
-    version: 25.9.2
+    version: 25.11.1
 
   bat:
     cmd: bat --version
@@ -55,7 +55,7 @@ dependencies:
     license: Apache 2
     package: docker-buildx-plugin
     track: false
-    version: 0.29.1
+    version: 0.30.1
 
   catppuccin:
     datasource: pypi
@@ -68,14 +68,14 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible-collections/community.docker
     license: GPL 3
-    version: 4.8.2
+    version: 5.0.2
 
   community.general:
     datasource: galaxy-collection
     group: Ansible
     home: https://github.com/ansible-collections/community.general
     license: GPL 3
-    version: 11.4.1
+    version: 12.0.1
 
   containerd.io:
     cmd: containerd --version
@@ -84,7 +84,7 @@ dependencies:
     home: https://github.com/containerd/containerd
     license: Apache 2
     track: false
-    version: 1.7.27
+    version: 2.1.5
 
   crane:
     cmd: crane version
@@ -101,7 +101,7 @@ dependencies:
     group: CLI Tools
     home: https://github.com/streetsidesoftware/cspell
     license: MIT
-    version: 9.2.2
+    version: 9.3.2
 
   curl:
     cmd: curl --version
@@ -140,7 +140,7 @@ dependencies:
     home: https://github.com/go-delve/delve/cmd/dlv
     license: MIT
     package: github.com/go-delve/delve/cmd/dlv
-    version: 1.25.2
+    version: 1.25.4
 
   docker:
     datasource: deb
@@ -210,7 +210,7 @@ dependencies:
     home: https://github.com/junegunn/fzf
     license: MIT
     package: junegunn/fzf
-    version: 0.66.1
+    version: 0.67.0
 
   gettext:
     cmd: gettext -V
@@ -311,7 +311,7 @@ dependencies:
     home: https://github.com/databus23/helm-diff
     license: Apache 2
     package: databus23/helm-diff
-    version: 3.13.0
+    version: 3.14.1
     track: false
 
   htop:
@@ -438,7 +438,7 @@ dependencies:
     home: https://github.com/igorshubovych/markdownlint-cli
     license: MIT
     package: markdownlint-cli
-    version: 0.45.0
+    version: 0.46.0
 
   nc:
     cmd: (nc -h) > >(cat) 2>&1
@@ -472,7 +472,7 @@ dependencies:
     home: https://github.com/npm/cli
     license: Artistic 2
     package: npm/cli
-    version: 11.6.2
+    version: 11.6.3
 
   oc:
     cmd: oc version
@@ -538,7 +538,7 @@ dependencies:
     home: https://github.com/pnpm/pnpm
     license: MIT
     package: pnpm/pnpm
-    version: 10.20.0
+    version: 10.23.0
 
   pre-commit:
     cmd: pre-commit --version
@@ -547,7 +547,7 @@ dependencies:
     home: https://github.com/pre-commit/pre-commit
     license: MIT
     package: pre-commit
-    version: 4.3.0
+    version: 4.5.0
 
   ps:
     cmd: ps --version
@@ -564,7 +564,7 @@ dependencies:
     group: Python
     home: https://github.com/pylint-dev/pylint
     license: GPL 2
-    version: 4.0.2
+    version: 4.0.3
 
   Python:
     cmd: python3 --version
@@ -592,7 +592,7 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/ruff
     license: MIT
-    version: 0.14.3
+    version: 0.14.6
 
   ShellCheck:
     cmd: shellcheck --version
@@ -634,7 +634,7 @@ dependencies:
     home: https://starship.rs
     license: ISC
     package: starship/starship
-    version: 1.24.0
+    version: 1.24.1
 
   staticcheck:
     datasource: go
@@ -658,7 +658,7 @@ dependencies:
     home: https://github.com/go-task/task
     license: MIT
     package: "@go-task/cli"
-    version: 3.45.4
+    version: 3.45.5
 
   unzip:
     cmd: (unzip -v) > >(cat) 2>&1
@@ -674,7 +674,7 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/uv
     license: MIT
-    version: 0.9.7
+    version: 0.9.12
 
   venv:
     datasource: deb
