@@ -14,9 +14,10 @@
     "@fontsource/fira-sans": "^5.2.6",
     "@fontsource/victor-mono": "^5.2.6",
     "@types/js-yaml": "^4.0.9",
-    "@types/node": "^24.10.0",
-    "js-yaml": "^4.1.0",
+    "@types/node": "^24.10.1",
+    "js-yaml": "^4.1.1",
     "vitepress": "^1.6.4",
-    "vue": "^3.5.22"
+    "vue": "^3.5.25"
   }
 }
+
