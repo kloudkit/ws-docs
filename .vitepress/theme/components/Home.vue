@@ -5,7 +5,7 @@
       <span class="lang">sh</span>
       <pre
         class="shiki catppuccin-frappe vp-code"><code><span class="line"><span style="color:#737994;font-style:italic;"># TL-DR; ⚡ Power your batteries now!</span></span>
-<span class="line"></span><span class="line"><span style="color:#8CAAEE;font-style:italic;">docker</span><span style="color:#A6D189;"> pull</span><span style="color:#A6D189;"> ghcr.io/kloudkit/workspace:v0.0.22</span></span></code></pre>
+<span class="line"></span><span class="line"><span style="color:#8CAAEE;font-style:italic;">docker</span><span style="color:#A6D189;"> pull</span><span style="color:#A6D189;"> ghcr.io/kloudkit/workspace:v0.1.0</span></span></code></pre>
     </div>
   </div>
 
