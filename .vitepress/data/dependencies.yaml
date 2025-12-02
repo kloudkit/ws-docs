@@ -75,7 +75,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible-collections/community.general
     license: GPL 3
-    version: 12.0.1
+    version: 12.1.0
 
   containerd.io:
     cmd: containerd --version
@@ -101,7 +101,7 @@ dependencies:
     group: CLI Tools
     home: https://github.com/streetsidesoftware/cspell
     license: MIT
-    version: 9.3.2
+    version: 9.4.0
 
   curl:
     cmd: curl --version
@@ -140,7 +140,7 @@ dependencies:
     home: https://github.com/go-delve/delve/cmd/dlv
     license: MIT
     package: github.com/go-delve/delve/cmd/dlv
-    version: 1.25.4
+    version: 1.25.2
 
   docker:
     datasource: deb
@@ -472,7 +472,7 @@ dependencies:
     home: https://github.com/npm/cli
     license: Artistic 2
     package: npm/cli
-    version: 11.6.4
+    version: 11.6.2
 
   oc:
     cmd: oc version
@@ -564,7 +564,7 @@ dependencies:
     group: Python
     home: https://github.com/pylint-dev/pylint
     license: GPL 2
-    version: 4.0.3
+    version: 4.0.4
 
   Python:
     cmd: python3 --version
@@ -674,7 +674,7 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/uv
     license: MIT
-    version: 0.9.13
+    version: 0.9.14
 
   venv:
     datasource: deb
