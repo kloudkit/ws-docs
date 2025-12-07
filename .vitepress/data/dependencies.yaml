@@ -31,7 +31,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible/ansible-lint
     license: MIT
-    version: 25.11.1
+    version: 25.12.0
 
   bat:
     cmd: bat --version
@@ -40,7 +40,7 @@ dependencies:
     home: https://github.com/sharkdp/bat
     package: sharkdp/bat
     license: Apache 2
-    version: 0.26.0
+    version: 0.26.1
 
   build-essential:
     datasource: deb
@@ -252,7 +252,7 @@ dependencies:
     home: https://github.com/golang/go
     license: BSD 3
     package: golang/go
-    version: 1.25.4
+    version: 1.25.5
 
   gomodifytags:
     datasource: go
@@ -674,7 +674,7 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/uv
     license: MIT
-    version: 0.9.14
+    version: 0.9.15
 
   venv:
     datasource: deb
