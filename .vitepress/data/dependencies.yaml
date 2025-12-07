@@ -68,7 +68,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible-collections/community.docker
     license: GPL 3
-    version: 5.0.3
+    version: 5.0.4
 
   community.general:
     datasource: galaxy-collection
@@ -592,7 +592,7 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/ruff
     license: MIT
-    version: 0.14.7
+    version: 0.14.8
 
   ShellCheck:
     cmd: shellcheck --version
@@ -674,7 +674,7 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/uv
     license: MIT
-    version: 0.9.15
+    version: 0.9.16
 
   venv:
     datasource: deb
