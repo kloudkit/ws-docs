@@ -95,6 +95,15 @@ dependencies:
     package: google/go-containerregistry
     version: 0.20.7
 
+  crush:
+    cmd: crush -v
+    datasource: deb
+    group: CLI Tools
+    home: https://github.com/charmbracelet/crush
+    license: FSL-1.1-MIT
+    track: false
+    version: 0.22.1
+
   cspell:
     cmd: cspell --version
     datasource: npm
@@ -166,7 +175,7 @@ dependencies:
     license: Apache 2
     package: docker-compose-plugin
     track: false
-    version: 2.40.3
+    version: 5.0.0
 
   docker-py:
     datasource: pypi
