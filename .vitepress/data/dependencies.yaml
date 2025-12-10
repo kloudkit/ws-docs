@@ -98,7 +98,7 @@ dependencies:
   crush:
     cmd: crush -v
     datasource: deb
-    group: CLI Tools
+    group: AI Coding Agents
     home: https://github.com/charmbracelet/crush
     license: FSL-1.1-MIT
     track: false
@@ -509,6 +509,15 @@ dependencies:
     package: 1password-cli
     track: false
     version: 2.32.0
+
+  opencode:
+    cmd: opencode -v
+    datasource: npm
+    group: AI Coding Agents
+    home: https://opencode.ai
+    license: MIT
+    package: opencode-ai
+    version: 1.0.141
 
   openssh-server:
     datasource: deb
