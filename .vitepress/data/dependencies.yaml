@@ -23,7 +23,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible/ansible
     license: GPL 3
-    version: 2.20.0
+    version: 2.20.1
 
   ansible-lint:
     cmd: ansible-lint --version
@@ -31,7 +31,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible/ansible-lint
     license: MIT
-    version: 25.12.0
+    version: 25.12.1
 
   bat:
     cmd: bat --version
@@ -285,7 +285,7 @@ dependencies:
     home: https://golang.org/x/tools/gopls
     license: BSD
     package: golang.org/x/tools/gopls
-    version: 0.20.0
+    version: 0.21.0
 
   gotests:
     datasource: go
@@ -337,7 +337,7 @@ dependencies:
     home: https://github.com/josharian/impl
     license: MIT
     package: github.com/josharian/impl
-    version: 1.4.0
+    version: 1.5.0
 
   iproute2:
     cmd: ip -Version
@@ -447,7 +447,7 @@ dependencies:
     home: https://github.com/igorshubovych/markdownlint-cli
     license: MIT
     package: markdownlint-cli
-    version: 0.46.0
+    version: 0.47.0
 
   nc:
     cmd: (nc -h) > >(cat) 2>&1
@@ -517,7 +517,7 @@ dependencies:
     home: https://opencode.ai
     license: MIT
     package: opencode-ai
-    version: 1.0.141
+    version: 1.0.164
 
   openssh-server:
     datasource: deb
@@ -556,7 +556,7 @@ dependencies:
     home: https://github.com/pnpm/pnpm
     license: MIT
     package: pnpm/pnpm
-    version: 10.24.0
+    version: 10.26.0
 
   pre-commit:
     cmd: pre-commit --version
@@ -610,7 +610,7 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/ruff
     license: MIT
-    version: 0.14.8
+    version: 0.14.9
 
   ShellCheck:
     cmd: shellcheck --version
@@ -692,7 +692,7 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/uv
     license: MIT
-    version: 0.9.16
+    version: 0.9.18
 
   venv:
     datasource: deb
