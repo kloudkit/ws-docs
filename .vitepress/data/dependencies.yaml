@@ -102,7 +102,7 @@ dependencies:
     home: https://github.com/charmbracelet/crush
     license: FSL-1.1-MIT
     track: false
-    version: 0.22.1
+    version: 0.27.0
 
   cspell:
     cmd: cspell --version
@@ -472,7 +472,7 @@ dependencies:
     home: https://nodejs.org
     license: MIT
     package: nodejs
-    version: 24.11.1
+    version: 24.12.0
 
   npm:
     cmd: npm --version
@@ -688,9 +688,10 @@ dependencies:
 
   uv:
     cmd: uv self version
-    datasource: pypi
+    datasource: github-releases
     group: Python
     home: https://github.com/astral-sh/uv
+    package: astral-sh/uv
     license: MIT
     version: 0.9.18
 
