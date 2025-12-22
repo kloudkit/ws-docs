@@ -149,7 +149,7 @@ dependencies:
     home: https://github.com/go-delve/delve/cmd/dlv
     license: MIT
     package: github.com/go-delve/delve/cmd/dlv
-    version: 1.25.2
+    version: 1.26.0
 
   docker:
     datasource: deb
@@ -372,7 +372,7 @@ dependencies:
     home: https://github.com/kubernetes-sigs/kind
     license: Apache 2
     package: kubernetes-sigs/kind
-    version: 0.30.0
+    version: 0.31.0
 
   kube-linter:
     cmd: kube-linter version
@@ -381,7 +381,7 @@ dependencies:
     home: https://github.com/stackrox/kube-linter
     license: Apache 2
     package: stackrox/kube-linter
-    version: 0.7.6
+    version: 0.8.1
 
   kubectl:
     cmd: kubectl version --client=true
@@ -547,7 +547,7 @@ dependencies:
     home: https://github.com/pnpm/pnpm
     license: MIT
     package: pnpm/pnpm
-    version: 10.26.0
+    version: 10.26.1
 
   pre-commit:
     cmd: pre-commit --version
@@ -556,7 +556,7 @@ dependencies:
     home: https://github.com/pre-commit/pre-commit
     license: MIT
     package: pre-commit
-    version: 4.5.0
+    version: 4.5.1
 
   ps:
     cmd: ps --version
@@ -601,7 +601,7 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/ruff
     license: MIT
-    version: 0.14.9
+    version: 0.14.10
 
   ShellCheck:
     cmd: shellcheck --version
@@ -667,7 +667,7 @@ dependencies:
     home: https://github.com/go-task/task
     license: MIT
     package: "@go-task/cli"
-    version: 3.45.5
+    version: 3.46.3
 
   unzip:
     cmd: (unzip -v) > >(cat) 2>&1
