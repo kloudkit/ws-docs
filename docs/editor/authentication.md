@@ -30,7 +30,7 @@ that your password is absent from future shell sessions.
 ```sh{2}
 docker run \
   -e WS_AUTH_PASSWORD=super_duper_secret \
-  ghcr.io/kloudkit/workspace:v0.0.22
+  ghcr.io/kloudkit/workspace:v0.1.0
 ```
 
 ### Creating a Hashed Password
@@ -48,7 +48,7 @@ Then deploy the workspace:
 ```sh{2}
 docker run \
   -e WS_AUTH_PASSWORD_HASHED="$argon2i$v=19$m=4096,t=3,p=1$z4DjJlJgI6S7fAdQC35ZQw$Rpu8CLMWedxJaH0eiFCetyoRbg+S8ow/RRyVCZzM6QE" \
-  ghcr.io/kloudkit/workspace:v0.0.22
+  ghcr.io/kloudkit/workspace:v0.1.0
 ```
 
 ### Rate Limiting

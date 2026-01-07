@@ -23,7 +23,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible/ansible
     license: GPL 3
-    version: 2.19.3
+    version: 2.20.1
 
   ansible-lint:
     cmd: ansible-lint --version
@@ -31,7 +31,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible/ansible-lint
     license: MIT
-    version: 25.9.2
+    version: 25.12.1
 
   bat:
     cmd: bat --version
@@ -40,7 +40,7 @@ dependencies:
     home: https://github.com/sharkdp/bat
     package: sharkdp/bat
     license: Apache 2
-    version: 0.26.0
+    version: 0.26.1
 
   build-essential:
     datasource: deb
@@ -55,7 +55,7 @@ dependencies:
     license: Apache 2
     package: docker-buildx-plugin
     track: false
-    version: 0.29.1
+    version: 0.30.1
 
   catppuccin:
     datasource: pypi
@@ -68,14 +68,14 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible-collections/community.docker
     license: GPL 3
-    version: 4.8.2
+    version: 5.0.4
 
   community.general:
     datasource: galaxy-collection
     group: Ansible
     home: https://github.com/ansible-collections/community.general
     license: GPL 3
-    version: 11.4.1
+    version: 12.1.0
 
   containerd.io:
     cmd: containerd --version
@@ -84,7 +84,7 @@ dependencies:
     home: https://github.com/containerd/containerd
     license: Apache 2
     track: false
-    version: 1.7.27
+    version: 2.2.0
 
   crane:
     cmd: crane version
@@ -93,7 +93,16 @@ dependencies:
     home: https://github.com/google/go-containerregistry
     license: Apache 2
     package: google/go-containerregistry
-    version: 0.20.6
+    version: 0.20.7
+
+  crush:
+    cmd: crush -v
+    datasource: deb
+    group: AI Coding Agents
+    home: https://github.com/charmbracelet/crush
+    license: FSL-1.1-MIT
+    track: false
+    version: 0.30.0
 
   cspell:
     cmd: cspell --version
@@ -101,7 +110,7 @@ dependencies:
     group: CLI Tools
     home: https://github.com/streetsidesoftware/cspell
     license: MIT
-    version: 9.2.2
+    version: 9.4.0
 
   curl:
     cmd: curl --version
@@ -109,7 +118,7 @@ dependencies:
     group: Networking Tools
     home: https://curl.se
     license: MIT
-    version: 7.88.1
+    version: 8.14.1
 
   dbus-user-session:
     datasource: deb
@@ -123,7 +132,7 @@ dependencies:
     home: https://www.isc.org/bind
     license: MPL 2
     package: dnsutils
-    version: 9.18.33
+    version: 9.20.11
 
   dive:
     cmd: dive -v
@@ -140,7 +149,7 @@ dependencies:
     home: https://github.com/go-delve/delve/cmd/dlv
     license: MIT
     package: github.com/go-delve/delve/cmd/dlv
-    version: 1.25.2
+    version: 1.26.0
 
   docker:
     datasource: deb
@@ -166,7 +175,7 @@ dependencies:
     license: Apache 2
     package: docker-compose-plugin
     track: false
-    version: 2.40.3
+    version: 5.0.0
 
   docker-py:
     datasource: pypi
@@ -182,7 +191,7 @@ dependencies:
     group: CLI Tools
     home: https://waterlan.home.xs4all.nl/dos2unix.html
     license: BSD 2
-    version: 7.4.2
+    version: 7.5.2
 
   dumb-init:
     datasource: deb
@@ -210,7 +219,7 @@ dependencies:
     home: https://github.com/junegunn/fzf
     license: MIT
     package: junegunn/fzf
-    version: 0.66.1
+    version: 0.67.0
 
   gettext:
     cmd: gettext -V
@@ -219,7 +228,7 @@ dependencies:
     home: https://www.gnu.org/software/gettext
     package: gettext-base
     license: GPL 3
-    version: "0.21"
+    version: 0.23.1
 
   git:
     cmd: git --version
@@ -227,7 +236,7 @@ dependencies:
     group: CLI Tools
     home: https://git-scm.com
     license: GPL 2
-    version: 2.39.5
+    version: 2.47.3
 
   gnupg:
     cmd: gpg --version
@@ -235,7 +244,7 @@ dependencies:
     group: CLI Tools
     home: https://gnupg.org
     license: GPL 3
-    version: 2.2.40
+    version: 2.4.7
 
   go-outline:
     datasource: go
@@ -252,7 +261,7 @@ dependencies:
     home: https://github.com/golang/go
     license: BSD 3
     package: golang/go
-    version: 1.25.1
+    version: 1.25.5
 
   gomodifytags:
     datasource: go
@@ -276,7 +285,7 @@ dependencies:
     home: https://golang.org/x/tools/gopls
     license: BSD
     package: golang.org/x/tools/gopls
-    version: 0.20.0
+    version: 0.21.0
 
   gotests:
     datasource: go
@@ -311,7 +320,7 @@ dependencies:
     home: https://github.com/databus23/helm-diff
     license: Apache 2
     package: databus23/helm-diff
-    version: 3.13.0
+    version: 3.14.1
     track: false
 
   htop:
@@ -320,7 +329,7 @@ dependencies:
     group: CLI Tools
     home: https://htop.dev
     license: GPL 2
-    version: 3.2.2
+    version: 3.4.1
 
   impl:
     datasource: go
@@ -328,7 +337,7 @@ dependencies:
     home: https://github.com/josharian/impl
     license: MIT
     package: github.com/josharian/impl
-    version: 1.4.0
+    version: 1.5.0
 
   iproute2:
     cmd: ip -Version
@@ -336,7 +345,7 @@ dependencies:
     group: Networking Tools
     home: https://wiki.linuxfoundation.org/networking/iproute2
     license: GPL 2
-    version: 6.1.0
+    version: 6.15.0
 
   jq:
     cmd: jq --version
@@ -363,7 +372,7 @@ dependencies:
     home: https://github.com/kubernetes-sigs/kind
     license: Apache 2
     package: kubernetes-sigs/kind
-    version: 0.30.0
+    version: 0.31.0
 
   kube-linter:
     cmd: kube-linter version
@@ -372,7 +381,7 @@ dependencies:
     home: https://github.com/stackrox/kube-linter
     license: Apache 2
     package: stackrox/kube-linter
-    version: 0.7.6
+    version: 0.8.1
 
   kubectl:
     cmd: kubectl version --client=true
@@ -421,7 +430,7 @@ dependencies:
     group: CLI Tools
     home: https://github.com/lsof-org/lsof
     license: BSD 2
-    version: 4.95.0
+    version: 4.99.4
 
   man:
     cmd: man --version
@@ -429,7 +438,7 @@ dependencies:
     home: https://savannah.nongnu.org/projects/man-db
     license: GPL 2
     package: man-db
-    version: 2.11.2
+    version: 2.13.1
 
   markdownlint:
     cmd: markdownlint --version
@@ -438,7 +447,7 @@ dependencies:
     home: https://github.com/igorshubovych/markdownlint-cli
     license: MIT
     package: markdownlint-cli
-    version: 0.45.0
+    version: 0.47.0
 
   nc:
     cmd: (nc -h) > >(cat) 2>&1
@@ -463,7 +472,7 @@ dependencies:
     home: https://nodejs.org
     license: MIT
     package: nodejs
-    version: 22.21.0
+    version: 24.12.0
 
   npm:
     cmd: npm --version
@@ -529,7 +538,7 @@ dependencies:
     home: https://pip.pypa.io
     license: MIT
     package: python3-pip
-    version: 23.0.1
+    version: 25.1.1
 
   pnpm:
     cmd: pnpm --version
@@ -538,7 +547,7 @@ dependencies:
     home: https://github.com/pnpm/pnpm
     license: MIT
     package: pnpm/pnpm
-    version: 10.20.0
+    version: 10.26.1
 
   pre-commit:
     cmd: pre-commit --version
@@ -547,7 +556,7 @@ dependencies:
     home: https://github.com/pre-commit/pre-commit
     license: MIT
     package: pre-commit
-    version: 4.3.0
+    version: 4.5.1
 
   ps:
     cmd: ps --version
@@ -564,7 +573,7 @@ dependencies:
     group: Python
     home: https://github.com/pylint-dev/pylint
     license: GPL 2
-    version: 4.0.2
+    version: 4.0.4
 
   Python:
     cmd: python3 --version
@@ -573,7 +582,7 @@ dependencies:
     home: https://www.python.org
     license: PSF 2
     package: python3
-    version: 3.11.2
+    version: 3.13.5
 
   python3-apt:
     datasource: deb
@@ -592,7 +601,7 @@ dependencies:
     group: Python
     home: https://github.com/astral-sh/ruff
     license: MIT
-    version: 0.14.3
+    version: 0.14.10
 
   ShellCheck:
     cmd: shellcheck --version
@@ -617,7 +626,7 @@ dependencies:
     home: https://www.openssh.com
     license: BSD 2
     package: openssh-client
-    version: "9.2"
+    version: "10.0"
     track: false
 
   sshpass:
@@ -625,7 +634,7 @@ dependencies:
     datasource: deb
     home: https://github.com/kevinburke/sshpass
     license: GPL 2
-    version: "1.09"
+    version: "1.10"
 
   starship:
     cmd: starship --version
@@ -634,7 +643,7 @@ dependencies:
     home: https://starship.rs
     license: ISC
     package: starship/starship
-    version: 1.24.0
+    version: 1.24.1
 
   staticcheck:
     datasource: go
@@ -658,7 +667,7 @@ dependencies:
     home: https://github.com/go-task/task
     license: MIT
     package: "@go-task/cli"
-    version: 3.45.4
+    version: 3.46.3
 
   unzip:
     cmd: (unzip -v) > >(cat) 2>&1
@@ -670,11 +679,12 @@ dependencies:
 
   uv:
     cmd: uv self version
-    datasource: pypi
+    datasource: github-releases
     group: Python
     home: https://github.com/astral-sh/uv
+    package: astral-sh/uv
     license: MIT
-    version: 0.9.7
+    version: 0.9.18
 
   venv:
     datasource: deb
@@ -689,7 +699,7 @@ dependencies:
     group: CLI Tools
     home: https://www.vim.org
     license: Vim
-    version: "9.0"
+    version: "9.1"
 
   wget:
     cmd: wget --version
@@ -697,7 +707,7 @@ dependencies:
     group: Networking Tools
     home: https://www.gnu.org/software/wget
     license: GPL 3
-    version: 1.21.3
+    version: 1.25.0
 
   ws-cli:
     cmd: ws-cli --version
