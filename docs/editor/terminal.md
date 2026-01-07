@@ -62,6 +62,42 @@ improved readability.
 
 ![Cat animation](/editor/terminal/cat.gif){.doc-image-shadow}
 
+### Clipboard
+
+The workspace provides clipboard utilities that bridge the terminal with the browser's
+clipboard.
+
+#### Available Commands
+
+- **`pbcopy`**
+- **`pbpaste`**
+- **`xclip`**
+- **`xsel`**
+- **`ws clip paste`**
+
+```sh
+# Copy to clipboard
+echo "Hello World" | pbcopy
+cat file.txt | xclip -sel c
+echo "data" | xsel -b
+
+# Paste from clipboard
+pbpaste
+xclip -o -sel c
+xsel -b -o
+
+# Use in pipelines
+pbpaste | grep "pattern"
+xclip -o | jq .
+```
+
+::: info
+All clipboard commands communicate with the VSCode extension running in your browser,
+bridging the terminal environment with your native clipboard.
+
+All X11 selections *(primary, secondary, clipboard)* map to the same browser clipboard.
+:::
+
 ### ZSH
 
 The standard shell utilized is `zsh`, enhanced by the [`oh-my-zsh`][oh-my-zsh] framework.

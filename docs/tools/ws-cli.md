@@ -29,13 +29,36 @@ This feature allows for quick access to your workspace root with a minimal comma
 
 ### Clipboard (`ws clip`)
 
-Interact with the native clipboard.
+Interact with the browser clipboard from the terminal.
 
 - **`paste`:** Paste clipboard content.
 
 ```sh
+# Save clipboard to file
 ws clip paste > out.txt
+
+# Use in pipeline
+ws clip paste | grep "pattern"
 ```
+
+::: tip
+For quick clipboard access, use the clipboard binaries:
+```sh
+# macOS-compatible
+echo "copy this" | pbcopy
+pbpaste
+
+# X11-compatible
+echo "copy this" | xclip -sel c
+xclip -o -sel c
+
+# Alternative X11
+echo "copy this" | xsel -b
+xsel -b -o
+```
+:::
+
+See the [Terminal Clipboard](/editor/terminal#clipboard) section for more details.
 
 ### Features (`ws feature`)
 
