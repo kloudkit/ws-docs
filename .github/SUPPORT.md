@@ -5,12 +5,12 @@ This is a community-driven, open-source project; **we do not provide commercial 
 
 ## Community Support
 
- | Inquiry             | Channel                   |
- | ------------------- | ------------------------- |
- | 📚 Documentation     | <https://ws.kloudkit.com> |
- | 💬 Questions / Ideas | [GitHub Discussions][]    |
- | 🐞 Bugs              | [GitHub Issues][]         |
- | 🔒 Sensitive issues  | <info@kloudkit.com>       |
+| Inquiry             | Channel                   |
+| ------------------- | ------------------------- |
+| 📚 Documentation     | <https://ws.kloudkit.com> |
+| 💬 Questions / Ideas | [GitHub Discussions][]    |
+| 🐞 Bugs              | [GitHub Issues][]         |
+| 🔒 Sensitive issues  | <info@kloudkit.com>       |
 
 For contribution guidelines, see our [How to Contribute][] page.
 
