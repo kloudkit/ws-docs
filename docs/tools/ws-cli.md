@@ -43,6 +43,7 @@ ws clip paste | grep "pattern"
 
 ::: tip
 For quick clipboard access, use the clipboard binaries:
+
 ```sh
 # macOS-compatible
 echo "copy this" | pbcopy
@@ -56,6 +57,7 @@ xclip -o -sel c
 echo "copy this" | xsel -b
 xsel -b -o
 ```
+
 :::
 
 See the [Terminal Clipboard](/editor/terminal#clipboard) section for more details.
@@ -98,6 +100,33 @@ Retrieve workspace logs.
 
 ```sh
 ws logs --level=error --tail=100 --follow
+```
+
+### Secrets (`ws secrets`)
+
+Manage encryption, decryption, and master key generation for secure secrets handling.
+
+- **`generate`:** Generate a cryptographically secure master key.
+- **`encrypt <plaintext>`:** Encrypt a plaintext value using a master key.
+- **`decrypt <encrypted>`:** Decrypt an encrypted value using a master key.
+
+#### Flags
+
+- **`--master <key>`:** Master key or path to key file.
+- **`--mode <permissions>`:** File permissions *(e.g., 0o600, 384)*, only when `--output`
+    is used. Values can be decimal or octet.
+- **`--force`:** Overwrite existing files.
+- **`--raw`:** Output without styling.
+
+```sh
+# Generate a master key
+ws secrets generate --output .master.key --mode 0o600
+
+# Encrypt a value
+ws secrets encrypt "my-secret-value" --master .master.key
+
+# Decrypt a value
+ws secrets decrypt "base64:TWFueSBoYW5kcyBtYWtlIGxpZ2h0IHdvcmsu..." --master .master.key
 ```
 
 ### Serve (`ws serve`)
