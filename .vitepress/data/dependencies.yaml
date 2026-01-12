@@ -31,7 +31,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible/ansible-lint
     license: MIT
-    version: 25.12.1
+    version: 25.12.2
 
   bat:
     cmd: bat --version
@@ -68,14 +68,14 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible-collections/community.docker
     license: GPL 3
-    version: 5.0.4
+    version: 5.0.5
 
   community.general:
     datasource: galaxy-collection
     group: Ansible
     home: https://github.com/ansible-collections/community.general
     license: GPL 3
-    version: 12.1.0
+    version: 12.2.0
 
   containerd.io:
     cmd: containerd --version
@@ -102,7 +102,7 @@ dependencies:
     home: https://github.com/charmbracelet/crush
     license: FSL-1.1-MIT
     track: false
-    version: 0.30.0
+    version: 0.31.0
 
   cspell:
     cmd: cspell --version
@@ -547,7 +547,7 @@ dependencies:
     home: https://github.com/pnpm/pnpm
     license: MIT
     package: pnpm/pnpm
-    version: 10.26.1
+    version: 10.27.0
 
   pre-commit:
     cmd: pre-commit --version
@@ -643,7 +643,7 @@ dependencies:
     home: https://starship.rs
     license: ISC
     package: starship/starship
-    version: 1.24.1
+    version: 1.24.2
 
   staticcheck:
     datasource: go
@@ -667,7 +667,7 @@ dependencies:
     home: https://github.com/go-task/task
     license: MIT
     package: "@go-task/cli"
-    version: 3.46.3
+    version: 3.46.4
 
   unzip:
     cmd: (unzip -v) > >(cat) 2>&1
@@ -684,7 +684,7 @@ dependencies:
     home: https://github.com/astral-sh/uv
     package: astral-sh/uv
     license: MIT
-    version: 0.9.18
+    version: 0.9.22
 
   venv:
     datasource: deb
@@ -715,7 +715,7 @@ dependencies:
     home: https://github.com/kloudkit/ws-cli
     license: MIT
     package: github.com/kloudkit/ws-cli
-    version: 0.0.35
+    version: 0.0.36
 
   yamllint:
     cmd: yamllint --version
