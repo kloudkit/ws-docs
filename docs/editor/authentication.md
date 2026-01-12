@@ -35,19 +35,30 @@ docker run \
 
 ### Creating a Hashed Password
 
-To generate a hashed password, execute the following
+To generate a hashed password, use the `ws-cli` tool
 *(replacing `"super_duper_secret"` with your desired password)*:
 
 ```sh
-$ echo -n super_duper_secret | npx -s argon2-cli -e
-$argon2i$v=19$m=4096,t=3,p=1$z4DjJlJgI6S7fAdQC35ZQw$Rpu8CLMWedxJaH0eiFCetyoRbg+S8ow/RRyVCZzM6QE
+$ echo -n super_duper_secret | ws secrets generate login
+$argon2id$v=19$m=4096,t=3,p=1$z4DjJlJgI6S7fAdQC35ZQw$Rpu8CLMWedxJaH0eiFCetyoRbg+S8ow/RRyVCZzM6QE
 ```
+
+::: tip
+
+You can generate the password hash **from within a running workspace** for subsequent executions.
+Then restart the instance and set the value for `WS_AUTH_PASSWORD_HASHED`:
+
+```sh
+echo -n "your_password" | ws secrets generate --workspace --raw
+```
+
+:::
 
 Then deploy the workspace:
 
 ```sh{2}
 docker run \
-  -e WS_AUTH_PASSWORD_HASHED="$argon2i$v=19$m=4096,t=3,p=1$z4DjJlJgI6S7fAdQC35ZQw$Rpu8CLMWedxJaH0eiFCetyoRbg+S8ow/RRyVCZzM6QE" \
+  -e WS_AUTH_PASSWORD_HASHED="$argon2id$v=19$m=4096,t=3,p=1$z4DjJlJgI6S7fAdQC35ZQw$Rpu8CLMWedxJaH0eiFCetyoRbg+S8ow/RRyVCZzM6QE" \
   ghcr.io/kloudkit/workspace:v0.1.0
 ```
 

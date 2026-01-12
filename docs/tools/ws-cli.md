@@ -78,6 +78,7 @@ Display workspace information.
 
 - **`env`:** Display effective workspace environment variables.
 - **`extensions`:** Display installed extensions.
+- **`resources`:** Display system resource usage *(CPU, memory, and disk)*.
 - **`uptime`:** Display the workspace uptime.
 - **`version`:** Display installed workspace version.
 
@@ -92,7 +93,8 @@ Log messages to the console.
 - **`stamp`:** Print the current timestamp.
 
 The `log *` functions can be supplied with an optional `--indent=*` flag, indicating the
-desired number of indentations for prefixing the message. There is also a `--pipe` flag to loop through piped output.
+desired number of indentations for prefixing the message. There is also a `--pipe` flag to
+loop through piped output.
 
 ### Logs (`ws logs`)
 
@@ -106,28 +108,17 @@ ws logs --level=error --tail=100 --follow
 
 Manage encryption, decryption, and master key generation for secure secrets handling.
 
-- **`generate`:** Generate a cryptographically secure master key.
-- **`encrypt <plaintext>`:** Encrypt a plaintext value using a master key.
-- **`decrypt <encrypted>`:** Decrypt an encrypted value using a master key.
+For comprehensive documentation including vault management, secret types, and security
+best practices, see the [dedicated secrets documentation](/settings/secrets).
 
-#### Flags
+#### Quick Reference
 
-- **`--master <key>`:** Master key or path to key file.
-- **`--mode <permissions>`:** File permissions *(e.g., 0o600, 384)*, only when `--output`
-    is used. Values can be decimal or octet.
-- **`--force`:** Overwrite existing files.
-- **`--raw`:** Output without styling.
-
-```sh
-# Generate a master key
-ws secrets generate --output .master.key --mode 0o600
-
-# Encrypt a value
-ws secrets encrypt "my-secret-value" --master .master.key
-
-# Decrypt a value
-ws secrets decrypt "base64:TWFueSBoYW5kcyBtYWtlIGxpZ2h0IHdvcmsu..." --master .master.key
-```
+- **`generate`:**
+  - **`master`:** Generate a cryptographically secure master key.
+  - **`login`:** Generate a login password hash for authentication.
+- **`encrypt <plaintext>`:** Encrypt a plaintext value.
+- **`decrypt <encrypted>`:** Decrypt an encrypted value.
+- **`vault`:** Process a vault file and write secrets to destinations.
 
 ### Serve (`ws serve`)
 
