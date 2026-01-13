@@ -152,7 +152,7 @@ Use in Docker deployments:
 ```sh
 docker run \
   -e WS_AUTH_PASSWORD_HASHED=$PASSWORD \
-  ghcr.io/kloudkit/workspace:v0.1.0
+  ghcr.io/kloudkit/workspace:v0.1.1
 ```
 
 See [authentication documentation](/editor/authentication) for details.

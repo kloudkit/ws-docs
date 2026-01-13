@@ -51,7 +51,7 @@ environment variable:
 ```sh{2}
 docker run \
   -e WS_SERVER_PROXY_DOMAIN=ws.dev \
-  ghcr.io/kloudkit/workspace:v0.1.0
+  ghcr.io/kloudkit/workspace:v0.1.1
 ```
 
 In the configuration above, if your Kloud Workspace is hosted at `ws.dev` and you run the
@@ -65,7 +65,7 @@ You can provide multiple proxy domains by passing a space-delimited list:
 ```sh{2}
 docker run \
   -e WS_SERVER_PROXY_DOMAIN="ws.dev local.ws.dev" \
-  ghcr.io/kloudkit/workspace:v0.1.0
+  ghcr.io/kloudkit/workspace:v0.1.1
 ```
 
 With the configuration above, services will be available on both domains: `*.ws.dev` and
