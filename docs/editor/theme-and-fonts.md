@@ -60,7 +60,7 @@ environment variable to either `1` or `true`:
 ```sh{2}
 docker run \
   -e WS_EDITOR_COMMENTS_DISABLE_FONT=1 \
-  ghcr.io/kloudkit/workspace:v0.1.0
+  ghcr.io/kloudkit/workspace:v0.1.1
 ```
 
 The animation below shows comments in the default font and how they appear when the font
