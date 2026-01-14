@@ -98,6 +98,20 @@ secrets:
     type: ssh
 ```
 
+### File References
+
+For long encrypted values, store them in separate files using the `file:` prefix:
+
+```yaml
+secrets:
+  ssh-private-key:
+    encrypted: file:./secrets/ssh-key.enc
+    destination: ~/.ssh/id_rsa
+    type: ssh
+```
+
+File paths are relative to the current working directory.
+
 ### Secret Types
 
 Each secret has a `type` field that determines how it's written and its default permissions:
