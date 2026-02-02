@@ -19,6 +19,7 @@ export default [
       { text: 'Authentication', link: '/editor/authentication'},
       { text: 'Aliases', link: '/editor/aliases'},
       { text: 'Extensions', link: '/editor/extensions'},
+      { text: 'Metrics', link: '/editor/metrics'},
       { text: 'Port Forwarding', link: '/editor/port-forwarding'},
       { text: 'Settings', link: '/editor/settings'},
       { text: 'Storage', link: '/editor/storage'},

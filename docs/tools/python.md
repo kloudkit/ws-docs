@@ -9,6 +9,7 @@ Key features provided *out‑of‑the‑box*:
 
 - **Python 3.11** runtime, ready for immediate use.
 - Both `pip` and the lightning‑fast `uv` package manager.
+- Automatic virtual environment activation when navigating into project directories.
 - Opinionated linting & formatting with `ruff` its IDE extension.
 - Language‑intelligence powered by *Jedi* *(Pylance is unavailable in non‑official VS Code builds)*.
 - Pre‑generated `IPython` *(itself, not pre‑installed)* profile that matches the Kloud Workspace
@@ -21,6 +22,18 @@ For day‑to‑day dependency work, we recommend `uv`, which offers:
 - Near instant dependency resolution.
 - Deterministic, lock‑file–friendly installs.
 - Seamless compatibility with `requirements.txt` and `pyproject.toml`.
+
+## Automatic `venv` Activation
+
+Kloud Workspace includes an **auto-venv** plugin that automatically activates Python
+virtual environments when you navigate into a project directory.
+
+When you `cd` into a directory containing a `.venv` or `venv` folder, the virtual
+environment is activated automatically.
+
+When you leave the project directory, it deactivates.
+
+This works seamlessly with `uv venv` or `python -m venv`:
 
 ## Linting & Formatting with `ruff`
 
@@ -39,8 +52,8 @@ Our default configuration is *deep and opinionated*:
 
 ### Configuration Lookup
 
-Kloud Workspace ships with a default Ruff configuration at `~/.config/ruff/ruff.toml` that suits
-most projects.
+Kloud Workspace ships with a default Ruff configuration at `~/.config/ruff/ruff.toml` that
+suits most projects.
 If you need custom linting rules, add a `ruff.toml` file at your project’s root.
 
 You can also copy the default configuration with:

@@ -98,6 +98,15 @@ secrets:
     type: ssh
 ```
 
+:::warn
+
+Vault secrets can only be written to user-writable paths such as `$HOME`, `/workspace`, and `/tmp`.
+
+System paths like `/etc/` and `/usr/` are protected by Linux file permissions since the workspace
+runs as the `kloud` *(non-root)* user.
+
+:::
+
 ### File References
 
 For long encrypted values, store them in separate files using the `file:` prefix:

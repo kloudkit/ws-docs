@@ -8,6 +8,7 @@ These settings manifest at two levels:
 
 - [*User settings*](#user-settings).
 - [*Workspace settings*](#workspace-settings).
+- [*Environment variable settings*](#environment-variables).
 
 ::: warning
 The term [*workspace settings*](#workspace-settings) mentioned earlier specifically
@@ -49,6 +50,76 @@ These settings will take precedence over the [*user settings*](#user-settings).
 The animation below displays the various tabs and the creation of the `.vscode` directory:
 
 ![Settings animation](/settings/settings.gif){.doc-image-shadow}
+
+## Environment Variables
+
+Workspace supports customizing VSCode settings at boot time via environment variables.
+This is useful for applying consistent settings without committing a `.vscode/settings.json`
+file.
+
+### Available Variables
+
+- <EnvVar group="editor" name="settings_merge" />
+- <EnvVar group="editor" name="settings_merge_file" />
+- <EnvVar group="editor" name="settings_override" />
+- <EnvVar group="editor" name="settings_override_file" />
+
+### Merge vs Override
+
+**Merge** variables deep-merge your settings into the existing user settings,
+preserving any defaults not explicitly specified:
+
+::: code-group
+
+```sh{2} [inline]
+docker run \
+  -e WS_EDITOR_SETTINGS_MERGE='{"editor.fontSize": 16, "[python]": {"editor.tabSize": 4}}' \
+  ghcr.io/kloudkit/workspace:v0.1.1
+```
+
+```sh{2,3} [file]
+docker run \
+  -e WS_EDITOR_SETTINGS_MERGE_FILE=/workspace/.settings-merge.json \
+  -v /path/to/my-settings.json:/workspace/.settings-merge.json \
+  ghcr.io/kloudkit/workspace:v0.1.1
+```
+
+:::
+
+**Override** variables completely replace the user settings with your configuration:
+
+::: warning
+Using override removes all default workspace settings.
+
+*Use merge for partial updates.*
+:::
+
+::: code-group
+
+```sh{2} [inline]
+docker run \
+  -e WS_EDITOR_SETTINGS_OVERRIDE='{"editor.fontSize": 16}' \
+  ghcr.io/kloudkit/workspace:v0.1.1
+```
+
+```sh{2,3} [file]
+docker run \
+  -e WS_EDITOR_SETTINGS_OVERRIDE_FILE=/workspace/.settings.json \
+  -v /path/to/my-settings.json:/workspace/.settings.json \
+  ghcr.io/kloudkit/workspace:v0.1.1
+```
+
+:::
+
+### Precedence
+
+When multiple settings sources are present, they are applied in the following order
+*(later sources take precedence)*:
+
+1. Default user settings
+2. `WS_EDITOR_SETTINGS_MERGE` / `WS_EDITOR_SETTINGS_MERGE_FILE`
+3. `WS_EDITOR_SETTINGS_OVERRIDE` / `WS_EDITOR_SETTINGS_OVERRIDE_FILE`
+4. [Workspace settings](#workspace-settings) *(`.vscode/settings.json`)*
 
 ## Important Notes
 

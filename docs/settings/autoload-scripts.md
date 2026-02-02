@@ -26,8 +26,8 @@ Startup scripts are defined at two levels:
 
 ## Entrypoint
 
-On startup, the predefined entrypoint scripts stored in `/autoload/*` are executed in
-lexicographical order to initialize the workspace environment.
+On startup, the predefined entrypoint scripts stored in `/usr/libexec/workspace/startup.d/*`
+are executed in lexicographical order to initialize the workspace environment.
 
 To add additional functionality during startup, mount your scripts to `/entrypoint/*`.
 These scripts are executed as follows:
