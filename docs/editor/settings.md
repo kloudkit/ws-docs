@@ -74,14 +74,14 @@ preserving any defaults not explicitly specified:
 ```sh{2} [inline]
 docker run \
   -e WS_EDITOR_SETTINGS_MERGE='{"editor.fontSize": 16, "[python]": {"editor.tabSize": 4}}' \
-  ghcr.io/kloudkit/workspace:v0.1.1
+  ghcr.io/kloudkit/workspace:v0.1.2
 ```
 
 ```sh{2,3} [file]
 docker run \
   -e WS_EDITOR_SETTINGS_MERGE_FILE=/workspace/.settings-merge.json \
   -v /path/to/my-settings.json:/workspace/.settings-merge.json \
-  ghcr.io/kloudkit/workspace:v0.1.1
+  ghcr.io/kloudkit/workspace:v0.1.2
 ```
 
 :::
@@ -99,14 +99,14 @@ Using override removes all default workspace settings.
 ```sh{2} [inline]
 docker run \
   -e WS_EDITOR_SETTINGS_OVERRIDE='{"editor.fontSize": 16}' \
-  ghcr.io/kloudkit/workspace:v0.1.1
+  ghcr.io/kloudkit/workspace:v0.1.2
 ```
 
 ```sh{2,3} [file]
 docker run \
   -e WS_EDITOR_SETTINGS_OVERRIDE_FILE=/workspace/.settings.json \
   -v /path/to/my-settings.json:/workspace/.settings.json \
-  ghcr.io/kloudkit/workspace:v0.1.1
+  ghcr.io/kloudkit/workspace:v0.1.2
 ```
 
 :::

@@ -44,14 +44,14 @@ Both options below can be used in unison:
 ```sh{2} [list]
 docker run \
   -e WS_EDITOR_ADDITIONAL_VS_EXTENSIONS="dbaeumer.vscode-eslint esbenp.prettier-vscode" \
-  ghcr.io/kloudkit/workspace:v0.1.1
+  ghcr.io/kloudkit/workspace:v0.1.2
 ```
 
 ```sh{2,3} [directory]
 docker run \
   -e WS_EDITOR_ADDITIONAL_VS_EXTENSIONS_DIR=/additional-extensions \
   -v /path/to/my-additional-extensions:/additional-extensions \
-  ghcr.io/kloudkit/workspace:v0.1.1
+  ghcr.io/kloudkit/workspace:v0.1.2
 ```
 
 :::
@@ -76,7 +76,7 @@ docker volume create my-extensions
 
 docker run \
   -v my-extensions:/extensions \
-  ghcr.io/kloudkit/workspace:v0.1.1
+  ghcr.io/kloudkit/workspace:v0.1.2
 ```
 
 ## Privately Hosted Gallery
@@ -88,7 +88,7 @@ For example:
 ```sh{2}
 docker run \
   -e EXTENSIONS_GALLERY='{"serviceUrl": "https://my-extensions/api"}' \
-  ghcr.io/kloudkit/workspace:v0.1.1
+  ghcr.io/kloudkit/workspace:v0.1.2
 ```
 
 ::: warning
