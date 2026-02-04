@@ -25,13 +25,13 @@ To add your company's root CA, all you need to do is mount the certificate
 ```sh{2} [Single]
 docker run \
   -v /path/on-host/ca.crt:/usr/local/share/ca-certificates/workspace/ca.crt \
-  ghcr.io/kloudkit/workspace:v0.1.1
+  ghcr.io/kloudkit/workspace:v0.1.2
 ```
 
 ```sh{2} [Multiple]
 docker run \
   -v /folder/on-host:/usr/local/share/ca-certificates/workspace \
-  ghcr.io/kloudkit/workspace:v0.1.1
+  ghcr.io/kloudkit/workspace:v0.1.2
 ```
 
 :::
@@ -47,13 +47,13 @@ Use the `WS_CA_ADDITIONAL_CERT_ENDPOINTS` environment variable to define one or 
 ```sh{2} [Single]
 docker run \
   -e WS_CA_ADDITIONAL_CERT_ENDPOINTS="https://corp.com/ca.pem" \
-  ghcr.io/kloudkit/workspace:v0.1.1
+  ghcr.io/kloudkit/workspace:v0.1.2
 ```
 
 ```sh{2} [Multiple]
 docker run \
   -e WS_CA_ADDITIONAL_CERT_ENDPOINTS="https://corp.com/ca.pem https://alt.com/root.crt" \
-  ghcr.io/kloudkit/workspace:v0.1.1
+  ghcr.io/kloudkit/workspace:v0.1.2
 ```
 
 :::
@@ -76,13 +76,13 @@ validation is bypassed using insecure connections.
 ```sh{2} [Single]
 docker run \
   -e WS_CA_ADDITIONAL_CERT_INSECURE_ENDPOINTS="http://corp.com/ca.pem" \
-  ghcr.io/kloudkit/workspace:v0.1.1
+  ghcr.io/kloudkit/workspace:v0.1.2
 ```
 
 ```sh{2} [Multiple]
 docker run \
   -e WS_CA_ADDITIONAL_CERT_INSECURE_ENDPOINTS="http://corp.com/ca.pem https://untrusted.com/root.crt" \
-  ghcr.io/kloudkit/workspace:v0.1.1
+  ghcr.io/kloudkit/workspace:v0.1.2
 ```
 
 :::
