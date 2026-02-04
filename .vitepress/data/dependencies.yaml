@@ -23,7 +23,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible/ansible
     license: GPL 3
-    version: 2.20.1
+    version: 2.20.2
 
   ansible-lint:
     cmd: ansible-lint --version
@@ -75,7 +75,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible-collections/community.general
     license: GPL 3
-    version: 12.2.0
+    version: 12.3.0
 
   containerd.io:
     cmd: containerd --version
@@ -690,7 +690,7 @@ dependencies:
     home: https://github.com/astral-sh/uv
     package: astral-sh/uv
     license: MIT
-    version: 0.9.27
+    version: 0.9.28
 
   venv:
     datasource: deb
