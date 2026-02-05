@@ -102,7 +102,7 @@ dependencies:
     home: https://github.com/charmbracelet/crush
     license: FSL-1.1-MIT
     track: false
-    version: 0.37.0
+    version: 0.39.0
 
   cspell:
     cmd: cspell --version
@@ -762,10 +762,3 @@ dependencies:
     license: MIT
     track: false
     version: 0.7.1
-
-  zsh-fzf-history-search:
-    datasource: github-tags
-    group: Terminal
-    home: https://github.com/joshskidmore/zsh-fzf-history-search
-    license: MIT
-    track: false
