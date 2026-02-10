@@ -31,6 +31,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible/ansible-lint
     license: MIT
+    tool: true
     version: 26.1.1
 
   bat:
@@ -94,15 +95,6 @@ dependencies:
     license: Apache 2
     package: google/go-containerregistry
     version: 0.20.7
-
-  crush:
-    cmd: crush -v
-    datasource: deb
-    group: AI Coding Agents
-    home: https://github.com/charmbracelet/crush
-    license: FSL-1.1-MIT
-    track: false
-    version: 0.39.0
 
   cspell:
     cmd: cspell --version
@@ -562,6 +554,7 @@ dependencies:
     home: https://github.com/pre-commit/pre-commit
     license: MIT
     package: pre-commit
+    tool: true
     version: 4.5.1
 
   ps:
@@ -579,6 +572,7 @@ dependencies:
     group: Python
     home: https://github.com/pylint-dev/pylint
     license: GPL 2
+    tool: true
     version: 4.0.4
 
   Python:
@@ -596,17 +590,13 @@ dependencies:
     home: https://salsa.debian.org/apt-team/python-apt
     license: GPL 2
 
-  python3-dev:
-    datasource: deb
-    home: https://www.python.org
-    license: PSF 2
-
   ruff:
     cmd: ruff --version
     datasource: pypi
     group: Python
     home: https://github.com/astral-sh/ruff
     license: MIT
+    tool: true
     version: 0.14.14
 
   ShellCheck:
@@ -692,13 +682,6 @@ dependencies:
     license: MIT
     version: 0.9.28
 
-  venv:
-    datasource: deb
-    group: Python
-    home: https://docs.python.org/3/library/venv.html
-    license: PSF 2
-    package: python3-venv
-
   vim:
     cmd: vim --version
     datasource: deb
@@ -729,6 +712,7 @@ dependencies:
     group: CLI Tools
     home: https://github.com/adrienverge/yamllint
     license: GPL 3
+    tool: true
     version: 1.38.0
 
   yarn:
@@ -745,6 +729,7 @@ dependencies:
     group: CLI Tools
     home: https://github.com/kislyuk/yq
     license: MIT
+    tool: true
     version: 3.4.3
 
   zsh:
