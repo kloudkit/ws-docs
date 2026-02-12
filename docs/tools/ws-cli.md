@@ -78,7 +78,7 @@ Display workspace information.
 
 - **`env`:** Display effective workspace environment variables.
 - **`extensions`:** Display installed extensions.
-- **`resources`:** Display system resource usage *(CPU, memory, and disk)*.
+- **`metrics`:** Display system resource usage *(CPU, memory, disk, GPU, networking, etc.)*.
 - **`uptime`:** Display the workspace uptime.
 - **`version`:** Display installed workspace version.
 

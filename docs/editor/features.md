@@ -101,6 +101,50 @@ ws feature install custom --feature cool --root /alternate
 
 :::
 
+## Feature Store
+
+Some features require packages from third-party APT repositories
+*(e.g. `cloudflared`, `gcloud`, `gh`, etc.)*.
+
+By default, Kloud Workspace enables the individual vendor repositories at install time.
+
+When the [`WS_FEATURES_STORE_URL`](/settings/configuration#ws-features-store-url)
+environment variable is set, packages are fetched from the
+[ws-feature-store](https://github.com/kloudkit/ws-feature-store) instead of from
+individual vendor repositories.
+
+### Use Cases
+
+- **Airgapped *(offline)* environments:** run the feature store on a local network
+  with no internet access.
+- **High-latency on-prem:** avoid slow connections to upstream vendor CDNs by serving
+  packages locally.
+- **Quick caching:** reduce startup time by fetching from a nearby mirror instead of
+  multiple remote sources.
+
+### Quick Start
+
+Point the workspace at a running feature store instance:
+
+```sh{2-4}
+docker run \
+  -e WS_APT_DISABLE_REPOS="*" \
+  -e WS_FEATURES_STORE_URL="http://feature-store.local" \
+  -e WS_FEATURES_ADDITIONAL_FEATURES="gh terraform" \
+  ghcr.io/kloudkit/workspace:v0.1.3
+```
+
+The feature store image is available at `ghcr.io/kloudkit/ws-feature-store`.
+Tags are released monthly with the latest package updates and follow a
+`:v{YYYY}.{MM}` convention *(e.g. `:v2026.02`)*.
+
+::: tip
+
+Combine with [`WS_APT_DISABLE_REPOS`](/settings/configuration#ws-apt-disable-repos) set
+to `*` to ensure no traffic leaves the local network.
+
+:::
+
 ## Available Features
 
 ::: info
@@ -110,24 +154,24 @@ Feel free to suggest it or contribute directly.
 For more information, visit our [contribution guide](/contribute/).
 :::
 
-| Feature       | Description                               |   Since   |
-| ------------- | ----------------------------------------- | :-------: |
-| `cloudflared` | Cloudflare tunnel CLI                     |           |
-| `codex`       | codex CLI                                 | *v0.0.20* |
-| `conan`       | Conan CLI and related tools               | *v0.0.21* |
-| `continue`    | cn CLI and continue extension             |           |
-| `cpp`         | C++ and related tools                     |           |
-| `dagger`      | dagger.io CLI and SDK                     |           |
-| `dotnet`      | .NET framework and related extensions     |           |
-| `gcloud`      | Google Cloud CLI for GCP                  |           |
-| `gh`          | GitHub CLI                                |           |
-| `jf`          | JFrog CLI                                 |           |
-| `jupyter`     | Jupyter packages and related extensions   |           |
-| `php`         | PHP and related extensions                |           |
-| `rclone`      | rclone CLI                                |           |
-| `restic`      | Restic CLI                                |           |
-| `rust`        | Rust and Cargo                            |           |
-| `snyk`        | Snyk CLI and related extension            | *v0.0.20* |
-| `sops`        | SOPS CLI                                  | *v0.0.21* |
-| `talos`       | Talos CLI                                 |           |
-| `terraform`   | Terraform packages and related extensions |           |
+| Feature       | Description                               |   Since   | Store |
+| ------------- | ----------------------------------------- | :-------: | :---: |
+| `cloudflared` | Cloudflare tunnel CLI                     |           |   ✅   |
+| `codex`       | codex CLI                                 | *v0.0.20* |       |
+| `conan`       | Conan CLI and related tools               | *v0.0.21* |       |
+| `continue`    | cn CLI and continue extension             |           |       |
+| `cpp`         | C++ and related tools                     |           |       |
+| `dagger`      | dagger.io CLI and SDK                     |           |       |
+| `dotnet`      | .NET framework and related extensions     |           |   ✅   |
+| `gcloud`      | Google Cloud CLI for GCP                  |           |   ✅   |
+| `gh`          | GitHub CLI                                |           |   ✅   |
+| `jf`          | JFrog CLI                                 |           |   ✅   |
+| `jupyter`     | Jupyter packages and related extensions   |           |       |
+| `php`         | PHP and related extensions                |           |   🔶   |
+| `rclone`      | rclone CLI                                |           |   ✅   |
+| `restic`      | Restic CLI                                |           |   ✅   |
+| `rust`        | Rust and Cargo                            |           |       |
+| `snyk`        | Snyk CLI and related extension            | *v0.0.20* |       |
+| `sops`        | SOPS CLI                                  | *v0.0.21* |       |
+| `talos`       | Talos CLI                                 |           |       |
+| `terraform`   | Terraform packages and related extensions |           |   ✅   |

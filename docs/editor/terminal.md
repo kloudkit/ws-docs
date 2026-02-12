@@ -125,5 +125,24 @@ docker run \
 
 :::
 
+### History Search
+
+The workspace includes an interactive history search powered by [`fzf`][fzf].
+Press <kbd>Ctrl</kbd>+<kbd>R</kbd> to open a fuzzy finder over your shell history.
+
+By default, duplicate entries are removed and event numbers are hidden for a
+clean, distraction-free list. The following environment variables let you
+customize the behavior:
+
+- <EnvVar group="zsh" name="fzf_history_bind" />
+- <EnvVar group="zsh" name="fzf_history_args" />
+- <EnvVar group="zsh" name="fzf_history_extra_args" />
+- <EnvVar group="zsh" name="fzf_history_remove_duplicates" />
+- <EnvVar group="zsh" name="fzf_history_dates_in_search" />
+- <EnvVar group="zsh" name="fzf_history_event_numbers" />
+- <EnvVar group="zsh" name="fzf_history_end_of_line" />
+- <EnvVar group="zsh" name="fzf_history_query_prefix" />
+
+[fzf]: https://github.com/junegunn/fzf
 [oh-my-zsh]: https://ohmyz.sh
 [starship]: https://starship.rs
