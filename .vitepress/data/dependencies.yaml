@@ -479,7 +479,7 @@ dependencies:
     home: https://github.com/npm/cli
     license: Artistic 2
     package: npm/cli
-    version: 11.6.2
+    version: 11.8.0
 
   oc:
     cmd: oc version
@@ -583,12 +583,6 @@ dependencies:
     license: PSF 2
     package: python3
     version: 3.13.5
-
-  python3-apt:
-    datasource: deb
-    group: Python
-    home: https://salsa.debian.org/apt-team/python-apt
-    license: GPL 2
 
   ruff:
     cmd: ruff --version
