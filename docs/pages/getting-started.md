@@ -48,14 +48,14 @@ port `8080`.
 ::: code-group
 
 ```sh [docker]
-docker run -p 8080:8080 ghcr.io/kloudkit/workspace:v0.1.1
+docker run -p 8080:8080 ghcr.io/kloudkit/workspace:v0.1.2
 ```
 
 ```yaml [compose]
 version: '3.8'
 services:
   workspace:
-    image: ghcr.io/kloudkit/workspace:v0.1.1
+    image: ghcr.io/kloudkit/workspace:v0.1.2
     ports:
       - 8080:8080
 ```
@@ -76,7 +76,7 @@ spec:
     spec:
       containers:
         - name: workspace
-          image: ghcr.io/kloudkit/workspace:v0.1.1
+          image: ghcr.io/kloudkit/workspace:v0.1.2
           ports:
             - containerPort: 8080
 ```
@@ -95,7 +95,7 @@ docker run -it --rm \
     -v ./custom/ca:/usr/local/share/ca-certificates/workspace \
     -v /var/run/docker.sock:/var/run/docker.sock:ro \
     -v data:/workspace \
-    ghcr.io/kloudkit/workspace:v0.1.1
+    ghcr.io/kloudkit/workspace:v0.1.2
 ```
 
 ## Installing in Chrome - SPA
