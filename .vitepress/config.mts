@@ -11,6 +11,20 @@ export default defineConfig({
   cleanUrls: true,
   srcDir: './docs',
 
+  sitemap: {
+    hostname: 'https://ws.kloudkit.com'
+  },
+
+  head: [
+    ['meta', { name: 'theme-color', content: '#303446' }],
+    ['meta', { property: 'og:site_name', content: 'Kloud Workspace' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:image', content: 'https://ws.kloudkit.com/logo.png' }],
+    ['meta', { property: 'og:image:alt', content: 'Kloud Workspace logo' }],
+    ['meta', { name: 'twitter:card', content: 'summary' }],
+    ['meta', { name: 'twitter:image', content: 'https://ws.kloudkit.com/logo.png' }],
+  ],
+
   themeConfig: {
     nav,
     sidebar,
