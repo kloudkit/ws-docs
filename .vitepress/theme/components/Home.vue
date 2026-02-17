@@ -11,6 +11,31 @@
 
   <div class="HomeRow odd">
     <div class="container">
+      <div class="vp-doc">
+        <h3>More Than a Container</h3>
+
+        <p class="lead">
+          <em>Kloud Workspace</em> is an ecosystem of tools designed
+          to work together.
+        </p>
+
+        <ul>
+          <li>Deploy with <a href="/pages/getting-started#basic">Helm →</a></li>
+          <li>Extend with the <a href="/editor/features#feature-store">Feature Store →</a></li>
+          <li>Manage everything from the <a href="/tools/ws-cli">CLI →</a></li>
+        </ul>
+      </div>
+
+      <div class="d-grid">
+        <img width="120px" src="/icons/bolt.svg">
+        <img width="120px" src="/icons/helm.svg">
+        <img width="120px" src="/icons/box.svg">
+      </div>
+    </div>
+  </div>
+
+  <div class="HomeRow">
+    <div class="container">
 
       <img src="/home/tools.png">
 
@@ -47,7 +72,7 @@
     </div>
   </div>
 
-  <div class="HomeRow">
+  <div class="HomeRow odd">
     <div class="container">
 
       <div class="vp-doc">
@@ -86,7 +111,7 @@
     </div>
   </div>
 
-  <div class="HomeRow odd">
+  <div class="HomeRow">
     <div class="container">
 
       <img src="/home/deploy.png">
@@ -123,6 +148,7 @@
       </div>
     </div>
   </div>
+
 </template>
 
 
@@ -163,4 +189,5 @@
 .HomeRow img {
   border-radius: 12px;
 }
+
 </style>

@@ -60,6 +60,17 @@ services:
       - 8080:8080
 ```
 
+```sh [helm]
+# Add the Helm repository
+helm repo add kloudkit https://charts.kloudkit.com
+
+# Discover all available values
+helm show values kloudkit/workspace
+
+# Install the default Helm chart
+helm install my-workspace kloudkit/workspace
+```
+
 ```yaml [kubernetes]
 apiVersion: apps/v1
 kind: Deployment
@@ -83,20 +94,12 @@ spec:
 
 :::
 
-### Advanced
+::: tip
 
-```sh
-docker run -it --rm \
-    --restart=unless-stopped \
-    -p 8080:8080 \
-    -e GIT_COMMITTER_NAME="Joe Smith" \
-    -e GIT_COMMITTER_EMAIL=j@smith.com \
-    -e TZ=Asia/Jerusalem \
-    -v ./custom/ca:/usr/local/share/ca-certificates/workspace \
-    -v /var/run/docker.sock:/var/run/docker.sock:ro \
-    -v data:/workspace \
-    ghcr.io/kloudkit/workspace:v0.1.2
-```
+For advanced configuration via environment variables, see the
+[Configuration](/settings/configuration) page.
+
+:::
 
 ## Installing in Chrome - SPA
 
