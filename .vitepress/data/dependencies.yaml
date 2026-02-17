@@ -304,12 +304,12 @@ dependencies:
 
   helm:
     cmd: helm version --short
-    datasource: deb
+    datasource: github-releases
     group: Docker & Kubernetes
     home: https://github.com/helm/helm
     license: Apache 2
-    track: false
-    version: 3.20.0
+    package: helm/helm
+    version: 4.1.1
 
   helm-diff:
     cmd: helm diff version
@@ -546,6 +546,14 @@ dependencies:
     license: MIT
     package: pnpm/pnpm
     version: 10.29.3
+
+  podman:
+    cmd: podman --version
+    datasource: deb
+    group: Docker & Kubernetes
+    home: https://github.com/containers/podman
+    license: Apache 2
+    version: 5.4.2
 
   pre-commit:
     cmd: pre-commit --version
