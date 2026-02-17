@@ -71,6 +71,14 @@ helm show values kloudkit/workspace
 helm install my-workspace kloudkit/workspace
 ```
 
+```sh [helm (oci)]
+# Discover all available values
+helm show values oci://ghcr.io/kloudkit/charts/workspace
+
+# Install the default Helm chart
+helm install my-workspace oci://ghcr.io/kloudkit/charts/workspace
+```
+
 ```yaml [kubernetes]
 apiVersion: apps/v1
 kind: Deployment
