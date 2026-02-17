@@ -27,9 +27,9 @@
       </div>
 
       <div class="d-grid">
-        <img width="120px" src="/icons/bolt.svg">
-        <img width="120px" src="/icons/helm.svg">
-        <img width="120px" src="/icons/box.svg">
+        <img width="200px" src="/icons/bolt.svg">
+        <img width="150px" src="/icons/helm.svg">
+        <img width="175px" src="/icons/box.svg">
       </div>
     </div>
   </div>
