@@ -104,12 +104,13 @@ ws feature install custom --feature cool --root /alternate
 ## Feature Store
 
 Some features require packages from third-party APT repositories
-*(e.g. `cloudflared`, `gcloud`, `gh`, etc.)*.
+*(i.e. `cloudflared`, `gcloud`, `gh`, etc.)* or binary artifacts *(i.e. `sops`, `composer`, etc.)*.
 
-By default, Kloud Workspace enables the individual vendor repositories at install time.
+By default, Kloud Workspace enables the individual vendor repositories and artifacts at install
+time.
 
 When the [`WS_FEATURES_STORE_URL`](/settings/configuration#ws-features-store-url)
-environment variable is set, packages are fetched from the
+environment variable is set, packages and artifacts are fetched from the
 [ws-feature-store](https://github.com/kloudkit/ws-feature-store) instead of from
 individual vendor repositories.
 
@@ -160,18 +161,19 @@ For more information, visit our [contribution guide](/contribute/).
 | `codex`       | codex CLI                                 | *v0.0.20* |       |
 | `conan`       | Conan CLI and related tools               | *v0.0.21* |       |
 | `continue`    | cn CLI and continue extension             |           |       |
-| `cpp`         | C++ and related tools                     |           |       |
+| `cpp`         | C++ and related tools                     |           |   ✅   |
 | `dagger`      | dagger.io CLI and SDK                     |           |       |
 | `dotnet`      | .NET framework and related extensions     |           |   ✅   |
 | `gcloud`      | Google Cloud CLI for GCP                  |           |   ✅   |
 | `gh`          | GitHub CLI                                |           |   ✅   |
 | `jf`          | JFrog CLI                                 |           |   ✅   |
 | `jupyter`     | Jupyter packages and related extensions   |           |       |
-| `php`         | PHP and related extensions                |           |   🔶   |
+| `opencode`    | OpenCode CLI and related extension        | *v0.1.1*  |       |
+| `php`         | PHP and related extensions                |           |   ✅   |
 | `rclone`      | rclone CLI                                |           |   ✅   |
 | `restic`      | Restic CLI                                |           |   ✅   |
 | `rust`        | Rust and Cargo                            |           |       |
 | `snyk`        | Snyk CLI and related extension            | *v0.0.20* |       |
-| `sops`        | SOPS CLI                                  | *v0.0.21* |       |
-| `talos`       | Talos CLI                                 |           |       |
+| `sops`        | SOPS CLI                                  | *v0.0.21* |   ✅   |
+| `talos`       | Talos CLI                                 |           |   ✅   |
 | `terraform`   | Terraform packages and related extensions |           |   ✅   |

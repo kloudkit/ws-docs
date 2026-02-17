@@ -20,7 +20,7 @@
         </p>
 
         <ul>
-          <li>Deploy with <a href="/pages/getting-started#basic">Helm →</a></li>
+          <li>Deploy with <a href="/pages/getting-started#installation">Helm →</a></li>
           <li>Extend with the <a href="/editor/features#feature-store">Feature Store →</a></li>
           <li>Manage everything from the <a href="/tools/ws-cli">CLI →</a></li>
         </ul>

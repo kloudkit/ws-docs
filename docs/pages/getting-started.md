@@ -35,9 +35,7 @@ The `latest` tag does **not** include ARM images.
 To run on ARM, be sure to use a versioned tag.
 :::
 
-## Usage
-
-### Basic
+## Installation
 
 Start coding now!
 
