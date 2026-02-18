@@ -163,6 +163,7 @@ For more information, visit our [contribution guide](/contribute/).
 | `continue`    | cn CLI and continue extension             |           |       |
 | `cpp`         | C++ and related tools                     |           |   ✅   |
 | `dagger`      | dagger.io CLI and SDK                     |           |       |
+| `doctl`       | DigitalOcean CLI                          | *v0.1.3*  |   ✅   |
 | `dotnet`      | .NET framework and related extensions     |           |   ✅   |
 | `gcloud`      | Google Cloud CLI for GCP                  |           |   ✅   |
 | `gh`          | GitHub CLI                                |           |   ✅   |
