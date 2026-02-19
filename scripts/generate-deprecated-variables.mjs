@@ -2,6 +2,19 @@ import fs from 'node:fs'
 import { resolve } from 'node:path'
 import { load } from 'js-yaml'
 
+const replacement = (use, message) => {
+  if (use) {
+    const anchor = use
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$|--+/g, '')
+
+    return `[\`${use}\`](#${anchor})`
+  }
+
+  return message ? `*${message}*` : '—'
+}
+
 const configs = load(
   fs.readFileSync(resolve('.vitepress/data/env.reference.yaml'), 'utf8')
 )
@@ -16,15 +29,10 @@ sections.push(
 Object.keys(configs.deprecated)
   .sort()
   .forEach(env => {
-    const { use, since, removed } = configs.deprecated[env]
-
-    const anchor = use
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-|-$|--+/g, '')
+    const { use, since, removed, message } = configs.deprecated[env]
 
     sections.push(
-      `| ~~*\`${env}\`*~~ | [\`${use}\`](#${anchor}) | *v${since}* | *v${removed}* |`
+      `| ~~*\`${env}\`*~~ | ${replacement(use, message)} | *v${since}* | *v${removed}* |`
     )
   })
 

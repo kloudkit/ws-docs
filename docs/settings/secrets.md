@@ -155,10 +155,22 @@ ws secrets vault --input vault.yaml --key database-password --master .master.key
 ws secrets vault --input vault.yaml --stdout --master .master.key
 ```
 
-Vault location can be set via environment variable:
+### Autoloading
+
+At startup the workspace automatically processes `~/.ws/vault/secrets.yaml` when it exists.
+Place your vault manifest and any referenced encrypted files together in that directory:
+
+```text
+~/.ws/vault/
+├── secrets.yaml        # vault manifest
+├── db-password.enc     # encrypted file referenced via file:
+└── ssh-key.enc
+```
+
+To use a different location, set `WS_SECRETS_VAULT`:
 
 ```sh
-export WS_SECRETS_VAULT=/workspace/vault.yaml
+export WS_SECRETS_VAULT=/custom/path/vault/secrets.yaml
 ws secrets vault
 ```
 
@@ -192,7 +204,7 @@ See [authentication documentation](/editor/authentication) for details.
 
 ### Vault Specific Flags
 
-- **`--input <file>`:** Vault file path *(or set `WS_SECRETS_VAULT`)*.
+- **`--input <file>`:** Vault file path *(defaults to `~/.ws/vault/secrets.yaml`; override with `WS_SECRETS_VAULT`)*.
 - **`--key <name>`:** Process specific secret *(repeatable)*.
 - **`--stdout`:** Inspect without writing.
 

@@ -32,27 +32,26 @@ To gain the most from all the new features and upgrades, we suggest using the
 
 ### Install at Boot
 
-Upon startup, Kloud Workspace evaluates several environment variables to automate the
-installation of additional *user-defined* VSCode extensions.
-Both options below can be used in unison:
+Upon startup, Kloud Workspace automatically scans `~/.ws/extensions/` for `.vsix` files
+and installs them.
+
+You can also install additional extensions by marketplace ID:
 
 - <EnvVar group="editor" name="additional_vs_extensions" />
-- <EnvVar group="editor" name="additional_vs_extensions_dir" />
 
-::: code-group
-
-```sh{2} [list]
+```sh{2}
 docker run \
   -e WS_EDITOR_ADDITIONAL_VS_EXTENSIONS="dbaeumer.vscode-eslint esbenp.prettier-vscode" \
   ghcr.io/kloudkit/workspace:v0.1.2
 ```
 
-```sh{2,3} [directory]
-docker run \
-  -e WS_EDITOR_ADDITIONAL_VS_EXTENSIONS_DIR=/additional-extensions \
-  -v /path/to/my-additional-extensions:/additional-extensions \
-  ghcr.io/kloudkit/workspace:v0.1.2
-```
+::: warning DEPRECATED — `WS_EDITOR_ADDITIONAL_VS_EXTENSIONS_DIR`
+
+`WS_EDITOR_ADDITIONAL_VS_EXTENSIONS_DIR` is deprecated since `v0.2.0` and will be removed
+in `v0.3.0`.
+
+Place your `.vsix` files directly in `~/.ws/extensions/` instead, no environment
+variable required.
 
 :::
 

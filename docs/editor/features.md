@@ -163,10 +163,11 @@ For more information, visit our [contribution guide](/contribute/).
 | `continue`    | cn CLI and continue extension             |           |       |
 | `cpp`         | C++ and related tools                     |           |   ✅   |
 | `dagger`      | dagger.io CLI and SDK                     |           |       |
-| `doctl`       | DigitalOcean CLI                          | *v0.1.3*  |   ✅   |
+| `doctl`       | DigitalOcean CLI                          | *v0.1.3*  |       |
 | `dotnet`      | .NET framework and related extensions     |           |   ✅   |
 | `gcloud`      | Google Cloud CLI for GCP                  |           |   ✅   |
 | `gh`          | GitHub CLI                                |           |   ✅   |
+| `helm-extras` | Helm plugins and related extensions       | *v0.1.3*  |   ✅   |
 | `jf`          | JFrog CLI                                 |           |   ✅   |
 | `jupyter`     | Jupyter packages and related extensions   |           |       |
 | `opencode`    | OpenCode CLI and related extension        | *v0.1.1*  |       |

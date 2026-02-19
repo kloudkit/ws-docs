@@ -12,6 +12,7 @@ const anchor = computed(() => env.value.key.toLowerCase().replaceAll('_', '-'))
 <template>
   <h3 :id="anchor" class="header">
     <code>{{ env.key }}</code>
+    <Badge v-if="env.deprecated" type="warning" text="Deprecated" />
 
     <a class="header-anchor" :href="`#${anchor}`" :aria-label="`Permalink to &quot;${env.key}&quot;`"></a>
   </h3>
@@ -32,6 +33,11 @@ const anchor = computed(() => env.value.key.toLowerCase().replaceAll('_', '-'))
     <template v-if="env.since">
       <dt>Since</dt>
       <dd><Badge type="info" :text="`v${env.since}`" /></dd>
+    </template>
+
+    <template v-if="env.deprecated">
+      <dt>Deprecated</dt>
+      <dd><Badge type="warning" :text="`v${env.deprecated}`" /></dd>
     </template>
   </dl>
 

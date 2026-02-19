@@ -29,18 +29,15 @@ Startup scripts are defined at two levels:
 On startup, the predefined entrypoint scripts stored in `/usr/libexec/workspace/startup.d/*`
 are executed in lexicographical order to initialize the workspace environment.
 
-To add additional functionality during startup, mount your scripts to `/entrypoint/*`.
+To add additional functionality during startup, place executable scripts in
+`~/.ws/startup.d/` *(i.e. `/home/kloud/.ws/startup.d`)*.
+The directories are created automatically on startup.
+
 These scripts are executed as follows:
 
 - Only scripts with an executable file permission *(i.e. `+x`)* are considered.
 - Executed in lexicographical order.
 - Scripts are executed as the `kloud` user.
-
-```sh{2}
-docker run \
-  -v /my-entrypoint-scripts:/entrypoint \
-  ghcr.io/kloudkit/workspace:v0.1.2
-```
 
 ### Available Languages
 
@@ -67,10 +64,13 @@ Refer to the specific [documentation for `ws-cli`](/tools/ws-cli) for more detai
 
 Similar to entrypoint scripts, the workspace will load startup scripts for every new shell
 session.
-On shell startup, the predefined scripts stored in `/usr/lib/ohmyzsh/custom/*` are executed in
-lexicographical order.
+On shell startup, the predefined scripts stored in `/usr/lib/ohmyzsh/custom/*` are executed
+in lexicographical order.
 
-To add additional functionality during startup, mount your scripts to `~/.session/*.zsh`.
+To add additional functionality during startup, place `.zsh` files in
+`~/.ws/session.d/` *(i.e. `/home/kloud/.ws/session.d`)*.
+The directories are created automatically on startup.
+
 These scripts are executed as follows:
 
 - Both executable and not executable scripts are considered.

@@ -12,6 +12,7 @@ export interface EnvVar {
   description: string
   longDescription?: string
   since?: string
+  deprecated?: string
   key: string
   md: {
     description: string
