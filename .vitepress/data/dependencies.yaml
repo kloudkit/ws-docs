@@ -311,16 +311,6 @@ dependencies:
     package: helm/helm
     version: 4.1.1
 
-  helm-diff:
-    cmd: helm diff version
-    datasource: github-releases
-    group: Docker & Kubernetes
-    home: https://github.com/databus23/helm-diff
-    license: Apache 2
-    package: databus23/helm-diff
-    version: 3.15.0
-    track: false
-
   htop:
     cmd: htop --version
     datasource: deb
@@ -711,7 +701,7 @@ dependencies:
     home: https://github.com/kloudkit/ws-cli
     license: MIT
     package: github.com/kloudkit/ws-cli
-    version: 0.0.48
+    version: 0.0.49
 
   yamllint:
     cmd: yamllint --version
