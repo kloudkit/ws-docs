@@ -1,6 +1,6 @@
 ---
 see:
-  - name: Theme and fonts
+  - name: Theme & Fonts
     link: /editor/theme-and-fonts
 ---
 
@@ -8,12 +8,8 @@ see:
 
 ![Terminal logo](/icons/terminal.svg){.doc-image}
 
-The terminal experience in Kloud Workspace isn't just about getting things done, but
-about embarking on an exquisite journey through the digital expanse, where beauty and
-functionality align like the stars in the sky.
-
-Our terminal operates on the `zsh` shell, meticulously tailored for a seamless and
-enjoyable experience.
+The terminal in Kloud Workspace runs on `zsh`, tailored for a seamless and productive
+experience with sensible defaults, rich colorization, and integrated tooling.
 
 ## Components
 
@@ -92,7 +88,7 @@ xclip -o | jq .
 ```
 
 ::: info
-All clipboard commands communicate with the VSCode extension running in your browser,
+All clipboard commands communicate with the VS Code extension running in your browser,
 bridging the terminal environment with your native clipboard.
 
 All X11 selections *(primary, secondary, clipboard)* map to the same browser clipboard.

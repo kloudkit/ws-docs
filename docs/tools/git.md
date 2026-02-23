@@ -1,3 +1,11 @@
+---
+see:
+  - name: SSH
+    link: /tools/ssh
+  - name: Autoload Scripts
+    link: /settings/autoload-scripts
+---
+
 # Git
 
 ![Git logo](/icons/git.svg){.doc-image}

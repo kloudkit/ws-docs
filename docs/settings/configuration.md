@@ -1,4 +1,14 @@
+---
+see:
+  - name: Editor Settings
+    link: /editor/settings
+---
+
 # Configuration
+
+::: tip
+For VS Code editor settings *(JSON-based)*, see [Editor Settings](/editor/settings).
+:::
 
 ![Dotenv logo](/icons/dotenv.svg){.doc-image}
 

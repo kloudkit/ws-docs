@@ -1,3 +1,9 @@
+---
+see:
+  - name: Features
+    link: /editor/features
+---
+
 # Python
 
 ![Python logo](/icons/python.svg){.doc-image width=250px}
@@ -37,7 +43,7 @@ This works seamlessly with `uv venv` or `python -m venv`:
 
 ## Linting & Formatting with `ruff`
 
-Kloud Workspace bundles **Ruff** and its VSCode extension for real‑time feedback.
+Kloud Workspace bundles **Ruff** and its VS Code extension for real‑time feedback.
 Our default configuration is *deep and opinionated*:
 
 - Custom caching and line formatting behavior.
@@ -62,14 +68,14 @@ You can also copy the default configuration with:
 ws-cli template apply ruff
 ```
 
-For more details, refer to the [`ws-cli` documentation](/tools/ws-cli#configurations-ws-config).
+For more details, refer to the [`ws-cli` documentation](/tools/ws-cli#templates-ws-template).
 
 ## IDE Compatibility & Language Server
 
 Kloud Workspace aims to provide the best Python development experience.
 However, due to licensing constraints, limitations exist in language server integrations.
 
-Kloud Workspace is *not* an official Microsoft build of VSCode, and therefore, the proprietary
+Kloud Workspace is *not* an official Microsoft build of VS Code, and therefore, the proprietary
 [Pylance][] extension and language server is not available.
 
 Instead, Kloud Workspace ship the open-source [Jedi Language Server][], offering robust language

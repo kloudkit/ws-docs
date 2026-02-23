@@ -1,10 +1,21 @@
+---
+see:
+  - name: Configuration
+    link: /settings/configuration
+---
+
 # Settings
+
+::: tip
+For environment variable configuration *(non-editor settings)*,
+see [Configuration](/settings/configuration).
+:::
 
 ## Overview
 
-VSCode stands out as an incredibly customizable editor, empowering developers to shape
+VS Code stands out as an incredibly customizable editor, empowering developers to shape
 their coding environment through personalized settings stored in a `settings.json` file.
-These settings manifest at two levels:
+These settings manifest at three levels:
 
 - [*User settings*](#user-settings).
 - [*Workspace settings*](#workspace-settings).
@@ -12,7 +23,7 @@ These settings manifest at two levels:
 
 ::: warning
 The term [*workspace settings*](#workspace-settings) mentioned earlier specifically
-pertains to VSCode's settings and should not be confused with Kloud Workspace.
+pertains to VS Code's settings and should not be confused with Kloud Workspace.
 
 To avoid any potential confusion, this document will consistently use the term
 Kloud Workspace when referring to the workspace image.
@@ -22,7 +33,7 @@ Kloud Workspace when referring to the workspace image.
 of use-cases at the [*user settings*](#user-settings) level.
 If you wish to modify the pre-configured settings or use your own, follow the
 process of overriding the [*workspace settings*](#workspace-settings).
-However, keep in mind, it may effect certain tools, as stated in the
+However, keep in mind, it may affect certain tools, as stated in the
 [Important Notes](#important-notes) section below.
 The process of overriding and appending can be managed within the
 [*workspace*](#workspace-settings).
@@ -53,7 +64,7 @@ The animation below displays the various tabs and the creation of the `.vscode` 
 
 ## Environment Variables
 
-Workspace supports customizing VSCode settings at boot time via environment variables.
+Workspace supports customizing VS Code settings at boot time via environment variables.
 This is useful for applying consistent settings without committing a `.vscode/settings.json`
 file.
 
@@ -127,6 +138,6 @@ When multiple settings sources are present, they are applied in the following or
     impact the functionality of Kloud Workspace.
 - Some settings may require a window refresh before taking effect.
 - Certain settings may come bundled with additional tool-based configurations that
-    effect how the tool interacts with Kloud Workspace.
+    affect how the tool interacts with Kloud Workspace.
 - If you feel there should be additional pre-configured settings, feel free to open
     a [pull request](/contribute/).

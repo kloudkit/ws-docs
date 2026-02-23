@@ -1,8 +1,8 @@
 ---
 see:
-  - name: Github Repository
+  - name: GitHub Repository
     link: https://github.com/kloudkit/ws-cli
-  - name: Feature installation
+  - name: Feature Installation
     link: /editor/features
 ---
 

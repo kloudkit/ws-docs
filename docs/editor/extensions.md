@@ -2,9 +2,9 @@
 
 ## Official Marketplace
 
-![VSCode logo](/icons/vscode.svg){.doc-image}
+![VS Code logo](/icons/vscode.svg){.doc-image}
 
-According to the VSCode Marketplace [Terms of Use](https://aka.ms/vsmarketplace-ToU), you
+According to the VS Code Marketplace [Terms of Use](https://aka.ms/vsmarketplace-ToU), you
 may only install and use Marketplace Offerings with Visual Studio Products and Services.
 
 > Marketplace Offerings are intended for use only with Visual Studio Products and
@@ -21,7 +21,7 @@ to the official Visual Studio Code builds and therefore do not work with our wor
 
 ## Installing User-Defined Extensions
 
-Recognizing your individual preferences for VSCode extensions, we provide two methods for
+Recognizing your individual preferences for VS Code extensions, we provide two methods for
 ensuring your workspace retains custom installed extensions across restarts.
 
 ::: tip
@@ -80,8 +80,9 @@ docker run \
 
 ## Privately Hosted Gallery
 
-If you own a marketplace that implements the VSCode Extension Gallery API, you can point
+If you own a marketplace that implements the VS Code Extension Gallery API, you can point
 the workspace to it by setting `$EXTENSIONS_GALLERY`.
+
 For example:
 
 ```sh{2}
@@ -91,7 +92,7 @@ docker run \
 ```
 
 ::: warning
-We strongly discourage you from setting this for the official VSCode Marketplace, since
+We strongly discourage you from setting this for the official VS Code Marketplace, since
 it infringes on the [terms of use](https://aka.ms/vsmarketplace-ToU).
 :::
 
@@ -104,6 +105,7 @@ and their respective license.
 
 | Name                                                | License                   |
 | --------------------------------------------------- | ------------------------- |
+| **[Anthropic.claude-code][]**                       | Other                     |
 | **[Catppuccin.catppuccin-vsc][]**                   | MIT                       |
 | **[charliermarsh.ruff][]**                          | MIT                       |
 | **[DavidAnson.vscode-markdownlint][]**              | MIT                       |
@@ -128,6 +130,7 @@ and their respective license.
 | **[wayou.vscode-todo-highlight][]**                 | MIT                       |
 | **[yzhang.markdown-all-in-one][]**                  | MIT                       |
 
+[Anthropic.claude-code]: https://marketplace.visualstudio.com/items/Anthropic.claude-code
 [Catppuccin.catppuccin-vsc]: https://marketplace.visualstudio.com/items/Catppuccin.catppuccin-vsc/license
 [charliermarsh.ruff]: https://marketplace.visualstudio.com/items/charliermarsh.ruff/license
 [DavidAnson.vscode-markdownlint]: https://marketplace.visualstudio.com/items/DavidAnson.vscode-markdownlint/license

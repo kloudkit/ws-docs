@@ -1,5 +1,7 @@
 ---
 see:
+  - name: Helm
+    link: /tools/helm
   - name: Docker
     link: /tools/docker
   - name: Kind Configuration Options

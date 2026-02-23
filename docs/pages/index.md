@@ -4,7 +4,7 @@
 
 ## Overview
 
-Run your customized and pre-configured version of [VSCode][] *(powered by Coder)* using
+Run your customized and pre-configured version of [VS Code][] *(powered by Coder)* using
 Docker, Kubernetes, or OpenShift and access it in the browser *(or via `ssh`)*.
 
 ---
@@ -17,7 +17,7 @@ the familiar comfort of the *desktop experience*, hesitating to move their devel
 tools into the cloud.
 
 Recognizing this gap, Kloud Workspace was tailored to facilitate this transition.
-By packaging the widely-used *VSCode* IDE as a Docker container *(powered by Coder)*,
+By packaging the widely-used *VS Code* IDE as a Docker container *(powered by Coder)*,
 and integrating the latest development environments along with essential tools and
 extensions, we offer a seamless bridge to the cloud.
 
@@ -42,7 +42,7 @@ See our [dedicated section on CLI tools](/tools/overview).
 
 ### Extensions
 
-See our [dedicated section on VSCode extensions](/editor/extensions).
+See our [dedicated section on VS Code extensions](/editor/extensions).
 
 ### Terminal
 
@@ -59,5 +59,5 @@ This project is licensed under the [**MIT License**][Workspace].
 
 ![License](/icons/mit.svg) {.doc-image-inline style="width:100px"}
 
-[VSCode]: https://github.com/Microsoft/vscode
+[VS Code]: https://github.com/Microsoft/vscode
 [Workspace]: https://github.com/kloudkit/workspace?tab=MIT-1-ov-file#MIT-1-ov-file

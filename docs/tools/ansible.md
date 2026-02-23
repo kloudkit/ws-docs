@@ -1,5 +1,7 @@
 ---
 see:
+  - name: Python
+    link: /tools/python
   - name: Ansible Configurations
     link: https://docs.ansible.com/ansible/latest/reference_appendices/config.html
     target: _blank
@@ -17,7 +19,7 @@ see:
 
 ## Overview
 
-Kloud Workspace is pre-configured with `ansible-core`, `ansible-lint`, VSCode extensions
+Kloud Workspace is pre-configured with `ansible-core`, `ansible-lint`, VS Code extensions
 for Ansible, and popular community collections, all ready to use right out of the box.
 
 ::: danger

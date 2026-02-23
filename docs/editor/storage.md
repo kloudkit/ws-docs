@@ -1,3 +1,9 @@
+---
+see:
+  - name: Autoload Scripts
+    link: /settings/autoload-scripts
+---
+
 # Storage
 
 ![Storage](/icons/storage.svg){.doc-image width=180px}
@@ -54,6 +60,22 @@ To list all existing volumes:
 docker volume ls
 ```
 
+### Persisting `~/.ws`
+
+Several workspace features store their configuration under `~/.ws` (`/home/kloud/.ws`),
+including [sideloaded extensions](/editor/extensions), [startup and session scripts](/settings/autoload-scripts),
+and the [secrets vault](/settings/secrets).
+
+Because this directory lives inside the container, its contents are lost on restart unless
+you persist it separately:
+
+```sh{2}
+docker run \
+  -v ws:/home/kloud/.ws \
+  -v workspace:/workspace \
+  ghcr.io/kloudkit/workspace:v0.1.2
+```
+
 ## Named Volumes vs. Bind Mounts
 
 When configuring persistent storage, it’s important to understand the difference between
@@ -82,12 +104,16 @@ This approach simplifies volume management by utilizing *sub-paths* within the w
 The following demonstrates this practice
 *(note that the paths and names are provided for illustrative purposes only)*:
 
-```yaml{5,9,13}
+```yaml{5,9,13,17}
 # Pod specs
 volumeMounts:
   - name: data
     mountPath: /workspace
     subPath: workspace
+
+  - name: data
+    mountPath: /home/kloud/.ws
+    subPath: ws
 
   - name: data
     mountPath: /home/kloud/.cache/history

@@ -1,6 +1,6 @@
 ---
 see:
-  - name: terminal
+  - name: Terminal
     link: /editor/terminal
   - name: ws-cli
     link: /tools/ws-cli
@@ -15,8 +15,10 @@ Therefore, in addition to the predefined entrypoint scripts, we offer the abilit
 users defined entrypoint scripts to tailor the workspace experience.
 
 ::: info TIP
-Before creating additional entrypoint scripts, ensure that the objective you intend to
-achieve is not already addressed by built-in **[extendable configuration][]**.
+Before creating additional entrypoint scripts, check whether the objective you intend to
+achieve is already covered by a built-in [configuration template](/tools/ws-cli#templates-ws-template)
+or an [installable feature](/editor/features). Many common customizations are handled
+automatically through these mechanisms.
 :::
 
 Startup scripts are defined at two levels:
@@ -41,15 +43,15 @@ These scripts are executed as follows:
 
 ### Available Languages
 
-Feel free to write you entrypoint scripts in the language of your choice, considering it
+Feel free to write your entrypoint scripts in the language of your choice, considering it
 is installed in the workspace.
 
 By default, the workspace supports the following languages *(defined using shebangs)*:
 
 - **Ansible:** `#!/usr/bin/env -S ansible-playbook`
 - **Bash:** `#!/usr/bin/env bash`
-- **Golang:** `//usr/bin/env go run $0 $@; exit $?`
-- **NodeJS:** `#!/usr/bin/env node`
+- **Go:** `//usr/bin/env go run $0 $@; exit $?`
+- **Node.js:** `#!/usr/bin/env node`
 - **POSIX:** `#!/bin/sh`
 - **Python:** `#!/usr/bin/env python`
 - **zsh:** `#!/usr/bin/env zsh`
@@ -79,5 +81,3 @@ These scripts are executed as follows:
 - Scripts are executed as the `kloud` user.
 - Scripts are executed using `source`, therefore any functions, `alias`s or `export`s will
     be available during the current session.
-
-[extendable configuration]: /pages/extendable-configuration

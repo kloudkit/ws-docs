@@ -11,9 +11,9 @@ the following guidelines:
 
 Before you begin, check your prerequisites meet the minimum requirements versions:
 
-- **Python *(optional)*:** `>=3.8`
-- **NodeJS *(docs)*:** `>=18`
-- **Golang *(cli)*:** `>=1.21`
+- **Python *(optional)*:** `>=3.10`
+- **Node.js *(docs)*:** `>=18`
+- **Go *(cli)*:** `>=1.21`
 
 ::: code-group
 
@@ -22,12 +22,12 @@ $ python --version
 Python 3.11.2
 ```
 
-```sh [NodeJS]
+```sh [Node.js]
 $ node --version
 v22.11.0
 ```
 
-```sh [Golang]
+```sh [Go]
 $ go version
 go version go1.24.0 linux/amd64
 ```
@@ -141,5 +141,5 @@ Make sure to rebuild the image before running tests.
     Docker image.
 
   ```sh
-  pytest --shed-rebuild
+  pytest --shed-require-image
   ```

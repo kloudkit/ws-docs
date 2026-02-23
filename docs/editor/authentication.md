@@ -1,3 +1,9 @@
+---
+see:
+  - name: Secrets
+    link: /settings/secrets
+---
+
 # Authentication
 
 Given that the majority of users will integrate the *workspace* with an external
@@ -60,6 +66,20 @@ Then deploy the workspace:
 docker run \
   -e WS_AUTH_PASSWORD_HASHED="$argon2id$v=19$m=4096,t=3,p=1$z4DjJlJgI6S7fAdQC35ZQw$Rpu8CLMWedxJaH0eiFCetyoRbg+S8ow/RRyVCZzM6QE" \
   ghcr.io/kloudkit/workspace:v0.1.2
+```
+
+### File-Based Passwords
+
+Instead of passing passwords as environment variables, you can mount them as files.
+This is useful with Docker secrets or mounted credential files.
+
+- <EnvVar group="auth" name="password_file" />
+- <EnvVar group="auth" name="password_hashed_file" />
+
+```sh{3-4}
+docker run \
+  ghcr.io/kloudkit/workspace:v0.1.2 \
+  -v ./my_hashed_password.txt:/run/secrets/workspace/auth_password_hashed
 ```
 
 ### Rate Limiting

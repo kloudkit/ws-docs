@@ -157,6 +157,7 @@ For more information, visit our [contribution guide](/contribute/).
 
 | Feature       | Description                               |   Since   | Store |
 | ------------- | ----------------------------------------- | :-------: | :---: |
+| `bun`         | Bun JavaScript runtime and package manager | *v0.1.3* |   ✅   |
 | `cloudflared` | Cloudflare tunnel CLI                     |           |   ✅   |
 | `codex`       | codex CLI                                 | *v0.0.20* |       |
 | `conan`       | Conan CLI and related tools               | *v0.0.21* |       |

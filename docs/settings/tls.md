@@ -1,6 +1,77 @@
-# Enterprise CA *(certificate authority)*
+---
+see:
+  - name: Port Forwarding
+    link: /editor/port-forwarding
+---
 
-## Overview
+# TLS & Certificates
+
+This page covers all TLS-related configuration for Kloud Workspace: enabling HTTPS for
+secure browser access, and installing custom CA certificates for enterprise environments.
+
+## HTTPS / TLS Termination
+
+Secure your Kloud Workspace deployment end-to-end so that the editor, terminal, and
+browser-based tooling can use powerful Web APIs and protect data in transit.
+
+Once secure, you are set to enjoy the full power of your cloud-native development
+environment.
+
+### Why HTTPS Matters
+
+Modern browsers lock many capabilities behind a [secure context][moz].
+When the Kloud Workspace runs on plain HTTP, some features are silently disabled:
+
+- Async Clipboard API
+- Service Workers
+- WebGPU
+- JupyterNotebooks
+
+Additionally, Kloud Workspace shows a banner whenever it detects an insecure host other
+than `localhost`, reminding users to switch to HTTPS for full functionality.
+
+### TLS Termination Strategies
+
+::: warning
+Self-signed certs are perfect for local prototyping but should **never** be exposed to the
+public Internet.
+
+Use a CA-issued cert in production.
+:::
+
+#### Reverse-Proxy *(Recommended)*
+
+We recommend using a secure ingress controller *(NGINX, Traefik, Caddy, Envoy, etc.)* or
+a cloud load-balancer in front of the container to handle TLS termination:
+
+This keeps your certificates in one place and lets you reuse a single wildcard cert for
+multiple workspaces.
+
+#### Workspace-Managed TLS
+
+::: tip
+Even with HTTPS enabled, the internal listener stays on `8080`.
+:::
+
+When a reverse proxy isn't feasible, let the container handle HTTPS directly.
+
+Available configuration values are as follows:
+
+- <EnvVar group="server" name="ssl_cert" />
+- <EnvVar group="server" name="ssl_key" />
+- <EnvVar group="server" name="ssl_hosts" />
+
+```sh
+docker run -d \
+  -p 443:8080 \
+  -v $(pwd)/certs:/certs:ro \
+  -e WS_SERVER_SSL_KEY=/certs/tls.key \
+  -e WS_SERVER_SSL_CERT="-----BEGIN CERTIFICATE-----..." \
+  -e WS_SERVER_PROXY_DOMAIN=ws.dev \
+  ghcr.io/kloudkit/workspace:v0.1.2
+```
+
+## Enterprise CA *(Custom Certificates)*
 
 ![Enterprise CA icon](/icons/enterprise-ca.svg){.doc-image}
 
@@ -11,8 +82,6 @@ A *custom root CA* along with a *MITM firewall*, also known as an interception o
 enterprise certificate, is a digital certificate used by network security devices to
 intercept `SSL/TLS`-encrypted communication between a user and a server.
 During interception, data is decrypted and inspected for security and monitoring purposes.
-
-## Usage
 
 ### Mounting Certificate Volume
 
@@ -87,7 +156,7 @@ docker run \
 
 :::
 
-## Generated Configurations
+### Generated Configurations
 
 The installed certificates will be detected at startup and bundled along with all other
 available certificates *(into `/usr/local/share/ca-certificates/workspace-bundle.crt`)*.
@@ -102,3 +171,5 @@ that require the abovementioned bundles and are set automatically *(system-wide)
 - `PIP_CERT`
 - `REQUESTS_CA_BUNDLE`
 - `SSL_CERT_FILE`
+
+[moz]: https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts/features_restricted_to_secure_contexts

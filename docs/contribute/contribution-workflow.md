@@ -196,8 +196,8 @@ The trees below displays the main files and folders and their intended use.
 │   └── *
 ├── internals       # Service classes to be used by commands
 │   └── *
-├── go.mod          # Golang package dependencies (should be changed using `go`)
-├── go.sum          # Current status of installed golang modules (should not be edited)
+├── go.mod          # Go module dependencies (should be changed using `go`)
+├── go.sum          # Current status of installed Go modules (should not be edited)
 └── main.go         # CLI entrypoint
 ```
 
