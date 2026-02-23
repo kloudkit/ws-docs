@@ -28,9 +28,13 @@ Setting your password is as simple as defining an `env` variable:
 - <EnvVar group="auth" name="password" />
 - <EnvVar group="auth" name="password_hashed" />
 
-::: info NOTE
-All sensitive environment variables are purged before deploying Kloud Workspace, ensuring
-that your password is absent from future shell sessions.
+::: info Automatic Cleanup
+
+Authentication related environment variables are automatically removed once the workspace
+finishes starting up.
+
+This means they will not be visible in your terminal sessions, child processes, or any
+application running inside the workspace.
 :::
 
 ```sh{2}
