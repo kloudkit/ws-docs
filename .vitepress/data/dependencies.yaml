@@ -182,7 +182,7 @@ dependencies:
     license: Apache 2
     package: docker-compose-plugin
     track: false
-    version: 5.0.0
+    version: 5.1.0
 
   docker-py:
     datasource: pypi
@@ -427,7 +427,7 @@ dependencies:
     group: CLI Tools
     home: https://github.com/lsof-org/lsof
     license: BSD 2
-    version: 4.99.4+dfsg-2
+    version: 4.99.4
 
   man:
     cmd: man --version
@@ -469,7 +469,7 @@ dependencies:
     home: https://nodejs.org
     license: MIT
     package: nodejs
-    version: 24.13.0
+    version: 24.14.0
 
   npm:
     cmd: npm --version
@@ -478,7 +478,7 @@ dependencies:
     home: https://github.com/npm/cli
     license: Artistic 2
     package: npm/cli
-    version: 11.8.0
+    version: 11.9.0
 
   oc:
     cmd: oc version
