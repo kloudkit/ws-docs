@@ -57,6 +57,7 @@ export default {
         { text: 'Overview', link: '/tools/overview' },
         { text: 'Ansible', link: '/tools/ansible' },
         { text: 'APT', link: '/tools/apt' },
+        { text: 'Claude Code', link: '/tools/claude' },
         { text: 'Docker', link: '/tools/docker' },
         { text: 'Git', link: '/tools/git' },
         { text: 'Go', link: '/tools/go' },

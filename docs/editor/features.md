@@ -171,6 +171,7 @@ For more information, visit our [contribution guide](/contribute/).
 | `helm-extras` | Helm plugins and related extensions       | *v0.1.3*  |   ✅   |
 | `jf`          | JFrog CLI                                 |           |   ✅   |
 | `jupyter`     | Jupyter packages and related extensions   |           |       |
+| `oc`          | OpenShift CLI                             | *v0.1.3*  |   ✅   |
 | `opencode`    | OpenCode CLI and related extension        | *v0.1.1*  |       |
 | `php`         | PHP and related extensions                |           |   ✅   |
 | `rclone`      | rclone CLI                                |           |   ✅   |
