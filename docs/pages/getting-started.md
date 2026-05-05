@@ -46,14 +46,14 @@ port `8080`.
 ::: code-group
 
 ```sh [docker]
-docker run -p 8080:8080 ghcr.io/kloudkit/workspace:v0.1.2
+docker run -p 8080:8080 ghcr.io/kloudkit/workspace:v0.2.1
 ```
 
 ```yaml [compose]
 version: '3.8'
 services:
   workspace:
-    image: ghcr.io/kloudkit/workspace:v0.1.2
+    image: ghcr.io/kloudkit/workspace:v0.2.1
     ports:
       - 8080:8080
 ```
@@ -93,7 +93,7 @@ spec:
     spec:
       containers:
         - name: workspace
-          image: ghcr.io/kloudkit/workspace:v0.1.2
+          image: ghcr.io/kloudkit/workspace:v0.2.1
           ports:
             - containerPort: 8080
 ```

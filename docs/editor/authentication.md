@@ -40,7 +40,7 @@ application running inside the workspace.
 ```sh{2}
 docker run \
   -e WS_AUTH_PASSWORD=super_duper_secret \
-  ghcr.io/kloudkit/workspace:v0.1.2
+  ghcr.io/kloudkit/workspace:v0.2.1
 ```
 
 ### Creating a Hashed Password
@@ -69,7 +69,7 @@ Then deploy the workspace:
 ```sh{2}
 docker run \
   -e WS_AUTH_PASSWORD_HASHED="$argon2id$v=19$m=4096,t=3,p=1$z4DjJlJgI6S7fAdQC35ZQw$Rpu8CLMWedxJaH0eiFCetyoRbg+S8ow/RRyVCZzM6QE" \
-  ghcr.io/kloudkit/workspace:v0.1.2
+  ghcr.io/kloudkit/workspace:v0.2.1
 ```
 
 ### File-Based Passwords
@@ -82,7 +82,7 @@ This is useful with Docker secrets or mounted credential files.
 
 ```sh{3-4}
 docker run \
-  ghcr.io/kloudkit/workspace:v0.1.2 \
+  ghcr.io/kloudkit/workspace:v0.2.1 \
   -v ./my_hashed_password.txt:/run/secrets/workspace/auth_password_hashed
 ```
 

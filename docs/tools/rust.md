@@ -24,7 +24,7 @@ ws feature install rust
 # Or at boot time
 docker run \
   -e WS_FEATURES_ADDITIONAL_FEATURES="rust" \
-  ghcr.io/kloudkit/workspace:v0.1.2
+  ghcr.io/kloudkit/workspace:v0.2.1
 ```
 
 ## What's Included

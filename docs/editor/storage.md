@@ -39,7 +39,7 @@ To persist data in Kloud Workspace, mount a volume to the `/workspace` directory
 ```sh{2}
 docker run \
   -v workspace:/workspace \
-  ghcr.io/kloudkit/workspace:v0.1.2
+  ghcr.io/kloudkit/workspace:v0.2.1
 ```
 
 In the command above:
@@ -73,7 +73,7 @@ you persist it separately:
 docker run \
   -v ws:/home/kloud/.ws \
   -v workspace:/workspace \
-  ghcr.io/kloudkit/workspace:v0.1.2
+  ghcr.io/kloudkit/workspace:v0.2.1
 ```
 
 ## Named Volumes vs. Bind Mounts
