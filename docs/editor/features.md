@@ -123,6 +123,18 @@ individual vendor repositories.
 - **Quick caching:** reduce startup time by fetching from a nearby mirror instead of
   multiple remote sources.
 
+### Self-Hosting
+
+The feature store is a static-asset server, run it as follows:
+
+```sh{2}
+docker run -p 8081:80 \
+  ghcr.io/kloudkit/ws-feature-store:v2026.02
+```
+
+The container listens on port `80`.
+Browse `/manifest.json` to confirm the store is live.
+
 ### Quick Start
 
 Point the workspace at a running feature store instance:
@@ -157,22 +169,22 @@ For more information, visit our [contribution guide](/contribute/).
 
 | Feature       | Description                               |   Since   | Store |
 | ------------- | ----------------------------------------- | :-------: | :---: |
-| `bun`         | Bun JavaScript runtime and package manager | *v0.1.3* |   ✅   |
+| `bun`         | Bun JavaScript runtime and package manager | *v0.2.0* |   ✅   |
 | `cloudflared` | Cloudflare tunnel CLI                     |           |   ✅   |
 | `codex`       | codex CLI                                 | *v0.0.20* |       |
 | `conan`       | Conan CLI and related tools               | *v0.0.21* |       |
 | `continue`    | cn CLI and continue extension             |           |       |
 | `cpp`         | C++ and related tools                     |           |   ✅   |
 | `dagger`      | dagger.io CLI and SDK                     |           |       |
-| `doctl`       | DigitalOcean CLI                          | *v0.1.3*  |       |
+| `doctl`       | DigitalOcean CLI                          | *v0.2.0*  |       |
 | `dotnet`      | .NET framework and related extensions     |           |   ✅   |
 | `gcloud`      | Google Cloud CLI for GCP                  |           |   ✅   |
 | `gh`          | GitHub CLI                                |           |   ✅   |
-| `glab`        | GitLab CLI                                | *v0.1.3*  |   ✅   |
-| `helm-extras` | Helm plugins and related extensions       | *v0.1.3*  |   ✅   |
+| `glab`        | GitLab CLI                                | *v0.2.0*  |   ✅   |
+| `helm-extras` | Helm plugins and related extensions       | *v0.2.0*  |   ✅   |
 | `jf`          | JFrog CLI                                 |           |   ✅   |
 | `jupyter`     | Jupyter packages and related extensions   |           |       |
-| `oc`          | OpenShift CLI                             | *v0.1.3*  |   ✅   |
+| `oc`          | OpenShift CLI                             | *v0.2.0*  |   ✅   |
 | `opencode`    | OpenCode CLI and related extension        | *v0.1.1*  |       |
 | `php`         | PHP and related extensions                |           |   ✅   |
 | `rclone`      | rclone CLI                                |           |   ✅   |
