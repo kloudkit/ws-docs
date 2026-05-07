@@ -168,6 +168,7 @@ For more information, visit our [contribution guide](/contribute/).
 | `dotnet`      | .NET framework and related extensions     |           |   ✅   |
 | `gcloud`      | Google Cloud CLI for GCP                  |           |   ✅   |
 | `gh`          | GitHub CLI                                |           |   ✅   |
+| `glab`        | GitLab CLI                                | *v0.1.3*  |   ✅   |
 | `helm-extras` | Helm plugins and related extensions       | *v0.1.3*  |   ✅   |
 | `jf`          | JFrog CLI                                 |           |   ✅   |
 | `jupyter`     | Jupyter packages and related extensions   |           |       |
@@ -181,3 +182,4 @@ For more information, visit our [contribution guide](/contribute/).
 | `sops`        | SOPS CLI                                  | *v0.0.21* |   ✅   |
 | `talos`       | Talos CLI                                 |           |   ✅   |
 | `terraform`   | Terraform packages and related extensions |           |   ✅   |
+| `tshark`      | Wireshark terminal CLI                    | *v0.2.2*  |   ✅   |
