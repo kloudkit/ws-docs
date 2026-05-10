@@ -61,6 +61,41 @@ Notable configurations include:
   This ensures that user-defined settings and files are retained without interruption
   during updates or installs.
 
+## Restricted Packages
+
+The *workspace* runs headless, so it ships preference files that block packages with no
+use inside a container. These are grouped by category:
+
+- `x11` — X11 server, GTK/Qt toolkits, Mesa
+- `desktop` — Bluetooth, Avahi, NetworkManager, wireless daemons
+- `mail` — Postfix, Exim, Sendmail, mail clients
+- `printing` — CUPS, printer drivers
+- `daemons` — `systemd-timesyncd`, NTP, Chrony
+- `language-pack` — locale packages
+- `obsolete` — `anacron`, `at`
+
+If you need to install a package that pulls in a restricted dependency, opt out with:
+
+- <EnvVar group="apt" name="disable_restrictions" />
+
+Lift a single category — useful for installing X11 client libraries while leaving
+mail and printing blocked:
+
+```sh{2}
+docker run \
+  -e WS_APT_DISABLE_RESTRICTIONS="x11" \
+  -e WS_APT_ADDITIONAL_PACKAGES="libx11-6" \
+  ghcr.io/kloudkit/workspace:v0.2.1
+```
+
+Lift every restriction at once with `true` *(or `*`)*:
+
+```sh{2}
+docker run \
+  -e WS_APT_DISABLE_RESTRICTIONS=true \
+  ghcr.io/kloudkit/workspace:v0.2.1
+```
+
 ## Additional Packages
 
 Upon *workspace* startup, we evaluate the value of `WS_APT_ADDITIONAL_PACKAGES`

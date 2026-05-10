@@ -1,17 +1,20 @@
 ---
 see:
-  - name: Go
-    link: /tools/go
   - name: Features
     link: /editor/features
 ---
 
 # Rust
 
+<!--@include: ../partials/feature-not-included.md -->
+
 ![Rust logo](/icons/rust.svg){.doc-image width=150px}
 
-Rust is available as an **optional feature** in Kloud Workspace. It is not pre-installed
-by default to keep the base image lightweight.
+Rust is a systems programming language built for performance, reliability, and memory
+safety *(without a garbage collector)*.
+
+Its ownership model catches data races and memory bugs at compile time.
+Commonly used for CLI tools, WebAssembly, embedded systems, and performance-critical services.
 
 ## Installation
 
@@ -31,9 +34,9 @@ docker run \
 
 The `rust` feature installs and configures:
 
-- **rustup** — The official Rust toolchain installer and version manager.
-- **cargo** — The Rust package manager and build system.
-- **rust-analyzer** — Language server providing IDE features *(completion, go-to-definition,
+- **rustup:** The official Rust toolchain installer and version manager.
+- **cargo:** The Rust package manager and build system.
+- **rust-analyzer:** Language server providing IDE features *(completion, go-to-definition,
   refactoring, inline type hints)*.
 
 ## VS Code Integration

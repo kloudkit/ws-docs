@@ -167,31 +167,31 @@ Feel free to suggest it or contribute directly.
 For more information, visit our [contribution guide](/contribute/).
 :::
 
-| Feature       | Description                               |   Since   | Store |
-| ------------- | ----------------------------------------- | :-------: | :---: |
-| `bun`         | Bun JavaScript runtime and package manager | *v0.2.0* |   ✅   |
-| `cloudflared` | Cloudflare tunnel CLI                     |           |   ✅   |
-| `codex`       | codex CLI                                 | *v0.0.20* |       |
-| `conan`       | Conan CLI and related tools               | *v0.0.21* |       |
-| `continue`    | cn CLI and continue extension             |           |       |
-| `cpp`         | C++ and related tools                     |           |   ✅   |
-| `dagger`      | dagger.io CLI and SDK                     |           |       |
-| `doctl`       | DigitalOcean CLI                          | *v0.2.0*  |       |
-| `dotnet`      | .NET framework and related extensions     |           |   ✅   |
-| `gcloud`      | Google Cloud CLI for GCP                  |           |   ✅   |
-| `gh`          | GitHub CLI                                |           |   ✅   |
-| `glab`        | GitLab CLI                                | *v0.2.0*  |   ✅   |
-| `helm-extras` | Helm plugins and related extensions       | *v0.2.0*  |   ✅   |
-| `jf`          | JFrog CLI                                 |           |   ✅   |
-| `jupyter`     | Jupyter packages and related extensions   |           |       |
-| `oc`          | OpenShift CLI                             | *v0.2.0*  |   ✅   |
-| `opencode`    | OpenCode CLI and related extension        | *v0.1.1*  |       |
-| `php`         | PHP and related extensions                |           |   ✅   |
-| `rclone`      | rclone CLI                                |           |   ✅   |
-| `restic`      | Restic CLI                                |           |   ✅   |
-| `rust`        | Rust and Cargo                            |           |       |
-| `snyk`        | Snyk CLI and related extension            | *v0.0.20* |       |
-| `sops`        | SOPS CLI                                  | *v0.0.21* |   ✅   |
-| `talos`       | Talos CLI                                 |           |   ✅   |
-| `terraform`   | Terraform packages and related extensions |           |   ✅   |
-| `tshark`      | Wireshark terminal CLI                    | *v0.2.2*  |   ✅   |
+| Feature                     | Description                                |   Since   | Store |
+| --------------------------- | ------------------------------------------ | :-------: | :---: |
+| `bun`                       | Bun JavaScript runtime and package manager | *v0.2.0*  |   ✅   |
+| `cloudflared`               | Cloudflare tunnel CLI                      |           |   ✅   |
+| `codex`                     | codex CLI                                  | *v0.0.20* |       |
+| `conan`                     | Conan CLI and related tools                | *v0.0.21* |       |
+| `continue`                  | cn CLI and continue extension              |           |       |
+| `cpp`                       | C++ and related tools                      |           |   ✅   |
+| `dagger`                    | dagger.io CLI and SDK                      |           |       |
+| `doctl`                     | DigitalOcean CLI                           | *v0.2.0*  |       |
+| `dotnet`                    | .NET framework and related extensions      |           |   ✅   |
+| `gcloud`                    | Google Cloud CLI for GCP                   |           |   ✅   |
+| `gh`                        | GitHub CLI                                 |           |   ✅   |
+| `glab`                      | GitLab CLI                                 | *v0.2.0*  |   ✅   |
+| `helm-extras`               | Helm plugins and related extensions        | *v0.2.0*  |   ✅   |
+| `jf`                        | JFrog CLI                                  |           |   ✅   |
+| `jupyter`                   | Jupyter packages and related extensions    |           |       |
+| `oc`                        | OpenShift CLI                              | *v0.2.0*  |   ✅   |
+| `opencode`                  | OpenCode CLI and related extension         | *v0.1.1*  |       |
+| `php`                       | PHP and related extensions                 |           |   ✅   |
+| `rclone`                    | rclone CLI                                 |           |   ✅   |
+| `restic`                    | Restic CLI                                 |           |   ✅   |
+| [**`rust →`**](/tools/rust) | Rust and Cargo                             |           |       |
+| `snyk`                      | Snyk CLI and related extension             | *v0.0.20* |       |
+| `sops`                      | SOPS CLI                                   | *v0.0.21* |   ✅   |
+| `talos`                     | Talos CLI                                  |           |   ✅   |
+| `terraform`                 | Terraform packages and related extensions  |           |   ✅   |
+| `tshark`                    | Wireshark terminal CLI                     | *v0.2.2*  |   ✅   |
