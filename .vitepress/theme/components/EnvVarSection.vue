@@ -3,10 +3,19 @@ import { data as envData } from '../../data/envs.data'
 import type { EnvVar } from '../../data/envs.data'
 import { computed } from 'vue'
 
+const DELIMITER_LABELS: Record<string, string> = {
+  ' ': 'space',
+  ',': 'comma',
+  ';': 'semicolon',
+}
+
 const props = defineProps<{ group: string, name: string }>()
 
 const env = computed<EnvVar>(() => envData[props.group][props.name])
 const anchor = computed(() => env.value.key.toLowerCase().replaceAll('_', '-'))
+const delimiterLabel = computed(() =>
+  env.value.delimiter ? DELIMITER_LABELS[env.value.delimiter] ?? env.value.delimiter : null
+)
 </script>
 
 <template>
@@ -28,6 +37,11 @@ const anchor = computed(() => env.value.key.toLowerCase().replaceAll('_', '-'))
     <template v-if="env.default !== undefined">
       <dt>Default</dt>
       <dd><code>{{ String(env.default) }}</code></dd>
+    </template>
+
+    <template v-if="delimiterLabel">
+      <dt>Delimiter</dt>
+      <dd>{{ delimiterLabel }}</dd>
     </template>
 
     <template v-if="env.since">

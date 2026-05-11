@@ -7,6 +7,7 @@ import { load } from 'js-yaml'
 export interface EnvVar {
   type: string
   default: string | boolean | number | null
+  delimiter?: string
   reference?: string
   example?: string
   description: string
