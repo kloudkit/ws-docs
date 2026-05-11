@@ -133,11 +133,17 @@ Display information about the current workspace instance.
 
 - **`env <key>`:** Display the resolved value of a `WS_*` environment variable. Falls back to the default
   declared in `env.reference.yaml` when unset.
-  - `--list`, `--bool`, `--int` — coerce the value (newline-split, truthy/falsy exit, or canonical integer).
-    Mutually exclusive with `--check`.
+  - *(no flags)* — pretty mode: shows the key, schema description, markdown-rendered `longDescription`,
+    resolved value, and source label (`env-set` / `deprecated-alias` / `yaml-default`).
+  - `--value` — print the resolved value as a single line (script-friendly).
+  - `--as bool|int|list` — validate and emit the resolved value as the requested type
+    (`bool` exits `0` truthy / `1` falsy / error on garbage; `int` prints canonical int10;
+    `list` newline-splits using the YAML `delimiter:` or `--delimiter` override). Mutually exclusive with `--value` / `--check`.
   - `--check [--deprecated <alias>]` — existence probe. Exits `0` when the preferred variable is set;
     `1` when unset (stderr carries a deprecation warning if `--deprecated` is supplied and the alias
     is set); `2` when both the preferred variable and the deprecated alias are set (aborts to stderr).
+  - Unknown keys (not declared in `env.reference.yaml`) exit non-zero with stderr
+    `Unknown env var [<KEY>]` in all non-`--check` modes.
 - **`ip`:**
   - **`internal`:** Display the internal IP address.
   - **`node`:** Display the node/host IP address.
