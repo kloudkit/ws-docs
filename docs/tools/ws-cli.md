@@ -131,6 +131,13 @@ Serve internal assets.
 
 Display information about the current workspace instance.
 
+- **`env <key>`:** Display the resolved value of a `WS_*` environment variable. Falls back to the default
+  declared in `env.reference.yaml` when unset.
+  - `--list`, `--bool`, `--int` — coerce the value (newline-split, truthy/falsy exit, or canonical integer).
+    Mutually exclusive with `--check`.
+  - `--check [--deprecated <alias>]` — existence probe. Exits `0` when the preferred variable is set;
+    `1` when unset (stderr carries a deprecation warning if `--deprecated` is supplied and the alias
+    is set); `2` when both the preferred variable and the deprecated alias are set (aborts to stderr).
 - **`ip`:**
   - **`internal`:** Display the internal IP address.
   - **`node`:** Display the node/host IP address.

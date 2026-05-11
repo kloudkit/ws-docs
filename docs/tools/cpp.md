@@ -47,6 +47,6 @@ The `cpp` feature installs:
 The following extensions are installed automatically:
 
 - **CMake Tools *(`ms-vscode.cmake-tools`)*:** Full CMake workflow integration.
-- **Makefile Tools (`ms-vscode.makefile-tools`)*:** IntelliSense and build support for Makefile.
-- **CMake (`twxs.cmake`)*:** CMake language support with syntax highlighting and auto-completion.
-- **Native Debug (`webfreak.debug`)*:** GDB and LLDB debugger integration.
+- **Makefile Tools *(`ms-vscode.makefile-tools`)*:** IntelliSense and build support for Makefile.
+- **CMake *(`twxs.cmake`)*:** CMake language support with syntax highlighting and auto-completion.
+- **Native Debug *(`webfreak.debug`)*:** GDB and LLDB debugger integration.

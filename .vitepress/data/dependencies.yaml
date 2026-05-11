@@ -23,7 +23,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible/ansible
     license: GPL 3
-    version: 2.20.3
+    version: 2.20.5
 
   ansible-lint:
     cmd: ansible-lint --version
@@ -32,7 +32,7 @@ dependencies:
     home: https://github.com/ansible/ansible-lint
     license: MIT
     tool: true
-    version: 26.1.1
+    version: 26.4.0
 
   bat:
     cmd: bat --version
@@ -56,7 +56,7 @@ dependencies:
     license: Apache 2
     package: docker-buildx-plugin
     track: false
-    version: 0.31.1
+    version: 0.33.0
 
   catppuccin:
     datasource: pypi
@@ -71,21 +71,21 @@ dependencies:
     home: https://github.com/anthropics/claude-code
     license: Anthropic PBC
     package: anthropics/claude-code
-    version: 2.1.52
+    version: 2.1.132
 
   community.docker:
     datasource: galaxy-collection
     group: Ansible
     home: https://github.com/ansible-collections/community.docker
     license: GPL 3
-    version: 5.0.6
+    version: 5.2.0
 
   community.general:
     datasource: galaxy-collection
     group: Ansible
     home: https://github.com/ansible-collections/community.general
     license: GPL 3
-    version: 12.4.0
+    version: 12.6.0
 
   containerd.io:
     cmd: containerd --version
@@ -103,7 +103,7 @@ dependencies:
     home: https://github.com/google/go-containerregistry
     license: Apache 2
     package: google/go-containerregistry
-    version: 0.21.1
+    version: 0.21.5
 
   cspell:
     cmd: cspell --version
@@ -111,7 +111,7 @@ dependencies:
     group: CLI Tools
     home: https://github.com/streetsidesoftware/cspell
     license: MIT
-    version: 9.7.0
+    version: 10.0.0
 
   curl:
     cmd: curl --version
@@ -156,7 +156,7 @@ dependencies:
     home: https://github.com/go-delve/delve/cmd/dlv
     license: MIT
     package: github.com/go-delve/delve/cmd/dlv
-    version: 1.26.0
+    version: 1.26.3
 
   docker:
     datasource: deb
@@ -226,7 +226,7 @@ dependencies:
     home: https://github.com/junegunn/fzf
     license: MIT
     package: junegunn/fzf
-    version: 0.68.0
+    version: 0.72.0
 
   gettext:
     cmd: gettext -V
@@ -318,7 +318,7 @@ dependencies:
     home: https://github.com/helm/helm
     license: Apache 2
     package: helm/helm
-    version: 4.1.1
+    version: 4.1.4
 
   htop:
     cmd: htop --version
@@ -378,7 +378,7 @@ dependencies:
     home: https://github.com/stackrox/kube-linter
     license: Apache 2
     package: stackrox/kube-linter
-    version: 0.8.1
+    version: 0.8.3
 
   kubectl:
     cmd: kubectl version --client=true
@@ -387,7 +387,7 @@ dependencies:
     home: https://kubernetes.io/docs/tasks/tools
     license: Apache 2
     track: false
-    version: 1.34.1
+    version: 1.36.0
 
   kubernetes-py:
     datasource: pypi
@@ -402,7 +402,7 @@ dependencies:
     group: Ansible
     home: https://github.com/ansible-collections/kubernetes.core
     license: Apache 2
-    version: 6.3.0
+    version: 6.4.0
 
   less:
     cmd: less --version
@@ -444,7 +444,7 @@ dependencies:
     home: https://github.com/igorshubovych/markdownlint-cli
     license: MIT
     package: markdownlint-cli
-    version: 0.47.0
+    version: 0.48.0
 
   nc:
     cmd: (nc -h) > >(cat) 2>&1
@@ -469,7 +469,7 @@ dependencies:
     home: https://nodejs.org
     license: MIT
     package: nodejs
-    version: 24.14.0
+    version: 24.15.0
 
   npm:
     cmd: npm --version
@@ -478,16 +478,7 @@ dependencies:
     home: https://github.com/npm/cli
     license: Artistic 2
     package: npm/cli
-    version: 11.9.0
-
-  oc:
-    cmd: oc version
-    datasource: github-tags
-    group: Docker & Kubernetes
-    home: https://github.com/openshift/oc
-    license: Apache 2
-    package: openshift/oc
-    version: 4.19.0
+    version: 11.12.0
 
   oh-my-zsh:
     datasource: github-releases
@@ -505,7 +496,7 @@ dependencies:
     license: Proprietary
     package: 1password-cli
     track: false
-    version: 2.32.0
+    version: 2.34.0
 
   openssh-server:
     datasource: deb
@@ -544,7 +535,7 @@ dependencies:
     home: https://github.com/pnpm/pnpm
     license: MIT
     package: pnpm/pnpm
-    version: 10.30.2
+    version: 11.0.8
 
   podman:
     cmd: podman --version
@@ -562,7 +553,7 @@ dependencies:
     license: MIT
     package: pre-commit
     tool: true
-    version: 4.5.1
+    version: 4.6.0
 
   ps:
     cmd: ps --version
@@ -598,7 +589,7 @@ dependencies:
     home: https://github.com/astral-sh/ruff
     license: MIT
     tool: true
-    version: 0.15.2
+    version: 0.15.12
 
   ShellCheck:
     cmd: shellcheck --version
@@ -640,7 +631,7 @@ dependencies:
     home: https://starship.rs
     license: ISC
     package: starship/starship
-    version: 1.24.2
+    version: 1.25.1
 
   staticcheck:
     datasource: go
@@ -664,7 +655,7 @@ dependencies:
     home: https://github.com/go-task/task
     license: MIT
     package: "@go-task/cli"
-    version: 3.48.0
+    version: 3.50.0
 
   uidmap:
     datasource: deb
@@ -686,7 +677,7 @@ dependencies:
     home: https://github.com/astral-sh/uv
     package: astral-sh/uv
     license: MIT
-    version: 0.10.5
+    version: 0.11.11
 
   vim:
     cmd: vim --version
@@ -710,7 +701,7 @@ dependencies:
     home: https://github.com/kloudkit/ws-cli
     license: MIT
     package: github.com/kloudkit/ws-cli
-    version: 0.0.49
+    version: 0.0.51
 
   yamllint:
     cmd: yamllint --version
