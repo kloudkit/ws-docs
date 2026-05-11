@@ -29,6 +29,33 @@ docker run \
   ghcr.io/kloudkit/workspace:v0.2.1
 ```
 
+## Selecting a Compiler Version
+
+By default the `cpp` feature installs `gcc-14` and `g++-14`.
+Choose a different major with the [`version` opt](/editor/features#optional-variables):
+
+```sh
+# Manual installation
+ws feature install cpp --opt version=13
+
+# Or at boot time
+docker run \
+  -e WS_FEATURES_ADDITIONAL_FEATURES="cpp" \
+  -e WS_FEATURES_CPP_OPTS="version=13" \
+  ghcr.io/kloudkit/workspace:v0.2.1
+```
+
+> Supported versions: **13** and **14** *(default)*.
+
+::: warning
+
+With `version=13`, the unversioned `gcc` and `g++` commands still resolve to
+gcc-14 *(the Debian trixie default)*.
+
+Invoke `gcc-13` and `g++-13` directly.
+
+:::
+
 ## What's Included
 
 The `cpp` feature installs:
