@@ -174,8 +174,9 @@ For more information, visit our [contribution guide](/contribute/).
 | `codex`                     | codex CLI                                  | *v0.0.20* |       |
 | `conan`                     | Conan CLI and related tools                | *v0.0.21* |       |
 | `continue`                  | cn CLI and continue extension              |           |       |
-| `cpp`                       | C++ and related tools                      |           |   ✅   |
+| [**`cpp →`**](/tools/cpp)   | C++ and related tools                      |           |   ✅   |
 | `dagger`                    | dagger.io CLI and SDK                      |           |       |
+| `dive`                      | Image-layer explorer TUI                   |           |       |
 | `doctl`                     | DigitalOcean CLI                           | *v0.2.0*  |       |
 | `dotnet`                    | .NET framework and related extensions      |           |   ✅   |
 | `gcloud`                    | Google Cloud CLI for GCP                   |           |   ✅   |
