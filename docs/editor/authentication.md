@@ -74,17 +74,20 @@ docker run \
 
 ### File-Based Passwords
 
-Instead of passing passwords as environment variables, you can mount them as files.
-This is useful with Docker secrets or mounted credential files.
+Instead of passing passwords as environment variables, you can mount them as files
+*(useful with Docker secrets or Kubernetes `Secret` projections)*.
+Point the variable at the file with the `file:` prefix, or mount the file at the
+convention path and leave the variable unset.
 
-- <EnvVar group="auth" name="password_file" />
-- <EnvVar group="auth" name="password_hashed_file" />
-
-```sh{3-4}
+```sh{2-3}
 docker run \
-  ghcr.io/kloudkit/workspace:v0.2.1 \
-  -v ./my_hashed_password.txt:/run/secrets/workspace/auth_password_hashed
+  -e WS_AUTH_PASSWORD_HASHED=file:/run/secrets/workspace/auth/password_hashed \
+  -v ./password_hashed.txt:/run/secrets/workspace/auth/password_hashed:ro \
+  ghcr.io/kloudkit/workspace:v0.2.1
 ```
+
+See [Resolving Secret Values](/settings/configuration#resolving-secret-values)
+for the full resolution chain and Kubernetes example.
 
 ### Rate Limiting
 
