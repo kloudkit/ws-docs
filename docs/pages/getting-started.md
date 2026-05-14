@@ -22,7 +22,7 @@ Although Windows OS can be used, Linux is the recommended choice for optimal use
 
 ![ARM](/icons/arm.svg){.doc-image width=150px}
 
-We provide support for **ARM** systems—such as Apple M-series *(M1, M2, etc.)*, NVIDIA's
+We provide support for **ARM** systems, such as Apple M-series *(M1, M2, etc.)*, NVIDIA's
 Jetsons line, and Raspberry Pis.
 
 If Docker detects an ARM-based host, it will automatically pull the appropriate

@@ -19,8 +19,8 @@ right out of the box.
 
 ## Persisting Configurations
 
-Kloud Workspace runs in a Docker container, so any custom Helm configurations—such as
-added repositories and credentials—will not automatically persist after the container
+Kloud Workspace runs in a Docker container, so any custom Helm configurations, such as
+added repositories and credentials, will not automatically persist after the container
 stops.
 
 To retain these configurations across workspace restarts or updates:

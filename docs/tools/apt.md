@@ -66,19 +66,20 @@ Notable configurations include:
 The *workspace* runs headless, so it ships preference files that block packages with no
 use inside a container. These are grouped by category:
 
-- `x11` — X11 server, GTK/Qt toolkits, Mesa
-- `desktop` — Bluetooth, Avahi, NetworkManager, wireless daemons
-- `mail` — Postfix, Exim, Sendmail, mail clients
-- `printing` — CUPS, printer drivers
-- `daemons` — `systemd-timesyncd`, NTP, Chrony
-- `language-pack` — locale packages
-- `obsolete` — `anacron`, `at`
+- `x11`: X11 server, GTK/Qt toolkits, Mesa
+- `desktop`: Bluetooth, Avahi, NetworkManager, wireless daemons
+- `mail`: Postfix, Exim, Sendmail, mail clients
+- `printing`: CUPS, printer drivers
+- `daemons`: `systemd-timesyncd`, NTP, Chrony
+- `cni`: `containernetworking-plugins` *(podman defaults to `netavark`)*
+- `language-pack`: locale packages
+- `obsolete`: `anacron`, `at`
 
 If you need to install a package that pulls in a restricted dependency, opt out with:
 
 - <EnvVar group="apt" name="disable_restrictions" />
 
-Lift a single category — useful for installing X11 client libraries while leaving
+Lift a single category, useful for installing X11 client libraries while leaving
 mail and printing blocked:
 
 ```sh{2}
