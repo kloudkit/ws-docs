@@ -4,7 +4,7 @@ see:
     link: /editor/features
 ---
 
-# C/C++
+# C/C++ <Badge type="tip" text="installable feature" />
 
 <!--@include: ../partials/feature-not-included.md -->
 

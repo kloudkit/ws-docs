@@ -27,6 +27,10 @@ aside.VPSidebar,
   clear: both;
 }
 
+.vp-doc h1 > .VPBadge {
+  margin-top: 10px;
+}
+
 .vp-doc p {
   line-height: 30px;
   text-align: justify;

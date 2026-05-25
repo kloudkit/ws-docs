@@ -6,6 +6,8 @@ see:
 
 # TLS & Certificates
 
+![Enterprise CA icon](/icons/enterprise-ca.svg){.doc-image}
+
 This page covers all TLS-related configuration for Kloud Workspace: enabling HTTPS for
 secure browser access, and installing custom CA certificates for enterprise environments.
 
@@ -72,8 +74,6 @@ docker run -d \
 ```
 
 ## Enterprise CA *(Custom Certificates)*
-
-![Enterprise CA icon](/icons/enterprise-ca.svg){.doc-image}
 
 Many companies implement a *MITM (Man-in-the-Middle) firewall* as part of a strict and
 secure network infrastructure using a self-hosted *CA (certificate authority)*.

@@ -63,6 +63,7 @@ export default {
         { text: 'Git', link: '/tools/git' },
         { text: 'Go', link: '/tools/go' },
         { text: 'Helm', link: '/tools/helm' },
+        { text: 'Image Extras', link: '/tools/image-extras' },
         { text: 'Kind', link: '/tools/kind' },
         { text: 'Python', link: '/tools/python' },
         { text: 'Rust', link: '/tools/rust' },

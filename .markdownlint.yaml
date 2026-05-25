@@ -15,6 +15,7 @@ MD024:
 MD033:
   allowed_elements:
     - br
+    - Badge
     - kbd
     - pre
     - script
