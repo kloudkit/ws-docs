@@ -207,3 +207,9 @@ For more information, visit our [contribution guide](/contribute/).
 | `talos`                                     | Talos CLI                                  |           |   ✅   |
 | `terraform`                                 | Terraform packages and related extensions  |           |   ✅   |
 | `tshark`                                    | Wireshark terminal CLI                     | *v0.3.0*  |   ✅   |
+
+::: details Feature Store Inventory
+
+<!--@include: ../partials/fs-manifest.md -->
+
+:::
