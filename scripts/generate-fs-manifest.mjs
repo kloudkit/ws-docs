@@ -38,11 +38,28 @@ const renderGroup = (heading, entries) => {
     '| --- | :---: | :---: |',
   )
 
-  entries
+  const groups = new Map()
+
+  for (const { name, version, architecture } of entries) {
+    const key = `${name}\0${version ?? ''}`
+    const existing = groups.get(key) ?? groups.set(key, { name, version, architectures: [] }).get(key)
+    if (architecture) {
+      existing.architectures.push(architecture)
+    }
+  }
+
+  Array.from(groups.values())
     .sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
-    .forEach(({ name, version, architecture }) => {
+    .forEach(({ name, version, architectures }) => {
+      const arch = architectures.length === 0
+        ? '-'
+        : Array.from(new Set(architectures))
+            .sort()
+            .map(a => a === 'all' ? '`*`' : `\`${a}\``)
+            .join(', ')
+
       sections.push(
-        `| **${name}** | ${version ?? '–'} | ${architecture ?? '–'} |`
+        `| \`${name}\` | ${version ?? '-'} | ${arch} |`
       )
     })
 
