@@ -118,6 +118,33 @@ additional setup steps that enhance their usage and functionality.
 We recommend reviewing the available features before opting for manual package installation.
 :::
 
+## Manual Installation
+
+The boot-time `WS_APT_ADDITIONAL_PACKAGES` install delegates to a feature
+playbook. Call it directly to install packages after the workspace is running
+or to retry a failed startup install:
+
+```sh
+ws-cli feature install additional-apt --opt packages="vim,curl"
+```
+
+### Overriding Restrictions
+
+To install a package blocked by a [shipped restriction](#restricted-packages),
+pass `override_restrictions=true`:
+
+```sh
+ws-cli feature install additional-apt \
+  --opt packages=containernetworking-plugins \
+  --opt override_restrictions=true
+```
+
+Matching `99-deny-*` files are disabled before the install and restored when
+it completes *(including on failure)*. Unlike `disable_restrictions`, the
+override applies only to this single install. For the boot-time equivalent:
+
+- <EnvVar group="apt" name="override_restrictions" />
+
 ## Additional GPG Keys
 
 Some third-party repositories require you to trust their signing key.
