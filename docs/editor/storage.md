@@ -64,6 +64,7 @@ docker volume ls
 
 Several workspace features store their configuration under `~/.ws` (`/home/kloud/.ws`),
 including [sideloaded extensions](/editor/extensions), [startup and session scripts](/settings/autoload-scripts),
+[drop-in CA certificates](/settings/tls#drop-in-directory-ws-ca-d),
 and the [secrets vault](/settings/secrets).
 
 Because this directory lives inside the container, its contents are lost on restart unless

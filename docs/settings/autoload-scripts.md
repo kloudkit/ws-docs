@@ -4,6 +4,8 @@ see:
     link: /editor/terminal
   - name: ws-cli
     link: /tools/ws-cli
+  - name: TLS & Certificates
+    link: /settings/tls
 ---
 
 # Autoload Scripts

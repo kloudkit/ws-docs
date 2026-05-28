@@ -105,6 +105,28 @@ docker run \
 
 :::
 
+### Drop-in Directory `~/.ws/ca.d/`
+
+Drop `.crt` files into `~/.ws/ca.d/` and they are auto-trusted at boot —
+no environment variable, no host-side plumbing beyond the existing
+`~/.ws/` volume mount.
+
+::: warning
+The file extension **must** be `.crt`. `update-ca-certificates` only picks
+up `.crt`; `.pem` and other extensions are silently skipped.
+:::
+
+```sh
+docker run \
+  -v $(pwd)/corp-ca.crt:/home/kloud/.ws/ca.d/corp-ca.crt \
+  ghcr.io/kloudkit/workspace:v0.2.1
+```
+
+This is the recommended path for ad-hoc certificate injection on a
+running workspace — the same persisted volume already used for
+[autoload scripts](/settings/autoload-scripts), extensions, and the
+[secrets vault](/settings/vault).
+
 ### Install Certificate from HTTPS Endpoint
 
 Alternatively, you can add your company's root CA via secure *HTTPS* endpoints.

@@ -107,17 +107,19 @@ Place your vault manifest and any referenced encrypted files together in that di
 └── ssh-key.enc
 ```
 
-To use a different location, set `WS_SECRETS_VAULT`:
+`~/.ws/vault/secrets.yaml` is the sole supported autoload location. To use
+a vault stored elsewhere on the host, bind-mount it into the convention
+path:
 
 ```sh
-export WS_SECRETS_VAULT=/custom/path/vault/secrets.yaml
-ws secrets vault
+docker run \
+  -v /host/path/secrets.yaml:/home/kloud/.ws/vault/secrets.yaml \
+  ghcr.io/kloudkit/workspace:v0.2.1
 ```
 
 ## Vault Flags
 
-- **`--input <file>`:** Vault file
-  path *(defaults to `~/.ws/vault/secrets.yaml`; override with `WS_SECRETS_VAULT`)*.
+- **`--input <file>`:** Vault file path *(defaults to `~/.ws/vault/secrets.yaml`)*.
 - **`--key <name>`:** Process specific secret *(repeatable)*.
 - **`--stdout`:** Inspect without writing.
 

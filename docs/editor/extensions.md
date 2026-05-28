@@ -45,16 +45,6 @@ docker run \
   ghcr.io/kloudkit/workspace:v0.2.1
 ```
 
-::: warning DEPRECATED — `WS_EDITOR_ADDITIONAL_VS_EXTENSIONS_DIR`
-
-`WS_EDITOR_ADDITIONAL_VS_EXTENSIONS_DIR` is deprecated since `v0.2.0` and will be removed
-in `v0.3.0`.
-
-Place your `.vsix` files directly in `~/.ws/extensions/` instead, no environment
-variable required.
-
-:::
-
 ### Persistent Extensions
 
 You can take full control of the workspace extensions by using a persistent volume to the
