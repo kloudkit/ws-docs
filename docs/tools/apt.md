@@ -36,7 +36,7 @@ Supply one or more entries separated by semicolons *(`;`)*.
 ```sh{2}
 docker run \
   -e WS_APT_ADDITIONAL_REPOS="deb [signed-by=/custom.gpg] https://custom.package bookworm main" \
-  ghcr.io/kloudkit/workspace:v0.2.1
+  ghcr.io/kloudkit/workspace:v0.3.0
 ```
 
 ### Update Repository Cache
@@ -86,7 +86,7 @@ mail and printing blocked:
 docker run \
   -e WS_APT_DISABLE_RESTRICTIONS="x11" \
   -e WS_APT_ADDITIONAL_PACKAGES="libx11-6" \
-  ghcr.io/kloudkit/workspace:v0.2.1
+  ghcr.io/kloudkit/workspace:v0.3.0
 ```
 
 Lift every restriction at once with `true` *(or `*`)*:
@@ -94,7 +94,7 @@ Lift every restriction at once with `true` *(or `*`)*:
 ```sh{2}
 docker run \
   -e WS_APT_DISABLE_RESTRICTIONS=true \
-  ghcr.io/kloudkit/workspace:v0.2.1
+  ghcr.io/kloudkit/workspace:v0.3.0
 ```
 
 ## Additional Packages
@@ -108,7 +108,7 @@ demonstrated below:
 ```sh{2}
 docker run \
   -e WS_APT_ADDITIONAL_PACKAGES="cmake nano" \
-  ghcr.io/kloudkit/workspace:v0.2.1
+  ghcr.io/kloudkit/workspace:v0.3.0
 ```
 
 ::: tip
@@ -156,5 +156,5 @@ Each key is downloaded at startup and stored in `/etc/apt/keyrings/<name>.gpg`.
 ```sh{2}
 docker run \
   -e WS_APT_ADDITIONAL_GPG_KEYS="mycorp:https://mycorp.com/pubkey.asc extras:http://extras.test/key2.asc" \
-  ghcr.io/kloudkit/workspace:v0.2.1
+  ghcr.io/kloudkit/workspace:v0.3.0
 ```

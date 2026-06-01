@@ -39,5 +39,5 @@ To retain these configurations across workspace restarts or updates:
 docker run \
   -e WS_HELM_PRELOAD_CACHE=1 \
   -v helm:/home/kloud/.config/helm \
-  ghcr.io/kloudkit/workspace:v0.2.1
+  ghcr.io/kloudkit/workspace:v0.3.0
 ```

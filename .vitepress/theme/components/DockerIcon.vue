@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-const image = "ghcr.io/kloudkit/workspace:v0.2.1"
+const image = "ghcr.io/kloudkit/workspace:v0.3.0"
 
 const tag = computed(() => image.split(":")[1])
 </script>

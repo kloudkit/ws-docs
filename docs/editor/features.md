@@ -29,7 +29,7 @@ startup to determine which *features* to install automatically.
 ```sh{2}
 docker run \
   -e WS_FEATURES_ADDITIONAL_FEATURES="dotnet jupyter" \
-  ghcr.io/kloudkit/workspace:v0.2.1
+  ghcr.io/kloudkit/workspace:v0.3.0
 ```
 
 ### Manual Installation
@@ -144,7 +144,7 @@ docker run \
   -e WS_APT_DISABLE_REPOS="*" \
   -e WS_FEATURES_STORE_URL="http://feature-store.local" \
   -e WS_FEATURES_ADDITIONAL_FEATURES="gh terraform" \
-  ghcr.io/kloudkit/workspace:v0.2.1
+  ghcr.io/kloudkit/workspace:v0.3.0
 ```
 
 The feature store image is available at `ghcr.io/kloudkit/ws-feature-store`.
