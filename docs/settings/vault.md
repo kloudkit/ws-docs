@@ -114,7 +114,7 @@ path:
 ```sh
 docker run \
   -v /host/path/secrets.yaml:/home/kloud/.ws/vault/secrets.yaml \
-  ghcr.io/kloudkit/workspace:v0.2.1
+  ghcr.io/kloudkit/workspace:v0.3.0
 ```
 
 ## Vault Flags

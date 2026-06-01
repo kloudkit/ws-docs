@@ -21,7 +21,7 @@ Set `WS_METRICS_ENABLE` to `true` when launching the container:
 ```sh{2}
 docker run \
   -e WS_METRICS_ENABLE=true \
-  ghcr.io/kloudkit/workspace:v0.2.1
+  ghcr.io/kloudkit/workspace:v0.3.0
 ```
 
 Once enabled, the exporter serves metrics at `/` on port **9100** *(default)*.
@@ -41,7 +41,7 @@ docker run \
   -e WS_METRICS_ENABLE=true \
   -e WS_METRICS_PORT=9200 \
   -e WS_METRICS_COLLECTORS="container.cpu,container.memory" \
-  ghcr.io/kloudkit/workspace:v0.2.1
+  ghcr.io/kloudkit/workspace:v0.3.0
 ```
 
 ## Collectors

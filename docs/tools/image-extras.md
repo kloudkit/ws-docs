@@ -23,7 +23,7 @@ ws feature install image-extras
 # Or at boot time
 docker run \
   -e WS_FEATURES_ADDITIONAL_FEATURES="image-extras" \
-  ghcr.io/kloudkit/workspace:v0.2.1
+  ghcr.io/kloudkit/workspace:v0.3.0
 ```
 
 ## What's Included
