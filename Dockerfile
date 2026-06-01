@@ -1,4 +1,4 @@
-ARG tag=1.30.0-alpine
+ARG tag=1.31.1-alpine
 
 FROM nginx:${tag}
 COPY nginx.conf /etc/nginx/conf.d/default.conf
