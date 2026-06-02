@@ -17,7 +17,7 @@ Key features provided *out‑of‑the‑box*:
 - Both `pip` and the lightning‑fast `uv` package manager.
 - Automatic virtual environment activation when navigating into project directories.
 - Opinionated linting & formatting with `ruff` its IDE extension.
-- Language‑intelligence powered by *Jedi* *(Pylance is unavailable in non‑official VS Code builds)*.
+- Language‑intelligence powered by Meta's **Pyrefly** language server — Rust‑based, type‑aware, fast.
 - Pre‑generated `IPython` *(itself, not pre‑installed)* profile that matches the Kloud Workspace
     color palette.
 
@@ -70,20 +70,15 @@ ws-cli template apply ruff
 
 For more details, refer to the [`ws-cli` documentation](/tools/ws-cli#templates-ws-template).
 
-## IDE Compatibility & Language Server
+## Language Server
 
-Kloud Workspace aims to provide the best Python development experience.
-However, due to licensing constraints, limitations exist in language server integrations.
+Kloud Workspace ships **Meta's Pyrefly** as the Python language server — Rust‑based,
+type‑aware, and dramatically faster than alternatives. Strict type checking is on by
+default and honors the standard configuration knobs.
 
-Kloud Workspace is *not* an official Microsoft build of VS Code, and therefore, the proprietary
-[Pylance][] extension and language server is not available.
-
-Instead, Kloud Workspace ship the open-source [Jedi Language Server][], offering robust language
-server features such as:
-
-- Blazing‑fast code completion.
-- Go‑to‑definition & symbol search.
-- Basic refactorings.
+If you prefer a lighter‑weight LSP, override the editor settings via
+`WS_EDITOR_SETTINGS_MERGE` to disable `python.pyrefly.*` and select your preferred
+language server.
 
 ## Optional Interactive Shell
 
@@ -99,6 +94,3 @@ whose prompt colors and syntax‑highlighting align with the Kloud Workspace's o
 
 Once IPython is installed it will pick up these settings automatically, no additional
 configuration required.
-
-[Pylance]: https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance
-[Jedi Language Server]: https://github.com/pappasam/jedi-language-server
