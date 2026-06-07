@@ -90,8 +90,10 @@ containers:
 :::
 
 ::: tip
-`ws-cli show env <KEY>` reports where the value came from: `env-set`, `env-file`,
-`secret-file-default`, or `yaml-default`.
+`ws-cli show env <group.prop>` (e.g. `ws-cli show env server.port`) reports where the
+value came from: `env-set`, `env-file`, `secret-file-default`, or `yaml-default`.
+Query the dotted key — the matching `WS_*` variable (e.g. `WS_SERVER_PORT`) is what you
+`export` to set it.
 :::
 
 <!--@include: ../partials/environment-variables.md -->

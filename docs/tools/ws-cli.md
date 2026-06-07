@@ -131,19 +131,29 @@ Serve internal assets.
 
 Display information about the current workspace instance.
 
-- **`env <key>`:** Display the resolved value of a `WS_*` environment variable. Falls back to the default
-  declared in `env.reference.yaml` when unset.
-  - *(no flags)* — pretty mode: shows the key, schema description, markdown-rendered `longDescription`,
-    resolved value, and source label (`env-set` / `deprecated-alias` / `yaml-default`).
-  - `--value` — print the resolved value as a single line (script-friendly).
+- **`env <group.prop>`:** Display the resolved value of a setting, queried by its canonical **dotted** key
+  (e.g. `ws-cli show env server.port`). Falls back to the default declared in `env.reference.yaml` when unset.
+  The matching `WS_*` variable (`WS_SERVER_PORT`) is the environment binding you `export` to set it — it is
+  not a query key (`ws-cli show env WS_SERVER_PORT` exits `2` with a hint pointing at the dotted form).
+  - *(no flags)* — pretty mode: shows the dotted key (and its `WS_*` binding), schema description,
+    markdown-rendered `longDescription`, resolved value, and source label (`env-set` / `deprecated-alias` / `yaml-default`).
+  - `--value` — print the resolved value as a single line (script-friendly). Combinable with `--check`
+    to emit the value only when the operator has set the variable (`--value --check`).
   - `--as bool|int|list` — validate and emit the resolved value as the requested type
     (`bool` exits `0` truthy / `1` falsy / error on garbage; `int` prints canonical int10;
-    `list` newline-splits using the YAML `delimiter:` or `--delimiter` override). Mutually exclusive with `--value` / `--check`.
-  - `--check [--deprecated <alias>]` — existence probe. Exits `0` when the preferred variable is set;
+    `list` newline-splits using the YAML `delimiter:` or `--delimiter` override). Mutually exclusive with `--value`.
+  - `--check [--deprecated <WS_ALIAS>]` — existence probe. `--deprecated` takes a **raw `WS_*` alias** (deprecated
+    aliases have no dotted form). Exits `0` when the preferred variable is set;
     `1` when unset (stderr carries a deprecation warning if `--deprecated` is supplied and the alias
     is set); `2` when both the preferred variable and the deprecated alias are set (aborts to stderr).
-  - Unknown keys (not declared in `env.reference.yaml`) exit non-zero with stderr
-    `Unknown env var [<KEY>]` in all non-`--check` modes.
+  - `--or-skip` — modifier on `--value` / `--value --check` / `--as bool`: exit `1` (not an error) on the
+    natural absence of the chosen projection, emitting a `Skipped: env [<KEY>] not set` debug breadcrumb to
+    stderr. Lets a script guard with `if val=$(ws-cli show env <group.prop> --value --or-skip); then …`.
+  - `--validate <regex>` — modifier on `--as list`: each token must full-match the anchored caller-supplied
+    charset; on any miss the whole list fails **closed** (no tokens emitted, exit `3`, stderr
+    `Rejected: invalid item [<token>]`). Centralizes token rejection for untrusted delimited sinks.
+  - Unknown dotted keys (not declared in `env.reference.yaml`) exit non-zero with stderr
+    `Unknown env var [<group.prop>]` (echoing the typed dotted form) in all non-`--check` modes.
 - **`ip`:**
   - **`internal`:** Display the internal IP address.
   - **`node`:** Display the node/host IP address.
