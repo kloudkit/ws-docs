@@ -159,10 +159,10 @@ The trees below displays the main files and folders and their intended use.
 ├── .gitignore      # Files to not track in `git`
 ├── renovate.json   # Track dependency versions
 ├── src             # The main directory for image assets and build steps
-│   ├── build       # Helper scripts and dependency definitions
-│   ├── home        # Directory mapped to `~` in the container
-│   ├── ipc-server  # IPC server extension for Kloud Workspace
-│   └── rootfs      # Directory mapped to `/` in the container
+│   ├── build        # Helper scripts and dependency definitions
+│   ├── home         # Directory mapped to `~` in the container
+│   ├── rootfs       # Directory mapped to `/` in the container
+│   └── ws-extension # Integration extension for Kloud Workspace
 └── tests           # Test bench
     ├── browser     # Browser tests using playwright
     ├── helpers     # Fixtures, consts, utilities, and test bootstrapping
