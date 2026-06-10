@@ -45,7 +45,7 @@ ws feature install php
 ```
 
 As previously mentioned, all features are powered by Ansible playbooks.
-These playbooks are located in the `/usr/share/workspace/features` directory, as
+These playbooks are located in the `/usr/share/workspace/features.d` directory, as
 specified by the [`WS_FEATURES_DIR`](/settings/configuration#ws-features-dir) environment
 variable *(which is not intended to be overridden)*.
 
@@ -71,35 +71,45 @@ ws feature install dagger --opt dagger_version=0.13.3
 
 ## Custom Features
 
-You can create custom playbooks for specific needs.
-The template below offers a starting point.
-Ensure that `hosts: workspace` remains unchanged, as this targets the active workspace
-session.
+Save your own playbooks under `~/.ws/features.d/` and install them by name,
+exactly like the built-in features — no `--root` needed.
+The directory is searched alongside the built-in features; if a name exists in
+both, your copy wins, so you can override a shipped feature by dropping a
+same-named playbook there.
 
-::: tip
-It may also help to explicitly mention that the custom playbook template can be saved as
-`cool.yaml` in the `/alternate` directory.
-:::
+Scaffold a starting playbook with `feature new` and redirect it into place.
+Keep `hosts: workspace` and `gather_facts: false` unchanged, then extend the
+`tasks:` block.
 
 ::: code-group
 
+```sh [scaffold]
+ws feature new redis > ~/.ws/features.d/redis.yaml
+```
+
 ```yaml [playbook]
-# /alternate/cool.yaml
-- name: Install a cool new feature
+---
+- name: Install redis
   gather_facts: false
   hosts: workspace
 
   tasks:
-    - name: Just saying hello
+    - name: Say hello
       ansible.builtin.debug:
         msg: Hello world! 👋
 ```
 
 ```sh [install]
-ws feature install custom --feature cool --root /alternate
+ws feature install redis
 ```
 
 :::
+
+To install a playbook from a different directory instead, point `--root` at it:
+
+```sh
+ws feature install cool --root /alternate
+```
 
 ## Feature Store
 
