@@ -69,13 +69,48 @@ times, as shown in the example below:
 ws feature install dagger --opt dagger_version=0.13.3
 ```
 
+### Skipping Sections
+
+Beyond the core tool, a playbook may also install VSCode extensions, configure shell completion, or
+enable a vendor APT repository.
+Skip any of these with the matching flag, the tool itself still installs:
+
+```sh
+ws feature install bun --skip-extensions --skip-completion
+```
+
+| Flag                | Skips                            |
+| ------------------- | -------------------------------- |
+| `--skip-extensions` | VSCode extension installs        |
+| `--skip-completion` | Shell completion setup           |
+| `--skip-repository` | Vendor APT repository enablement |
+
+The same skips apply at boot through the per-feature `WS_FEATURES_<NAME>_OPTS`
+variable, set to one or more `skip_<section>=true` pairs joined with `;`:
+
+```sh{2}
+docker run \
+  -e WS_FEATURES_BUN_OPTS="skip_extensions=true;skip_completion=true" \
+  -e WS_FEATURES_ADDITIONAL_FEATURES="bun" \
+  ghcr.io/kloudkit/workspace:v0.3.0
+```
+
+::: warning
+
+`--skip-repository` skips enabling the vendor APT repository the package install
+then reads from.
+
+Use it only when the package is already present or mirrored through a [feature store](#feature-store).
+
+:::
+
 ## Custom Features
 
-Save your own playbooks under `~/.ws/features.d/` and install them by name,
-exactly like the built-in features — no `--root` needed.
-The directory is searched alongside the built-in features; if a name exists in
-both, your copy wins, so you can override a shipped feature by dropping a
-same-named playbook there.
+Save your own playbooks under `~/.ws/features.d/` and install them by name, exactly like the
+built-in features — no `--root` needed.
+
+The directory is searched alongside the built-in features; if a name exists in both, your copy wins,
+so you can override a shipped feature by dropping a same-named playbook there.
 
 Scaffold a starting playbook with `feature new` and redirect it into place.
 Keep `hosts: workspace` and `gather_facts: false` unchanged, then extend the
