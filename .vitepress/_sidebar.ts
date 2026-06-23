@@ -59,6 +59,7 @@ export default {
         { text: 'APT', link: '/tools/apt' },
         { text: 'C/C++', link: '/tools/cpp' },
         { text: 'Claude Code', link: '/tools/claude' },
+        { text: 'Cloudflared', link: '/tools/cloudflared' },
         { text: 'Docker', link: '/tools/docker' },
         { text: 'Git', link: '/tools/git' },
         { text: 'Go', link: '/tools/go' },
