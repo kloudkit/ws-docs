@@ -61,6 +61,7 @@ export default {
         { text: 'Claude Code', link: '/tools/claude' },
         { text: 'Cloudflared', link: '/tools/cloudflared' },
         { text: 'Docker', link: '/tools/docker' },
+        { text: '.NET', link: '/tools/dotnet' },
         { text: 'Git', link: '/tools/git' },
         { text: 'Go', link: '/tools/go' },
         { text: 'Helm', link: '/tools/helm' },

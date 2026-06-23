@@ -233,7 +233,7 @@ For more information, visit our [contribution guide](/contribute/).
 | [**`cpp →`**](/tools/cpp)                   | C++ and related tools                      |           |   ✅   |
 | `dagger`                                    | dagger.io CLI and SDK                      |           |       |
 | `doctl`                                     | DigitalOcean CLI                           | *v0.2.0*  |       |
-| `dotnet`                                    | .NET framework and related extensions      |           |   ✅   |
+| [**`dotnet →`**](/tools/dotnet)             | .NET SDK, runtime, and ASP.NET Core        |           |   ✅   |
 | `gcloud`                                    | Google Cloud CLI for GCP                   |           |   ✅   |
 | `gh`                                        | GitHub CLI                                 |           |   ✅   |
 | `glab`                                      | GitLab CLI                                 | *v0.2.0*  |   ✅   |
