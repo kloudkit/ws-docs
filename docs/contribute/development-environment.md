@@ -1,3 +1,7 @@
+---
+description: "Guidelines and setup for contributing to Kloud Workspace, from the Code of Conduct to preparing your local development environment."
+---
+
 # Development Environment
 
 We're really excited that you are interested in contributing to **Kloud Workspace**.

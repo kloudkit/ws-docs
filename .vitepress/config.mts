@@ -25,6 +25,26 @@ export default defineConfig({
     ['meta', { name: 'twitter:image', content: 'https://ws.kloudkit.com/logo.png' }],
   ],
 
+  transformHead: ({ pageData }) => {
+    const title = pageData.title
+      ? `${pageData.title} | Kloud Workspace`
+      : 'Kloud Workspace'
+    const description =
+      pageData.description ||
+      pageData.frontmatter.description ||
+      '🔋 A batteries included pre-configured development workspace inside a Docker container'
+    const url =
+      'https://ws.kloudkit.com/' +
+      pageData.relativePath.replace(/(index)?\.md$/, '').replace(/\/$/, '')
+
+    return [
+      ['meta', { property: 'og:title', content: title }],
+      ['meta', { property: 'og:description', content: description }],
+      ['meta', { property: 'og:url', content: url }],
+      ['link', { rel: 'canonical', href: url }],
+    ]
+  },
+
   themeConfig: {
     nav,
     sidebar,

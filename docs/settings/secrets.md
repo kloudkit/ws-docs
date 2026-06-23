@@ -1,4 +1,5 @@
 ---
+description: "Manage sensitive credentials in Kloud Workspace with the ws-cli secrets command — encrypt passwords, API keys, and SSH keys instead of storing plaintext."
 see:
   - name: Vault
     link: /settings/vault

@@ -1,4 +1,5 @@
 ---
+description: "YAML vaults in Kloud Workspace enable declarative, bulk secret injection, building on the ws-cli secrets encryption primitives."
 see:
   - name: Secrets
     link: /settings/secrets

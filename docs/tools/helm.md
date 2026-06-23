@@ -1,4 +1,5 @@
 ---
+description: "Helm comes pre-installed in Kloud Workspace with auto-completion, the helm diff plugin, and Kubernetes VS Code extensions, ready to use."
 see:
   - name: Kind
     link: /tools/kind

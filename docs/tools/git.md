@@ -1,4 +1,5 @@
 ---
+description: "Git in Kloud Workspace ships with sane defaults and useful aliases out of the box, plus guidance for customizing your workflow."
 see:
   - name: SSH
     link: /tools/ssh

@@ -1,4 +1,5 @@
 ---
+description: "Install the .NET SDK, runtime, and ASP.NET Core runtime in Kloud Workspace with the opt-in dotnet feature for cross-platform C# development."
 see:
   - name: Features
     link: /editor/features

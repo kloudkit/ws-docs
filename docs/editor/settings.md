@@ -1,4 +1,5 @@
 ---
+description: "Customize the VS Code editor in Kloud Workspace with JSON-based settings, separate from environment-variable configuration."
 see:
   - name: Configuration
     link: /settings/configuration

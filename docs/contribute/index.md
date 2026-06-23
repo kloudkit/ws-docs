@@ -1,3 +1,7 @@
+---
+description: "Get involved with Kloud Workspace — report bugs, improve functionality, and contribute to this open-source development workspace."
+---
+
 # Contribute
 
 > Your help is welcome to make **Kloud Workspace** even more stable and feature rich.

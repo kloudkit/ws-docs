@@ -1,4 +1,5 @@
 ---
+description: "Built-in shell aliases in Kloud Workspace that shorten long, common commands into convenient keywords, plus how to define your own."
 see:
   - name: Autoload Scripts
     link: /settings/autoload-scripts

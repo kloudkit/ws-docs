@@ -1,4 +1,5 @@
 ---
+description: "Enable HTTPS and install custom CA certificates in Kloud Workspace to secure the editor, terminal, and browser tooling end-to-end."
 see:
   - name: Port Forwarding
     link: /editor/port-forwarding

@@ -1,4 +1,5 @@
 ---
+description: "Kloud Workspace ships the Catppuccin Frappe palette and curated fonts for a warm, readable theme across the editor and colored output."
 see:
   - name: Terminal
     link: /editor/terminal

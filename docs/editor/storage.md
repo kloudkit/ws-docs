@@ -1,4 +1,5 @@
 ---
+description: "Persist data beyond a container's lifecycle in Kloud Workspace, working around Docker's ephemeral, stateless default storage."
 see:
   - name: Autoload Scripts
     link: /settings/autoload-scripts

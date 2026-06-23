@@ -1,3 +1,7 @@
+---
+description: "Run a customized, pre-configured VS Code workspace (powered by Coder) on Docker, Kubernetes, or OpenShift, in the browser or via SSH."
+---
+
 # Kloud Workspace
 
 > 🔋 A batteries included pre-configured development workspace inside a Docker container

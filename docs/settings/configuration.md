@@ -1,4 +1,5 @@
 ---
+description: "Configure Kloud Workspace through environment variables, following a convention-over-configuration approach with sensible defaults."
 see:
   - name: Editor Settings
     link: /editor/settings

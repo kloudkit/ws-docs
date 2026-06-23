@@ -1,4 +1,5 @@
 ---
+description: "Expose ports from a Kloud Workspace container externally by configuring port forwarding around Docker's default network isolation."
 see:
   - name: TLS & Certificates
     link: /settings/tls

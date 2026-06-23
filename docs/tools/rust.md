@@ -1,4 +1,5 @@
 ---
+description: "Add Rust to Kloud Workspace with the opt-in feature — a systems language built for performance, reliability, and memory safety."
 see:
   - name: Features
     link: /editor/features

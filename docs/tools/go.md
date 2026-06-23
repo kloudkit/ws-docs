@@ -1,4 +1,5 @@
 ---
+description: "Go comes pre-installed in Kloud Workspace with a full development toolchain — runtime, compiler, and tooling ready out of the box."
 see:
   - name: Rust
     link: /tools/rust

@@ -1,4 +1,5 @@
 ---
+description: "Enable Kloud Workspace's built-in Prometheus-compatible metrics exporter to expose resource and session telemetry for your running workspace."
 see:
   - name: Configuration
     link: /settings/configuration

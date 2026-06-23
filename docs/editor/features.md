@@ -1,4 +1,5 @@
 ---
+description: "Opt-in features let you install and configure extra packages and tooling in Kloud Workspace on demand, keeping the base image lean."
 see:
   - name: Ansible
     link: /tools/ansible

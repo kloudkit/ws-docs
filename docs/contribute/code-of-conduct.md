@@ -1,3 +1,7 @@
+---
+description: "The KloudKIT Code of Conduct — our pledge to keep the Kloud Workspace community a harassment-free, welcoming space for every contributor."
+---
+
 # Contributor Covenant Code of Conduct
 
 ## Our Pledge

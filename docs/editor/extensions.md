@@ -1,3 +1,7 @@
+---
+description: "Manage VS Code extensions in Kloud Workspace, including Marketplace terms and how to pre-install extensions in your deployment."
+---
+
 # VS Extensions
 
 ## Official Marketplace

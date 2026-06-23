@@ -1,4 +1,5 @@
 ---
+description: "Kloud Workspace ships a finely-tuned Python 3.11 toolchain — pip, the fast uv package manager, auto venv activation, ruff, and Pyrefly."
 see:
   - name: Features
     link: /editor/features

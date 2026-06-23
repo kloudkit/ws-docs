@@ -1,4 +1,5 @@
 ---
+description: "An opt-in bundle of container-image tools for Kloud Workspace — generate an SBOM, scan images for vulnerabilities, and inspect layers."
 see:
   - name: Features
     link: /editor/features

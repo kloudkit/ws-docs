@@ -1,4 +1,5 @@
 ---
+description: "Configure Kloud Workspace's opt-in authentication or integrate an external provider — the default deployment requires no authentication."
 see:
   - name: Secrets
     link: /settings/secrets

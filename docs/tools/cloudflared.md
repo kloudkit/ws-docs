@@ -1,4 +1,5 @@
 ---
+description: "Expose a Kloud Workspace to the internet with Cloudflare Tunnel — an outbound-only connection needing no inbound ports or public IP."
 see:
   - name: Features
     link: /editor/features

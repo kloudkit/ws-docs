@@ -1,4 +1,5 @@
 ---
+description: "Run Docker inside a Kloud Workspace container, with the trade-offs and alternative approaches for Docker-in-Docker workflows."
 see:
   - name: Docker in Docker
     link: https://www.google.com/search?q=run+docker+in+docker

@@ -1,4 +1,5 @@
 ---
+description: "Kloud Workspace's custom APT setup delivers flexible, efficient package management that avoids unnecessary installs and protects user files."
 see:
   - name: APT
     link: /editor/features

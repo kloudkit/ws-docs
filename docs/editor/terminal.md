@@ -1,4 +1,5 @@
 ---
+description: "The Kloud Workspace terminal runs on zsh with a Starship prompt, rich colorization, and sensible defaults for a productive shell."
 see:
   - name: Theme & Fonts
     link: /editor/theme-and-fonts

@@ -1,3 +1,7 @@
+---
+description: "The step-by-step workflow for contributing to Kloud Workspace — branching, commits, and pull requests, governed by the project Code of Conduct."
+---
+
 # Contribution Workflow & Style Guides
 
 ::: tip

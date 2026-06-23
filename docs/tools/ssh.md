@@ -1,4 +1,5 @@
 ---
+description: "Kloud Workspace includes standardized, user-friendly SSH configurations for connecting to remote servers, in /etc/ssh/ssh_config."
 see:
   - name: Signed Commits
     link: /tools/git#files

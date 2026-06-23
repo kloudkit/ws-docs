@@ -1,4 +1,5 @@
 ---
+description: "ws-cli is the CLI companion for Kloud Workspace — a suite of helper commands to navigate, manage, and automate your workspace."
 see:
   - name: GitHub Repository
     link: https://github.com/kloudkit/ws-cli

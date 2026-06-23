@@ -1,4 +1,5 @@
 ---
+description: "Add a full C and C++ compile-debug-build toolchain to Kloud Workspace with the opt-in cpp feature for performance-critical work."
 see:
   - name: Features
     link: /editor/features

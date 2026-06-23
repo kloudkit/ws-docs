@@ -1,3 +1,7 @@
+---
+description: "How to responsibly report security vulnerabilities in Kloud Workspace privately, rather than through public GitHub issues."
+---
+
 # Security Advisory
 
 ::: danger

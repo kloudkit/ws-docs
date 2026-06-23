@@ -1,4 +1,5 @@
 ---
+description: "Claude Code comes pre-installed in Kloud Workspace as both a system-wide CLI and a VS Code extension, ready to use out of the box."
 see:
   - name: Extensions
     link: /editor/extensions

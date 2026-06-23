@@ -1,3 +1,7 @@
+---
+description: "An overview of the CLI tools pre-installed in Kloud Workspace, their licenses, and the custom configurations that enhance them."
+---
+
 # Tools
 
 The tables below provide details about the pre-installed CLI tools, including their

@@ -1,4 +1,5 @@
 ---
+description: "Personalize Kloud Workspace startup with autoload scripts that run your own installation and configuration steps beyond the defaults."
 see:
   - name: Terminal
     link: /editor/terminal

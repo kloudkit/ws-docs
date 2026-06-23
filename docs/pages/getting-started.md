@@ -1,3 +1,7 @@
+---
+description: "Get started with Kloud Workspace — system requirements and the quickest path to running your pre-configured development workspace."
+---
+
 # Getting Started
 
 ## Requirements

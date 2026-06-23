@@ -1,4 +1,5 @@
 ---
+description: "Kind (Kubernetes IN Docker) in Kloud Workspace runs local Kubernetes clusters in Docker containers for testing and local development."
 see:
   - name: Helm
     link: /tools/helm
