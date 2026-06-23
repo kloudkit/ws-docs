@@ -20,6 +20,7 @@ export default {
   '/': [
     { text: 'Introduction', link: '/pages' },
     { text: 'Getting Started', link: '/pages/getting-started' },
+    { text: 'Changelog', link: '/changelog' },
     {
       text: 'Get Involved',
       collapsed: true,
