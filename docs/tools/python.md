@@ -45,7 +45,7 @@ libraries into the user site and `uv` to install global CLI tools.
 docker run \
   -e WS_PIP_ADDITIONAL_PACKAGES="httpx==0.27.0 rich" \
   -e WS_UV_ADDITIONAL_TOOLS="ruff poetry==1.8.0" \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 ## Automatic `venv` Activation

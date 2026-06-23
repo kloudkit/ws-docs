@@ -71,7 +71,7 @@ docker run -d \
   -e WS_SERVER_SSL_KEY=/certs/tls.key \
   -e WS_SERVER_SSL_CERT="-----BEGIN CERTIFICATE-----..." \
   -e WS_SERVER_PROXY_DOMAIN=ws.dev \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 ## Enterprise CA *(Custom Certificates)*
@@ -95,13 +95,13 @@ To add your company's root CA, all you need to do is mount the certificate
 ```sh{2} [Single]
 docker run \
   -v /path/on-host/ca.crt:/usr/local/share/ca-certificates/workspace/ca.crt \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 ```sh{2} [Multiple]
 docker run \
   -v /folder/on-host:/usr/local/share/ca-certificates/workspace \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 :::
@@ -120,7 +120,7 @@ up `.crt`; `.pem` and other extensions are silently skipped.
 ```sh
 docker run \
   -v $(pwd)/corp-ca.crt:/home/kloud/.ws/ca.d/corp-ca.crt \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 This is the recommended path for ad-hoc certificate injection on a
@@ -139,13 +139,13 @@ Use the `WS_CA_ADDITIONAL_CERT_ENDPOINTS` environment variable to define one or 
 ```sh{2} [Single]
 docker run \
   -e WS_CA_ADDITIONAL_CERT_ENDPOINTS="https://corp.com/ca.pem" \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 ```sh{2} [Multiple]
 docker run \
   -e WS_CA_ADDITIONAL_CERT_ENDPOINTS="https://corp.com/ca.pem https://alt.com/root.crt" \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 :::
@@ -168,13 +168,13 @@ validation is bypassed using insecure connections.
 ```sh{2} [Single]
 docker run \
   -e WS_CA_ADDITIONAL_CERT_INSECURE_ENDPOINTS="http://corp.com/ca.pem" \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 ```sh{2} [Multiple]
 docker run \
   -e WS_CA_ADDITIONAL_CERT_INSECURE_ENDPOINTS="http://corp.com/ca.pem https://untrusted.com/root.crt" \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 :::
