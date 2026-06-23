@@ -65,7 +65,7 @@ docker volume ls
 Several workspace features store their configuration under `~/.ws` (`/home/kloud/.ws`),
 including [sideloaded extensions](/editor/extensions), [startup and session scripts](/settings/autoload-scripts),
 [drop-in CA certificates](/settings/tls#drop-in-directory-ws-ca-d),
-and the [secrets vault](/settings/secrets).
+the [secrets vault](/settings/secrets), and your shell and REPL history (`~/.ws/history`).
 
 Because this directory lives inside the container, its contents are lost on restart unless
 you persist it separately:
@@ -105,7 +105,7 @@ This approach simplifies volume management by utilizing *sub-paths* within the w
 The following demonstrates this practice
 *(note that the paths and names are provided for illustrative purposes only)*:
 
-```yaml{5,9,13,17}
+```yaml{5,9,13}
 # Pod specs
 volumeMounts:
   - name: data
@@ -113,12 +113,8 @@ volumeMounts:
     subPath: workspace
 
   - name: data
-    mountPath: /home/kloud/.ws
+    mountPath: /home/kloud/.ws # also persists shell/REPL history (~/.ws/history)
     subPath: ws
-
-  - name: data
-    mountPath: /home/kloud/.cache/history
-    subPath: history
 
   - name: data
     mountPath: /home/kloud/.config/helm
