@@ -29,6 +29,24 @@ For day‑to‑day dependency work, we recommend `uv`, which offers:
 - Deterministic, lock‑file–friendly installs.
 - Seamless compatibility with `requirements.txt` and `pyproject.toml`.
 
+## Additional Packages &amp; Tools
+
+Upon *workspace* startup, Kloud Workspace evaluates two environment variables to
+automatically install user-defined Python packages and CLI tools:
+
+- <EnvVar group="pip" name="additional_packages" />
+- <EnvVar group="uv" name="additional_tools" />
+
+Both accept a **space-delimited** list. Reach for `pip` to install importable
+libraries into the user site and `uv` to install global CLI tools.
+
+```sh{2,3}
+docker run \
+  -e WS_PIP_ADDITIONAL_PACKAGES="httpx==0.27.0 rich" \
+  -e WS_UV_ADDITIONAL_TOOLS="ruff poetry==1.8.0" \
+  ghcr.io/kloudkit/workspace:v0.3.0
+```
+
 ## Automatic `venv` Activation
 
 Kloud Workspace includes an **auto-venv** plugin that automatically activates Python
