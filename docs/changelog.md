@@ -5,6 +5,8 @@ editLink: false
 
 # Changelog
 
+![Changelog](/icons/changelog.svg){.doc-image width=150px}
+
 Release notes for each tagged Kloud Workspace image, generated from the commit history.
 
 The newest release is listed first.

@@ -1,5 +1,4 @@
 export default [
-  { text: 'Changelog', link: '/changelog' },
   {
     text: 'Get Involved',
     items: [
