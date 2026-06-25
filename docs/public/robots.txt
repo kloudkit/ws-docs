@@ -2,4 +2,23 @@ User-agent: *
 Disallow: /search
 Disallow: /search?*
 
+# llms.txt: https://ws.kloudkit.com/llms.txt
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://ws.kloudkit.com/sitemap.xml
