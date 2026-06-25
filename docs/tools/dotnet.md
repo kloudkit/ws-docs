@@ -27,7 +27,7 @@ ws feature install dotnet
 # Or at boot time
 docker run \
   -e WS_FEATURES_ADDITIONAL_FEATURES="dotnet" \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 ## Selecting a .NET Version
@@ -43,7 +43,7 @@ ws feature install dotnet --opt version=9.0
 docker run \
   -e WS_FEATURES_ADDITIONAL_FEATURES="dotnet" \
   -e WS_FEATURES_DOTNET_OPTS="version=9.0" \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 > Supported versions: **8.0**, **9.0**, and **10.0** *(default)*.

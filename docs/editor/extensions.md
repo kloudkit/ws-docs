@@ -46,7 +46,7 @@ You can also install additional extensions by marketplace ID:
 ```sh{2}
 docker run \
   -e WS_EDITOR_ADDITIONAL_VS_EXTENSIONS="dbaeumer.vscode-eslint esbenp.prettier-vscode" \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 ### Persistent Extensions
@@ -69,7 +69,7 @@ docker volume create my-extensions
 
 docker run \
   -v my-extensions:/extensions \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 ## Privately Hosted Gallery
@@ -82,7 +82,7 @@ For example:
 ```sh{2}
 docker run \
   -e EXTENSIONS_GALLERY='{"serviceUrl": "https://my-extensions/api"}' \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 ::: warning

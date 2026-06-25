@@ -42,7 +42,7 @@ to your deployment:
 docker run \
   -e WS_TERMINAL_PROMPT_HIDE_DOCKER_CONTEXT=1 \
   -e WS_TERMINAL_PROMPT_HIDE_PYTHON_VERSION=1 \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 ### Colorful Output
@@ -111,13 +111,13 @@ To modify the default set of plugins, adjust the `env` variables listed below:
 ```sh{2} [Override]
 docker run \
   -e WS_ZSH_PLUGINS="kubectl npm python pip" \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 ```sh{2} [Append]
 docker run \
   -e WS_ZSH_ADDITIONAL_PLUGINS="php" \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 :::

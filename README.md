@@ -11,7 +11,7 @@
 
 ```sh
 # TL-DR; ⚡ Power your batteries now!
-docker run -p 8080:8080 ghcr.io/kloudkit/workspace:v0.3.0
+docker run -p 8080:8080 ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 ## Documentation

@@ -27,7 +27,7 @@ ws feature install cpp
 # Or at boot time
 docker run \
   -e WS_FEATURES_ADDITIONAL_FEATURES="cpp" \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 ## Selecting a Compiler Version
@@ -43,7 +43,7 @@ ws feature install cpp --opt version=13
 docker run \
   -e WS_FEATURES_ADDITIONAL_FEATURES="cpp" \
   -e WS_FEATURES_CPP_OPTS="version=13" \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 > Supported versions: **13** and **14** *(default)*.

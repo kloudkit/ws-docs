@@ -41,7 +41,7 @@ application running inside the workspace.
 ```sh{2}
 docker run \
   -e WS_AUTH_PASSWORD=super_duper_secret \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 ### Creating a Hashed Password
@@ -70,7 +70,7 @@ Then deploy the workspace:
 ```sh{2}
 docker run \
   -e WS_AUTH_PASSWORD_HASHED="$argon2id$v=19$m=4096,t=3,p=1$z4DjJlJgI6S7fAdQC35ZQw$Rpu8CLMWedxJaH0eiFCetyoRbg+S8ow/RRyVCZzM6QE" \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 ### File-Based Passwords
@@ -84,7 +84,7 @@ convention path and leave the variable unset.
 docker run \
   -e WS_AUTH_PASSWORD_HASHED=file:/run/secrets/workspace/auth/password_hashed \
   -v ./password_hashed.txt:/run/secrets/workspace/auth/password_hashed:ro \
-  ghcr.io/kloudkit/workspace:v0.3.0
+  ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 See [Resolving Secret Values](/settings/configuration#resolving-secret-values)
