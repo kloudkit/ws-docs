@@ -187,8 +187,11 @@ available certificates *(into `/usr/local/share/ca-certificates/workspace-bundle
 In addition, each `zsh` session will contain program specific environment variables
 that require the abovementioned bundles and are set automatically *(system-wide)*:
 
+- `AWS_CA_BUNDLE`
+- `CARGO_HTTP_CAINFO`
 - `COMPOSER_CAFILE`
 - `CURL_CA_BUNDLE`
+- `GIT_SSL_CAINFO`
 - `NODE_EXTRA_CA_CERTS`
 - `NPM_CONFIG_CAFILE`
 - `PIP_CERT`
