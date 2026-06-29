@@ -59,6 +59,12 @@ improved readability.
 
 ![Cat animation](/editor/terminal/cat.gif){.doc-image-shadow}
 
+::: tip Clickable file paths
+Paths printed as `file://…` URIs are clickable and open the file in the editor.
+Because the workspace runs remotely, they resolve against the remote filesystem —
+so they work in the browser instead of pointing at your local machine.
+:::
+
 ### Clipboard
 
 The workspace provides clipboard utilities that bridge the terminal with the browser's
