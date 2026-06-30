@@ -123,7 +123,7 @@ For comprehensive documentation including secret types and security best practic
 ### Seed (`ws seed`)
 
 Project files and secrets from a durable source directory onto the filesystem. See the
-[seed documentation](/tools/seed) for the manifest schema and ownership boundary.
+[seed documentation](/settings/seed) for the manifest schema and ownership boundary.
 
 - **`apply [dest...]`:** Project the seed plan, optionally scoped to named destinations *(`--force`
   overwrites existing destinations)*.
