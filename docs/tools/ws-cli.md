@@ -109,8 +109,8 @@ ws logs --level=error --tail=100 --follow
 
 Manage encryption, decryption, and master key generation for secure secrets handling.
 
-For comprehensive documentation including vault management, secret types, and security
-best practices, see the [dedicated secrets documentation](/settings/secrets).
+For comprehensive documentation including secret types and security best practices, see the
+[dedicated secrets documentation](/settings/secrets).
 
 #### Quick Reference
 
@@ -119,7 +119,15 @@ best practices, see the [dedicated secrets documentation](/settings/secrets).
   - **`login`:** Generate a login password hash for authentication.
 - **`encrypt <plaintext>`:** Encrypt a plaintext value.
 - **`decrypt <encrypted>`:** Decrypt an encrypted value.
-- **`vault`:** Process a vault file and write secrets to destinations.
+
+### Seed (`ws seed`)
+
+Project files and secrets from a durable source directory onto the filesystem. See the
+[seed documentation](/tools/seed) for the manifest schema and ownership boundary.
+
+- **`apply [dest...]`:** Project the seed plan, optionally scoped to named destinations *(`--force`
+  overwrites existing destinations)*.
+- **`ls`:** List the resolved seed plan.
 
 ### Serve (`ws serve`)
 

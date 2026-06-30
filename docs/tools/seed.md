@@ -1,155 +1,208 @@
 ---
-description: Project files from a durable seed directory onto the workspace filesystem on every boot, within hard security boundaries.
+description: Project files and secrets from a durable seed directory onto the workspace filesystem on every boot, within an ownership boundary.
 see:
+  - name: Secrets
+    link: /settings/secrets
   - name: Git
     link: /tools/git
-  - name: Ansible
-    link: /tools/ansible
   - name: Autoload Scripts
     link: /settings/autoload-scripts
 ---
 
 # Seed
 
-Seeding projects files from a durable source directory onto the filesystem on every container boot.
-Fill the source once and it re-projects each restart, with no hand-run setup scripts.
+Seeding projects files and secrets from a durable source directory onto the filesystem on every
+container boot. Fill the source once and it re-projects each restart, with no hand-run setup scripts.
 
-There are two tiers in a single source tree:
+The engine lives in `ws-cli`. One source tree carries two tiers, resolved into a single plan and
+written once per destination:
 
-- **Bare files**: an FS-rooted mirror of the target filesystem.
-- **A `.seed.yaml` manifest**: an Ansible tasks-list run through a hardened wrapper play.
+- **Bare files** mirror the target filesystem and are copied verbatim.
+- **A `.seed.yaml` manifest** overlays declarative behaviors — merge, templating, secrets — onto
+  that mirror.
 
 ## At a Glance
 
-- **Source:** <EnvVar group="seed" name="source" /> *(default `~/.ws/seed.d`)*.
-  An empty or absent directory is a clean no-op.
+- **Source:** <EnvVar group="seed" name="source" /> *(default `~/.ws/seed.d`)*. An empty or absent
+  directory is a clean no-op.
+- **Manifest:** a single `<source>/.seed.yaml` at the source root, excluded from the bare mirror.
 - **Runs:** on every boot, before the workspace's own configuration steps.
-- **Writes:** only under `$HOME` and `${WS_SERVER_ROOT}`, minus a fixed deny-set.
-  System directories require an explicit opt-in.
+- **Writes:** only where you own the destination — anywhere your account owns the nearest existing
+  parent directory.
 
 ## Bare Files: FS-Rooted Mirror
 
-Plain files mirror the target filesystem tree.
-The path under the source maps directly onto the root filesystem:
+Plain files mirror the target filesystem tree. The path under the source maps directly onto the root
+filesystem:
 
 ```text
 ~/.ws/seed.d/home/kloud/.gitconfig   →  ~/.gitconfig
 ~/.ws/seed.d/etc/workspace/x         →  /etc/workspace/x
 ```
 
-A home file therefore lives at `seed.d/home/kloud/<path>`, not at the source root.
-Each file is written with a fixed mode *(644 for files, 755 for new directories)* and owned by `kloud`.
-Bare files reconcile every boot, overwriting the destination whether or not it changed.
+A home file therefore lives at `seed.d/home/kloud/<path>`, not at the source root. Bare files copy
+verbatim with mode `644` *(new directories `755`)* and never write if the destination already
+exists, unless forced.
 
-## Task Tier: `.seed.yaml`
+## The Manifest
 
-A single hidden `.seed.yaml` at the source root is an Ansible **tasks-list** *(not a full play)*.
-It is excluded from the bare mirror and never copied verbatim.
-The workspace generates the play it controls *(`localhost`, local connection, no fact-gathering, `become: false`)*
-and runs it with the plugin path emptied from a clean temporary directory.
-
-Supported modules: `copy`, `template`, `file`, `blockinfile`, `lineinfile` and `set_fact`
-*(for `combine` ergonomics)*.
-
-Inline `content:` may template over a closed set of variables *(`ws_home`, `ws_user` and `ws_server_root`)*,
-and the `combine` filter performs YAML/JSON deep-merge.
+A single hidden `.seed.yaml` at the source root declares behaviors. It opens with a `version` key and
+two maps:
 
 ```yaml
-- name: Write a merged config
-  copy:
-    dest: "{{ ws_home }}/.config/app/config.json"
-    content: "{{ {'theme': 'dark'} | combine({'telemetry': false}) | to_nice_json }}"
+version: v1
 
-- name: Append a shell line once
-  lineinfile:
-    path: "{{ ws_home }}/.bashrc"
-    line: export EDITOR=nano
+secrets:
+  GH_TOKEN: kZ9...   # inline ciphertext, or file:/run/secrets/gh_token
+
+seeds:
+  ~/.gitconfig:
+    op: merge
+  ~/.ssh/id_ed25519:
+    secret: true
+  ~/.zshenv:
+    op: append
+    content: "export EDITOR=nano\n"
 ```
 
-### Propagation
+The `seeds:` map is **keyed by destination** — `~`, `${ws_home}`, `${ws_server_root}` and
+`${ws_user}` expand. The source for each entry is implied by that key: the **rhyming mirror file**
+*(`<source>/<dest-without-leading-slash>`)*, or an inline `content:` literal. There is no `file:`
+pointer inside `seeds:`.
 
-Task entries inherit Ansible's native `force: true`, reconciling every boot.
-Set `force: false` per entry for "seed-once, then let the destination drift".
-There is no global mode switch.
+Each entry must carry at least one behavior — `secret`, `mode`, a non-`copy` `op`, or `template`. A
+plain copy belongs in the mirror tier, so a copy-only manifest entry is a parse error. When a
+destination is produced by both a bare file and a manifest entry, the manifest entry wins.
+
+## Operations
+
+`op` is one of `copy` *(default)*, `merge`, `append` or `prepend`.
+
+`merge` deep-merges structured data, with the format inferred from the destination extension
+*(`.json`, `.yaml`, `.toml`)*. Maps merge recursively, scalars override, and **lists replace**
+wholesale. A scalar-versus-map conflict at a key is a hard error that leaves the destination
+byte-unchanged.
+
+```yaml
+seeds:
+  ~/.config/app/config.json:
+    op: merge
+    content: '{"telemetry": false}'
+```
+
+`append` and `prepend` concatenate `content` onto the existing destination.
+
+::: warning
+
+`append` and `prepend` are **not idempotent** — they add their content every time they run. They are
+safe on ephemeral destinations rebuilt each boot *(such as `~/.zshenv`)*; on a persistent destination
+they accumulate duplicates across boots. Ephemerality is a deployment assumption, not an image
+guarantee.
+
+:::
 
 ::: info
 
-`force: false` only applies to `copy` and `template`. `file`, `blockinfile` and `lineinfile` have
-no `force` and reconcile every boot: a `lineinfile` with a non-matching `regexp` appends a duplicate
-line across boots.
+JSON `merge` normalizes numbers through `float64`, so integers larger than 2⁵³ lose precision. YAML
+and TOML decode native integers and are unaffected.
 
 :::
 
-## Security Boundaries
+## Templating
 
-Three boundaries constrain the seed. They hold in every mode and are never governed by `force`.
+Set `template: true` to substitute a closed variable set in the source before writing:
 
-### Deny-Set
+```yaml
+seeds:
+  ~/.config/app/env:
+    template: true
+    content: "HOME=${ws_home}\nTOKEN=${secrets.GH_TOKEN}\n"
+```
 
-Any path a later startup script or shell-init autoloads, executes, or feeds to a root-capable process
-is rejected: the seed can never plant code or trust that a less-hardened consumer later runs.
-A rejected entry is skipped with a warning; the boot continues.
+The available tokens are `${ws_home}`, `${ws_user}`, `${ws_server_root}` and `${secrets.NAME}`. An
+unknown `${...}` token is a hard error — there is no expression language and no escape syntax. To
+emit a literal `${...}`, leave `template` unset.
 
-Rejected destinations include `~/.ws/{startup.d,session.d,ca.d,features.d,extensions}`,
-`~/.ws/{vault,state,history}`, `~/.ssh`, `~/.kube`, `~/.zshenv`, any `.git/` directory, and system
-paths such as `/etc/sudoers.d`, `/etc/ssh`, `/etc/ansible`, `/etc/profile.d`, `/usr`, `/bin` and
-`/sbin`.
+## Secrets
 
-### System-Tier Gate
+Two secret shapes share one ciphertext format, both produced by
+[`ws-cli secrets encrypt`](/settings/secrets):
 
-The `.seed.yaml` task tier never writes system paths.
-System seeding is bare-file plain-copy only, gated by two opt-ins:
+- **Inline values** live in the top-level `secrets:` map *(`NAME: <ciphertext>` or
+  `NAME: file:<path>`)* and are referenced only through `${secrets.NAME}` in a `template: true`
+  entry.
+- **Whole-file secrets** set `secret: true` on the entry. The engine decrypts the implied source —
+  the rhyming mirror ciphertext file or an inline `content:` ciphertext — and writes the plaintext
+  verbatim.
 
-- <EnvVar group="seed" name="allow_system" /> set to `true`
-- password-less `sudo` available *(`WS_AUTH_DISABLE_SUDO=false`)*.
-
-The system deny-set is rejected even when `allow_system` is on.
-
-### Hardened Mode
-
-When `WS_AUTH_DISABLE_SUDO=true`, the seed runs the bare-file copy tier into user-space only: no
-Ansible interpreter is invoked at all, and `seed.allow_system` is ignored.
-
-A system-path bare file is a clean skip, never a half-write.
-
-## Edit the Source, Not the Projection
-
-The seed is **reconcile**: edit `~/.ws/seed.d`, not the live projection.
-A change made directly to a seeded destination on a persistent volume reverts on the next boot.
-
-Reconcile is also **additive**: removing a file from the source does **not** delete its earlier
-projection; the projection survives the next boot.
+A secret-bearing output is forced to mode `0600`, and its cleartext never reaches logs. A secret that
+will not decrypt *(missing key, corrupt ciphertext)* is skipped with a warning and nothing is
+written — never the ciphertext, never a partial. A manifest with no secrets needs no key.
 
 ::: warning
 
-The seed is a **base layer, not the source of truth.**
-
-Because it runs before the workspace's own configuration steps, the files those steps manage
-*(the editor `settings.json`, shell configuration and server configuration)* are overridden by the
-workspace on every boot. Seeding wins for everything else; it loses for the files the workspace
-configures.
+Keep ciphertext files **outside** the mirror tree unless a manifest entry claims them. An undeclared
+encrypted file in the source is copied verbatim as ciphertext, exactly like any other bare file.
 
 :::
 
-::: warning
+::: info
 
-`combine` merges inline and seeded fragments only.
-It **cannot** read an existing on-disk file to patch an override into it: reading for merge is not
-available to the task tier.
+Key rotation re-authors the source: re-encrypt the `secrets:` values and any `secret: true` ciphertext
+with [`ws-cli secrets encrypt`](/settings/secrets) under the new key. There is no `seed rotate`
+command yet.
+
+:::
+
+## Ownership Boundary
+
+The engine writes only where you own the destination. It stats the nearest existing parent directory
+of the resolved path and compares its owner to your account *(`st_uid == geteuid()`)*: owner-owned
+directories are allowed — `~/.ssh`, `~/.ws/startup.d`, dotfiles, a `/opt/mine` you created — and
+anything else is skipped with a warning. There is no system gate and no `sudo`: a root-owned parent
+simply fails the check, which is also exactly where your account cannot write.
+
+Every write is anchored and TOCTOU-safe: paths resolve through `os.Root`, a component that escapes the
+anchor is refused, and a final-component symlink is refused outright rather than followed.
+
+::: tip
+
+A write into `~/.ws/{startup.d,ca.d,session.d,features.d}` is allowed and emits a notice — seeding
+your own startup script is a legitimate use. Mark it executable if it needs to run.
 
 :::
 
-::: danger
+## Force and Ephemerality
 
-Seeding into `${WS_SERVER_ROOT}` trips the clone guard and **suppresses** `WS_GIT_CLONE_REPO`.
-If the server root is a persistent volume, reconcile reverts live edits on every boot.
+The default is **write-if-absent**: an entry writes only when the destination is missing. This
+re-seeds ephemeral paths every boot for free and preserves a hand-edited persistent file. To
+overwrite an existing destination, set `force: true` on the entry or pass `--force` to re-apply
+everything. For `merge`, `force` gates the merge too — without it, an existing destination is left
+alone.
 
-A whole repository cannot be planted: any `.git/` path is denied.
+## Apply and Inspect
 
-:::
+The boot hook runs `ws-cli seed apply` with no arguments. Run it by hand to re-project, or scope it to
+specific destinations:
+
+```sh
+# Project everything
+ws-cli seed apply
+
+# Re-apply, overwriting existing destinations
+ws-cli seed apply --force
+
+# Project a single destination
+ws-cli seed apply ~/.gitconfig
+
+# List the resolved plan
+ws-cli seed ls
+```
+
+A named destination matches its entry regardless of `~`, `$HOME` or absolute form.
 
 ## Next Steps
 
+- [Secrets](/settings/secrets): the `ws-cli secrets` encryption primitives behind seeded secrets.
 - [Git](/tools/git): automated repository cloning into `${WS_SERVER_ROOT}`.
-- [Ansible](/tools/ansible): the engine behind the `.seed.yaml` task tier.
 - [Autoload Scripts](/settings/autoload-scripts): the `~/.ws/*.d` drop-in convention.

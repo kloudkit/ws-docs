@@ -49,7 +49,6 @@ export default {
         { text: 'Configuration', link: '/settings/configuration' },
         { text: 'TLS & Certificates', link: '/settings/tls' },
         { text: 'Secrets', link: '/settings/secrets' },
-        { text: 'Vault', link: '/settings/vault' },
       ]
     },
     {

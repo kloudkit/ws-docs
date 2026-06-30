@@ -1,127 +1,33 @@
 ---
-description: "YAML vaults in Kloud Workspace enable declarative, bulk secret injection, building on the ws-cli secrets encryption primitives."
+description: "The secrets vault has been removed. Secrets are now declared in the seed manifest and projected by the ws-cli seed engine."
 see:
+  - name: Seed
+    link: /tools/seed
   - name: Secrets
     link: /settings/secrets
-  - name: ws secrets Command Reference
-    link: /tools/ws-cli#secrets-ws-secrets
-    target: _self
 ---
 
 # Vault
 
-![Vault](/icons/vault.svg){.doc-image}
+::: danger
 
-YAML vaults allow bulk secret injection into the workspace. Vaults build on the
-[encryption primitives](/settings/secrets) provided by `ws-cli secrets` and add structured,
-declarative secret management.
-
-## Vault Format
-
-A vault is a YAML file listing one or more secrets with their encrypted values,
-destinations, and types:
-
-```yaml
-secrets:
-  database-password:
-    encrypted: Xy1z2A3...
-    destination: /workspace/.secrets/db-password
-    type: generic
-    mode: 0o600
-
-  api-key:
-    encrypted: Ab1c2D3...
-    destination: API_KEY
-    type: env
-
-  ssh-private-key:
-    encrypted: Kl1m2N3...
-    destination: ~/.ssh/id_rsa
-    type: ssh
-```
-
-:::warning
-
-Vault secrets can only be written to user-writable paths such as `$HOME`, `/workspace`, and `/tmp`.
-
-System paths like `/etc/` and `/usr/` are protected by Linux file permissions since the workspace
-runs as the `kloud` *(non-root)* user.
+The secrets vault has been removed. The `ws-cli secrets vault` subcommand, the
+`~/.ws/vault/secrets.yaml` manifest, and the standalone autoload step no longer exist.
 
 :::
 
-## File References
+Secrets now live in the [seed manifest](/tools/seed), projected by the unified `ws-cli seed` engine.
+There is no automatic migration — re-author your secrets into `<seed.source>/.seed.yaml`:
 
-For long encrypted values, store them in separate files using the `file:` prefix:
+- **Inline values** *(the old `type: env` exports)* go in the top-level `secrets:` map and render
+  through `${secrets.NAME}` in a `template: true` entry.
+- **Whole-file secrets** *(the old `type: ssh`, `kubeconfig`, `generic`, `dockerconfigjson`)* become
+  `secret: true` entries keyed by their destination.
 
-```yaml
-secrets:
-  ssh-private-key:
-    encrypted: file:./secrets/ssh-key.enc
-    destination: ~/.ssh/id_rsa
-    type: ssh
-```
+The [`ws-cli secrets`](/settings/secrets) encryption primitives — `encrypt`, `decrypt` and
+`generate` — are unchanged.
 
-File paths are relative to the current working directory.
+## Next Steps
 
-## Secret Types
-
-Each secret has a `type` field that determines how it's written and its default permissions:
-
-| Type               | Destination   | Default Mode | Description                        |
-| ------------------ | ------------- | ------------ | ---------------------------------- |
-| `generic`          | File path     | `0o600`      | General-purpose secrets            |
-| `ssh`              | File path     | `0o600`      | SSH private keys                   |
-| `env`              | Variable name | `0o644`      | Written to `~/.zshenv`             |
-| `kubeconfig`       | File path     | `0o600`      | Kubernetes config files            |
-| `dockerconfigjson` | File path     | `0o600`      | Docker authentication config files |
-
-- **`--destination`:** For file types *(generic, ssh, kubeconfig, dockerconfigjson)*, this
-  is the file path where the secret will be written. Relative paths are resolved
-  from `/workspace`.
-  For `env` types, this is the environment variable name.
-- **`--mode` *(optional)*:** File permissions in octal *(e.g., `0o600`)* or decimal *(e.g., `384`)*.
-  If omitted, the default mode for the type is used.
-- **`--type` *(optional)***.
-
-## Processing a Vault
-
-```sh
-# All secrets
-ws secrets vault --input vault.yaml --master .master.key
-
-# Specific keys
-ws secrets vault --input vault.yaml --key database-password --master .master.key
-
-# Inspect values
-ws secrets vault --input vault.yaml --stdout --master .master.key
-```
-
-## Autoloading
-
-At startup the workspace automatically processes `~/.ws/vault/secrets.yaml` when it exists.
-Place your vault manifest and any referenced encrypted files together in that directory:
-
-```text
-~/.ws/vault/
-├── secrets.yaml        # vault manifest
-├── db-password.enc     # encrypted file referenced via file:
-└── ssh-key.enc
-```
-
-`~/.ws/vault/secrets.yaml` is the sole supported autoload location. To use
-a vault stored elsewhere on the host, bind-mount it into the convention
-path:
-
-```sh
-docker run \
-  -v /host/path/secrets.yaml:/home/kloud/.ws/vault/secrets.yaml \
-  ghcr.io/kloudkit/workspace:v0.4.0
-```
-
-## Vault Flags
-
-- **`--input <file>`:** Vault file path *(defaults to `~/.ws/vault/secrets.yaml`)*.
-- **`--key <name>`:** Process specific secret *(repeatable)*.
-- **`--stdout`:** Inspect without writing.
-
-See [ws secrets command reference](/tools/ws-cli#secrets-ws-secrets) for complete syntax.
+- [Seed](/tools/seed): declare and project secrets in the unified manifest.
+- [Secrets](/settings/secrets): encrypt and decrypt values with `ws-cli secrets`.
