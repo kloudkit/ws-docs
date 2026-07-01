@@ -78,7 +78,7 @@ When a destination is produced by both a bare file and a manifest entry, the man
 
 ## Operations
 
-`op` is one of `copy` *(default)*, `merge`, `append`, `prepend` or `block`.
+`op` is one of `copy` *(default)*, `merge`, `append`, `prepend`, `block` or `lineinfile`.
 
 `merge` deep-merges structured data, with the format inferred from the destination extension
 *(`.json`, `.yaml`, `.toml`)*.
@@ -102,13 +102,8 @@ seeds:
 Forced, they re-apply on every boot *(**naive, not idempotent**)*, so the content is added again each
 time and accumulates *(if a persistent volume is mounted)*.
 
-To manage a region inside an existing file idempotently, use [`op: block`](#managed-blocks).
-
-:::
-
-::: info
-
-JSON `merge` can lose precision on integers larger than 2⁵³. YAML and TOML keep them exact.
+To add a single line idempotently, use [`op: lineinfile`](#managed-lines); to manage a region, use
+[`op: block`](#managed-blocks).
 
 :::
 
@@ -164,6 +159,25 @@ module.exports = { telemetry: false }
 `block` is plain text and does not infer a file's comment syntax; `comment` is valid only with
 `op: block`. For structured files, prefer `merge` over a marked block.
 
+### Managed Lines
+
+`op: lineinfile` manages a single line, matched by its key, idempotently:
+
+```yaml
+seeds:
+  ~/.zshenv:
+    op: lineinfile
+    content: "export EDITOR=nano\n"
+```
+
+The key is the text up to and including the first `=` *(here `export EDITOR=`)*. On each apply a
+line with that key is replaced in place; if none exists the line is appended, creating the file if
+needed. The content is exactly one line, so an interior newline is a hard error *(use `op: block`
+for a multi-line region)*.
+
+Like `block`, `lineinfile` ignores `force` and rewrites the file only when the line changes. It is
+the idempotent counterpart to `append` for `key=value` files such as `~/.zshenv`.
+
 ## Templating
 
 Set `template: true` to substitute a closed variable set in the source before writing:
@@ -186,8 +200,9 @@ Two secret shapes share one ciphertext format, both produced by
 
 - **Inline values:** live in the top-level `secrets:` map *(`NAME: <ciphertext>` or `NAME: file:<path>`)*
   and are referenced only through `${secrets.NAME}` in a `template: true` entry.
-- **Whole-file secrets:** set `secret: true` on the entry. Its source *(the rhyming mirror ciphertext
-  file, or an inline `content:` ciphertext)* is decrypted and written as plaintext.
+- **Whole-file secrets:** set `secret: true` on the entry. Its source
+  *(the rhyming mirror ciphertext file, or an inline `content:` ciphertext)* is decrypted and
+  written as plaintext.
 
 A secret-bearing output is forced to mode `0600`, and its cleartext never reaches logs.
 A secret that will not decrypt *(missing key, corrupt ciphertext)* is skipped with a warning and
@@ -205,8 +220,8 @@ bare file.
 
 ::: info
 
-Key rotation re-authors the source: re-encrypt the `secrets:` values and any `secret: true` ciphertext
-with [`ws-cli secrets encrypt`](/settings/secrets) under the new key.
+To change the master key, run [`ws-cli seed rotate`](#apply-and-inspect) — it re-encrypts every
+managed ciphertext in place under the new key.
 
 :::
 
@@ -254,3 +269,19 @@ ws-cli seed ls
 ```
 
 A named destination matches its entry regardless of `~`, `$HOME` or absolute form.
+
+Rotate the master key across every managed ciphertext — the `secrets:` map, its `file:` targets, and
+every `secret: true` source — in one pass:
+
+```sh
+# Re-encrypt everything from the current key to a new one
+ws-cli seed rotate --master <current> --new-master <new>
+```
+
+::: warning
+
+`seed rotate` rewrites ciphertext **in place** — there is no dry-run and no backup. It fails closed:
+every secret is decrypted under the current key *before* anything is written, so a wrong key changes
+nothing. If a run is interrupted, re-run it with the new key to finish.
+
+:::
