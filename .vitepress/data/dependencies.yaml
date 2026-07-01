@@ -32,7 +32,7 @@ dependencies:
     home: https://github.com/ansible/ansible-lint
     license: MIT
     tool: true
-    version: 26.4.0
+    version: 26.6.0
 
   bat:
     cmd: bat --version
@@ -70,7 +70,7 @@ dependencies:
     home: https://github.com/anthropics/claude-code
     license: Anthropic PBC
     package: anthropics/claude-code
-    version: 2.1.186
+    version: 2.1.195
 
   community.docker:
     datasource: galaxy-collection
@@ -453,7 +453,7 @@ dependencies:
     home: https://nodejs.org
     license: MIT
     package: nodejs
-    version: 24.17.0
+    version: 24.18.0
 
   npm:
     cmd: npm --version
@@ -462,7 +462,7 @@ dependencies:
     home: https://github.com/npm/cli
     license: Artistic 2
     package: npm/cli
-    version: 11.13.0
+    version: 11.16.0
 
   oauth2-proxy:
     cmd: oauth2-proxy --version
@@ -528,7 +528,7 @@ dependencies:
     home: https://github.com/pnpm/pnpm
     license: MIT
     package: pnpm
-    version: 11.8.0
+    version: 11.9.0
 
   podman:
     cmd: podman --version
@@ -600,7 +600,7 @@ dependencies:
     home: https://github.com/astral-sh/ruff
     license: MIT
     tool: true
-    version: 0.15.18
+    version: 0.15.20
 
   ShellCheck:
     cmd: shellcheck --version
@@ -688,7 +688,7 @@ dependencies:
     home: https://github.com/astral-sh/uv
     package: astral-sh/uv
     license: MIT
-    version: 0.11.23
+    version: 0.11.25
 
   vim:
     cmd: vim --version
@@ -712,7 +712,7 @@ dependencies:
     home: https://github.com/kloudkit/ws-cli
     license: MIT
     package: github.com/kloudkit/ws-cli
-    version: 0.0.65
+    version: 0.0.69
 
   yamllint:
     cmd: yamllint --version
