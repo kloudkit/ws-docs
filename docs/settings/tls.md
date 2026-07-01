@@ -126,7 +126,7 @@ docker run \
 This is the recommended path for ad-hoc certificate injection on a
 running workspace — the same persisted volume already used for
 [autoload scripts](/settings/autoload-scripts), extensions, and the
-[secrets vault](/settings/vault).
+[seed source](/settings/seed).
 
 ### Install Certificate from HTTPS Endpoint
 

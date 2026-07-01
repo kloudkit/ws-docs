@@ -1,8 +1,8 @@
 ---
 description: "Manage sensitive credentials in Kloud Workspace with the ws-cli secrets command — encrypt passwords, API keys, and SSH keys instead of storing plaintext."
 see:
-  - name: Vault
-    link: /settings/vault
+  - name: Seed
+    link: /settings/seed
   - name: ws secrets Command Reference
     link: /tools/ws-cli#secrets-ws-secrets
     target: _self
@@ -13,7 +13,7 @@ see:
 
 # Secrets
 
-![Vault](/icons/vault.svg){.doc-image}
+![Secrets](/icons/secrets.svg){.doc-image}
 
 Kloud Workspace applications often require sensitive credentials: database passwords, API
 keys, SSH keys, and authentication tokens.
@@ -78,10 +78,10 @@ echo "my-secret" | ws secrets encrypt - --master .master.key
 cat encrypted.txt | ws secrets decrypt - --master .master.key
 ```
 
-## Vault
+## Seed
 
-For declarative bulk secret injection using YAML vault files, see the
-[Vault documentation](/settings/vault).
+For declarative secret projection — inline `${secrets.NAME}` values and whole-file `secret: true`
+entries in the seed manifest — see the [seed documentation](/settings/seed).
 
 ## Authentication Passwords
 

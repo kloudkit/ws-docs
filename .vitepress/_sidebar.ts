@@ -49,7 +49,7 @@ export default {
         { text: 'Configuration', link: '/settings/configuration' },
         { text: 'TLS & Certificates', link: '/settings/tls' },
         { text: 'Secrets', link: '/settings/secrets' },
-        { text: 'Vault', link: '/settings/vault' },
+        { text: 'Seed', link: '/settings/seed' },
       ]
     },
     {
@@ -70,7 +70,6 @@ export default {
         { text: 'Kind', link: '/tools/kind' },
         { text: 'Python', link: '/tools/python' },
         { text: 'Rust', link: '/tools/rust' },
-        { text: 'Seed', link: '/tools/seed' },
         { text: 'SSH', link: '/tools/ssh' },
         { text: 'ws-cli', link: '/tools/ws-cli' },
       ]
