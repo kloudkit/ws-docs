@@ -1,7 +1,6 @@
 import { h, Fragment } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme   from 'vitepress/theme-without-fonts'
-import CommandSection from './components/CommandSection.vue'
 import DockerIcon     from './components/DockerIcon.vue'
 import EnvVar         from './components/EnvVar.vue'
 import EnvVarSection  from './components/EnvVarSection.vue'
@@ -32,7 +31,6 @@ export default {
     })
   },
   enhanceApp({ app, router, siteData }) {
-    app.component('CommandSection', CommandSection)
     app.component('EnvVar', EnvVar)
     app.component('EnvVarSection', EnvVarSection)
   }
