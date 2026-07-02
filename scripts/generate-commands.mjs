@@ -1,10 +1,7 @@
 import fs from 'node:fs'
 import { resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { load } from 'js-yaml'
-
-const root = load(
-  fs.readFileSync(resolve('.vitepress/data/commands.yaml'), 'utf8')
-)
 
 const escape = value =>
   (value ?? '')
@@ -35,7 +32,7 @@ const optionsTable = options => {
   return rows.join('\n')
 }
 
-const section = command => {
+export const section = command => {
   const badges = []
 
   if (command.aliases?.length) {
@@ -65,28 +62,46 @@ const section = command => {
     lines.push(optionsTable(command.options), '')
   }
 
+  if (command.example) {
+    lines.push('```sh', command.example, '```', '')
+  }
+
   return lines.join('\n').trimEnd()
 }
 
-const sections = []
+const render = root => {
+  const sections = []
 
-const walk = command => {
-  sections.push(section(command), '', '---', '')
+  const walk = command => {
+    sections.push(section(command), '', '---', '')
 
-  for (const child of command.commands ?? []) {
-    walk(child)
+    for (const child of command.commands ?? []) {
+      walk(child)
+    }
   }
+
+  for (const group of root.commands ?? []) {
+    walk(group)
+  }
+
+  if (sections.length >= 2 && sections.at(-2) === '---') {
+    sections.splice(-2)
+  }
+
+  sections.push('')
+
+  return sections.join('\n')
 }
 
-for (const group of root.commands ?? []) {
-  walk(group)
+const generate = () => {
+  const root = load(
+    fs.readFileSync(resolve('.vitepress/data/commands.yaml'), 'utf8')
+  )
+
+  fs.writeFileSync(resolve('docs/partials/commands.md'), render(root))
+  console.log('✔ docs/partials/commands.md updated')
 }
 
-if (sections.length >= 2 && sections.at(-2) === '---') {
-  sections.splice(-2)
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  generate()
 }
-
-sections.push('')
-
-fs.writeFileSync(resolve('docs/partials/commands.md'), sections.join('\n'))
-console.log('✔ docs/partials/commands.md updated')

@@ -2,6 +2,7 @@
   "type": "module",
   "scripts": {
     "prebuild": "npm run docs:generate-dynamic",
+    "test": "node --test \"scripts/**/*.test.mjs\"",
     "build": "vitepress build",
     "docs:generate-dynamic": "node ./scripts/generate-all.mjs",
     "docs:dev": "vitepress dev",
