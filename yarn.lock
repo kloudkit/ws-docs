@@ -1166,9 +1166,9 @@ js-yaml@^3.13.1:
     esprima "^4.0.0"
 
 js-yaml@^5.0.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-5.2.0.tgz#b559a892cae3e32fc5afecc9f18e1672378ddb68"
-  integrity sha512-YeLUMlvR4Ou1B119LIaM0r65JvbOBooJDc9yEu0dClb/uSC5P4FrLU8OCCz/HXWvtPoIrR0dRzABTjo1sTN9Bw==
+  version "5.4.2"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-5.4.2.tgz#eebc7a57e0bbe1d6b6d9416a72e7463082c7da85"
+  integrity sha512-m+aqu+LwO1O6sIopafj8HUVl5aawITwZQe/yHpMCKjaWBaA/d07B/QdMb3529REftiU+RMMHL3Vlsw3hON7vWg==
   dependencies:
     argparse "^2.0.1"
 
