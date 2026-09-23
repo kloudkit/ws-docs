@@ -18,6 +18,18 @@ aside.VPSidebar,
   max-width: 740px;
 }
 
+.VPHero .main .text {
+  font-size: 28px;
+  line-height: 36px;
+}
+
+@media (min-width: 640px) {
+  .VPHero .main .text {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
 @media (min-width: 960px) {
   .VPHero .image-container {
     transform: translate(-32px, 0);
