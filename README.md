@@ -1,3 +1,6 @@
+<!-- markdownlint-disable-next-line MD041 -->
+![Kloud Workspace — configured development by KloudKIT](https://raw.githubusercontent.com/kloudkit/ws-meta/main/shared/brand/banner-strip-wordmark-blue.png)
+
 # Kloud Workspace • Documentation
 
 > 📚 Dedicated documentation for the **Kloud Workspace**
