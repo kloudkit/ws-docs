@@ -14,7 +14,15 @@ commands:
 
         # Search within it
         ws clip paste | grep "pattern"
+
+        # Send command output to the browser clipboard
+        ls | ws clip copy
       commands:
+        - name: ws-cli clip copy
+          since: next
+          synopsis: Copy stdin to the clipboard
+          description: Read stdin and write it to the browser clipboard over the workspace IPC socket. Pairs with the pbcopy/xclip/xsel shims for terminal clipboard access.
+          usage: ws-cli clip copy
         - name: ws-cli clip paste
           since: 0.2.0
           synopsis: Paste clipboard content
@@ -48,6 +56,17 @@ commands:
           synopsis: List the currently open editor tabs
           description: List the editor's open tabs over the IPC socket, with each tab's path, language, and active or dirty state.
           usage: ws-cli editor list
+        - name: ws-cli editor notify
+          since: next
+          synopsis: Raise a notification in the editor
+          description: Read a JSON payload from stdin and raise it as a notification in the running editor window over the workspace IPC socket. Requires a "message"; optional "detail", "actions", "modal", "timeout", and "severity" tune it. Prints the chosen action (or timeout) as JSON. Blocked over SSH.
+          usage: ws-cli editor notify
+          example: |-
+            # A simple toast
+            echo '{"message": "Build finished"}' | ws editor notify
+
+            # Ask a question and read the chosen action
+            echo '{"message": "Deploy now?", "actions": ["Yes", "No"]}' | ws editor notify
         - name: ws-cli editor open
           since: next
           synopsis: Open a file in the editor
@@ -378,13 +397,13 @@ commands:
     - name: ws-cli serve
       since: 0.2.0
       synopsis: Serve internal assets
-      description: Run a small HTTP server for local assets — fonts or the current directory — on --port (default 38080).
+      description: Run a small HTTP server for the current directory on --port (default 38080).
       example: |-
         # Serve the current directory
         ws serve current
 
-        # Serve fonts on a custom port
-        ws serve font --port 38081
+        # Serve on a custom port
+        ws serve current --port 38081
       options:
         - name: bind
           default: 0.0.0.0
@@ -404,16 +423,6 @@ commands:
           synopsis: Serve current directory as a static site
           description: Serve the current directory over HTTP as a static site — a quick way to preview built files.
           usage: ws-cli serve current [flags]
-        - name: ws-cli serve font
-          since: 0.2.0
-          synopsis: Serve fonts for local download
-          description: Serve the installed fonts over HTTP so a browser can fetch them for local install.
-          usage: ws-cli serve font
-        - name: ws-cli serve font
-          since: 0.2.0
-          synopsis: Serve fonts for local download
-          description: Serve the installed fonts over HTTP so a browser can fetch them for local install.
-          usage: ws-cli serve font [flags]
         - name: ws-cli serve metrics
           since: 0.2.0
           synopsis: Start the Prometheus metrics server
