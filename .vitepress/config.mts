@@ -6,7 +6,7 @@ import sidebar from './_sidebar'
 
 const title = 'Kloud Workspace'
 const hostname = 'https://ws.kloudkit.com'
-const description = '🔋 A batteries included pre-configured development workspace inside a Docker container'
+const description = '🔋 A batteries-included pre-configured development workspace inside a Docker container'
 
 export default defineConfig({
   title,
@@ -23,10 +23,12 @@ export default defineConfig({
     ['meta', { name: 'theme-color', content: '#303446' }],
     ['meta', { property: 'og:site_name', content: title }],
     ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:image', content: `${hostname}/logo.png` }],
-    ['meta', { property: 'og:image:alt', content: `${title} logo` }],
-    ['meta', { name: 'twitter:card', content: 'summary' }],
-    ['meta', { name: 'twitter:image', content: `${hostname}/logo.png` }],
+    ['meta', { property: 'og:image', content: `${hostname}/og-image.png` }],
+    ['meta', { property: 'og:image:width', content: '1280' }],
+    ['meta', { property: 'og:image:height', content: '640' }],
+    ['meta', { property: 'og:image:alt', content: `${title} — configured development by KloudKIT` }],
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { name: 'twitter:image', content: `${hostname}/og-image.png` }],
   ],
 
   transformHead: ({ pageData }) => {
@@ -53,7 +55,7 @@ export default defineConfig({
     nav,
     sidebar,
 
-    logo: '/favicon.ico',
+    logo: '/logo-nav.svg',
 
     outline: 'deep',
 

@@ -18,6 +18,12 @@ aside.VPSidebar,
   max-width: 740px;
 }
 
+@media (min-width: 960px) {
+  .VPHero .image-container {
+    transform: translate(-32px, 0);
+  }
+}
+
 .vp-doc h1,
 .vp-doc h2,
 .vp-doc h3,

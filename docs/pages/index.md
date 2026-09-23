@@ -4,7 +4,7 @@ description: "Run a customized, pre-configured VS Code workspace (powered by Cod
 
 # Kloud Workspace
 
-> 🔋 A batteries included pre-configured development workspace inside a Docker container
+> 🔋 A batteries-included pre-configured development workspace inside a Docker container
 
 ## Overview
 

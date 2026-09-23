@@ -4,13 +4,14 @@ layout: home
 
 hero:
   name: Kloud Workspace
-  text: Your kit to the cloud
+  text: Configured development
   tagline: >-
-    🔋 A batteries included pre-configured development
+    🔋 A batteries-included pre-configured development
     workspace inside a Docker container
 
   image:
-    src: /logo.png
+    src: /logo.svg
+    width: 320
 
   actions:
     - theme: brand
