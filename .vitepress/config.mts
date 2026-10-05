@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig, type HeadConfig } from 'vitepress'
 import italicSmallRenderer from './_italicSmallRenderer'
 import llmstxt from 'vitepress-plugin-llms'
 import nav from './_nav'
@@ -8,12 +8,28 @@ const title = 'Kloud Workspace'
 const hostname = 'https://ws.kloudkit.com'
 const description = '🔋 A batteries-included pre-configured development workspace inside a Docker container'
 
+const publisher = {
+  '@type': 'Organization',
+  name: 'KloudKIT',
+  url: 'https://github.com/kloudkit',
+  logo: `${hostname}/logo.png`,
+}
+
+const website = {
+  '@type': 'WebSite',
+  name: title,
+  url: `${hostname}/`,
+  publisher,
+}
+
 export default defineConfig({
   title,
   description,
   appearance: 'force-dark',
   cleanUrls: true,
+  lastUpdated: true,
   srcDir: './docs',
+  srcExclude: ['partials/**'],
 
   sitemap: {
     hostname
@@ -22,7 +38,6 @@ export default defineConfig({
   head: [
     ['meta', { name: 'theme-color', content: '#303446' }],
     ['meta', { property: 'og:site_name', content: title }],
-    ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:image', content: `${hostname}/og-image.png` }],
     ['meta', { property: 'og:image:width', content: '1280' }],
     ['meta', { property: 'og:image:height', content: '640' }],
@@ -32,6 +47,7 @@ export default defineConfig({
   ],
 
   transformHead: ({ pageData }) => {
+    const isHome = pageData.relativePath === 'index.md'
     const pageTitle = pageData.title
       ? `${pageData.title} | ${title}`
       : title
@@ -42,13 +58,59 @@ export default defineConfig({
     const url =
       `${hostname}/` +
       pageData.relativePath.replace(/(index)?\.md$/, '').replace(/\/$/, '')
+    const modified = pageData.lastUpdated
+      ? new Date(pageData.lastUpdated).toISOString()
+      : undefined
 
-    return [
+    const head: HeadConfig[] = [
+      ['meta', { property: 'og:type', content: isHome ? 'website' : 'article' }],
       ['meta', { property: 'og:title', content: pageTitle }],
       ['meta', { property: 'og:description', content: pageDescription }],
       ['meta', { property: 'og:url', content: url }],
+      ['meta', { name: 'twitter:title', content: pageTitle }],
+      ['meta', { name: 'twitter:description', content: pageDescription }],
       ['link', { rel: 'canonical', href: url }],
+      ['script', { type: 'application/ld+json' }, JSON.stringify(
+        isHome
+          ? [
+              { ...website, '@context': 'https://schema.org' },
+              {
+                '@context': 'https://schema.org',
+                '@type': 'SoftwareApplication',
+                name: title,
+                description,
+                url: `${hostname}/`,
+                image: `${hostname}/og-image.png`,
+                applicationCategory: 'DeveloperApplication',
+                operatingSystem: 'Linux (Docker)',
+                license: 'https://opensource.org/licenses/MIT',
+                offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+                sameAs: [
+                  'https://github.com/kloudkit/ws-meta',
+                  'https://github.com/orgs/kloudkit/packages/container/package/workspace',
+                ],
+                publisher,
+              },
+            ]
+          : {
+              '@context': 'https://schema.org',
+              '@type': 'TechArticle',
+              headline: pageData.title || title,
+              description: pageDescription,
+              url,
+              image: `${hostname}/og-image.png`,
+              ...(modified && { dateModified: modified }),
+              isPartOf: website,
+              publisher,
+            }
+      )],
     ]
+
+    if (modified && !isHome) {
+      head.push(['meta', { property: 'article:modified_time', content: modified }])
+    }
+
+    return head
   },
 
   themeConfig: {

@@ -89,3 +89,8 @@ aside.VPSidebar,
   font-family: 'Victor Mono';
   font-size: 80%;
 }
+
+/* lastUpdated feeds the sitemap and meta; the footer line stays hidden */
+.VPLastUpdated {
+  display: none;
+}
