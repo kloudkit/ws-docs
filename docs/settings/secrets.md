@@ -96,7 +96,7 @@ Use in Docker deployments:
 ```sh
 docker run \
   -e WS_AUTH_PASSWORD_HASHED=$PASSWORD \
-  ghcr.io/kloudkit/workspace:v0.4.0
+  ghcr.io/kloudkit/workspace:v0.5.1
 ```
 
 See [authentication documentation](/editor/authentication) for details.
