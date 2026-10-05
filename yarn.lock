@@ -204,18 +204,18 @@
     "@babel/helper-validator-identifier" "^7.29.7"
 
 "@catppuccin/vitepress@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.npmjs.org/@catppuccin/vitepress/-/vitepress-0.1.2.tgz"
-  integrity sha512-dqhgo6U6GWbgh3McAgwemUC8Y2Aj48rRcQx/9iuPzBPAgo7NA3yi7ZcR0wolAENMmoOMAHBV+rz/5DfiGxtZLA==
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@catppuccin/vitepress/-/vitepress-0.1.4.tgz#b5288d569f5124e1f3a646de4bc16f401ab920f2"
+  integrity sha512-jWCMNAtmo3L8QZeae1sL6Z0IfHqtEKoLXrTvQlfLdYkf1OD3cUlveKJfXe4sUWjfuxDB90aRg4jWrIqmFmcetQ==
 
 "@docsearch/css@3.8.2":
   version "3.8.2"
-  resolved "https://registry.npmjs.org/@docsearch/css/-/css-3.8.2.tgz"
+  resolved "https://registry.yarnpkg.com/@docsearch/css/-/css-3.8.2.tgz#7973ceb6892c30f154ba254cd05c562257a44977"
   integrity sha512-y05ayQFyUmCXze79+56v/4HpycYF3uFqB78pLPrSV5ZKAlDuIAAJNhaRi8tTdRNXh05yxX/TyNnzD6LwSM89vQ==
 
 "@docsearch/js@3.8.2":
   version "3.8.2"
-  resolved "https://registry.npmjs.org/@docsearch/js/-/js-3.8.2.tgz"
+  resolved "https://registry.yarnpkg.com/@docsearch/js/-/js-3.8.2.tgz#bdcfc9837700eb38453b88e211ab5cc5a3813cc6"
   integrity sha512-Q5wY66qHn0SwA7Taa0aDbHiJvaFJLOJyHmooQ7y8hlwwQLQ/5WwCcoX0g7ii04Qi2DJlHsd0XXzJ8Ypw9+9YmQ==
   dependencies:
     "@docsearch/react" "3.8.2"
