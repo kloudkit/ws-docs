@@ -76,6 +76,7 @@ clipboard.
 - **`pbpaste`**
 - **`xclip`**
 - **`xsel`**
+- **`ws clip copy`**
 - **`ws clip paste`**
 
 ```sh
@@ -95,7 +96,7 @@ xclip -o | jq .
 ```
 
 ::: info
-All clipboard commands communicate with the VS Code extension running in your browser,
+All clipboard commands communicate with the editor running in your browser,
 bridging the terminal environment with your native clipboard.
 
 All X11 selections *(primary, secondary, clipboard)* map to the same browser clipboard.

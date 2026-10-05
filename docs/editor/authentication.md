@@ -14,11 +14,11 @@ configured to not require authentication.
 The following sections will help you set up our *opt-in* authentication mechanism.
 
 ::: warning
-Remember to click `Sign out` at the bottom of the `File` menu when you are done working,
-as your login session won't expire automatically.
+Remember to run `Sign out of Kloud Workspace` from the Command Palette when you are done
+working, as your login session won't expire automatically.
 :::
 
-![Settings animation](/editor/authentication/authentication.gif){.doc-image-shadow}
+![Sign out animation](/editor/authentication/authentication.gif){.doc-image-shadow}
 
 ## Password Authentication
 
@@ -94,3 +94,11 @@ for the full resolution chain and Kubernetes example.
 
 The workspace has a built-in throttling mechanism to rate-limit password authentication
 attempts to two per minute and an additional twelve per hour.
+
+## Signing Out
+
+The `Sign out of Kloud Workspace` command is only shown when a sign-out URL is known.
+It is derived from the active authentication mode and needs no configuration, but can be
+overridden:
+
+- <EnvVar group="editor" name="logout_url" />

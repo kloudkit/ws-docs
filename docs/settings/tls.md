@@ -30,8 +30,9 @@ When the Kloud Workspace runs on plain HTTP, some features are silently disabled
 - WebGPU
 - JupyterNotebooks
 
-Additionally, Kloud Workspace shows a banner whenever it detects an insecure host other
-than `localhost`, reminding users to switch to HTTPS for full functionality.
+Additionally, Kloud Workspace shows a warning notification whenever it is served over
+plain HTTP from a host other than `localhost`, reminding users to switch to HTTPS for
+full functionality.
 
 ### TLS Termination Strategies
 

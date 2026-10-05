@@ -77,19 +77,8 @@ for local installation.
 However, when accessing the *workspace* over SSH, you might find that certain fonts are
 absent or display improperly on your local machine.
 
-To address this, we offer a small HTTP server that can be initiated from within the
-*workspace*, enabling you to easily download the pre-packaged fonts via your web browser.
-To start the server, execute the following command:
-
-```sh
-# Default port: 38080
-ws fonts serve
-
-# Alternate port:
-ws fonts serve --port 12345
-```
-
-Download the missing font and install them on your machine:
+To address this, download the font files directly from their upstream projects —
+[FiraCode][], [MesloLGS][], and [Victor Mono][] — then install them on your machine:
 
 - **Windows:** Right-click the font file and select `"Install"`.
     Alternatively, open the Control Panel, click on `"Fonts"`.

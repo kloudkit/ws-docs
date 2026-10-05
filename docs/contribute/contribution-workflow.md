@@ -165,8 +165,7 @@ The trees below displays the main files and folders and their intended use.
 ├── src             # The main directory for image assets and build steps
 │   ├── build        # Helper scripts and dependency definitions
 │   ├── home         # Directory mapped to `~` in the container
-│   ├── rootfs       # Directory mapped to `/` in the container
-│   └── ws-extension # Integration extension for Kloud Workspace
+│   └── rootfs       # Directory mapped to `/` in the container
 └── tests           # Test bench
     ├── browser     # Browser tests using playwright
     ├── helpers     # Fixtures, consts, utilities, and test bootstrapping

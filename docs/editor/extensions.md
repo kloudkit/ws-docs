@@ -52,9 +52,9 @@ docker run \
 ### Persistent Extensions
 
 You can take full control of the workspace extensions by using a persistent volume to the
-`/extensions` directory.
-When using a *named volume*, the initial content of `/extensions` from the deployed image
-is copied over to the volume.
+`~/.local/share/ws-server/extensions` directory.
+When using a *named volume*, the initial content of `~/.local/share/ws-server/extensions`
+from the deployed image is copied over to the volume.
 
 ::: warning NOTICE
 It is important to note that by mounting a volume for the extensions directory, you
@@ -68,20 +68,28 @@ extensions that come with the workspace.
 docker volume create my-extensions
 
 docker run \
-  -v my-extensions:/extensions \
+  -v my-extensions:/home/kloud/.local/share/ws-server/extensions \
   ghcr.io/kloudkit/workspace:v0.4.0
 ```
 
 ## Privately Hosted Gallery
 
 If you own a marketplace that implements the VS Code Extension Gallery API, you can point
-the workspace to it by setting `$EXTENSIONS_GALLERY`.
+the workspace to it, either as a complete gallery or key by key:
+
+- <EnvVar group="marketplace" name="gallery" />
+- <EnvVar group="marketplace" name="service_url" />
+- <EnvVar group="marketplace" name="item_url" />
+- <EnvVar group="marketplace" name="extension_url_template" />
+- <EnvVar group="marketplace" name="resource_url_template" />
+- <EnvVar group="marketplace" name="control_url" />
 
 For example:
 
-```sh{2}
+```sh{2-3}
 docker run \
-  -e EXTENSIONS_GALLERY='{"serviceUrl": "https://my-extensions/api"}' \
+  -e WS_MARKETPLACE_SERVICE_URL=https://my-extensions/api/gallery \
+  -e WS_MARKETPLACE_ITEM_URL=https://my-extensions/api/item \
   ghcr.io/kloudkit/workspace:v0.4.0
 ```
 

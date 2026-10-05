@@ -1,5 +1,5 @@
 ---
-description: "Run a customized, pre-configured VS Code workspace (powered by Coder) on Docker, Kubernetes, or OpenShift, in the browser or via SSH."
+description: "Run a customized, pre-configured VS Code workspace on Docker, Kubernetes, or OpenShift, in the browser or via SSH."
 ---
 
 # Kloud Workspace
@@ -8,8 +8,8 @@ description: "Run a customized, pre-configured VS Code workspace (powered by Cod
 
 ## Overview
 
-Run your customized and pre-configured version of [VS Code][] *(powered by Coder)* using
-Docker, Kubernetes, or OpenShift and access it in the browser *(or via `ssh`)*.
+Run your customized and pre-configured version of [VS Code][] using Docker, Kubernetes,
+or OpenShift and access it in the browser *(or via `ssh`)*.
 
 ---
 
@@ -21,7 +21,7 @@ the familiar comfort of the *desktop experience*, hesitating to move their devel
 tools into the cloud.
 
 Recognizing this gap, Kloud Workspace was tailored to facilitate this transition.
-By packaging the widely-used *VS Code* IDE as a Docker container *(powered by Coder)*,
+By packaging the widely-used *VS Code* IDE as a Docker container,
 and integrating the latest development environments along with essential tools and
 extensions, we offer a seamless bridge to the cloud.
 
@@ -55,8 +55,8 @@ See our [dedicated section on the terminal](/editor/terminal).
 ## License
 
 ::: info 👏 THANKS
-Many thanks to [Coder's `code-server`](https://code-server.dev) for providing the solid
-foundation that serves as the cornerstone and enables this project's extensions.
+Many thanks to the [VS Code][] team for open-sourcing the editor that serves as the
+cornerstone of this project.
 :::
 
 This project is licensed under the [**MIT License**][Workspace].
