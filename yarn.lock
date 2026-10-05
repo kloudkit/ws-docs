@@ -347,24 +347,24 @@
   integrity sha512-tQd/1efJuzPC6rCFwEvLtci/xNFcTZknmXs98FYDfGE4wP9ClFV98nyKrzJKVPMhdDnjzLhdUyMX4PsQAPjwIw==
 
 "@fontsource/fira-code@^5.2.6":
-  version "5.2.7"
-  resolved "https://registry.npmjs.org/@fontsource/fira-code/-/fira-code-5.2.7.tgz"
-  integrity sha512-tnB9NNund9TwIym8/7DMJe573nlPEQb+fKUV5GL8TBYXjIhDvL0D7mgmNVNQUPhXp+R7RylQeiBdkA4EbOHPGQ==
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/fira-code/-/fira-code-5.3.0.tgz#487475cedfa1f7ba7650810ddce00b6c7b1b7a25"
+  integrity sha512-EJL968RJRkakubAj/coU8pSUaeTE5UNoRjtzAr6kGiSZ3jWuN8/AKWHwym/PFUaQL1q7IL/H+EXs4358YhrTBQ==
 
 "@fontsource/fira-sans@^5.2.6":
-  version "5.2.7"
-  resolved "https://registry.npmjs.org/@fontsource/fira-sans/-/fira-sans-5.2.7.tgz"
-  integrity sha512-5DE4AealD/VnbwdzMgnpWfCttMQBbteNiK9DCJE7cVwZEbDTPLUoFDMMvxNQ498nZc5in7Mta9c/s+3Ehh0BAg==
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/fira-sans/-/fira-sans-5.3.0.tgz#b3c8f83028bf5a8b85792b50f2f0c65976e665cc"
+  integrity sha512-z1SKSG7eRhm3srlb7rQ3j77QP4TP7OFxCZ4wUWhCdt+3hOF9K0AyvybpAsz6+JWNcCVV7AqC7dbOT3e67P2r5A==
 
 "@fontsource/victor-mono@^5.2.6":
-  version "5.2.8"
-  resolved "https://registry.npmjs.org/@fontsource/victor-mono/-/victor-mono-5.2.8.tgz"
-  integrity sha512-8WYdXLzYNHvsvXWaGW4zs1hNu6RHUrQCVJplS9XKhZZNE1VqxPsm5zSbKQox4YuLZG1fV4fOxIt0SAc+YLGkjg==
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/victor-mono/-/victor-mono-5.3.0.tgz#98f30649bf833efa90888bc78aecb053aed78783"
+  integrity sha512-4U33jWYiEKLDHYuQGONZWJRCg9HD5XCLtPIzJfIxxstFgn9S1YYcaOoPTPc4cPMyjH5woTRFk8NMfax5AmfsMw==
 
 "@iconify-json/simple-icons@^1.2.21":
-  version "1.2.46"
-  resolved "https://registry.npmjs.org/@iconify-json/simple-icons/-/simple-icons-1.2.46.tgz"
-  integrity sha512-MJfKQDhOMQD5Fc8PcTtCdFX0oBf/nKVfp69ScdEKIXW0JXELX5V2Ld45EsjShi8aJ6DNhdDtSDZvKuDnkDiKnw==
+  version "1.2.99"
+  resolved "https://registry.yarnpkg.com/@iconify-json/simple-icons/-/simple-icons-1.2.99.tgz#8a356bbdb6a421e37c7a76a413d40acd16b3fb4b"
+  integrity sha512-kouZhqvUoNdxEe+lZksbJJZMCZv4b4Ob62O1GW3fcpz/I0mVPzM+9/Qf/DUuv5ns8l6c46D8M/ubhJjjbLp9HQ==
   dependencies:
     "@iconify/types" "*"
 
