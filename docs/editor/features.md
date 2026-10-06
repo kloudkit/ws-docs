@@ -150,7 +150,7 @@ ws feature install cool --root /alternate
 ## Feature Store
 
 Some features require packages from third-party APT repositories
-*(i.e. `cloudflared`, `gcloud`, `gh`, etc.)* or binary artifacts *(i.e. `sops`, `composer`, etc.)*.
+*(e.g. `dotnet`, `gcloud`, `php`)* or binary artifacts *(e.g. `gh`, `sops`, `terraform`)*.
 
 By default, Kloud Workspace enables the individual vendor repositories and artifacts at install
 time.
@@ -159,6 +159,9 @@ When the [`WS_FEATURES_STORE_URL`](/settings/configuration#ws-features-store-url
 environment variable is set, packages and artifacts are fetched from the
 [ws-feature-store](https://github.com/kloudkit/ws-feature-store) instead of from
 individual vendor repositories.
+
+Features installed as static binaries need a store image that ships their artifacts,
+so update older store images before pointing a newer Kloud Workspace at them.
 
 ### Use Cases
 
