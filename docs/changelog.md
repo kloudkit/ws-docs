@@ -11,4 +11,6 @@ Release notes for each tagged Kloud Workspace image, generated from the commit h
 
 The newest release is listed first.
 
+::: v-pre
 <!--@include: ./partials/changelog.md -->
+:::
