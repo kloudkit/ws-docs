@@ -26,6 +26,10 @@ running inside the Kloud Workspace instance.
 
 ## Access Methods
 
+Both methods sit behind the workspace login: a forwarded port requires the same sign-in as
+the editor, and the workspace's own session cookies are removed before a request reaches
+your app.
+
 ### Subpath Access *(enabled by default)*
 
 All published ports in Kloud Workspace are accessible through a subpath format as
@@ -65,6 +69,9 @@ In the configuration above, if your Kloud Workspace is hosted at `ws.dev` and yo
 `pyserver` command *(which launches a file index server on port `8000`)*, you can access
 the server at `8000.ws.dev`.
 
+A leading `*.` is ignored, so `WS_SERVER_PROXY_DOMAIN=*.ws.dev` behaves the same as
+`ws.dev`.
+
 #### Multiple domains *(since v0.0.22)*
 
 You can provide multiple proxy domains by passing a space-delimited list:
@@ -77,6 +84,24 @@ docker run \
 
 With the configuration above, services will be available on both domains: `*.ws.dev` and
 `*.local.ws.dev`.
+
+#### Custom subdomain pattern
+
+:::: info
+::: v-pre
+Each domain is prefixed with `{{port}}.` by default.
+To place the port elsewhere, include a `{{port}}` placeholder in the domain:
+:::
+::::
+
+```sh{2}
+docker run \
+  -e WS_SERVER_PROXY_DOMAIN="{{port}}-project.ws.dev ws.dev" \
+  ghcr.io/kloudkit/workspace:v0.5.1
+```
+
+With the configuration above, port `8000` is available at both `8000-project.ws.dev` and
+`8000.ws.dev`.
 
 ## Local DNS
 
@@ -121,4 +146,6 @@ A few important notes when using this workaround:
 
 - `/etc/hosts` does not support wildcard records *(i.e., `*.ws.test`)*.
   You must manually repeat the process for each port you intend to expose.
-- This method will only work if Kloud Workspace is published on port `80` or `443`.
+- `/etc/hosts` maps names to IPs only, not ports.
+  If Kloud Workspace is published on a port other than `80` or `443`, include it in the
+  URL *(e.g., `8000.ws.test:8080`)*.
