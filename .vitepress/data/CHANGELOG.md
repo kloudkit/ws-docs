@@ -1,5 +1,34 @@
 # Changelog
 
+## [0.5.2] — 2026-10-07
+
+### Breaking
+
+- ✂️ Separate `WS_SERVER_PROXY_DOMAIN` and `WS_SERVER_SSL_HOSTS` entries with spaces only; commas no longer split
+- 📦 Drop the gh, cloudflared, hashicorp and jfrog apt sources; install those tools through their features
+
+### Added
+
+- 🐍 Build `pet` from source for the Python extensions
+
+### Changed
+
+- 🔗 Resolve forwarded-port links from the host the editor is viewed at; terminals no longer get `VSCODE_PROXY_URI`
+- 🧰 Install the vendor-apt CLIs from static release binaries
+- 🚚 Fetch `sops` and `talos` from the `<name>/<arch>` store path
+- 👷 Build each image once: promote the tested PR image to `:dev`, release on native arm64 *(#780)*
+
+### Dependencies
+
+- ⬆️ Sweep Renovate dependency updates *(#778)*
+
+### Fixed
+
+- 💪 Ship arm64-native `kube-linter` and `starship`; earlier arm64 images had wrong-arch builds *(#781)*
+- 🍪 Scope OIDC cookie domains the way ws-server parses proxy domains *(#779)*
+- 🔐 Fix startup feature installs and `WS_NPM_ADDITIONAL_PACKAGES` failing TLS behind a custom root CA *(#777)*
+- 🤖 Point Renovate at the features.d playbook pins
+
 ## [0.5.1] — 2026-10-05
 
 ### Dependencies
@@ -38,6 +67,7 @@
 
 ### Changed
 
+- 🌐 Treat a leading `*.` in `WS_SERVER_PROXY_DOMAIN` as the bare suffix instead of rejecting it
 - 🔖 Single-source the workspace version through manifest.json
 - 🫙 Swap to the `ws-cli` seed engine, retire the `vault` + seed tier *(#728)*
 - 👷 Adopt shared ws-meta CI actions for changelog + PR emoji check
