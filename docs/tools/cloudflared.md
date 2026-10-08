@@ -27,7 +27,7 @@ ws feature install cloudflared
 # Or at boot time
 docker run \
   -e WS_FEATURES_ADDITIONAL_FEATURES="cloudflared" \
-  ghcr.io/kloudkit/workspace:v0.5.1
+  ghcr.io/kloudkit/workspace:v0.5.2
 ```
 
 ## Running a Tunnel
@@ -41,7 +41,7 @@ Provide it through `WS_CLOUDFLARED_TUNNEL_TOKEN` and the tunnel starts automatic
 docker run \
   -e WS_CLOUDFLARED_TUNNEL_TOKEN="<token>" \
   -e WS_FEATURES_ADDITIONAL_FEATURES="cloudflared" \
-  ghcr.io/kloudkit/workspace:v0.5.1
+  ghcr.io/kloudkit/workspace:v0.5.2
 ```
 
 The tunnel is supervised: if it exits, it is restarted automatically.

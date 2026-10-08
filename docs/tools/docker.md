@@ -67,7 +67,7 @@ Once `sysbox` is installed, run the workspace using the `sysbox-runc` runtime:
 docker run \
   --runtime=sysbox-runc \
   -e WS_DOCKER_ENABLE_CLIENT=1 \
-  ghcr.io/kloudkit/workspace:v0.5.1
+  ghcr.io/kloudkit/workspace:v0.5.2
 ```
 
 ### 2. Run `dockerd` in the Container
@@ -80,7 +80,7 @@ However, this requires the container to run in **privileged** mode:
 docker run \
   --privileged \
   -e WS_DOCKER_ENABLE_CLIENT=1 \
-  ghcr.io/kloudkit/workspace:v0.5.1
+  ghcr.io/kloudkit/workspace:v0.5.2
 ```
 
 ### 3. Mounting the Docker Socket From the Host
@@ -91,7 +91,7 @@ docker run \
 docker run \
   -v /var/run/docker.sock:/var/run/docker.sock:ro \
   -e WS_DOCKER_ENABLE_CLIENT=1 \
-  ghcr.io/kloudkit/workspace:v0.5.1
+  ghcr.io/kloudkit/workspace:v0.5.2
 ```
 
 ### 4. Connect to a Remote Host *(TCP)*
@@ -104,7 +104,7 @@ Assuming you have access to a remote host running docker, you can set the value 
 ```sh{2}
 docker run \
   -e DOCKER_HOST=tcp://<remote>:2375 \
-  ghcr.io/kloudkit/workspace:v0.5.1
+  ghcr.io/kloudkit/workspace:v0.5.2
 ```
 
 Alternately, you can run the command above [securely][protect-tls] using port `2376` and
@@ -121,7 +121,7 @@ the value of `DOCKER_HOST` as follows
 ```sh{2}
 docker run \
   -e DOCKER_HOST=ssh://<user>@<remote> \
-  ghcr.io/kloudkit/workspace:v0.5.1
+  ghcr.io/kloudkit/workspace:v0.5.2
 ```
 
 This method is optimized by the workspace as we internally configure a persistent
@@ -160,7 +160,7 @@ This process is split into 3 steps:
       -e DOCKER_HOST=tcp://dind:2375 \
       -v workspace:/workspace \
       --net dind \
-      ghcr.io/kloudkit/workspace:v0.5.1
+      ghcr.io/kloudkit/workspace:v0.5.2
     ```
 
 ::: info NOTE
@@ -181,7 +181,7 @@ environment variable to effortlessly initiate the daemon *(if necessary)*:
 ```sh{2}
 docker run \
   -e WS_DOCKER_ENABLE_CLIENT=1 \
-  ghcr.io/kloudkit/workspace:v0.5.1
+  ghcr.io/kloudkit/workspace:v0.5.2
 ```
 
 ### Docker Group
@@ -200,7 +200,7 @@ docker run \
   --group-add=8888
   -v /var/run/docker.sock:/var/run/docker.sock:ro \
   -e WS_DOCKER_ENABLE_CLIENT=1 \
-  ghcr.io/kloudkit/workspace:v0.5.1
+  ghcr.io/kloudkit/workspace:v0.5.2
 ```
 
 Make sure to replace `8888` with the appropriate group ID from your host system.
