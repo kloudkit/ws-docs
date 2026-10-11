@@ -67,6 +67,8 @@ Several workspace features store their configuration under `~/.ws` (`/home/kloud
 including [sideloaded extensions](/editor/extensions), [startup and session scripts](/settings/autoload-scripts),
 [drop-in CA certificates](/settings/tls#drop-in-directory-ws-ca-d),
 the [seed source](/settings/seed), and your shell and REPL history (`~/.ws/history`).
+On startup, `~/.ws` and its subdirectories are owned by `kloud`, even when the mounted
+volume starts out owned by `root`.
 
 Because this directory lives inside the container, its contents are lost on restart unless
 you persist it separately:

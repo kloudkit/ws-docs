@@ -37,7 +37,7 @@ The path under the source maps directly onto the root filesystem:
 ```
 
 A home file therefore lives at `seed.d/home/kloud/<path>`, not at the source root.
-Bare files copy verbatim with mode `644` *(new directories `755`)* and never write if the
+Bare files copy verbatim with mode `644` *(new directories `744`)* and never write if the
 destination already exists, unless forced.
 
 ## The Manifest

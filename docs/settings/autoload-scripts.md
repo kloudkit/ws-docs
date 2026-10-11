@@ -59,6 +59,15 @@ By default, the workspace supports the following languages *(defined using sheba
 - **Python:** `#!/usr/bin/env python`
 - **zsh:** `#!/usr/bin/env zsh`
 
+### Environment
+
+Entrypoint scripts run through `zsh`, so every script, whatever its language, inherits the
+exports from `/etc/zsh/zshenv` and from `~/.zshenv`.
+This includes the [custom CA](/settings/tls) variables, secrets imported from 1Password, and
+any `export` that an earlier script appended to `~/.zshenv`.
+
+Scripts without a shebang run under `bash`.
+
 ### Helper Functions
 
 You are welcome to utilize the `log` command of `ws-cli` to generate messages that align
