@@ -42,4 +42,8 @@ Please search or open issues there instead of in individual project repos.
 
 ## License
 
-Released under the [**MIT License**](https://github.com/kloudkit/ws-docs/blob/main/LICENSE)
+Released under the [**MIT License**](https://github.com/kloudkit/ws-docs/blob/main/LICENSE),
+**except** the brand assets listed in [`docs/public/brand/LICENSE`](docs/public/brand/LICENSE).
+
+KloudKIT logos, icons and other brand assets are proprietary and **all rights reserved**;
+see [`docs/public/brand/LICENSE`](docs/public/brand/LICENSE).
