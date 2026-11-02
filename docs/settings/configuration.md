@@ -62,14 +62,14 @@ The resolver returns the first match:
 ```sh [Env literal]
 docker run \
   -e WS_AUTH_PASSWORD=super_duper_secret \
-  ghcr.io/kloudkit/workspace:v0.5.2
+  ghcr.io/kloudkit/workspace:v0.5.3
 ```
 
 ```sh [file: prefix]
 docker run \
   -e WS_AUTH_PASSWORD=file:/run/secrets/workspace/auth/password \
   -v ./password.txt:/run/secrets/workspace/auth/password:ro \
-  ghcr.io/kloudkit/workspace:v0.5.2
+  ghcr.io/kloudkit/workspace:v0.5.3
 ```
 
 ```yaml [Kubernetes]
