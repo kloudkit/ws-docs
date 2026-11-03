@@ -127,8 +127,8 @@ jobs:
       - name: ⛅ Deploy to Cloudflare
         uses: cloudflare/wrangler-action@v4
         with:
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.TOKEN__CLOUDFLARE_PAGES__ACCOUNT_ID }}
+          apiToken: ${{ secrets.TOKEN__CLOUDFLARE_PAGES }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           command: >-
             pages deploy build
