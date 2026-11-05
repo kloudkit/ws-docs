@@ -1,6 +1,20 @@
 # Changelog
 
-## [0.5.3] — Unreleased
+## [0.5.4] — 2026-11-03
+
+### Changed
+
+- ⌨️ Let Ctrl+G reach the terminal on Windows and Linux, instead of opening Go to Recent Directory
+- 🔧 Enable Python Environments so the Ansible extension stops prompting
+
+### Dependencies
+
+- 🔒 Build k9s, kube-linter, gotests, impl and task from source to clear their high and critical CVEs
+- 🔒 Raise VS Code's bundled undici to 7.30.1 *(ws-server)*
+- ⬆️ Bump ansible-core to 2.22.0
+- ⬆️ Bump claude-code to 2.1.317, uv to 0.13.7, buildx to 0.38.1, compose to 5.7.0, helm to 4.3.1 and starship to 1.27.0
+
+## [0.5.3] — 2026-11-01
 
 ### Added
 
@@ -13,12 +27,17 @@
 - 🎨 Make ws-cli output pipe-safe and consistent across every command *(#799)*
 - 📄 Keep the startup console colored and write `workspace.log` as plain text *(#799)*
 - 🐚 Run startup scripts with the terminal's zsh environment *(#782)*
+- ⚡️ Open new terminals faster by loading `fzf-history` settings on the first search
+- 🔥 Drop the `yarn` plugin, and its `y` alias, from the default `WS_ZSH_PLUGINS`
+- 🔒️ Refuse changed SSH host keys outside private networks *(#801)*
+- ⚡️ Expire idle SSH control connections after 10 minutes and detect dead hosts *(#801)*
 
 ### Dependencies
 
-- 🔼 Bump VS Code to 1.141.0 *(ws-server#35)*
+- 🔼 Bump VS Code to 1.144.0 *(ws-server#35, ws-server#36)*
 - ⬆️ Bump http-proxy-3 to 2.0.1 *(ws-server#34)*
 - ⬆️ Sweep Renovate updates, including uv 0.13 and the Kubernetes Python client 37 *(#800)*
+- ⬆️ Bump Node.js to 24.22.2 and sweep Renovate updates, including Go 1.27.3 and Rust 1.99.1 *(#801)*
 
 ### Fixed
 
