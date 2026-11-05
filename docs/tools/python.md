@@ -16,6 +16,7 @@ Key features provided *out‑of‑the‑box*:
 
 - **Python 3.11** runtime, ready for immediate use.
 - Both `pip` and the lightning‑fast `uv` package manager.
+- The `pixi` package manager for conda and PyPI environments.
 - Automatic virtual environment activation when navigating into project directories.
 - Opinionated linting & formatting with `ruff` its IDE extension.
 - Language‑intelligence powered by Meta's **Pyrefly** language server — Rust‑based, type‑aware, fast.
@@ -29,6 +30,13 @@ For day‑to‑day dependency work, we recommend `uv`, which offers:
 - Near instant dependency resolution.
 - Deterministic, lock‑file–friendly installs.
 - Seamless compatibility with `requirements.txt` and `pyproject.toml`.
+
+## Conda Environments with `pixi` *(since v0.6.0)*
+
+`pixi` manages per-project conda and PyPI environments from a `pixi.toml` or
+`pyproject.toml`.
+Tools you install with `pixi global install` land in `~/.local/pixi/bin`, which is on `PATH`.
+For settings every user shares, such as a channel mirror, add `/etc/pixi/config.toml`.
 
 ## Additional Packages &amp; Tools
 
