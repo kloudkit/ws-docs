@@ -31,7 +31,7 @@ For day‑to‑day dependency work, we recommend `uv`, which offers:
 - Deterministic, lock‑file–friendly installs.
 - Seamless compatibility with `requirements.txt` and `pyproject.toml`.
 
-## Conda Environments with `pixi`
+## Conda Environments with `pixi` *(since v0.6.0)*
 
 `pixi` manages per-project conda and PyPI environments from a `pixi.toml` or
 `pyproject.toml`.

@@ -99,8 +99,8 @@ attempts to two per minute and an additional twelve per hour.
 
 To sign in with your identity provider *(Keycloak, Entra ID, Authentik, or any OpenID
 Connect issuer)*, set `WS_AUTH_MODE=oidc`.
-The editor then signs users in itself on `WS_SERVER_PORT`, the same port as password mode,
-and checks every request, forwarded ports included.
+The editor then signs users in itself on `WS_SERVER_PORT` *(since v0.6.0)*, the same port as
+password mode, and checks every request, forwarded ports included.
 The workspace refuses to start when a required setting is missing or a password is also set.
 
 - <EnvVar group="auth" name="mode" />
@@ -127,7 +127,7 @@ Behind a TLS terminator, forward `X-Forwarded-Proto: https` so the session cooki
 :::
 
 ::: info Upgrading from the auth proxy
-Earlier releases ran a separate sign-in proxy on port `38080`.
+Before v0.6.0, a separate sign-in proxy ran on port `38080`.
 
 - Publish `8080` instead; `WS_SERVER_AUTH_PROXY_PORT` and `WS_LOGGING_AUTH_PROXY_FILE` are gone,
   and so is `ws logs --target auth_proxy`.
