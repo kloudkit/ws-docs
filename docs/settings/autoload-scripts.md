@@ -19,7 +19,7 @@ users defined entrypoint scripts to tailor the workspace experience.
 
 ::: info TIP
 Before creating additional entrypoint scripts, check whether the objective you intend to
-achieve is already covered by a built-in [configuration template](/tools/ws-cli#templates-ws-template)
+achieve is already covered by a built-in [configuration template](/tools/ws-cli#ws-cli-template)
 or an [installable feature](/editor/features). Many common customizations are handled
 automatically through these mechanisms.
 :::
@@ -41,7 +41,9 @@ The directories are created automatically on startup.
 These scripts are executed as follows:
 
 - Only scripts with an executable file permission *(i.e. `+x`)* are considered.
-- Executed in lexicographical order.
+- Executed in sorted order of their full path, files in subdirectories included.
+    The sort ignores punctuation, so `10-a` runs before `1-b`; use zero-padded prefixes such as `01-`.
+- Symbolic links are skipped.
 - Scripts are executed as the `kloud` user.
 
 ### Available Languages
@@ -53,7 +55,7 @@ By default, the workspace supports the following languages *(defined using sheba
 
 - **Ansible:** `#!/usr/bin/env -S ansible-playbook`
 - **Bash:** `#!/usr/bin/env bash`
-- **Go:** `//usr/bin/env go run $0 $@; exit $?`
+- **Go:** `//usr/bin/env go run $0 $@; exit $?` *(name the file `*.go`)*
 - **Node.js:** `#!/usr/bin/env node`
 - **POSIX:** `#!/bin/sh`
 - **Python:** `#!/usr/bin/env python`
@@ -65,6 +67,8 @@ Entrypoint scripts run through `zsh`, so every script, whatever its language, in
 exports from `/etc/zsh/zshenv` and from `~/.zshenv`.
 This includes the [custom CA](/settings/tls) variables, secrets imported from 1Password, and
 any `export` that an earlier script appended to `~/.zshenv`.
+When 1Password secrets are imported, `~/.zshenv` is left read-only; run `chmod u+w ~/.zshenv`
+before you append to it.
 
 Scripts without a shebang run under `bash`.
 
@@ -78,8 +82,8 @@ Refer to the specific [documentation for `ws-cli`](/tools/ws-cli) for more detai
 
 Similar to entrypoint scripts, the workspace will load startup scripts for every new shell
 session.
-On shell startup, the predefined scripts stored in `/usr/lib/ohmyzsh/custom/*` are executed
-in lexicographical order.
+On shell startup, the predefined `/usr/share/ohmyzsh/custom/*.zsh` files are sourced in
+lexicographical order.
 
 To add additional functionality during startup, place `.zsh` files in
 `~/.ws/session.d/` *(i.e. `/home/kloud/.ws/session.d`)*.
