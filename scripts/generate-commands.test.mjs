@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { section } from './generate-commands.mjs'
+import { render, section } from './generate-commands.mjs'
 
 test('renders the example as a fenced sh block after the options table', () => {
   const output = section({
@@ -24,4 +24,31 @@ test('omits the fence when the command has no example', () => {
   })
 
   assert.ok(!output.includes('```'))
+})
+
+test('skips unreleased commands and their subcommands', () => {
+  const output = render({
+    commands: [
+      {
+        name: 'ws-cli shipped',
+        since: '0.5.0',
+        commands: [
+          { name: 'ws-cli shipped child', since: '0.5.0' },
+          {
+            name: 'ws-cli shipped pending',
+            since: 'next',
+            commands: [{ name: 'ws-cli shipped pending child', since: 'next' }],
+          },
+        ],
+      },
+      { name: 'ws-cli upcoming', since: 'next' },
+    ],
+  })
+
+  assert.ok(output.includes('`ws-cli shipped`'))
+  assert.ok(output.includes('`ws-cli shipped child`'))
+  assert.ok(!output.includes('pending'))
+  assert.ok(!output.includes('upcoming'))
+  assert.ok(!output.includes('vnext'))
+  assert.ok(!output.trimEnd().endsWith('---'))
 })

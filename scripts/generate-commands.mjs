@@ -69,10 +69,16 @@ export const section = command => {
   return lines.join('\n').trimEnd()
 }
 
-const render = root => {
+const released = command => String(command.since ?? '') !== 'next'
+
+export const render = root => {
   const sections = []
 
   const walk = command => {
+    if (!released(command)) {
+      return
+    }
+
     sections.push(section(command), '', '---', '')
 
     for (const child of command.commands ?? []) {
