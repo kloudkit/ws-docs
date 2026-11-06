@@ -43,25 +43,22 @@ The statusline displays the following segments:
 - **Context window usage:** a visual progress bar showing how much of the context window
   is consumed.
 
-Each segment can be individually hidden via environment variables *(see below)*.
+Every segment except the directory can be hidden with an environment variable *(see below)*.
 To disable the statusline entirely, set `WS_CLAUDE_STATUSLINE_DISABLE` to `true`.
 
 ## Managed Settings
 
-Kloud Workspace ships with managed settings that configure sensible defaults for
-Claude Code.
+Kloud Workspace ships managed settings for Claude Code in
+`/etc/claude-code/managed-settings.json`:
 
-The default permission rules:
-
-| Action    | Targets                                    |
-| --------- | ------------------------------------------ |
-| **Allow** | Reading `.env.sample` and `.env.example`   |
-| **Deny**  | Reading `.env`, `.env.*`, and `secrets/**` |
-| **Ask**   | `curl` commands via Bash                   |
+| Setting       | Value                                    |
+| ------------- | ---------------------------------------- |
+| **Deny**      | Reading `./.env`                         |
+| **Telemetry** | Off *(`CLAUDE_CODE_ENABLE_TELEMETRY=0`)* |
 
 ::: info
-These rules protect sensitive files while still allowing Claude Code to read common
-example environment files. Override them by editing the managed settings file directly.
+Managed settings take precedence over your own `~/.claude/settings.json`.
+The file is owned by `root` and is reset when the container is recreated.
 :::
 
 ## Environment Variables

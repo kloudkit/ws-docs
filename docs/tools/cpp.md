@@ -59,11 +59,12 @@ Invoke `gcc-13` and `g++-13` directly.
 
 ## What's Included
 
+The default `gcc`, `g++` and `make` are already in the image *(from `build-essential`)*.
 The `cpp` feature installs:
 
 - **cmake:** Cross-platform build system generator, used for configuring C/C++ projects.
-- **gcc:** The GNU C compiler.
-- **g++:** The GNU C++ compiler front-end *(required for C++ compilation and linking)*.
+- **gcc-14:** The GNU C compiler *(`gcc-13` with `version=13`)*.
+- **g++-14:** The GNU C++ compiler front-end *(`g++-13` with `version=13`)*.
 - **gdb:** The GNU debugger for stepping through and inspecting running programs.
 - **gdbserver:** Remote debugging server, useful for debugging programs running in
   separate processes or containers.

@@ -45,6 +45,9 @@ Docker and Kubernetes without `_FILE` companions:
 - <EnvVar group="auth" name="password" />
 - <EnvVar group="auth" name="password_hashed" />
 - <EnvVar group="auth" name="github_token" />
+- <EnvVar group="auth" name="oidc_client_secret" />
+- <EnvVar group="auth" name="oidc_cookie_secret" />
+- <EnvVar group="cloudflared" name="tunnel_token" />
 - <EnvVar group="secrets" name="master_key" />
 - <EnvVar group="server" name="ssl_cert" />
 - <EnvVar group="server" name="ssl_key" />
@@ -92,8 +95,10 @@ containers:
 
 ::: tip
 `ws-cli show env <group.prop>` (e.g. `ws-cli show env server.port`) reports where the
-value came from: `env-set`, `env-file`, `secret-file-default`, or `yaml-default`.
-Query the dotted key — the matching `WS_*` variable (e.g. `WS_SERVER_PORT`) is what you
+value came from: `process` *(the environment)*, `file` *(a `file:` path)*, `mount`
+*(the `/run/secrets/workspace` convention)*, `alias` *(a deprecated name)* or `declared`
+*(the default)*.
+Query the dotted key; the matching `WS_*` variable (e.g. `WS_SERVER_PORT`) is what you
 `export` to set it.
 :::
 
@@ -105,12 +110,12 @@ Query the dotted key — the matching `WS_*` variable (e.g. `WS_SERVER_PORT`) is
 
 ## Global Variables
 
-| ENV                   | Description                                  | Read More |
-| --------------------- | -------------------------------------------- | --------- |
-| `EDITOR`              | Default terminal editor  *(default: `code`)* |           |
-| `GIT_COMMITTER_NAME`  | Name to be used in `~/.gitconfig`            | [→][git]  |
-| `GIT_COMMITTER_EMAIL` | Email to be used in `~/.gitconfig`           | [→][git]  |
-| `PAGER`               | Default terminal pager *(default: `less`)*   |           |
-| `TZ`                  | Define the timezone                          |           |
+| ENV                   | Description                                                       | Read More |
+| --------------------- | ----------------------------------------------------------------- | --------- |
+| `EDITOR`              | Default terminal editor *(default: `code --wait --reuse-window`)* |           |
+| `GIT_COMMITTER_NAME`  | Name to be used in `~/.gitconfig`                                 | [→][git]  |
+| `GIT_COMMITTER_EMAIL` | Email to be used in `~/.gitconfig`                                | [→][git]  |
+| `PAGER`               | Default terminal pager *(default: `less`)*                        |           |
+| `TZ`                  | Define the timezone                                               |           |
 
 [git]: /tools/git

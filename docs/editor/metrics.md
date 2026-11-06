@@ -97,34 +97,34 @@ When unset or `*`, all collectors are enabled *(gpu only when hardware is availa
 
 ### Container — Memory
 
-| Metric                                        | Type    | Description                |
-| --------------------------------------------- | ------- | -------------------------- |
-| `workspace_container_memory_usage_bytes`      | gauge   | Current memory usage       |
-| `workspace_container_memory_limit_bytes`      | gauge   | Memory limit               |
-| `workspace_container_memory_rss_bytes`        | gauge   | Resident set size          |
-| `workspace_container_memory_cache_bytes`      | gauge   | Page cache memory          |
-| `workspace_container_memory_swap_bytes`       | gauge   | Swap usage                 |
-| `workspace_container_memory_swap_limit_bytes` | gauge   | Swap limit                 |
-| `workspace_container_memory_anon_bytes`       | gauge   | Anonymous memory           |
-| `workspace_container_memory_kernel_bytes`     | gauge   | Kernel memory              |
-| `workspace_container_memory_slab_bytes`       | gauge   | Slab allocator memory      |
-| `workspace_container_memory_oom_total`        | counter | OOM events                 |
-| `workspace_container_memory_oom_kill_total`   | counter | OOM kill events            |
-| `workspace_container_memory_max_total`        | counter | Times memory limit was hit |
+| Metric                                        | Type    | Description                    |
+| --------------------------------------------- | ------- | ------------------------------ |
+| `workspace_container_memory_usage_bytes`      | gauge   | Current memory usage           |
+| `workspace_container_memory_limit_bytes`      | gauge   | Memory limit                   |
+| `workspace_container_memory_rss_bytes`        | gauge   | Anonymous memory *(cgroup v2)* |
+| `workspace_container_memory_cache_bytes`      | gauge   | Page cache memory              |
+| `workspace_container_memory_swap_bytes`       | gauge   | Swap usage                     |
+| `workspace_container_memory_swap_limit_bytes` | gauge   | Swap limit                     |
+| `workspace_container_memory_anon_bytes`       | gauge   | Anonymous memory               |
+| `workspace_container_memory_kernel_bytes`     | gauge   | Kernel memory                  |
+| `workspace_container_memory_slab_bytes`       | gauge   | Slab allocator memory          |
+| `workspace_container_memory_oom_total`        | counter | OOM events                     |
+| `workspace_container_memory_oom_kill_total`   | counter | OOM kill events                |
+| `workspace_container_memory_max_total`        | counter | Times memory limit was hit     |
 
 ### Container — Filesystem
 
-| Metric                               | Type  | Description                         |
-| ------------------------------------ | ----- | ----------------------------------- |
-| `workspace_container_fs_usage_bytes` | gauge | Filesystem usage on `/workspace`    |
-| `workspace_container_fs_limit_bytes` | gauge | Filesystem capacity on `/workspace` |
+| Metric                               | Type  | Description                             |
+| ------------------------------------ | ----- | --------------------------------------- |
+| `workspace_container_fs_usage_bytes` | gauge | Filesystem usage on `WS_SERVER_ROOT`    |
+| `workspace_container_fs_limit_bytes` | gauge | Filesystem capacity on `WS_SERVER_ROOT` |
 
 ### Container — File Descriptors
 
-| Metric                                       | Type  | Description           |
-| -------------------------------------------- | ----- | --------------------- |
-| `workspace_container_file_descriptors_open`  | gauge | Open file descriptors |
-| `workspace_container_file_descriptors_limit` | gauge | File descriptor limit |
+| Metric                                       | Type  | Description                                |
+| -------------------------------------------- | ----- | ------------------------------------------ |
+| `workspace_container_file_descriptors_open`  | gauge | Open file descriptors across all processes |
+| `workspace_container_file_descriptors_limit` | gauge | Open-file limit of a single process        |
 
 ### Container — Processes
 
@@ -170,6 +170,8 @@ subsystem.
 | `workspace_network_transmit_packets_total` | counter | Total packets transmitted |
 | `workspace_network_receive_errors_total`   | counter | Total receive errors      |
 | `workspace_network_transmit_errors_total`  | counter | Total transmit errors     |
+
+Totals cover every network interface in the container, loopback included.
 
 ### Sockets
 
