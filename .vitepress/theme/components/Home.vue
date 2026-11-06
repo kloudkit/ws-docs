@@ -21,7 +21,7 @@
 
         <ul>
           <li>Deploy with <a href="/pages/getting-started#installation">Helm →</a></li>
-          <li>Extend with the <a href="/editor/features#feature-store">Feature Store →</a></li>
+          <li>Extend with <a href="/editor/features">features →</a></li>
           <li>Manage everything from the <a href="/tools/ws-cli">CLI →</a></li>
         </ul>
       </div>
