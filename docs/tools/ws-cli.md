@@ -1,29 +1,29 @@
 ---
-description: "ws-cli is the CLI companion for Kloud Workspace — a suite of helper commands to navigate, manage, and automate your workspace."
+description: "ws-cli is the Kloud Workspace command line: inspect the running workspace, manage settings and secrets, drive the editor, and serve local assets."
 see:
+  - name: Features
+    link: /editor/features
   - name: GitHub Repository
     link: https://github.com/kloudkit/ws-cli
-  - name: Feature Installation
-    link: /editor/features
+    target: _blank
 ---
 
-# `ws-cli` *(alias: `ws`)*
+# ws-cli
 
-> ⚡ CLI companion to charge the workspace batteries
+`ws-cli` groups the workspace's helper commands:
+inspect the running workspace, manage settings and secrets, drive the editor, and serve local assets.
+The startup scripts call most of them, and all of them work in your terminal:
 
-## Overview
+```sh
+ws-cli info version --all
+```
 
-`ws-cli` is a CLI tool designed to supercharge your development by providing a suite of
-helper commands.
-With `ws-cli`, you can navigate and manage your workspace efficiently, automate repetitive
-tasks, and access a variety of functionalities directly from your terminal.
+## The `ws` Shortcut
 
-::: tip
 In an interactive workspace terminal, `ws` is a shortcut for `ws-cli`.
 With no arguments, it changes to the workspace root *(`WS_SERVER_ROOT`, `/workspace` by default)*.
 
-`ws` is a `zsh` function, so scripts, `docker exec` and CI must call `ws-cli`.
-:::
+`ws` is a `zsh` function that exists only in interactive terminals, so scripts, `docker exec` and CI must call `ws-cli`.
 
 ## Commands
 

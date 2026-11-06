@@ -1,5 +1,5 @@
 ---
-description: "Enable Kloud Workspace's built-in Prometheus-compatible metrics exporter to expose resource and session telemetry for your running workspace."
+description: "Turn on Kloud Workspace's Prometheus-compatible exporter for resource and session telemetry, and scrape it."
 see:
   - name: Configuration
     link: /settings/configuration
@@ -9,31 +9,49 @@ see:
 
 ![Metrics](/icons/grafana.svg){.doc-image}
 
-Kloud Workspace ships with a built-in **Prometheus-compatible metrics exporter** that
-exposes resource and session telemetry for your running workspace.
-
-The exporter is **disabled by default** and must be explicitly enabled via an environment
-variable.
+Kloud Workspace ships with a built-in Prometheus-compatible metrics exporter that exposes resource
+and session telemetry for your running workspace.
+The exporter is disabled by default.
 
 ## Enabling Metrics
 
-Set `WS_METRICS_ENABLE` to `true` when launching the container:
+Set this variable to `true` when launching the container:
+
+- <EnvVar group="metrics" name="enable" />
 
 ```sh{2-3}
 docker run \
   -p 9100:9100 \
   -e WS_METRICS_ENABLE=true \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
-Once enabled, the exporter serves metrics at `/` on port **9100** *(default)*.
+Once enabled, the exporter serves metrics at `/` on port `9100` *(default)*.
 Publish that port, as above, so Prometheus can reach it from outside the container.
+
+## Scraping and Visualization
+
+Point your Prometheus instance at the workspace metrics port:
+
+```yaml
+scrape_configs:
+  - job_name: workspace
+    static_configs:
+      - targets:
+        - <workspace-host>:9100
+```
+
+::: tip
+Prometheus and Grafana are not bundled with Kloud Workspace.
+
+The workspace only exposes a `/metrics`-compatible endpoint; scraping, alerting and dashboards
+are managed by your own infrastructure.
+:::
 
 ## Configuration
 
-Three environment variables control the metrics exporter:
+Two more environment variables set the exporter's port and its collectors:
 
-- <EnvVar group="metrics" name="enable" />
 - <EnvVar group="metrics" name="port" />
 - <EnvVar group="metrics" name="collectors" />
 
@@ -45,7 +63,7 @@ docker run \
   -e WS_METRICS_ENABLE=true \
   -e WS_METRICS_PORT=9200 \
   -e WS_METRICS_COLLECTORS="container.cpu,container.memory" \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
 ## Collectors
@@ -87,7 +105,7 @@ When unset or `*`, all collectors are enabled *(gpu only when hardware is availa
 | `workspace_session_uptime_seconds`                | gauge | Seconds since initialization                       |
 | `workspace_extensions_installed_total`            | gauge | VS Code extensions installed                       |
 
-### Container — CPU
+### Container CPU
 
 | Metric                                            | Type    | Description                  |
 | ------------------------------------------------- | ------- | ---------------------------- |
@@ -98,7 +116,7 @@ When unset or `*`, all collectors are enabled *(gpu only when hardware is availa
 | `workspace_container_cpu_throttled_periods_total` | counter | Throttled CPU periods        |
 | `workspace_container_cpu_throttled_seconds_total` | counter | Total time throttled         |
 
-### Container — Memory
+### Container Memory
 
 | Metric                                        | Type    | Description                    |
 | --------------------------------------------- | ------- | ------------------------------ |
@@ -115,42 +133,42 @@ When unset or `*`, all collectors are enabled *(gpu only when hardware is availa
 | `workspace_container_memory_oom_kill_total`   | counter | OOM kill events                |
 | `workspace_container_memory_max_total`        | counter | Times memory limit was hit     |
 
-### Container — Filesystem
+### Container Filesystem
 
 | Metric                               | Type  | Description                             |
 | ------------------------------------ | ----- | --------------------------------------- |
 | `workspace_container_fs_usage_bytes` | gauge | Filesystem usage on `WS_SERVER_ROOT`    |
 | `workspace_container_fs_limit_bytes` | gauge | Filesystem capacity on `WS_SERVER_ROOT` |
 
-### Container — File Descriptors
+### Container File Descriptors
 
 | Metric                                       | Type  | Description                                |
 | -------------------------------------------- | ----- | ------------------------------------------ |
 | `workspace_container_file_descriptors_open`  | gauge | Open file descriptors across all processes |
 | `workspace_container_file_descriptors_limit` | gauge | Open-file limit of a single process        |
 
-### Container — Processes
+### Container Processes
 
 | Metric                             | Type  | Description                 |
 | ---------------------------------- | ----- | --------------------------- |
 | `workspace_container_pids_current` | gauge | Current number of processes |
 | `workspace_container_pids_limit`   | gauge | Process limit               |
 
-### Pressure — CPU
+### CPU Pressure
 
 | Metric                                         | Type    | Description                         |
 | ---------------------------------------------- | ------- | ----------------------------------- |
 | `workspace_pressure_cpu_waiting_seconds_total` | counter | Total time tasks waited for CPU     |
 | `workspace_pressure_cpu_stalled_seconds_total` | counter | Total time all tasks stalled on CPU |
 
-### Pressure — Memory
+### Memory Pressure
 
 | Metric                                            | Type    | Description                            |
 | ------------------------------------------------- | ------- | -------------------------------------- |
 | `workspace_pressure_memory_waiting_seconds_total` | counter | Total time tasks waited for memory     |
 | `workspace_pressure_memory_stalled_seconds_total` | counter | Total time all tasks stalled on memory |
 
-### Pressure — IO
+### IO Pressure
 
 | Metric                                        | Type    | Description                         |
 | --------------------------------------------- | ------- | ----------------------------------- |
@@ -195,13 +213,13 @@ Totals cover every network interface in the container, loopback included.
 
 ### GPU
 
-| Metric                              | Type  | Description             |
-| ----------------------------------- | ----- | ----------------------- |
-| `workspace_gpu_utilization_ratio`   | gauge | GPU utilization *(0–1)* |
-| `workspace_gpu_memory_used_bytes`   | gauge | GPU memory used         |
-| `workspace_gpu_memory_total_bytes`  | gauge | GPU memory total        |
-| `workspace_gpu_temperature_celsius` | gauge | GPU temperature         |
-| `workspace_gpu_power_watts`         | gauge | GPU power consumption   |
+| Metric                              | Type  | Description                |
+| ----------------------------------- | ----- | -------------------------- |
+| `workspace_gpu_utilization_ratio`   | gauge | GPU utilization *(0 to 1)* |
+| `workspace_gpu_memory_used_bytes`   | gauge | GPU memory used            |
+| `workspace_gpu_memory_total_bytes`  | gauge | GPU memory total           |
+| `workspace_gpu_temperature_celsius` | gauge | GPU temperature            |
+| `workspace_gpu_power_watts`         | gauge | GPU power consumption      |
 
 ::: tip
 
@@ -214,22 +232,3 @@ If `gpu` is the only collector, the exporter then has nothing to serve: it exits
 restarting.
 
 :::
-
-## Scraping and Visualization
-
-::: tip
-Prometheus and Grafana are **not bundled** with Kloud Workspace.
-
-The workspace only exposes a `/metrics`-compatible endpoint, scraping, alerting, and
-dashboards are managed by your own infrastructure.
-:::
-
-Point your Prometheus instance at the workspace metrics port:
-
-```yaml
-scrape_configs:
-  - job_name: workspace
-    static_configs:
-      - targets:
-        - <workspace-host>:9100
-```

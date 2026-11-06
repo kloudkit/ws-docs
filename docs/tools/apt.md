@@ -1,72 +1,100 @@
 ---
-description: "Kloud Workspace's custom APT setup delivers flexible, efficient package management that avoids unnecessary installs and protects user files."
+description: "Install extra packages in Kloud Workspace at startup or by hand, add your own APT repositories and keys, and control which packages APT may install."
 see:
-  - name: APT
+  - name: Features
     link: /editor/features
 ---
 
-# APT Manager
+# APT
 
 ![Debian logo](/icons/debian.svg){.doc-image width=200px}
 
-**Kloud Workspace** comes pre-configured with a custom APT setup to provide robust and
-efficient package management.
+Install extra packages at startup or in a running workspace, add your own repositories, and
+control which packages APT may install.
 
-These configurations are designed to enhance flexibility, reduce unnecessary
-installations, and prevent the overwriting of user-defined files.
+## Install Packages
 
-## Repository Sources
+At startup, the workspace installs the packages listed in:
 
-By default, Kloud Workspace is set up with a range of additional repository sources
-alongside the standard ones.
-All additional sources are signed with `gpg` keys to ensure secure and verified package
-installations.
+- <EnvVar group="apt" name="additional_packages" />
 
-### Disabling Sources
+`WS_APT_ADDITIONAL_PACKAGES` can contain one or more space-delimited package names:
 
-If you need to disable any of the repository sources, set the following environment
-variable:
+```sh{2}
+docker run \
+  -e WS_APT_ADDITIONAL_PACKAGES="cmake nano" \
+  ghcr.io/kloudkit/workspace:v0.6.0
+```
 
-- <EnvVar group="apt" name="disable_repos" />
+::: tip
+Some packages are already available as [**features**](/editor/features), which add setup steps
+beyond the package itself.
 
-It accepts `debian`, `additional` *(every bundled third-party source)*, or `true` to disable
-them all.
+Check the available features before you list a package here.
+:::
 
-### Custom Sources
+### Install in a Running Workspace
 
-Add custom repository sources with `WS_APT_ADDITIONAL_REPOS`.
-Supply one or more entries separated by semicolons *(`;`)*.
+The startup install of `WS_APT_ADDITIONAL_PACKAGES` runs the `additional-apt` feature playbook.
+Call it directly to install packages after the workspace is running, or to retry a failed
+startup install:
+
+```sh
+ws-cli feature install additional-apt --opt packages="vim,curl"
+```
+
+## Add Repositories
+
+Add custom repository sources, one or more entries separated by semicolons *(`;`)*:
+
+- <EnvVar group="apt" name="additional_repos" />
 
 ```sh{2}
 docker run \
   -e WS_APT_ADDITIONAL_REPOS="deb [signed-by=/custom.gpg] https://custom.package trixie main" \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
-### Update Repository Cache
+### Add Their GPG Keys
+
+Some third-party repositories require you to trust their signing key.
+Provide additional keys as one or more space-delimited `name:url` pairs:
+
+- <EnvVar group="apt" name="additional_gpg_keys" />
+- <EnvVar group="apt" name="additional_insecure_gpg_keys" />
+
+Each key is downloaded at startup and stored in `/etc/apt/keyrings/<name>.gpg`.
+Keys must be served over HTTPS; put keys served over HTTP in `WS_APT_ADDITIONAL_INSECURE_GPG_KEYS`.
+
+```sh{2}
+docker run \
+  -e WS_APT_ADDITIONAL_GPG_KEYS="mycorp:https://mycorp.com/pubkey.asc extras:https://extras.test/key2.asc" \
+  ghcr.io/kloudkit/workspace:v0.6.0
+```
+
+### Update the Package Lists
 
 Set `WS_APT_UPDATE_CACHE` to `true` to refresh the package lists at startup, after your custom
 sources are added.
 Package installs refresh the lists on their own, so this matters only for running `apt-get
 install` by hand later.
 
-## Default Configurations
+## Disable Repositories
 
-The *workspace* is configured with several default settings to ensure optimal performance.
-The primary goals of these configurations are to minimize the image size and maintain the
-integrity of user-defined files.
+Besides the standard sources, Kloud Workspace is set up with a range of additional repository
+sources, all signed with `gpg` keys.
+To disable repository sources, set:
 
-Notable configurations include:
+- <EnvVar group="apt" name="disable_repos" />
 
-- The `--no-install-recommends` flag is enabled by default to avoid the installation of
-  recommended but unnecessary packages.
-- When a package upgrade ships a new version of a config file you changed, APT keeps your
-  version.
+It accepts `debian`, `additional` *(every bundled third-party source)*, or `true` to disable
+them all.
 
 ## Restricted Packages
 
-The *workspace* runs headless, so it ships preference files that block packages with no
-use inside a container. These are grouped by category:
+The workspace runs headless, so it ships preference files that block packages with no use inside
+a container.
+These are grouped by category:
 
 - `x11`: X11 server, GTK/Qt toolkits, Mesa
 - `desktop`: Bluetooth, Avahi, NetworkManager, wireless daemons
@@ -88,7 +116,7 @@ mail and printing blocked:
 docker run \
   -e WS_APT_DISABLE_RESTRICTIONS="x11" \
   -e WS_APT_ADDITIONAL_PACKAGES="libx11-6" \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
 Lift every restriction at once with `true` *(or `*`)*:
@@ -96,44 +124,13 @@ Lift every restriction at once with `true` *(or `*`)*:
 ```sh{2}
 docker run \
   -e WS_APT_DISABLE_RESTRICTIONS=true \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
-## Additional Packages
+### Override for a Single Install
 
-Upon *workspace* startup, we evaluate the value of `WS_APT_ADDITIONAL_PACKAGES`
-environment variable to automate the installation of additional *user-defined* packages.
-
-`WS_APT_ADDITIONAL_PACKAGES` can contain one or more space-delimited package names as
-demonstrated below:
-
-```sh{2}
-docker run \
-  -e WS_APT_ADDITIONAL_PACKAGES="cmake nano" \
-  ghcr.io/kloudkit/workspace:v0.5.3
-```
-
-::: tip
-Some packages are already available as [**features**](/editor/features), which include
-additional setup steps that enhance their usage and functionality.
-
-We recommend reviewing the available features before opting for manual package installation.
-:::
-
-## Manual Installation
-
-The boot-time `WS_APT_ADDITIONAL_PACKAGES` install delegates to a feature
-playbook. Call it directly to install packages after the workspace is running
-or to retry a failed startup install:
-
-```sh
-ws-cli feature install additional-apt --opt packages="vim,curl"
-```
-
-### Overriding Restrictions
-
-To install a package blocked by a [shipped restriction](#restricted-packages),
-pass `override_restrictions=true`:
+To install a package blocked by a [shipped restriction](#restricted-packages) in a running
+workspace, pass `override_restrictions=true`:
 
 ```sh
 ws-cli feature install additional-apt \
@@ -141,23 +138,18 @@ ws-cli feature install additional-apt \
   --opt override_restrictions=true
 ```
 
-Matching `99-deny-*` files are disabled before the install and restored when
-it completes *(including on failure)*. Unlike `disable_restrictions`, the
-override applies only to this single install. For the boot-time equivalent:
+The restrictions are restored when the install completes *(including on failure)*.
+Unlike `disable_restrictions`, the override applies only to this single install.
+For the startup equivalent:
 
 - <EnvVar group="apt" name="override_restrictions" />
 
-## Additional GPG Keys
+## Default Configurations
 
-Some third-party repositories require you to trust their signing key.
-Provide additional keys with **`WS_APT_ADDITIONAL_GPG_KEYS`** as one or more
-space-delimited `name:url` pairs.
+The APT defaults keep the image small and leave your own files intact.
+Notable defaults include:
 
-Each key is downloaded at startup and stored in `/etc/apt/keyrings/<name>.gpg`.
-Keys must be served over HTTPS; put keys served over HTTP in `WS_APT_ADDITIONAL_INSECURE_GPG_KEYS`.
-
-```sh{2}
-docker run \
-  -e WS_APT_ADDITIONAL_GPG_KEYS="mycorp:https://mycorp.com/pubkey.asc extras:https://extras.test/key2.asc" \
-  ghcr.io/kloudkit/workspace:v0.5.3
-```
+- The `--no-install-recommends` flag is enabled by default to avoid the installation of
+  recommended but unnecessary packages.
+- When a package upgrade ships a new version of a config file you changed, APT keeps your
+  version.

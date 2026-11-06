@@ -1,23 +1,20 @@
 ---
-description: "Manage sensitive credentials in Kloud Workspace with the ws-cli secrets command — encrypt passwords, API keys, and SSH keys instead of storing plaintext."
+description: "Encrypt passwords, API keys and SSH keys in Kloud Workspace with the ws-cli secrets command instead of storing them in plaintext."
 see:
   - name: Seed
     link: /settings/seed
-  - name: ws secrets Command Reference
+  - name: ws-cli secrets Reference
     link: /tools/ws-cli#ws-cli-secrets
-    target: _self
   - name: Authentication
     link: /editor/authentication
-    target: _self
 ---
 
 # Secrets
 
 ![Secrets](/icons/secrets.svg){.doc-image}
 
-Kloud Workspace applications often require sensitive credentials: database passwords, API
-keys, SSH keys, and authentication tokens.
-Storing these in plaintext or version control is insecure.
+Encrypt database passwords, API keys, SSH keys and authentication tokens with `ws-cli secrets`,
+instead of storing them in plaintext or version control.
 
 The `ws-cli secrets` command encrypts secrets with **AES-256-GCM**, using a key derived from your
 master key with Argon2id.
@@ -43,6 +40,10 @@ The `--mode` flag sets file permissions *(e.g., `0o600` for owner-only access)*.
 Write octal with the `0o` prefix; a value without it is read as decimal.
 
 ### Master Key Lookup
+
+Point `ws-cli` at your key with:
+
+- <EnvVar group="secrets" name="master_key" />
 
 The master key is read from the first of:
 
@@ -77,7 +78,8 @@ ws-cli secrets encrypt "my-secret" --output encrypted.txt --master .master.key
 ws-cli secrets decrypt "..." --output secret.txt --mode 0o600 --master .master.key
 ```
 
-Supports `stdin` input and *multiline encrypted values* for better readability:
+Both commands also read `stdin` when given `-`, and encrypted values may span several lines for
+readability:
 
 ```sh
 echo "my-secret" | ws-cli secrets encrypt - --master .master.key
@@ -86,8 +88,8 @@ cat encrypted.txt | ws-cli secrets decrypt - --master .master.key
 
 ## Seed
 
-For declarative secret projection — inline `${secrets.NAME}` values and whole-file `secret: true`
-entries in the seed manifest — see the [seed documentation](/settings/seed).
+The [seed manifest](/settings/seed) decrypts secrets into files for you: inline `${secrets.NAME}`
+values in templated entries, and whole files marked `secret: true`.
 
 ## Authentication Passwords
 
@@ -102,10 +104,8 @@ Use in Docker deployments:
 ```sh
 docker run \
   -e WS_AUTH_PASSWORD_HASHED="$PASSWORD" \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
-
-See [authentication documentation](/editor/authentication) for details.
 
 ## Quick Reference
 
@@ -116,5 +116,3 @@ See [authentication documentation](/editor/authentication) for details.
 - **`--mode <perm>`:** File permissions, as `0o`-prefixed octal or decimal *(default `0o600`)*.
 - **`--raw`:** Disable styling.
 - **`--force`:** Overwrite existing files.
-
-See [ws secrets command reference](/tools/ws-cli#ws-cli-secrets) for complete syntax.

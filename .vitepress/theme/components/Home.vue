@@ -4,8 +4,8 @@
       <button title="Copy Code" class="copy"></button>
       <span class="lang">sh</span>
       <pre
-        class="shiki catppuccin-frappe vp-code"><code><span class="line"><span style="color:#737994;font-style:italic;"># TL-DR; ⚡ Power your batteries now!</span></span>
-<span class="line"></span><span class="line"><span style="color:#8CAAEE;font-style:italic;">docker</span><span style="color:#A6D189;"> pull</span><span style="color:#A6D189;"> ghcr.io/kloudkit/workspace:v0.5.3</span></span></code></pre>
+        class="shiki catppuccin-frappe vp-code"><code><span class="line"><span style="color:#737994;font-style:italic;"># TL;DR: pull the workspace image</span></span>
+<span class="line"></span><span class="line"><span style="color:#8CAAEE;font-style:italic;">docker</span><span style="color:#A6D189;"> pull</span><span style="color:#A6D189;"> ghcr.io/kloudkit/workspace:v0.6.0</span></span></code></pre>
     </div>
   </div>
 
@@ -40,19 +40,16 @@
       <img src="/home/tools.png">
 
       <div class="vp-doc">
-        <h3>Preinstalled Tools &amp; Extensions</h3>
+        <h3>Preinstalled Tools & Extensions</h3>
 
         <p class="lead">
-          <em>Kloud Workspace</em> fosters simplicity &mdash; and embrace
-          conventions over configuration to enhance productivity,
-          consistency, and minimizes the explicit definitions and
-          configuration overhead.
+          <em>Kloud Workspace</em> favors convention over configuration,
+          so you define and configure less.
         </p>
 
         <p class="lead">
-          The latest development environment with essential tools and
-          extensions to expedite the onboarding process and ensures a
-          seamless start of your coding tasks.
+          The tools and VS Code extensions you need come preinstalled,
+          so you can start coding without setting up a machine.
         </p>
 
         <a href="/tools/overview">More →</a>
@@ -60,7 +57,7 @@
         <h3>Languages</h3>
 
         <p class="lead">
-          We've got you covered with the top three programming languages.
+          These languages come preinstalled, with their package managers.
         </p>
 
         <div class="d-grid">
@@ -79,29 +76,27 @@
         <h3>Matching Color Palette</h3>
 
         <p class="lead">
-          Enhances visual aesthetics and improves coding efficiency by
-          providing a cohesive and harmonious interface, reducing visual
-          clutter and cognitive load for developers.
+          The editor theme, the terminal prompt and tools such as bat,
+          k9s and vim share one palette, Catppuccin Frappé.
         </p>
 
         <a href="/editor/theme-and-fonts#theme">More →</a>
 
-        <h3>Hand Picked Fonts</h3>
+        <h3>Hand-Picked Fonts</h3>
 
         <p class="lead">
-          All typography was carefully selected according to its intended
-          context and place of use.
+          The workspace serves its fonts to your browser, so there is
+          nothing to install on your machine.
         </p>
 
         <p class="lead">
-          Dedicated fonts are available for use in the terminal, editor,
-          or for comments.
+          The editor, the terminal and code comments each have their own font.
         </p>
 
         <ul>
-          <li>Fira Code</li>
-          <li>Meslo LGS</li>
-          <li>Victor Mono</li>
+          <li>FiraCode in the editor</li>
+          <li>MesloLGS in the terminal</li>
+          <li>Victor Mono for comments</li>
         </ul>
 
         <a href="/editor/theme-and-fonts#fonts">More →</a>
@@ -120,19 +115,18 @@
         <h3>Deploy Anywhere</h3>
 
         <p class="lead">
-          With <em>Kloud Workspace</em>, your development environment is not
-          only isolated and safeguarded but also becomes effortlessly
-          portable.
+          With <em>Kloud Workspace</em>, your development environment runs in
+          a container: isolated from the host, and the same on every machine
+          that runs the image.
         </p>
 
         <p class="lead">
-          Use your existing deployment infrastructure or cloud provider,
-          and <em>Kloud Workspace</em> will empower you to elevate your
-          development workflow to the cloud with ease and confidence.
+          Run <em>Kloud Workspace</em> on the infrastructure or cloud provider
+          you already use, and move your development work to the cloud.
         </p>
 
         <p class="lead">
-          Deployable on any platform.
+          Deploy it on any platform that runs containers.
         </p>
 
         <div class="d-grid">

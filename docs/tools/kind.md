@@ -1,35 +1,35 @@
 ---
-description: "Kind (Kubernetes IN Docker) in Kloud Workspace runs local Kubernetes clusters in Docker containers for testing and local development."
+description: "Run local Kubernetes clusters in Docker containers from Kloud Workspace with the preinstalled kind, for testing and local development."
 see:
-  - name: Helm
-    link: /tools/helm
   - name: Docker
     link: /tools/docker
+  - name: Helm
+    link: /tools/helm
   - name: Kind Configuration Options
     link: https://kind.sigs.k8s.io/docs/user/configuration
+    target: _blank
 ---
 
 # Kind
 
-## Overview
-
 ![Kind logo](/icons/kind.png){.doc-image width=200px}
 
-Kind *(Kubernetes IN Docker)* is a tool for running local Kubernetes clusters using Docker
-containers as nodes.
-It is primarily used for testing Kubernetes itself or for developing Kubernetes
-applications in a local environment.
+The workspace comes with kind *(Kubernetes IN Docker)* preinstalled,
+for local Kubernetes clusters that use Docker containers as nodes.
 
-::: warning
-This documentation assumes you are **not** using [`sysbox`][sysbox] or [`dockerd`][dockerd]
-as your Docker runtime.
-:::
+## Create a Cluster
+
+With [Sysbox][sysbox] *(method 1 on the Docker page)*, the Docker daemon runs inside the workspace,
+so a cluster with the default settings works as is:
+
+```sh
+kind create cluster
+kubectl get nodes
+```
 
 ## Custom Cluster Configuration
 
-Custom configurations can be stored in a `yaml` file of your choice.
-To create a cluster with custom configurations, for example in `my-config.yaml`, run the
-following command:
+Keep custom settings in a YAML file of your choice, such as `my-config.yaml`, and create the cluster from it:
 
 ```sh
 touch my-config.yaml
@@ -40,12 +40,11 @@ kind create cluster --config my-config.yaml
 
 ## Adjust the Cluster IP
 
-By default, a *Kind* cluster is only accessible at `127.0.0.1` *(from the current host)*.
-When using a remote Docker engine *(or a mapped `docker.sock`)*, you must adjust this
-setting, as `127.0.0.1` resolves to the internal address of your workspace.
+By default, a kind cluster is only accessible at `127.0.0.1` *(from the current host)*.
+With a remote Docker engine *(or a mapped `docker.sock`)*, you must adjust this setting,
+as `127.0.0.1` resolves to the internal address of your workspace.
 
-Set `apiServerAddress` to the Docker host's IP and pin `apiServerPort` in your cluster
-configuration file:
+Set `apiServerAddress` to the Docker host's IP and pin `apiServerPort` in your cluster configuration file:
 
 ```yaml{4,5}
 kind: Cluster
@@ -56,9 +55,8 @@ networking:
 # ... additional configurations follow
 ```
 
-kind puts that address in the API server certificate and in the kubeconfig it writes, so
-`kubectl` reaches the cluster without further edits.
+kind puts that address in the API server certificate and in the kubeconfig it writes,
+so `kubectl` reaches the cluster without further edits.
 Without `apiServerPort`, kind picks a random port.
 
-[dockerd]: /tools/docker
 [sysbox]: /tools/docker#_1-use-sysbox-suggested

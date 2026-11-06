@@ -1,138 +1,137 @@
 ---
-description: "Run Docker inside a Kloud Workspace container, with the trade-offs and alternative approaches for Docker-in-Docker workflows."
+description: "Build and run containers from Kloud Workspace: turn on Docker, then reach a daemon with Sysbox, dockerd, the host socket, or a remote host."
 see:
+  - name: Kind
+    link: /tools/kind
+  - name: SSH
+    link: /tools/ssh
   - name: Docker in Docker
-    link: https://www.google.com/search?q=run+docker+in+docker
+    link: https://hub.docker.com/_/docker
+    target: _blank
+  - name: Docker Engine Security
+    link: https://docs.docker.com/engine/security/
     target: _blank
 ---
 
-# Docker in Workspace
-
-## Overview
+# Docker
 
 ![Docker logo](/icons/docker.svg){.doc-image}
 
-The workspace comes pre-packaged with all the requirements to run Docker.
+The workspace comes with everything Docker needs preinstalled, so you can build and run containers from its terminal.
 
-Running Docker inside an existing Kloud Workspace container is not natively supported by
-Docker.
-However, there are alternative methods to achieve this, each with its trade-offs.
+## Enable Docker
 
-::: info
-Since this topic is widely documented online, we will not delve into the various risks and
-tradeoffs of each method.
+Set this variable when you start the workspace:
 
-You can read more about this topic by running a simple Google search for
-[`"run docker in docker"`](https://www.google.com/search?q=run+docker+in+docker).
+- <EnvVar group="docker" name="enable_client" />
+
+```sh{2}
+docker run \
+  -e WS_DOCKER_ENABLE_CLIENT=1 \
+  ghcr.io/kloudkit/workspace:v0.6.0
+```
+
+Methods 1 and 2 below need `WS_DOCKER_ENABLE_CLIENT`: without it, the Docker daemon never starts.
+With method 3, the daemon stays off, and the variable only checks that the socket's group matches the `docker` group.
+Methods 4 to 6 connect through `DOCKER_HOST` instead.
+
+## Docker in Docker
+
+Docker in Docker *(dind)* runs containers inside the workspace container, to create sandboxed container environments.
+Docker does not support this natively, so pick one of the six methods below, each with its own risks and trade-offs.
+
+::: warning
+These methods are written for a Linux host.
+On a Windows host, they may not work as described.
 :::
 
-Throughout this page, we will refer to the diagram below which illustrates the basic
-Docker architecture.
-The subsequent sections might present a partial perspective of the complete architecture.
+The diagram below shows the basic Docker architecture, and each method shows the part of it that applies.
 
 ![Docker architecture](/tools/docker/architecture.png)
 
 ::: warning
-The documentation below is tailored for use on a Linux host.
-Running Docker on Windows may introduce various discrepancies that could impact the
-applicability and effectiveness of the provided solutions.
+Methods 3, 4, 5, and 6 connect, each in its own way, to the Docker daemon running on the **remote host**.
+All *paths* and *ports* then refer to the **remote host**, not to the workspace.
+
+If you only use Docker to build images, you can skip this warning.
 :::
 
-## Docker In Docker
+### 1. Use Sysbox *(Suggested)*
 
-Docker In Docker *(also known as dind)* allows developers to run a Docker container within
-an already running Docker container, in order to create sandboxed container environments.
+[Sysbox](https://github.com/nestybox/sysbox) is the recommended method for running Docker in Docker securely.
+It lets containers act as virtual machines, with stronger isolation and no privileged mode.
 
-There are six possible methods to accomplish this:
-
-::: warning CAVEAT
-Options `#3`, `#4`, `#5`, and `#6` utilize different forms of remote connections to the
-Docker daemon running on the **remote host**.
-As such, all *paths* and *ports* are relative to the **remote host** and not the running
-workspace.
-
-If your intention is solely to utilize Docker for building purposes, feel free to ignore
-the information provided above.
-:::
-
-### 1. Use [`sysbox`](https://github.com/nestybox/sysbox) ***(suggested)***
-
-`Sysbox` is the recommended method for securely running Docker in Docker.
-It enables containers to act as virtual machines by improving isolation without
-requiring privileged mode.
-
-Once `sysbox` is installed, run the workspace using the `sysbox-runc` runtime:
+Once Sysbox is installed, run the workspace with the `sysbox-runc` runtime:
 
 ```sh{2,3}
 docker run \
   --runtime=sysbox-runc \
   -e WS_DOCKER_ENABLE_CLIENT=1 \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
 ### 2. Run `dockerd` in the Container
 
-This approach allows you to start the Docker daemon *(`dockerd`)* directly within the
-container.
-However, this requires the container to run in **privileged** mode:
+This method starts the Docker daemon *(`dockerd`)* directly inside the container.
+The container must run in **privileged** mode:
 
 ```sh{2,3}
 docker run \
   --privileged \
   -e WS_DOCKER_ENABLE_CLIENT=1 \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
-### 3. Mounting the Docker Socket From the Host
+### 3. Mount the Docker Socket From the Host
 
 ![Host mount](/tools/docker/host-mount.png)
+
+Mount the host's Docker socket into the workspace:
 
 ```sh{2,3}
 docker run \
   -v /var/run/docker.sock:/var/run/docker.sock:ro \
   -e WS_DOCKER_ENABLE_CLIENT=1 \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
+
+To give the workspace access to the socket, match its group as [Docker Group](#docker-group) shows.
 
 ### 4. Connect to a Remote Host *(TCP)*
 
 ![TCP](/tools/docker/tcp.png)
 
-Assuming you have access to a remote host running docker, you can set the value of
-`DOCKER_HOST` as follows *(replace `<remote>` with your node's IP)*:
+With access to a remote host that runs Docker, set `DOCKER_HOST` *(replace `<remote>` with your node's IP)*:
 
 ```sh{2}
 docker run \
   -e DOCKER_HOST=tcp://<remote>:2375 \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
-Alternately, you can run the command above [securely][protect-tls] using port `2376` and
-pregenerated key-pairs.
+To connect [securely][protect-tls] instead, use port `2376` with pregenerated key pairs.
 
 ### 5. Connect to a Remote Host *(SSH)*
 
 ![SSH](/tools/docker/ssh.png)
 
-Assuming you have SSH access to a [remote host running docker][protect-ssh], you can set
-the value of `DOCKER_HOST` as follows
+With SSH access to a [remote host that runs Docker][protect-ssh], set `DOCKER_HOST`
 *(replace `<remote>` and `<user>` with your node's IP and username)*:
 
 ```sh{2}
 docker run \
   -e DOCKER_HOST=ssh://<user>@<remote> \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
-The workspace's SSH client reuses each connection for 10 minutes *(`ControlPersist 10m`)*, so
-repeated Docker commands over SSH connect quickly.
-See the [`ssh`](/tools/ssh) page.
+The workspace's SSH client reuses each connection for 10 minutes *(`ControlPersist 10m`)*,
+so repeated Docker commands over SSH connect quickly.
 
-### 6. Use [`docker:dind`][dind] Running on a Remote Host
+### 6. Use `docker:dind` on a Remote Host
 
 ![DIND](/tools/docker/dind.png)
 
-This process is split into 3 steps:
+Run the [`docker:dind`][dind] image in three steps:
 
 1. Create a shared network for both containers *(workspace and dind)*:
 
@@ -140,8 +139,8 @@ This process is split into 3 steps:
     docker network create dind
     ```
 
-2. Run the *dind* container without TLS shares. Follow these [instructions][protect-tls]
-    if you decide to use TLS.
+2. Run the *dind* container without TLS *(`DOCKER_TLS_CERTDIR=""`)*.
+    To use TLS, follow these [instructions][protect-tls] instead.
 
     ```sh
     docker run \
@@ -153,61 +152,44 @@ This process is split into 3 steps:
       docker:dind
     ```
 
-3. Finally, run the workspace container using the same network as above.
+3. Run the workspace container on the same network:
 
     ```sh
     docker run \
       -e DOCKER_HOST=tcp://dind:2375 \
       -v workspace:/workspace \
       --net dind \
-      ghcr.io/kloudkit/workspace:v0.5.3
+      ghcr.io/kloudkit/workspace:v0.6.0
     ```
 
-::: info NOTE
-Feel free to use the `docker context` command instead of the `DOCKER_HOST` environment
-variable from within a running workspace.
+::: info
+From a running workspace, you can use the `docker context` command instead of the `DOCKER_HOST` environment variable.
 :::
 
-## Automatically Configure the Docker Daemon
+## Docker Group
 
-Methods `#1` and `#2` need `WS_DOCKER_ENABLE_CLIENT`: without it, the Docker daemon never
-starts.
-With method `#3` the daemon stays off, and the variable only checks that the socket's group
-matches the `docker` group:
+By default, the `docker` group in the workspace has the ID `990`.
+With a mounted host socket, the workspace needs access to the host's `docker.sock`.
 
-```sh{2}
-docker run \
-  -e WS_DOCKER_ENABLE_CLIENT=1 \
-  ghcr.io/kloudkit/workspace:v0.5.3
-```
-
-### Docker Group
-
-By default, the group assigned to `docker` is `990`.
-When working with host mounts, it's essential to ensure that the `docker.sock` file on
-the host is accessible within the container.
-
-To make sure the container has the necessary group access to the Docker socket, you can
-use the `--group-add` flag.
-This allows you to match the group from the host system to the group inside the
-container, ensuring the container has the appropriate permissions, as seen below:
+Add the socket's group to the container with the `--group-add` flag,
+so the group on the host matches a group inside the container:
 
 ```sh{2}
 docker run \
   --group-add=8888 \
   -v /var/run/docker.sock:/var/run/docker.sock:ro \
   -e WS_DOCKER_ENABLE_CLIENT=1 \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
-Make sure to replace `8888` with the appropriate group ID from your host system.
-You can find the group ID associated with `docker.sock` by checking the permissions:
+Replace `8888` with the group ID of `docker.sock` on your host.
+To find it, list the socket with numeric IDs and read the fourth column:
 
 ```sh
-ls -l /var/run/docker.sock
+ls -ln /var/run/docker.sock
 ```
 
-The same can be achieved in Kubernetes by using `supplementalGroups`:
+In Kubernetes, add the group with `supplementalGroups`:
 
 ```yaml{3,4}
 # ...

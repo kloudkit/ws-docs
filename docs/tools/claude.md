@@ -1,5 +1,5 @@
 ---
-description: "Claude Code comes pre-installed in Kloud Workspace as both a system-wide CLI and a VS Code extension, ready to use out of the box."
+description: "Claude Code is preinstalled in Kloud Workspace as both a system-wide CLI and a VS Code extension, with a themed statusline and managed settings."
 see:
   - name: Extensions
     link: /editor/extensions
@@ -11,13 +11,27 @@ see:
 
 ![Claude Code logo](/icons/claude.svg){.doc-image}
 
-Claude Code is pre-installed in Kloud Workspace as both a CLI tool and a VS Code
-extension, ready to use out of the box.
+Claude Code is preinstalled in Kloud Workspace as both a CLI tool and a VS Code extension.
 
 - CLI available system-wide.
-- VS Code extension pre-installed.
+- VS Code extension preinstalled, running the same `claude` binary as the CLI.
 - Powerline-style statusline with the same [terminal theming](/editor/theme-and-fonts).
-- Managed default settings with security-conscious permissions.
+- Managed default settings.
+
+## Sign In
+
+The image ships no Claude credentials, so sign in once from a terminal:
+
+```sh
+claude auth login
+```
+
+It prints a sign-in link.
+Open it, sign in, and paste the code back into the terminal if it asks for one.
+
+`claude auth login` uses a Claude subscription by default; add `--console` to use an Anthropic
+Console account with API usage billing instead.
+Check the result with `claude auth status`.
 
 ## CLI
 
@@ -30,8 +44,7 @@ claude --version
 
 ## Statusline
 
-A custom Powerline-style bar is rendered vi whenever Claude Code is active in the
-terminal.
+A custom Powerline-style bar is rendered whenever Claude Code is active in the terminal.
 It uses the **Catppuccin Frappe** color palette to match the workspace theme.
 
 The statusline displays the following segments:
@@ -43,25 +56,8 @@ The statusline displays the following segments:
 - **Context window usage:** a visual progress bar showing how much of the context window
   is consumed.
 
-Every segment except the directory can be hidden with an environment variable *(see below)*.
-To disable the statusline entirely, set `WS_CLAUDE_STATUSLINE_DISABLE` to `true`.
-
-## Managed Settings
-
-Kloud Workspace ships managed settings for Claude Code in
-`/etc/claude-code/managed-settings.json`:
-
-| Setting       | Value                                    |
-| ------------- | ---------------------------------------- |
-| **Deny**      | Reading `./.env`                         |
-| **Telemetry** | Off *(`CLAUDE_CODE_ENABLE_TELEMETRY=0`)* |
-
-::: info
-Managed settings take precedence over your own `~/.claude/settings.json`.
-The file is owned by `root` and is reset when the container is recreated.
-:::
-
-## Environment Variables
+Every segment except the directory can be hidden with an environment variable.
+These variables control the statusline:
 
 - <EnvVar group="claude" name="statusline_disable" />
 - <EnvVar group="claude" name="statusline_hide_context_bar" />
@@ -70,3 +66,20 @@ The file is owned by `root` and is reset when the container is recreated.
 - <EnvVar group="claude" name="statusline_hide_model" />
 - <EnvVar group="claude" name="statusline_script" />
 - <EnvVar group="claude" name="statusline_shell" />
+
+To disable the statusline entirely, set `WS_CLAUDE_STATUSLINE_DISABLE` to `true`.
+
+## Managed Settings
+
+Kloud Workspace ships managed settings for Claude Code in
+`/etc/claude-code/managed-settings.json`:
+
+| Setting                  | Value                                    |
+| ------------------------ | ---------------------------------------- |
+| **Deny**                 | Reading `./.env`                         |
+| **OpenTelemetry export** | Off *(`CLAUDE_CODE_ENABLE_TELEMETRY=0`)* |
+
+::: info
+Managed settings take precedence over your own `~/.claude/settings.json`.
+The file is owned by `root` and is reset when the container is recreated.
+:::

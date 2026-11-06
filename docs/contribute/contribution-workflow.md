@@ -1,6 +1,8 @@
 ---
 description: "How a change reaches Kloud Workspace: branches, pull requests, commit messages and checks."
 see:
+  - name: Contribute
+    link: /contribute/
   - name: Development Environment
     link: /contribute/development-environment
   - name: Code of Conduct
@@ -8,6 +10,8 @@ see:
 ---
 
 # Contribution Workflow
+
+Send a change as a pull request from a `feature/<name>` branch to `main`.
 
 ::: tip
 Everyone taking part follows the [Code of Conduct](/contribute/code-of-conduct).
@@ -51,7 +55,6 @@ Run the linters before you push:
 pre-commit run --all-files
 ```
 
-CI runs the same lint and build when a branch is pushed to the repository.
-It does not run on pull requests from forks, so run the checks locally before you open one.
+CI runs the same lint and build on every pull request, including pull requests from forks.
 
 Keep each pull request small and focused on one change.

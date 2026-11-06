@@ -1,10 +1,12 @@
 ---
-description: Project files and secrets from a durable seed directory onto the workspace filesystem on every boot, within an ownership boundary.
+description: Copy files and secrets from a durable seed directory onto the workspace filesystem when a new container starts, limited to the paths you own.
 see:
   - name: Secrets
     link: /settings/secrets
   - name: Autoload Scripts
     link: /settings/autoload-scripts
+  - name: Storage
+    link: /editor/storage
 ---
 
 # Seed
@@ -15,20 +17,52 @@ Seed copies files and secrets from a durable source directory onto the filesyste
 new container starts.
 Fill the source once, and every new container gets the files, with no hand-run setup scripts.
 
-One source tree carries two tiers: plain **bare files** copied verbatim, and a **`.seed.yaml`
-manifest** that layers merge, templating, and secrets over them.
-
-## At a Glance
-
-- **Source:** <EnvVar group="seed" name="source" /> *(default `~/.ws/seed.d`)*. An empty or absent
-  directory is a clean no-op.
-- **Manifest:** a single `<source>/.seed.yaml` at the source root, excluded from the bare mirror.
+- **Source:** <EnvVar group="seed" name="source" /> *(default `~/.ws/seed.d`)*.
+  An empty or absent directory does nothing.
+- **Contents:** plain **bare files**, copied as they are, and one **`.seed.yaml` manifest** at the
+  source root that adds merge, templating and secrets on top of them.
 - **Runs:** when a new container starts, after directory setup, CA trust and the 1Password
   import, and before the other startup scripts *(yours included)*.
 - **Writes:** only where you own the destination, anywhere your account owns the nearest existing
   parent directory.
 
-## Bare Files: FS-Rooted Mirror
+## Seed Your First Files
+
+This source gives every new container an SSH config and a line in `~/.zshenv`:
+
+```text
+~/.ws/seed.d/.seed.yaml
+~/.ws/seed.d/home/kloud/.ssh/config
+```
+
+Create both from a workspace terminal, then apply them:
+
+```sh
+mkdir -p ~/.ws/seed.d/home/kloud/.ssh
+
+cat > ~/.ws/seed.d/home/kloud/.ssh/config <<'EOF'
+Host github.com
+  User git
+EOF
+
+cat > ~/.ws/seed.d/.seed.yaml <<'EOF'
+version: v1
+
+seeds:
+  ~/.zshenv:
+    op: lineinfile
+    content: "export EDITOR=vim\n"
+EOF
+
+ws-cli seed apply
+```
+
+`~/.ssh/config` is a bare file: its path under the source is its path on disk.
+`~/.zshenv` comes from the manifest, which keeps the `export EDITOR=` line in place and never adds
+it twice.
+Keep `~/.ws` on a volume, and every new container applies the same source at startup.
+
+## Bare Files
 
 The path under the source maps directly onto the root filesystem:
 
@@ -38,8 +72,8 @@ The path under the source maps directly onto the root filesystem:
 ```
 
 A home file therefore lives at `seed.d/home/kloud/<path>`, not at the source root.
-Bare files copy verbatim with mode `644` *(new directories `744`)* and never write if the
-destination already exists, unless forced.
+Bare files are copied as they are, with mode `644` *(new directories `744`)*, and never written
+if the destination already exists, unless [forced](#write-if-absent-and-force).
 Files the image already ships, such as `~/.gitconfig`, are skipped for that reason.
 
 ## The Manifest
@@ -62,27 +96,39 @@ seeds:
 
   ~/.zshenv:
     op: lineinfile
-    content: "export EDITOR=nano\n"
+    content: "export EDITOR=vim\n"
 ```
 
-The `seeds:` map is **keyed by destination**, `~`, `${ws_home}`, `${ws_server_root}` and
-`${ws_user}` expand.
+The `seeds:` map is **keyed by destination**.
+In a key, `~` and the variables `${ws_home}` *(your home directory)*, `${ws_user}` *(your user
+name)* and `${ws_server_root}` *(the workspace root, `WS_SERVER_ROOT`)* expand.
 Other `$VAR` references in a key expand from the environment too, and an unset one becomes empty.
 
-The source for each entry is implied by that key: the **rhyming mirror file**
+Each entry's source follows from its key: the file at the matching path under the source
 *(`<source>/<dest-without-leading-slash>`)*, or an inline `content:` literal.
 Outside `secret: true` entries, there is no `file:` pointer inside `seeds:`.
 
 Each entry must carry at least one behavior: `secret`, `mode`, a non-`copy` `op`, `template` or
 an inline `content:`.
-A plain copy of a mirror file belongs in the mirror tier, so an entry with none of these is a parse
-error.
+A plain copy needs no entry, because a bare file already does that, so an entry with none of these
+is a parse error.
 
 When a destination is produced by both a bare file and a manifest entry, the manifest entry wins.
+
+## Write-If-Absent and Force
+
+The default is **write-if-absent**: an entry writes only when the destination is missing.
+Paths that do not persist get their files again in every new container, and a file you edited on
+a persistent volume is kept.
+To overwrite an existing destination, set `force: true` on the entry or pass `--force` to apply
+everything again.
+For `merge`, `force` gates the merge too: without it, an existing destination is left alone.
 
 ## Operations
 
 `op` is one of `copy` *(default)*, `merge`, `append`, `prepend`, `block` or `lineinfile`.
+
+### Merge
 
 `merge` deep-merges structured data, with the format inferred from the destination extension
 *(`.json`, `.yaml`, `.toml`)*.
@@ -96,17 +142,19 @@ seeds:
     content: '{"telemetry": false}'
 ```
 
+### Append and Prepend
+
 `append` and `prepend` add `content` to the end or start of the destination.
 
 ::: warning
 
-`append` and `prepend` follow the same **write-if-absent** rule as every entry
-*(see [Force and Ephemerality](#force-and-ephemerality))*: an existing destination is skipped unless forced.
+`append` and `prepend` follow the same [write-if-absent](#write-if-absent-and-force) rule as every
+entry: an existing destination is skipped unless forced.
 
-Forced, they re-apply on every boot *(**naive, not idempotent**)*, so the content is added again each
-time and accumulates *(if a persistent volume is mounted)*.
+Forced, they apply again in every new container and add the content each time, so it piles up
+*(if a persistent volume is mounted)*.
 
-To add a single line idempotently, use [`op: lineinfile`](#managed-lines); to manage a region, use
+To add a single line only once, use [`op: lineinfile`](#managed-lines); to manage a region, use
 [`op: block`](#managed-blocks).
 
 :::
@@ -115,21 +163,21 @@ To add a single line idempotently, use [`op: lineinfile`](#managed-lines); to ma
 
 `op: block` manages a marked region inside a file.
 
-It wraps `content` between two marker lines and reconciles that block on every boot, idempotently,
-even when the content changes:
+It wraps `content` between two marker lines and updates that block in place each time seed runs,
+without duplicating it, even when the content changes:
 
 ```yaml
 seeds:
   ~/.zshenv:
     op: block
-    content: "export EDITOR=nano\n"
+    content: "export EDITOR=vim\n"
 ```
 
 The first apply appends the block and inserts the markers for you:
 
 ```text
 # >>> ws-seed >>>
-export EDITOR=nano
+export EDITOR=vim
 # <<< ws-seed <<<
 ```
 
@@ -139,9 +187,10 @@ duplicates and tracks content changes.
 You never write the markers by hand.
 A missing file is created; an existing file keeps its content and gains the block at the end.
 
-`block` ignores `force`: it is safe to re-run, and rewrites the file only when the block's contents
-change. Malformed markers *(a begin without an end, or markers out of order)* are a hard error that
-leaves the destination unchanged.
+`block` ignores `force`: it is safe to run again, and rewrites the file only when the block's
+contents change.
+Malformed markers *(a begin without an end, or markers out of order)* are a hard error that leaves
+the destination unchanged.
 
 The marker text is fixed, but its comment prefix defaults to `#` and is set per entry with `comment`
 for files where `#` is not a comment:
@@ -161,30 +210,33 @@ module.exports = { telemetry: false }
 ```
 
 `block` is plain text and does not infer a file's comment syntax; `comment` is valid only with
-`op: block`. For structured files, prefer `merge` over a marked block.
+`op: block`.
+For structured files, prefer `merge` over a marked block.
 
 ### Managed Lines
 
-`op: lineinfile` manages a single line, matched by its key, idempotently:
+`op: lineinfile` manages a single line, matched by its key, without ever duplicating it:
 
 ```yaml
 seeds:
   ~/.zshenv:
     op: lineinfile
-    content: "export EDITOR=nano\n"
+    content: "export EDITOR=vim\n"
 ```
 
-The key is the text up to and including the first `=` *(here `export EDITOR=`)*. On each apply a
-line with that key is replaced in place; if none exists the line is appended, creating the file if
-needed. The content is exactly one line, so an interior newline is a hard error *(use `op: block`
-for a multi-line region)*.
+The key is the text up to and including the first `=` *(here `export EDITOR=`)*.
+On each apply, a line with that key is replaced in place; if none exists, the line is appended,
+creating the file if needed.
+The content is exactly one line, so an interior newline is a hard error *(use `op: block` for a
+multi-line region)*.
 
-Like `block`, `lineinfile` ignores `force` and rewrites the file only when the line changes. It is
-the idempotent counterpart to `append` for `key=value` files such as `~/.zshenv`.
+Like `block`, `lineinfile` ignores `force` and rewrites the file only when the line changes.
+It is the counterpart to `append` that never adds a line twice, for `key=value` files such as
+`~/.zshenv`.
 
 ## Templating
 
-Set `template: true` to substitute a closed variable set in the source before writing:
+Set `template: true` to fill in a fixed set of variables in the source before writing:
 
 ```yaml
 seeds:
@@ -193,38 +245,39 @@ seeds:
     content: "HOME=${ws_home}\nTOKEN=${secrets.GH_TOKEN}\n"
 ```
 
-The available tokens are `${ws_home}`, `${ws_user}`, `${ws_server_root}` and `${secrets.NAME}`. An
-unknown `${...}` token is a hard error. There is no expression language and no escape syntax. To
-emit a literal `${...}`, leave `template` unset.
+The available variables are `${ws_home}`, `${ws_user}`, `${ws_server_root}` and `${secrets.NAME}`.
+An unknown `${...}` variable is a hard error.
+There is no expression language and no escape syntax.
+To emit a literal `${...}`, leave `template` unset.
 
 ## Secrets
 
-Two secret shapes share one ciphertext format, both produced by
+Seed decrypts two kinds of secret, both encrypted in the same format by
 [`ws-cli secrets encrypt`](/settings/secrets):
 
 - **Inline values:** live in the top-level `secrets:` map *(`NAME: <ciphertext>` or `NAME: file:<path>`)*
   and are referenced only through `${secrets.NAME}` in a `template: true` entry.
-- **Whole-file secrets:** set `secret: true` on the entry. Its source
-  *(the rhyming mirror ciphertext file, or an inline `content:` ciphertext)* is decrypted and
-  written as plaintext.
+- **Whole-file secrets:** set `secret: true` on the entry.
+  Its source *(the encrypted file at the matching path under the source, or an inline `content:`
+  ciphertext)* is decrypted and written as plaintext.
 
-A secret-bearing output is forced to mode `0600`, and its cleartext never reaches logs.
-A secret that will not decrypt *(missing key, corrupt ciphertext)* is skipped with a warning and
-nothing is written, never the ciphertext, never a partial.
+A file that holds a secret is always written with mode `0600`, and its cleartext never reaches the
+logs.
+A secret that does not decrypt *(missing key, corrupt ciphertext)* is skipped with a warning, and
+nothing is written: neither the ciphertext nor a partial file.
 
 A manifest with no secrets needs no key.
 
 ::: warning
 
-Keep ciphertext files **outside** the mirror tree unless a manifest entry claims them.
-An undeclared encrypted file in the source is copied verbatim as ciphertext, exactly like any other
-bare file.
+Keep encrypted files **out of** the bare-file paths unless a manifest entry claims them.
+An encrypted file with no entry is copied as it is, still encrypted, like any other bare file.
 
 :::
 
 ::: info
 
-To change the master key, run [`ws-cli seed rotate`](#apply-and-inspect) — it re-encrypts every
+To change the master key, run [`ws-cli seed rotate`](#apply-and-rotate): it re-encrypts every
 managed ciphertext in place under the new key.
 
 :::
@@ -232,40 +285,35 @@ managed ciphertext in place under the new key.
 ## Ownership Boundary
 
 Seed writes only to destinations you own, anywhere your account owns the nearest existing parent
-directory: `~/.ssh`, `~/.ws/startup.d`, dotfiles, a `/opt/mine` you created. Anything else is skipped
-with a warning.
+directory: `~/.ssh`, `~/.ws/startup.d`, dotfiles, a `/opt/mine` you created.
+Anything else is skipped with a warning.
 
-There is no `sudo` and no escalation: a location you do not own simply fails the check, which is also
-exactly where you could not write by hand.
+Seed never uses `sudo` or any other escalation: a location you do not own fails the check, which is
+also exactly where you could not write by hand.
 
 ::: tip
 
-A write into `~/.ws/{startup.d,ca.d,session.d,features.d}` is allowed and emits a notice. Seeding
-your own startup script is a legitimate use. Mark it executable if it needs to run.
+A write into `~/.ws/{startup.d,ca.d,session.d,features.d}` is allowed and logs a notice, so you can
+seed your own startup scripts.
+Bare files are written with mode `644`, so give a script `mode: "0o755"` in the manifest to make it
+executable.
+Write the `0o` prefix: `"0755"` is read as decimal and rejected.
 
 :::
 
-## Force and Ephemerality
+## Apply and Rotate
 
-The default is **write-if-absent**: an entry writes only when the destination is missing.
-This re-seeds ephemeral paths every boot for free and preserves a hand-edited persistent file.
-To overwrite an existing destination, set `force: true` on the entry or pass `--force` to re-apply
-everything.
-For `merge`, `force` gates the merge too, and without it an existing destination is left alone.
-
-## Apply and Inspect
-
-The boot hook runs `ws-cli seed apply` with no arguments.
-Run it by hand to re-project, or scope it to specific destinations:
+At startup, the workspace runs `ws-cli seed apply` with no arguments.
+Run it yourself to apply the source again, or name the destinations to apply:
 
 ```sh
-# Project everything
+# Apply everything
 ws-cli seed apply
 
-# Re-apply, overwriting existing destinations
+# Apply again, overwriting existing destinations
 ws-cli seed apply --force
 
-# Project a single destination
+# Apply a single destination
 ws-cli seed apply ~/.gitconfig
 
 # List the resolved plan
@@ -274,8 +322,8 @@ ws-cli seed ls
 
 A named destination matches its entry regardless of `~`, `$HOME` or absolute form.
 
-Rotate the master key across every managed ciphertext — the `secrets:` map, its `file:` targets, and
-every `secret: true` source — in one pass:
+Rotate the master key across every managed ciphertext in one pass: the `secrets:` map, its `file:`
+targets, and every `secret: true` source.
 
 ```sh
 # Re-encrypt everything from the current key to a new one
@@ -284,10 +332,11 @@ ws-cli seed rotate --master <current> --new-master <new>
 
 ::: warning
 
-`seed rotate` rewrites ciphertext **in place** — there is no dry-run and no backup. It fails closed:
-every secret is decrypted under the current key *before* anything is written, so a wrong key changes
-nothing.
+`seed rotate` rewrites ciphertext **in place**, with no dry run and no backup.
+It fails closed: every secret is decrypted under the current key *before* anything is written, so a
+wrong key changes nothing.
 If a run is interrupted while writing, the source holds both old-key and new-key ciphertext, and
-`seed rotate` refuses it under either key; re-encrypt the items still under the old key by hand.
+`seed rotate` refuses it under either key.
+Re-encrypt the items still under the old key by hand.
 
 :::

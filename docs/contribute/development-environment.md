@@ -1,6 +1,8 @@
 ---
 description: "Set up a local checkout of the Kloud Workspace docs, ws-cli or the feature store, and run their checks."
 see:
+  - name: Contribute
+    link: /contribute/
   - name: Contribution Workflow
     link: /contribute/contribution-workflow
 ---
@@ -68,8 +70,6 @@ go test ./...
 go vet ./...
 pre-commit run --all-files
 ```
-
-All output goes through `internals/styles`, which holds the color palette and the table styles.
 
 ## Feature Store *(ws-feature-store)*
 

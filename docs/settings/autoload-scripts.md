@@ -1,8 +1,12 @@
 ---
-description: "Personalize Kloud Workspace startup with autoload scripts that run your own installation and configuration steps beyond the defaults."
+description: "Run your own scripts when a new Kloud Workspace container starts, and load your own functions and aliases in every shell session."
 see:
   - name: Terminal
     link: /editor/terminal
+  - name: Aliases
+    link: /editor/aliases
+  - name: Seed
+    link: /settings/seed
   - name: ws-cli
     link: /tools/ws-cli
   - name: TLS & Certificates
@@ -11,47 +15,85 @@ see:
 
 # Autoload Scripts
 
-While we try to take care of most installations and configurations out of the box, we
-understand that there are instances where users prefer to personalize their setup with
-additional installation and configurations.
-Therefore, in addition to the predefined entrypoint scripts, we offer the ability to add
-users defined entrypoint scripts to tailor the workspace experience.
+Run your own installation and configuration steps when a new container starts, and load your own
+functions and aliases in every shell session.
 
-::: info TIP
-Before creating additional entrypoint scripts, check whether the objective you intend to
-achieve is already covered by a built-in [configuration template](/tools/ws-cli#ws-cli-template)
-or an [installable feature](/editor/features). Many common customizations are handled
-automatically through these mechanisms.
+- **Startup scripts:** run once, when a new container starts, [read more](#startup-scripts).
+- **Session scripts:** sourced by every new shell session, [read more](#session-scripts).
+
+::: tip
+Before you write a script, check whether a built-in [configuration template](/tools/ws-cli#ws-cli-template)
+or an [installable feature](/editor/features) already covers it.
 :::
 
-Startup scripts are defined at two levels:
+## Startup Scripts
 
-- **Entrypoint:** loaded once during the initial startup process, [read more](#entrypoint).
-- **Session:** loaded for every new shell session, [read more](#session).
+Save a script as `startup.d/01-git.sh`:
 
-## Entrypoint
+```bash
+#!/usr/bin/env bash
 
-On startup, the predefined entrypoint scripts stored in `/usr/libexec/workspace/startup.d/*`
-are executed in lexicographical order to initialize the workspace environment.
+ws-cli log info "Configuring Git"
 
-To add additional functionality during startup, place executable scripts in
-`~/.ws/startup.d/` *(i.e. `/home/kloud/.ws/startup.d`)*.
+git config --global pull.rebase true
+```
+
+Make it executable and mount the folder at `~/.ws/startup.d/` *(i.e. `/home/kloud/.ws/startup.d`)*:
+
+```sh
+chmod +x startup.d/01-git.sh
+
+docker run \
+  -v ./startup.d:/home/kloud/.ws/startup.d \
+  ghcr.io/kloudkit/workspace:v0.6.0
+```
+
+`ws-cli log` writes the message in the same format as the built-in startup scripts.
+If `~/.ws` is on a volume, a script you save in `~/.ws/startup.d/` from a workspace terminal runs in
+the next new container.
 The directories are created automatically on startup.
 
-These scripts are executed as follows:
+### When They Run
+
+Startup scripts run once, when a new container starts; restarting the container does not run them
+again.
+They run after the built-in startup scripts in `/usr/libexec/workspace/startup.d/`, which are
+executed in lexicographical order to initialize the workspace environment.
+With `WS_AUTH_DISABLE_SUDO` set, `sudo` is already disabled when your scripts run.
+
+Your scripts are executed as follows:
 
 - Only scripts with an executable file permission *(i.e. `+x`)* are considered.
 - Executed in sorted order of their full path, files in subdirectories included.
-    The sort ignores punctuation, so `10-a` runs before `1-b`; use zero-padded prefixes such as `01-`.
+  The sort ignores punctuation, so `10-a` runs before `1-b`; use zero-padded prefixes such as `01-`.
 - Symbolic links are skipped.
 - Scripts are executed as the `kloud` user.
 
+### When a Script Fails
+
+A script that exits with a non-zero status is logged as
+`Autoloading [<script>] failed with status [<code>]`, and startup continues with the next script.
+
+To stop instead, set:
+
+- <EnvVar group="startup" name="fail_on_error" />
+
+The first of your scripts that fails then stops the container, and the scripts after it do not run.
+
+### Where the Output Goes
+
+Everything a script prints, on `stdout` and `stderr`, goes to the container log *(`docker logs`)*
+and to `/var/log/workspace/workspace.log`.
+Read it from a workspace terminal with:
+
+```sh
+ws-cli logs
+```
+
 ### Available Languages
 
-Feel free to write your entrypoint scripts in the language of your choice, considering it
-is installed in the workspace.
-
-By default, the workspace supports the following languages *(defined using shebangs)*:
+Write your scripts in any language installed in the workspace, chosen with the shebang.
+By default, the workspace supports the following languages:
 
 - **Ansible:** `#!/usr/bin/env -S ansible-playbook`
 - **Bash:** `#!/usr/bin/env bash`
@@ -61,39 +103,35 @@ By default, the workspace supports the following languages *(defined using sheba
 - **Python:** `#!/usr/bin/env python`
 - **zsh:** `#!/usr/bin/env zsh`
 
+Scripts without a shebang run under `bash`.
+
 ### Environment
 
-Entrypoint scripts run through `zsh`, so every script, whatever its language, inherits the
-exports from `/etc/zsh/zshenv` and from `~/.zshenv`.
+Startup scripts run through `zsh`, so every script, whatever its language, inherits the exports
+from `/etc/zsh/zshenv` and from `~/.zshenv`.
 This includes the [custom CA](/settings/tls) variables, secrets imported from 1Password, and
 any `export` that an earlier script appended to `~/.zshenv`.
 When 1Password secrets are imported, `~/.zshenv` is left read-only; run `chmod u+w ~/.zshenv`
 before you append to it.
 
-Scripts without a shebang run under `bash`.
+## Session Scripts
 
-### Helper Functions
+Every new shell session sources the predefined `/usr/share/ohmyzsh/custom/*.zsh` files in
+lexicographical order, then your `.zsh` files in `~/.ws/session.d/`
+*(i.e. `/home/kloud/.ws/session.d`)*.
+Save an alias in `~/.ws/session.d/aliases.zsh`, and every new terminal has it:
 
-You are welcome to utilize the `log` command of `ws-cli` to generate messages that align
-with the format of our logging system.
-Refer to the specific [documentation for `ws-cli`](/tools/ws-cli) for more details.
+```sh
+alias gs="git status"
+```
 
-## Session
-
-Similar to entrypoint scripts, the workspace will load startup scripts for every new shell
-session.
-On shell startup, the predefined `/usr/share/ohmyzsh/custom/*.zsh` files are sourced in
-lexicographical order.
-
-To add additional functionality during startup, place `.zsh` files in
-`~/.ws/session.d/` *(i.e. `/home/kloud/.ws/session.d`)*.
 The directories are created automatically on startup.
 
-These scripts are executed as follows:
+Session scripts are loaded as follows:
 
-- Both executable and not executable scripts are considered.
-- Only `.zsh` are considered.
+- Both executable and non-executable scripts are considered.
+- Only `.zsh` files are considered.
 - Executed in lexicographical order.
 - Scripts are executed as the `kloud` user.
-- Scripts are executed using `source`, therefore any functions, `alias`s or `export`s will
-    be available during the current session.
+- Scripts are executed using `source`, so any functions, `alias`es or `export`s are available in
+  the current session.

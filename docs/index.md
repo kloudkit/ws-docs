@@ -1,12 +1,12 @@
 ---
-description: "A batteries-included, pre-configured development workspace inside a Docker container — run customized VS Code in the browser or over SSH."
+description: "A batteries-included, preconfigured development workspace inside a Docker container: run a customized VS Code in the browser or over SSH."
 layout: home
 
 hero:
   name: Kloud Workspace
   text: Configured development
   tagline: >-
-    🔋 A batteries-included pre-configured development
+    A batteries-included, preconfigured development
     workspace inside a Docker container
 
   image:
@@ -15,11 +15,11 @@ hero:
 
   actions:
     - theme: brand
-      text: Getting Started 🚀
+      text: Getting Started
       link: /pages/getting-started
 
     - theme: alt
-      text: Documentation 📚
+      text: Documentation
       link: /pages/
 
     - theme: alt

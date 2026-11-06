@@ -20,7 +20,6 @@ export default {
   '/': [
     { text: 'Introduction', link: '/pages' },
     { text: 'Getting Started', link: '/pages/getting-started' },
-    { text: 'Changelog', link: '/changelog' },
     {
       text: 'Get Involved',
       collapsed: true,
@@ -35,8 +34,9 @@ export default {
         { text: 'Authentication', link: '/editor/authentication' },
         { text: 'Extensions', link: '/editor/extensions' },
         { text: 'Features', link: '/editor/features' },
+        { text: 'Metrics', link: '/editor/metrics' },
         { text: 'Port Forwarding', link: '/editor/port-forwarding' },
-        { text: 'Settings', link: '/editor/settings' },
+        { text: 'Editor Settings', link: '/editor/settings' },
         { text: 'Storage', link: '/editor/storage' },
         { text: 'Terminal', link: '/editor/terminal' },
         { text: 'Theme & Fonts', link: '/editor/theme-and-fonts' },
@@ -47,9 +47,9 @@ export default {
       items: [
         { text: 'Autoload Scripts', link: '/settings/autoload-scripts' },
         { text: 'Configuration', link: '/settings/configuration' },
-        { text: 'TLS & Certificates', link: '/settings/tls' },
         { text: 'Secrets', link: '/settings/secrets' },
         { text: 'Seed', link: '/settings/seed' },
+        { text: 'TLS & Certificates', link: '/settings/tls' },
       ]
     },
     {
@@ -73,6 +73,7 @@ export default {
         { text: 'SSH', link: '/tools/ssh' },
         { text: 'ws-cli', link: '/tools/ws-cli' },
       ]
-    }
+    },
+    { text: 'Changelog', link: '/changelog' },
   ]
 }

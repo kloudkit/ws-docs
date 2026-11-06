@@ -1,6 +1,10 @@
 ---
-description: "The Kloud Workspace terminal runs on zsh with a Starship prompt, rich colorization, and sensible defaults for a productive shell."
+description: "The Kloud Workspace terminal: zsh with oh-my-zsh plugins, a Starship prompt, fzf history search and clipboard commands."
 see:
+  - name: Aliases
+    link: /editor/aliases
+  - name: Autoload Scripts
+    link: /settings/autoload-scripts
   - name: Theme & Fonts
     link: /editor/theme-and-fonts
 ---
@@ -9,14 +13,47 @@ see:
 
 ![Terminal logo](/icons/terminal.svg){.doc-image}
 
-The terminal in Kloud Workspace runs on `zsh`, tailored for a seamless and productive
-experience with sensible defaults, rich colorization, and integrated tooling.
+The terminal in Kloud Workspace runs `zsh` with *oh-my-zsh* plugins, a `starship` prompt, `fzf`
+history search, and clipboard commands that reach your browser.
 
-## Components
+## ZSH and Plugins
 
-### Prompt
+The shell is `zsh`, enhanced by the [`oh-my-zsh`][oh-my-zsh] framework.
+A fixed set of *oh-my-zsh plugins* is enabled by default: `1password`, `auto-venv`, `docker`,
+`encode64`, `fzf-history`, `git`, `golang`, `helm`, `kubectl`, `npm`, `python`, `pip`,
+`ssh-agent` and `zsh-autosuggestions`.
 
-The terminal prompt is powered by [`starship`][starship] and blends perfectly with our
+To modify the default set of plugins, set these variables:
+
+- <EnvVar group="zsh" name="plugins" />
+- <EnvVar group="zsh" name="additional_plugins" />
+
+::: code-group
+
+```sh{2} [Override]
+docker run \
+  -e WS_ZSH_PLUGINS="kubectl npm python pip" \
+  ghcr.io/kloudkit/workspace:v0.6.0
+```
+
+```sh{2} [Append]
+docker run \
+  -e WS_ZSH_ADDITIONAL_PLUGINS="laravel" \
+  ghcr.io/kloudkit/workspace:v0.6.0
+```
+
+:::
+
+::: warning
+`WS_ZSH_PLUGINS` replaces the whole default set, including `fzf-history` *(the
+<kbd>Ctrl</kbd>+<kbd>R</kbd> search below)* and `zsh-autosuggestions`.
+List every plugin you want to keep, or use `WS_ZSH_ADDITIONAL_PLUGINS` instead.
+A name that is not an *oh-my-zsh* plugin is skipped without an error.
+:::
+
+## Prompt
+
+The terminal prompt is powered by [`starship`][starship] and matches the workspace's
 [color theme](/editor/theme-and-fonts).
 Modules are shown based on the specific context of the prompt.
 For instance, the Python module appears in a Python project, or while a virtual environment
@@ -24,9 +61,7 @@ is active.
 
 ![Prompt](/editor/terminal/prompt.gif){.doc-image-shadow}
 
-Some users find the descriptive prompt to be too noisy.
-To *opt-out* of some of the prompt modules, you can set any of the following environment variables
-to either `1` or `true`:
+To hide a prompt module, set its variable to either `1` or `true`:
 
 - <EnvVar group="terminal" name="prompt_hide_docker_context" />
 - <EnvVar group="terminal" name="prompt_hide_hostname" />
@@ -35,49 +70,44 @@ to either `1` or `true`:
 - <EnvVar group="terminal" name="prompt_hide_python_version" />
 - <EnvVar group="terminal" name="prompt_hide_user" />
 
-For example, to disable the Docker and Python modules, you could add the following lines
-to your deployment:
+For example, to hide the Docker and Python modules, add the following lines to your deployment:
 
 ```sh{2,3}
 docker run \
   -e WS_TERMINAL_PROMPT_HIDE_DOCKER_CONTEXT=1 \
   -e WS_TERMINAL_PROMPT_HIDE_PYTHON_VERSION=1 \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
-### Colorful Output
+## History Search
 
-Many CLI tools feature colorization by default
-*(matching the [color theme](/editor/theme-and-fonts))*, enhancing your experience with
-improved readability.
+Press <kbd>Ctrl</kbd>+<kbd>R</kbd> to search your shell history with [`fzf`][fzf] *(exact
+substring matches by default)*.
 
-![Ls animation](/editor/terminal/ls.gif){.doc-image-shadow}
+By default, duplicate entries are removed and event numbers are hidden.
+The following environment variables customize the behavior:
 
-![Ip animation](/editor/terminal/ip-a.gif){.doc-image-shadow}
+- <EnvVar group="zsh" name="fzf_history_bind" />
+- <EnvVar group="zsh" name="fzf_history_args" />
+- <EnvVar group="zsh" name="fzf_history_extra_args" />
+- <EnvVar group="zsh" name="fzf_history_remove_duplicates" />
+- <EnvVar group="zsh" name="fzf_history_dates_in_search" />
+- <EnvVar group="zsh" name="fzf_history_event_numbers" />
+- <EnvVar group="zsh" name="fzf_history_end_of_line" />
+- <EnvVar group="zsh" name="fzf_history_query_prefix" />
 
-![Tree animation](/editor/terminal/tree.gif){.doc-image-shadow}
+## Clipboard
 
-![Cat animation](/editor/terminal/cat.gif){.doc-image-shadow}
+The workspace provides clipboard commands that connect the terminal to your browser's clipboard.
 
-::: tip Clickable file paths
-Paths printed as `file://…` URIs are clickable and open the file in the editor.
-Because the workspace runs remotely, they resolve against the remote filesystem —
-so they work in the browser instead of pointing at your local machine.
-:::
-
-### Clipboard
-
-The workspace provides clipboard utilities that bridge the terminal with the browser's
-clipboard.
-
-#### Available Commands
+### Available Commands
 
 - **`pbcopy`**
 - **`pbpaste`**
 - **`xclip`**
 - **`xsel`**
-- **`ws clip copy`**
-- **`ws clip paste`**
+- **`ws-cli clip copy`**
+- **`ws-cli clip paste`**
 
 ```sh
 # Copy to clipboard
@@ -96,65 +126,30 @@ xclip -o | jq .
 ```
 
 ::: info
-All clipboard commands communicate with the editor running in your browser,
-bridging the terminal environment with your native clipboard.
+All clipboard commands communicate with the editor running in your browser, which connects the
+terminal to your native clipboard.
 
 All X11 selections *(primary, secondary, clipboard)* map to the same browser clipboard.
 :::
 
-### ZSH
+## Colorful Output
 
-The standard shell utilized is `zsh`, enhanced by the [`oh-my-zsh`][oh-my-zsh] framework.
-A fixed set of *oh-my-zsh plugins* is enabled by default: `1password`, `auto-venv`, `docker`,
-`encode64`, `fzf-history`, `git`, `golang`, `helm`, `kubectl`, `npm`, `python`, `pip`,
-`ssh-agent` and `zsh-autosuggestions`.
+Many CLI tools color their output by default, in the workspace's
+[color theme](/editor/theme-and-fonts), for easier reading.
 
-To modify the default set of plugins, adjust the `env` variables listed below:
+![Ls animation](/editor/terminal/ls.gif){.doc-image-shadow}
 
-- <EnvVar group="zsh" name="plugins" />
-- <EnvVar group="zsh" name="additional_plugins" />
+![Ip animation](/editor/terminal/ip-a.gif){.doc-image-shadow}
 
-::: code-group
+![Tree animation](/editor/terminal/tree.gif){.doc-image-shadow}
 
-```sh{2} [Override]
-docker run \
-  -e WS_ZSH_PLUGINS="kubectl npm python pip" \
-  ghcr.io/kloudkit/workspace:v0.5.3
-```
+![Cat animation](/editor/terminal/cat.gif){.doc-image-shadow}
 
-```sh{2} [Append]
-docker run \
-  -e WS_ZSH_ADDITIONAL_PLUGINS="laravel" \
-  ghcr.io/kloudkit/workspace:v0.5.3
-```
-
+::: tip Clickable File Paths
+Paths printed as `file://` URIs are clickable and open the file in the editor.
+Because the workspace runs remotely, they resolve against the remote filesystem, so they work in
+the browser instead of pointing at your local machine.
 :::
-
-::: warning
-`WS_ZSH_PLUGINS` replaces the whole default set, including `fzf-history` *(the
-<kbd>Ctrl</kbd>+<kbd>R</kbd> search below)* and `zsh-autosuggestions`.
-List every plugin you want to keep, or use `WS_ZSH_ADDITIONAL_PLUGINS` instead.
-A name that is not an *oh-my-zsh* plugin is skipped without an error.
-:::
-
-### History Search
-
-The workspace includes an interactive history search powered by [`fzf`][fzf].
-Press <kbd>Ctrl</kbd>+<kbd>R</kbd> to search your shell history with `fzf` *(exact substring
-matches by default)*.
-
-By default, duplicate entries are removed and event numbers are hidden for a
-clean, distraction-free list. The following environment variables let you
-customize the behavior:
-
-- <EnvVar group="zsh" name="fzf_history_bind" />
-- <EnvVar group="zsh" name="fzf_history_args" />
-- <EnvVar group="zsh" name="fzf_history_extra_args" />
-- <EnvVar group="zsh" name="fzf_history_remove_duplicates" />
-- <EnvVar group="zsh" name="fzf_history_dates_in_search" />
-- <EnvVar group="zsh" name="fzf_history_event_numbers" />
-- <EnvVar group="zsh" name="fzf_history_end_of_line" />
-- <EnvVar group="zsh" name="fzf_history_query_prefix" />
 
 [fzf]: https://github.com/junegunn/fzf
 [oh-my-zsh]: https://ohmyz.sh

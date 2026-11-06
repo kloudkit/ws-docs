@@ -1,37 +1,35 @@
 ---
-description: "Manage VS Code extensions in Kloud Workspace, including Marketplace terms and how to pre-install extensions in your deployment."
+description: "Preinstalled VS Code extensions in Kloud Workspace, and how to add more from Open VSX, keep them on a volume or use a private gallery."
+see:
+  - name: Editor Settings
+    link: /editor/settings
+  - name: Features
+    link: /editor/features
+  - name: Storage
+    link: /editor/storage
 ---
 
-# VS Extensions
-
-## Official Marketplace
+# Extensions
 
 ![VS Code logo](/icons/vscode.svg){.doc-image}
 
-According to the VS Code Marketplace [Terms of Use](https://aka.ms/vsmarketplace-ToU), you
-may only install and use Marketplace Offerings with Visual Studio Products and Services.
-
-> Marketplace Offerings are intended for use only with Visual Studio Products and
-> Services, and you may only install and use Marketplace Offerings with Visual Studio
-> Products and Services.
-
-For this reason, we use [Open-VSX](https://open-vsx.org), an open source registry for VS
-Code extensions.
+Kloud Workspace comes with [preinstalled extensions](#prepackaged-extensions) and installs more
+from [Open VSX](https://open-vsx.org), an open source registry for VS Code extensions.
 
 ::: info
-Please note that some Visual Studio Code extensions have licenses that restrict their use
-to the official Visual Studio Code builds and therefore do not work with our workspace.
+The VS Code Marketplace [terms of use](https://aka.ms/vsmarketplace-ToU) allow Marketplace
+extensions only with Visual Studio products and services, so the workspace uses Open VSX instead.
+Some extensions are licensed only for the official VS Code builds and do not work in the workspace.
 :::
 
-## Installing User-Defined Extensions
+## Adding Extensions
 
-Recognizing your individual preferences for VS Code extensions, we provide two methods for
-ensuring your workspace retains custom installed extensions across restarts.
+Two methods keep the extensions you add when the container is recreated: install them when a
+container first starts, or keep the extensions directory on a volume.
 
 ::: tip
-Kloud Workspace is always evolving.
-To gain the most from all the new features and upgrades, we suggest using the
-[`"Install at Boot"`](#install-at-boot) method.
+Prefer [Install at Boot](#install-at-boot), so new Kloud Workspace releases can still update the
+preinstalled extensions.
 :::
 
 ### Install at Boot
@@ -46,20 +44,17 @@ At the same first start, it also installs extensions by marketplace ID:
 ```sh{2}
 docker run \
   -e WS_EDITOR_ADDITIONAL_VS_EXTENSIONS="dbaeumer.vscode-eslint esbenp.prettier-vscode" \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
 ### Persistent Extensions
 
-You can take full control of the workspace extensions by using a persistent volume to the
-`~/.local/share/ws-server/extensions` directory.
-When using a *named volume*, the initial content of `~/.local/share/ws-server/extensions`
-from the deployed image is copied over to the volume.
+To take full control of the extensions, mount a volume at `~/.local/share/ws-server/extensions`.
+With a *named volume*, the image's initial content of that directory is copied into the volume.
 
-::: warning NOTICE
-It is important to note that by mounting a volume for the extensions directory, you
-***opt-out*** of receiving future updates, installs, and changes to the prepackaged
-extensions that come with the workspace.
+::: warning
+Mounting a volume on the extensions directory opts you out of future updates, installs and
+changes to the preinstalled extensions that come with the workspace.
 :::
 
 ```sh{3,6}
@@ -69,7 +64,7 @@ docker volume create my-extensions
 
 docker run \
   -v my-extensions:/home/kloud/.local/share/ws-server/extensions \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
 ## Privately Hosted Gallery
@@ -100,9 +95,9 @@ it infringes on the [terms of use](https://aka.ms/vsmarketplace-ToU).
 
 ## Prepackaged Extensions
 
-The table below describes the preinstalled extensions *(some also have customized settings)*
-and their respective license.
+The table lists the preinstalled extensions and their licenses; some also come with customized
+settings.
 
-👏 Many thanks to the amazing developers of these extensions.
+Thanks to the developers of these extensions.
 
 <!--@include: ../partials/extensions.md -->
