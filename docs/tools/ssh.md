@@ -38,7 +38,7 @@ at the first successful match:
 
 - **User-defined:** keys explicitly specified by the user in `~/.ssh/config`
     [see below](#user-overrides).
-- **Global:** keys located directly within the `/etc/ssh/ssh_config` directory:
+- **Global:** keys located directly in `~/.ssh`:
   - `~/.ssh/id_ecdsa`
   - `~/.ssh/id_ed25519`
   - `~/.ssh/id_rsa`

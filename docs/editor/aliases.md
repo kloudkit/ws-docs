@@ -16,12 +16,11 @@ abbreviation.
 This helps to speed up your workflow, reduce typing, and minimize errors by using
 predefined command patterns.
 
-For example, instead of typing `ls -l` every time, you can create an alias `ll` to
-execute it.
+For example, `ll` runs `eza --long --all --classify`.
 
 ::: tip
-If you need to bypass an alias and run the original command, you can prefix it with `\`.
-Using the example above, to use the original `ls` command, use `\ls`.
+To bypass an alias and run the original command, prefix it with `\`.
+For example, `\ls` runs the original `ls` instead of `eza`.
 :::
 
 ## Pre-Configured Aliases
@@ -32,7 +31,38 @@ These aliases are typically loaded from:
 - **Oh My Zsh Plugins:** depending on the active *oh-my-zsh* plugins that defined using
     `WS_ZSH_PLUGINS` *(see [terminal documentation](/editor/terminal) for more details)*.
 - **Kloud Workspace Configuration:** Scripts are defined within Kloud Workspace at
-    `/usr/lib/ohmyzsh/custom`.
+    `/usr/share/ohmyzsh/custom`.
+
+### Workspace Aliases
+
+| Alias           | Runs                                                           |
+| --------------- | -------------------------------------------------------------- |
+| `art`           | `php artisan`                                                  |
+| `cat`           | `bat`                                                          |
+| `cspell`        | `cspell --config=/etc/cspell/config.yaml`                      |
+| `diff`          | `diff --side-by-side --suppress-common-lines --color=auto`     |
+| `ip`            | `ip -c`                                                        |
+| `l`             | `eza --long --all`                                             |
+| `ld`            | `eza -lD` *(directories only)*                                 |
+| `lf`            | `eza -lF` *(files only)*                                       |
+| `lh`            | `eza -dl .* --group-directories-first` *(hidden entries only)* |
+| `ll`            | `eza --long --all --classify`                                  |
+| `ls`            | `eza --color=always`                                           |
+| `lsi`           | `eza --icons`                                                  |
+| `lt`            | `eza -al --sort=modified`                                      |
+| `open-settings` | Opens your user `settings.json` in the editor                  |
+| `pnpx`          | `pnpm dlx` *(shows its help with no arguments)*                |
+| `tree`          | `eza --tree`                                                   |
+
+The *oh-my-zsh* `la` and `lsa` aliases are removed.
+
+### Shell Functions
+
+| Function         | Does                                                                      |
+| ---------------- | ------------------------------------------------------------------------- |
+| `ws`             | With no arguments, changes to the workspace root; otherwise runs `ws-cli` |
+| `open <file>`    | Opens a file in the editor                                                |
+| `help <command>` | Shows a command's help, highlighted                                       |
 
 ## User-Defined Aliases
 

@@ -1,5 +1,5 @@
 ---
-description: "Helm comes pre-installed in Kloud Workspace with auto-completion, the helm diff plugin, and Kubernetes VS Code extensions, ready to use."
+description: "Helm comes preinstalled in Kloud Workspace with shell completion and the Kubernetes VS Code extension, plus plugins through the helm-extras feature."
 see:
   - name: Kind
     link: /tools/kind
@@ -14,9 +14,10 @@ see:
 
 ![Helm logo](/icons/helm.svg){.doc-image width=200px}
 
-Kloud Workspace comes pre-installed with `helm`, auto-completion, the `helm diff` plugin,
-and VS Code extensions for Kubernetes *(which integrates with Helm)*, all ready to use
-right out of the box.
+Kloud Workspace comes preinstalled with `helm`, its shell completion, and the Kubernetes VS Code
+extension *(which integrates with Helm)*.
+The `helm diff` and `helm unittest` plugins come with the
+[`helm-extras` feature](/editor/features#available-features).
 
 ## Persisting Configurations
 

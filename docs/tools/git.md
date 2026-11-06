@@ -63,7 +63,8 @@ automatically configure user-level settings.
 ### Files
 
 - **`~/.ssh/signingkey.pub`:** when this file is present, it activates the automatic
-    setting of `[commit.gpgsign]` and `[commit.tag]` configurations to `true`.
+    setting of `[commit.gpgsign]` and `[tag.gpgsign]` configurations to `true`, signing
+    with SSH keys.
 - **`~/.ssh/signingkey`:** this is the private counterpart to `~/.ssh/signingkey.pub`,
     used in the signing process.
 
@@ -97,10 +98,13 @@ The list is a compilation of useful aliases:
 - **`pull-theirs`:** Executes a forceful `pull`, and resolve conflicts by favoring remote
     changes over local ones.
 - **`uncommit`:** Soft resets the `HEAD` to the previous commit.
-- **`wip`:** Stages all changes and creates a new commit with a `"WIP"` message.
+- **`wip`:** Stages all changes and creates a new commit with a `"🚧 WIP"` message.
 
-To display aliases set for the session in `zsh`, execute the command below:
+To list these aliases, run:
 
 ```sh
-alias | grep git
+git config --get-regexp '^alias\.'
 ```
+
+The *oh-my-zsh* `git` plugin adds its own shell shortcuts *(such as `g` for `git`)*;
+`alias | grep git` lists those.

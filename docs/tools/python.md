@@ -1,5 +1,5 @@
 ---
-description: "Kloud Workspace ships a finely-tuned Python 3.11 toolchain — pip, the fast uv package manager, auto venv activation, ruff, and Pyrefly."
+description: "Kloud Workspace ships a finely-tuned Python 3.13 toolchain — pip, the fast uv package manager, auto venv activation, ruff, and Pyrefly."
 see:
   - name: Features
     link: /editor/features
@@ -14,7 +14,7 @@ finely‑tuned Python toolchain to keep you productive.
 
 Key features provided *out‑of‑the‑box*:
 
-- **Python 3.11** runtime, ready for immediate use.
+- **Python 3.13** runtime, ready for immediate use.
 - Both `pip` and the lightning‑fast `uv` package manager.
 - The `pixi` package manager for conda and PyPI environments.
 - Automatic virtual environment activation when navigating into project directories.
@@ -76,7 +76,7 @@ Our default configuration is *deep and opinionated*:
 - Custom caching and line formatting behavior.
 - Auto-fixing capabilities enabled by default.
 - Fine-tuned rules for indentation width and maximum line length.
-- Targeting *Python 3.11* for compatibility alignment.
+- Targeting *Python 3.13* for compatibility alignment.
 - A carefully selected ruleset that includes and excludes specific error codes from multiple
     linting plugins.
 - Context-aware formatting such as consistent line endings and formatting of docstring code.

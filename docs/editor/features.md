@@ -229,11 +229,12 @@ For more information, visit our [contribution guide](/contribute/).
 
 | Feature                                     | Description                                |   Since   | Store |
 | ------------------------------------------- | ------------------------------------------ | :-------: | :---: |
+| [**`additional-apt →`**](/tools/apt)        | Extra APT packages by name                 | *v0.4.0*  |       |
 | `bun`                                       | Bun JavaScript runtime and package manager | *v0.2.0*  |   ✅   |
-| `cloudflared`                               | Cloudflare tunnel CLI                      |           |   ✅   |
+| [**`cloudflared →`**](/tools/cloudflared)   | Cloudflare tunnel CLI                      |           |   ✅   |
 | `codex`                                     | codex CLI                                  | *v0.0.20* |       |
-| `conan`                                     | Conan CLI and related tools                | *v0.0.21* |       |
-| `continue`                                  | cn CLI and continue extension              |           |       |
+| `conan`                                     | Conan CLI and related tools                |           |       |
+| `continue`                                  | cn CLI and continue extension              | *v0.0.21* |       |
 | [**`cpp →`**](/tools/cpp)                   | C++ and related tools                      |           |   ✅   |
 | `dagger`                                    | dagger.io CLI and SDK                      |           |       |
 | `doctl`                                     | DigitalOcean CLI                           | *v0.2.0*  |       |
