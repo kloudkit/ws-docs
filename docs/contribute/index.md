@@ -1,39 +1,55 @@
 ---
-description: "Get involved with Kloud Workspace — report bugs, improve functionality, and contribute to this open-source development workspace."
+description: "Report a bug, ask a question or send a change to the public Kloud Workspace repositories."
+see:
+  - name: Contribution Workflow
+    link: /contribute/contribution-workflow
+  - name: Development Environment
+    link: /contribute/development-environment
+  - name: Security Advisory
+    link: /contribute/security-advisory
+  - name: Code of Conduct
+    link: /contribute/code-of-conduct
 ---
 
 # Contribute
 
-> Your help is welcome to make **Kloud Workspace** even more stable and feature rich.
+Bug reports, ideas and fixes are welcome.
+Issues and planning for every Kloud Workspace repository live in
+[`kloudkit/ws-meta`](https://github.com/kloudkit/ws-meta).
 
-## How Can I Contribute?
+## Where to Go
 
-Kloud Workspace is an open source project, and so by its very nature, welcomes contributions.
+| You have              | Go to                                                                         |
+| --------------------- | ----------------------------------------------------------------------------- |
+| A bug                 | [Report a bug][bug]                                                           |
+| An idea for a feature | [Request a feature][feature]                                                  |
+| A gap in these docs   | [Request docs][docs]                                                          |
+| A question            | [Ask in Discussions][question]                                                |
+| A vulnerability       | [Report it privately](/contribute/security-advisory), never in a public issue |
 
-- *Did you find a bug?*
-- *Want to improve the functionality?*
-- *Have any idea to improve performance?*
-- *Do you think we forgot something?*
-- *Oh no! A vulnerability?*
+## Send a Change
 
-Either open a GitHub issue or submit a pull request. **All contributions are welcome.**
+These repositories are public and take pull requests:
 
-- [Open an Issue →](https://github.com/kloudkit/ws-meta/issues/new/choose)
-- [Submit a PR →](https://github.com/kloudkit/workspace/compare)
-- [Security Advisory →](https://github.com/kloudkit/ws-meta/security/advisories/new)
+| Repository                                                         | Holds                      |
+| ------------------------------------------------------------------ | -------------------------- |
+| [`ws-docs`](https://github.com/kloudkit/ws-docs)                   | This documentation site    |
+| [`ws-cli`](https://github.com/kloudkit/ws-cli)                     | The `ws-cli` command       |
+| [`ws-feature-store`](https://github.com/kloudkit/ws-feature-store) | The offline feature store  |
+| [`ws-helm`](https://github.com/kloudkit/ws-helm)                   | The Helm chart *(on hold)* |
 
-Ready to contribute?
-Make sure you have a look at our [contribution workflow](/contribute/contribution-workflow)
-and conventions before you get started.
+The workspace image is built from a private repository.
+To change the image, [open an issue](https://github.com/kloudkit/ws-meta/issues/new/choose) in `ws-meta`.
 
-## Documentation
+Read the [contribution workflow](/contribute/contribution-workflow) before you open a pull request.
 
-![VitePress](/icons/vitepress.svg){.doc-image width=150px}
+## Fix a Page
 
-> Documentation was proudly generated using [VitePress](https://vitepress.dev/).
+Most pages have an **Edit this page on GitHub** link at the bottom.
+The generated tables *(environment variables, tools, extensions, commands and the changelog)* come from other
+repositories, so report a fix to them as an issue instead.
 
-To improve an existing documentation page, just click on the **Edit this page on GitHub**
-link on the bottom left.
-
-If you have any suggestions or improvements, please follow the links above to create an
-*Issue* or *PR*.
+[bug]: https://github.com/kloudkit/ws-meta/issues/new?template=bug_report.yaml
+[feature]: https://github.com/kloudkit/ws-meta/issues/new?template=feature_request.yaml
+[docs]: https://github.com/kloudkit/ws-meta/issues/new?template=docs_request.yaml
+[question]: https://github.com/kloudkit/ws-meta/discussions/new?category=q-a

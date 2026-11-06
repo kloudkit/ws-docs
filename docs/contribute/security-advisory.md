@@ -1,38 +1,31 @@
 ---
-description: "How to responsibly report security vulnerabilities in Kloud Workspace privately, rather than through public GitHub issues."
+description: "Report a security vulnerability in Kloud Workspace privately, through a GitHub advisory or by email."
+see:
+  - name: Contribute
+    link: /contribute/
+  - name: Code of Conduct
+    link: /contribute/code-of-conduct
 ---
 
 # Security Advisory
 
 ::: danger
-⚠️ Please do not file GitHub issues for security vulnerabilities as they are public! ⚠️
+Never report a vulnerability in a public issue or pull request.
 :::
 
 ![Security](/icons/security.svg){.doc-image width=150px}
 
-KloudKIT places security at the forefront of its operations, demonstrating a strong commitment to
-upholding the highest standards of protection.
+## Report a Vulnerability
 
-We rigorously implement and follow industry best practices, ensuring that the Kloud
-Workspace is built with a safety-first approach, prioritizing the security of your data
-and operations.
+Report it privately, even if you are not sure it is one:
+
+- Open a [private security advisory](https://github.com/kloudkit/ws-meta/security/advisories/new) in `ws-meta`.
+- Or email <info@kloud.email>.
+
+Describe the steps that reproduce it, with example code where you can.
+You get a confirmation, then updates until it is fixed.
 
 ## Supported Versions
 
-The `latest` version of Kloud Workspace is supported and should be used.
-
-You are encouraged to update the version of Kloud Workspace frequently.
-This way, you will benefit from the latest features, bug fixes, and **security fixes**.
-
-## Reporting a Vulnerability
-
-If you think you have found a vulnerability, even if you are not sure about it, please
-report it right away using
-[a security advisory](https://github.com/kloudkit/ws-meta/security/advisories/new) or
-via email <info@kloud.email>.
-
-It's better to discuss vulnerabilities privately and try to find a solution first.
-This will help limit the potential impact as much as possible.
-
-Please try to be as explicit as possible, describing all the steps and example code to reproduce
-the security issue.
+Only the latest release is supported.
+Update often to get security fixes.
