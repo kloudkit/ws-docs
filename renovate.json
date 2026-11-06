@@ -31,6 +31,14 @@
       "datasourceTemplate": "docker",
       "depNameTemplate": "ghcr.io/kloudkit/workspace",
       "versioningTemplate": "semver"
+    },
+    {
+      "fileMatch": [ "^docs\\/.*\\.md$" ],
+      "matchStrings": [
+        "(?<depName>ghcr\\.io\\/kloudkit\\/ws-feature-store):(?<currentValue>v\\d{4}\\.\\d{2}(?:\\.\\d{2})?)"
+      ],
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "regex:^v(?<major>\\d{4})\\.(?<minor>\\d{2})(?:\\.(?<patch>\\d{2}))?$"
     }
   ]
 }
