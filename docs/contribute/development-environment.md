@@ -1,149 +1,83 @@
 ---
-description: "Guidelines and setup for contributing to Kloud Workspace, from the Code of Conduct to preparing your local development environment."
+description: "Set up a local checkout of the Kloud Workspace docs, ws-cli or the feature store, and run their checks."
+see:
+  - name: Contribution Workflow
+    link: /contribute/contribution-workflow
 ---
 
 # Development Environment
 
-We're really excited that you are interested in contributing to **Kloud Workspace**.
-Before submitting your contribution, please make sure to take a moment and read through
-the following guidelines:
+Each public repository builds on its own.
+Every one of them lints with [pre-commit](https://pre-commit.com), so install it once:
 
-- [Code of Conduct →](/contribute/code-of-conduct)
-- [Contribution Workflow *(Optional)* →](/contribute/contribution-workflow)
-
-## Prerequisites
-
-Before you begin, check your prerequisites meet the minimum requirements versions:
-
-- **Python *(optional)*:** `>=3.10`
-- **Node.js *(docs)*:** `>=18`
-- **Go *(cli)*:** `>=1.21`
-
-::: code-group
-
-```sh [Python]
-$ python --version
-Python 3.11.2
-```
-
-```sh [Node.js]
-$ node --version
-v22.11.0
-```
-
-```sh [Go]
-$ go version
-go version go1.24.0 linux/amd64
-```
-
-:::
-
-## Setup
-
-You can clone the repository and run it locally:
-
-### 1. Clone the repository
-
-::: code-group
-
-```sh [Workspace]
-git clone https://github.com/kloudkit/workspace
-```
-
-```sh [Documentation]
-git clone https://github.com/kloudkit/ws-docs
-```
-
-```sh [CLI]
-git clone https://github.com/kloudkit/ws-cli
-```
-
-:::
-
-### 2. Install dependencies
-
-::: code-group
-
-```sh [Linting (optional)]
+```sh
 pip install pre-commit
 ```
 
-```sh [Documentation]
-yarn install
-```
+## Documentation *(ws-docs)*
 
-```sh [CLI]
-go install
-```
-
-:::
-
-### 3. Linting *(Optional)*
+Use Node.js 22 or later and Yarn 1.
 
 ```sh
-pre-commit run --all-files
-pre-commit install
+git clone https://github.com/kloudkit/ws-docs
+cd ws-docs
+yarn install --frozen-lockfile
+
+# Generate the tables that come from other repositories, then start the dev server
+yarn docs:generate-dynamic
+yarn docs:dev
 ```
+
+Pages live in `docs/`, the site config in `.vitepress/` and the table generators in `scripts/`.
+Files in `.vitepress/data/` are synced from other repositories; don't edit them by hand.
 
 ::: tip
-This step is automatically run on all pull requests and commits.
-If you choose to skip this step, that's OK, we will run it for you during *CI*.
+`yarn docs:dev` does not regenerate the generated tables.
+Run `yarn docs:generate-dynamic` again after you pull new data.
 :::
 
-### 4. Run a local development *(docs)* server
+Before you push:
 
 ```sh
-yarn run docs:dev
+yarn test
+yarn build
+pre-commit run --all-files
 ```
 
-## Testing
+## CLI *(ws-cli)*
 
-Ensure your local environment meets the minimum requirements before running tests:
-
-- **Python:** `>=3.11`
-- **Docker:** `>=25`
-
-### 1. Install Test Dependencies
-
-Install the required Python packages for testing:
+Use Go 1.27.1 or later.
 
 ```sh
-pip install -r tests/requirements.txt
+git clone https://github.com/kloudkit/ws-cli
+cd ws-cli
+go mod download
+go build -o ws-cli .
 ```
 
-### 2. Run Tests
-
-When executing tests for the first time, the test suite will build a Docker testing
-image *(`ghcr.io/kloudkit/workspace:tests`)* automatically.
+After you change a command under `cmd/`, regenerate the command manifest; a test fails until it matches:
 
 ```sh
-pytest
+go run ./tools/gen-commands
 ```
 
-::: warning
-If you've updated the implementation code but haven't rebuilt the test image, the tests
-may run against an outdated image.
+Before you push:
 
-Make sure to rebuild the image before running tests.
-:::
+```sh
+go test ./...
+go vet ./...
+pre-commit run --all-files
+```
 
-### 3. Optional Execution Flags
+All output goes through `internals/styles`, which holds the color palette and the table styles.
 
-- **Custom Docker Tag:** Use the `--shed-tag` flag to specify a custom Docker image tag.
+## Feature Store *(ws-feature-store)*
 
-  ```sh
-  pytest --shed-tag=my-custom-tag
-  ```
+The store's downloadable artifacts are listed in `src/artifacts/*.json`.
+After you change one, refresh its checksums:
 
-- **Force Image Rebuild:** Add the `--shed-rebuild` flag to rebuild the Docker image.
+```sh
+./scripts/update-artifact-checksums.sh
+```
 
-  ```sh
-  pytest --shed-rebuild
-  ```
-
-- **Require Image:** Add the `--shed-require-image` flag to require an existing pre-built
-    Docker image.
-
-  ```sh
-  pytest --shed-require-image
-  ```
+Building the store image needs the KloudKIT signing key, so a maintainer builds and publishes it.

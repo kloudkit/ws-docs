@@ -1,5 +1,10 @@
 ---
-description: "The KloudKIT Code of Conduct — our pledge to keep the Kloud Workspace community a harassment-free, welcoming space for every contributor."
+description: "The KloudKIT Code of Conduct: a pledge to keep the Kloud Workspace community harassment-free and welcoming for every contributor."
+see:
+  - name: Contribute
+    link: /contribute/
+  - name: Contribution Workflow
+    link: /contribute/contribution-workflow
 ---
 
 # Contributor Covenant Code of Conduct
