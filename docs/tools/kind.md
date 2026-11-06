@@ -44,32 +44,21 @@ By default, a *Kind* cluster is only accessible at `127.0.0.1` *(from the curren
 When using a remote Docker engine *(or a mapped `docker.sock`)*, you must adjust this
 setting, as `127.0.0.1` resolves to the internal address of your workspace.
 
-To make the cluster accessible on the host network, change the listening address to
-`0.0.0.0` *(or the appropriate IP, if using a remote engine)* in your cluster
+Set `apiServerAddress` to the Docker host's IP and pin `apiServerPort` in your cluster
 configuration file:
 
-```yaml{4}
+```yaml{4,5}
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 networking:
-  apiServerAddress: 0.0.0.0
+  apiServerAddress: 192.168.1.120
+  apiServerPort: 6443
 # ... additional configurations follow
 ```
 
-## Update `KUBECONFIG`
-
-After cluster deployment, update the `KUBECONFIG` to communicate with the API server
-using the host IP for the `cluster.server` address:
-
-```yaml{4}
-apiVersion: v1
-clusters:
-- cluster:
-    server: https://192.168.1.120:6443
-    certificate-authority-data: DATA+OMITTED
-  name: created-by-kind
-# ... additional configurations follow
-```
+kind puts that address in the API server certificate and in the kubeconfig it writes, so
+`kubectl` reaches the cluster without further edits.
+Without `apiServerPort`, kind picks a random port.
 
 [dockerd]: /tools/docker
 [sysbox]: /tools/docker#_1-use-sysbox-suggested

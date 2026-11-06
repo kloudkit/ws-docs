@@ -76,12 +76,13 @@ Common use cases include *CI*, short-lived instances used during integration tes
 environments in the cloud where persistent volumes are costly or impractical.
 
 To facilitate this, you can provide the environment variable `WS_GIT_CLONE_REPO`.
-If specified, the *workspace* will clone the repository into `WS_ROOT`
+If specified, the *workspace* will clone the repository into `WS_SERVER_ROOT`
 *(default: `/workspace`)* if the directory is empty.
 
 ::: info
-If the repository requires authentication, ensure the necessary credentials are already
-configured within the container before startup *(using other autoload scripts)*.
+If the repository requires authentication, provide the credentials before the container starts:
+mount `~/.ssh`, [seed](/settings/seed) them, or import them from 1Password.
+Your own autoload scripts run after the clone, so they are too late.
 :::
 
 ## Aliases

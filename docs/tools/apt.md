@@ -29,6 +29,9 @@ variable:
 
 - <EnvVar group="apt" name="disable_repos" />
 
+It accepts `debian`, `additional` *(every bundled third-party source)*, or `true` to disable
+them all.
+
 ### Custom Sources
 
 Add custom repository sources with `WS_APT_ADDITIONAL_REPOS`.
@@ -36,17 +39,16 @@ Supply one or more entries separated by semicolons *(`;`)*.
 
 ```sh{2}
 docker run \
-  -e WS_APT_ADDITIONAL_REPOS="deb [signed-by=/custom.gpg] https://custom.package bookworm main" \
+  -e WS_APT_ADDITIONAL_REPOS="deb [signed-by=/custom.gpg] https://custom.package trixie main" \
   ghcr.io/kloudkit/workspace:v0.5.3
 ```
 
 ### Update Repository Cache
 
-You can optionally trigger a package cache update by setting the `WS_APT_UPDATE_CACHE`
-environment variable to a either `1` or `true`.
-
-Update will occur after adding custom sources to ensures that any newly added
-repositories are immediately available for package installations.
+Set `WS_APT_UPDATE_CACHE` to `true` to refresh the package lists at startup, after your custom
+sources are added.
+Package installs refresh the lists on their own, so this matters only for running `apt-get
+install` by hand later.
 
 ## Default Configurations
 
@@ -58,9 +60,8 @@ Notable configurations include:
 
 - The `--no-install-recommends` flag is enabled by default to avoid the installation of
   recommended but unnecessary packages.
-- APT will avoid overwriting existing files during package installations.
-  This ensures that user-defined settings and files are retained without interruption
-  during updates or installs.
+- When a package upgrade ships a new version of a config file you changed, APT keeps your
+  version.
 
 ## Restricted Packages
 
@@ -153,9 +154,10 @@ Provide additional keys with **`WS_APT_ADDITIONAL_GPG_KEYS`** as one or more
 space-delimited `name:url` pairs.
 
 Each key is downloaded at startup and stored in `/etc/apt/keyrings/<name>.gpg`.
+Keys must be served over HTTPS; put keys served over HTTP in `WS_APT_ADDITIONAL_INSECURE_GPG_KEYS`.
 
 ```sh{2}
 docker run \
-  -e WS_APT_ADDITIONAL_GPG_KEYS="mycorp:https://mycorp.com/pubkey.asc extras:http://extras.test/key2.asc" \
+  -e WS_APT_ADDITIONAL_GPG_KEYS="mycorp:https://mycorp.com/pubkey.asc extras:https://extras.test/key2.asc" \
   ghcr.io/kloudkit/workspace:v0.5.3
 ```

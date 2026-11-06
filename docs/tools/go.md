@@ -47,7 +47,9 @@ The pre-installed [Go extension](https://open-vsx.org/extension/golang/Go) provi
 
 ## Go Version Management
 
-Alternative Go versions can be installed using the [features](/editor/features) system.
+Go downloads the toolchain a module asks for: `GOTOOLCHAIN` is `auto`, so a `go` or `toolchain`
+line newer than the preinstalled Go fetches that version.
+To keep another version alongside, install it with `go install golang.org/dl/go1.X.Y@latest`.
 
 ## Creating Workspace Configuration
 
@@ -57,19 +59,12 @@ root *(e.g., /workspace)*.
 However, this isn't always the case, especially when dealing with complex project
 structures.
 
-To handle such scenarios, you can create a `go.work` file at `/workspace/go.work` with
-the following content:
+To handle such scenarios, create a `go.work` file at `/workspace/go.work` that lists the
+projects:
 
-```go
-go 1.24.0
-
-toolchain go1.24.0
-
-use (
-  /workspace/project
-  /workspace/team/project
-  /workspace/hobby
-)
+```sh
+cd /workspace
+go work init ./project ./team/project ./hobby
 ```
 
 This setup allows you to work with multiple projects simultaneously, even if they are

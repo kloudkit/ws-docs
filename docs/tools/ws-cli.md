@@ -19,11 +19,10 @@ With `ws-cli`, you can navigate and manage your workspace efficiently, automate 
 tasks, and access a variety of functionalities directly from your terminal.
 
 ::: tip
-The `ws-cli` command can be conveniently used with its alias `ws`.
-When executing `ws` without any sub-commands, it automatically navigates to the
-`/workspace`.
+In an interactive workspace terminal, `ws` is a shortcut for `ws-cli`.
+With no arguments, it changes to the workspace root *(`WS_SERVER_ROOT`, `/workspace` by default)*.
 
-This feature allows for quick access to your workspace root with a minimal command.
+`ws` is a `zsh` function, so scripts, `docker exec` and CI must call `ws-cli`.
 :::
 
 ## Commands

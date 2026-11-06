@@ -24,19 +24,18 @@ Kloud Workspace is pre-configured with `ansible-core`, `ansible-lint`, VS Code e
 for Ansible, and popular community collections, all ready to use right out of the box.
 
 ::: danger
-The workspace includes the latest versions of Ansible preinstalled, which no longer
-supports *Python 3.6* on target machines.
-To proceed, you must upgrade the target to *Python 3.7* or later.
+The workspace ships a recent `ansible-core`, which needs *Python 3.9* or later on target
+machines.
 :::
 
 ## Setting User Configurations
 
 Kloud Workspace includes default settings in the `/etc/ansible/ansible.cfg` file.
-You can override these configurations by creating your own `ansible.cfg` in your
-playbook's directory or by using environment variables.
+You can override these settings with environment variables, or with an `ansible.cfg` in the
+current directory.
 
-We recommend using environment variables, as their values are merged with those in the
-`/etc/ansible/ansible.cfg` *(instead of fully replacing them)*.
+Prefer environment variables: a local `ansible.cfg` replaces `/etc/ansible/ansible.cfg`
+entirely, including the `home` setting that points Ansible at the preinstalled collections.
 
 ## Triggering Playbooks for Kloud Workspace
 

@@ -40,13 +40,21 @@ The `rust` feature installs and configures:
 - **rust-analyzer:** Language server providing IDE features *(completion, go-to-definition,
   refactoring, inline type hints)*.
 
+The toolchain uses rustup's `minimal` profile, without `clippy` or `rustfmt`.
+The editor's rust-analyzer checks code with `clippy`, so add both after installing, or install
+with `--opt profile=default`:
+
+```sh
+rustup component add clippy rustfmt
+```
+
 ## VS Code Integration
 
 Once installed, the **rust-analyzer** extension provides:
 
 - IntelliSense and auto-completion.
 - Inline type and parameter hints.
-- Integrated debugging support.
+- Run and debug code lenses *(debugging needs a debug adapter extension such as CodeLLDB)*.
 - Code actions and refactoring.
 - Cargo task integration for building, testing, and running.
 

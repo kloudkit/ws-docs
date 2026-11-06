@@ -43,14 +43,14 @@ The `image-extras` feature installs four CLIs to `/usr/local/bin`:
 ## Typical Workflow
 
 ```sh
-# Generate an SBOM for an image (cacheable)
-syft ghcr.io/kloudkit/workspace:dev -o json > sbom.json
+# Generate a CycloneDX SBOM for an image
+syft ghcr.io/kloudkit/workspace:dev -o cyclonedx-json=sbom.cdx.json
 
 # Scan the SBOM against current CVE feeds
-grype sbom:sbom.json --only-fixed
+grype sbom:sbom.cdx.json --only-fixed
 
-# Second opinion with layer attribution
-osv-scanner --sbom sbom.json
+# Second opinion, scanning the image layer by layer
+osv-scanner scan image ghcr.io/kloudkit/workspace:dev
 
 # Inspect image layers interactively
 dive ghcr.io/kloudkit/workspace:dev

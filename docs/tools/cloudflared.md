@@ -13,8 +13,9 @@ see:
 exposes the workspace to the internet through an outbound-only connection to Cloudflare's edge,
 no inbound ports and no public IP on the host.
 
-The `cloudflared` feature installs the tunnel connector. Once a tunnel token is supplied, the
-workspace runs and supervises the tunnel automatically.
+The `cloudflared` feature installs the tunnel connector.
+Once a tunnel token is supplied, the workspace runs and supervises the tunnel automatically.
+After a manual install in a running workspace, the tunnel starts with the next container start.
 
 ## Installation
 
