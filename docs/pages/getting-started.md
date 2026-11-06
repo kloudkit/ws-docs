@@ -41,25 +41,35 @@ To run on ARM, be sure to use a versioned tag.
 
 ## Installation
 
-Start coding now!
+Run the command below to start an
+[*ephemeral*](https://www.merriam-webster.com/dictionary/ephemeral) container, then open
+`http://localhost:8080`.
 
-Run the command below to deploy an
-[*ephemeral*](https://www.merriam-webster.com/dictionary/ephemeral) container running on
-port `8080`.
+::: warning No sign-in by default
+The workspace has no sign-in until you set one, and the `kloud` user has passwordless `sudo`.
+Anyone who can reach the port gets a terminal that can run commands as root.
+The Docker and Compose examples publish the port on `127.0.0.1` only.
+Before you expose the workspace to other machines, set a password:
+
+```sh
+docker run -p 8080:8080 -e WS_AUTH_PASSWORD=change-me ghcr.io/kloudkit/workspace:v0.5.3
+```
+
+See [Authentication](/editor/authentication) for hashed passwords and OIDC sign-in.
+:::
 
 ::: code-group
 
 ```sh [docker]
-docker run -p 8080:8080 ghcr.io/kloudkit/workspace:v0.5.3
+docker run -p 127.0.0.1:8080:8080 ghcr.io/kloudkit/workspace:v0.5.3
 ```
 
 ```yaml [compose]
-version: '3.8'
 services:
   workspace:
     image: ghcr.io/kloudkit/workspace:v0.5.3
     ports:
-      - 8080:8080
+      - 127.0.0.1:8080:8080
 ```
 
 ```sh [helm]
