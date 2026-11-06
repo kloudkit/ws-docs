@@ -24,8 +24,8 @@ You can choose the method that best fits your needs.
 
 ### Install at Boot
 
-Kloud Workspace evaluates the `WS_FEATURES_ADDITIONAL_FEATURES` environment variable at
-startup to determine which *features* to install automatically.
+When a container first starts, Kloud Workspace installs the *features* listed in
+`WS_FEATURES_ADDITIONAL_FEATURES`.
 
 ```sh{2}
 docker run \
@@ -67,7 +67,7 @@ To do this, use the `--opt` flag *(equivalent to Ansible's `--extra-vars`)*, zer
 times, as shown in the example below:
 
 ```sh
-ws feature install dagger --opt dagger_version=0.13.3
+ws feature install dagger --opt version=0.13.3
 ```
 
 ### Skipping Sections
@@ -178,7 +178,7 @@ The feature store is a static-asset server, run it as follows:
 
 ```sh{2}
 docker run -p 8081:80 \
-  ghcr.io/kloudkit/ws-feature-store:v2026.02
+  ghcr.io/kloudkit/ws-feature-store:v2026.11
 ```
 
 The container listens on port `80`.
@@ -198,25 +198,27 @@ docker run \
 
 The feature store image is available at `ghcr.io/kloudkit/ws-feature-store`.
 Tags are released monthly with the latest package updates and follow a
-`:v{YYYY}.{MM}` convention *(e.g. `:v2026.02`)*.
+`:v{YYYY}.{MM}` convention *(e.g. `:v2026.11`)*.
 
 ::: tip
 
 Combine with [`WS_APT_DISABLE_REPOS`](/settings/configuration#ws-apt-disable-repos) set
-to `*` to ensure no traffic leaves the local network.
+to `*` so APT installs nothing from outside the store.
+Extensions, npm and pip packages and other downloads still use the network; pass
+`--skip-extensions` to leave extensions out.
 
 :::
 
 ### Drift Resolution
 
-When the workspace image and the feature store rebuild on different cadences, their
-Debian package sets can drift across point releases.
-
-At feature-install time, the workspace detects this and resolves it transparently, the
-install always succeeds.
+When the workspace image and the feature store are built at different times, their Debian
+package versions can differ.
+At install time the workspace pins or upgrades packages to close the gap where it can.
+When it cannot, the install fails.
 
 Set [`WS_FEATURES_STORE_ALLOW_FALLBACK`](/settings/configuration#ws-features-store-allow-fallback)
-to `true` to temporarily re-enable `debian.sources` on older-drift detection.
+to `true` to turn a disabled `debian.sources` back on for that install, when the store is older
+than the image or cannot satisfy it.
 
 ## Available Features
 

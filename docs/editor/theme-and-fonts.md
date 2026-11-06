@@ -28,8 +28,8 @@ the terminal, editor, or as comments.
 
 ### Terminal
 
-We utilize the [MesloLGS *(nerd)*][MesloLGS] font in the terminal, which is designed to
-support the display of custom ligatures and glyphs *(to enhance the visual clarity)*.
+The terminal uses [MesloLGS *(nerd)*][MesloLGS], patched with the Nerd Font glyphs the prompt's
+icons need.
 
 Check out the [cheat sheet](https://www.nerdfonts.com/cheat-sheet) for all available
 glyphs.
@@ -43,14 +43,10 @@ coding syntax visually.
 
 ### Comments
 
-We employ the [Victor Mono][] font specifically for comments, where its italic version
-presents text in a cursive *(handwriting)* style.
-This choice is made to inject a distinctive stylistic touch, clearly differentiating
-comments from code.
-
-::: warning
-The *Victor Mono* font is not available as a *TrueType* font.
-:::
+Comments use the italic [Victor Mono][], a cursive *(handwriting)* style that sets them apart
+from code.
+The font follows the theme's comment color, so in Catppuccin Frappé, punctuation, which shares
+that color, uses it too.
 
 #### Opt-out
 

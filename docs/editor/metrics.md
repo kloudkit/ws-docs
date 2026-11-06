@@ -19,13 +19,15 @@ variable.
 
 Set `WS_METRICS_ENABLE` to `true` when launching the container:
 
-```sh{2}
+```sh{2-3}
 docker run \
+  -p 9100:9100 \
   -e WS_METRICS_ENABLE=true \
   ghcr.io/kloudkit/workspace:v0.5.3
 ```
 
 Once enabled, the exporter serves metrics at `/` on port **9100** *(default)*.
+Publish that port, as above, so Prometheus can reach it from outside the container.
 
 ## Configuration
 
@@ -37,8 +39,9 @@ Three environment variables control the metrics exporter:
 
 To expose metrics on a custom port with only CPU and memory collectors:
 
-```sh{2-4}
+```sh{2-5}
 docker run \
+  -p 9200:9200 \
   -e WS_METRICS_ENABLE=true \
   -e WS_METRICS_PORT=9200 \
   -e WS_METRICS_COLLECTORS="container.cpu,container.memory" \
@@ -202,10 +205,13 @@ Totals cover every network interface in the container, loopback included.
 
 ::: tip
 
-GPU metrics require `nvidia-smi` to be available in the container.
+GPU metrics require `nvidia-smi` to be available in the container, and cover only the first
+GPU it reports.
 
 When the GPU collector is enabled but no GPU hardware is detected, these metrics are
 silently omitted.
+If `gpu` is the only collector, the exporter then has nothing to serve: it exits and keeps
+restarting.
 
 :::
 

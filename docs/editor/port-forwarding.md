@@ -35,9 +35,9 @@ your app.
 All published ports in Kloud Workspace are accessible through a subpath format as
 `/proxy/<port>/`.
 
-For example, if your Kloud Workspace is deployed at `127.0.0.1` and you run the `pyserver`
-command in the terminal *(which deploys a file index server on port `8000`)*, you can
-access the server at `127.0.0.1/proxy/8000`.
+For example, if your Kloud Workspace is published at `127.0.0.1:8080` and you run `pyserver`
+in the terminal *(the oh-my-zsh `python` plugin's alias for `python3 -m http.server`, on port
+`8000`)*, you can access the server at `http://127.0.0.1:8080/proxy/8000/`.
 
 ### Subdomain Access
 
@@ -61,16 +61,17 @@ environment variable:
 
 ```sh{2}
 docker run \
-  -e WS_SERVER_PROXY_DOMAIN=ws.dev \
+  -e WS_SERVER_PROXY_DOMAIN=ws.example.com \
   ghcr.io/kloudkit/workspace:v0.5.3
 ```
 
-In the configuration above, if your Kloud Workspace is hosted at `ws.dev` and you run the
-`pyserver` command *(which launches a file index server on port `8000`)*, you can access
-the server at `8000.ws.dev`.
+In the configuration above, if your Kloud Workspace is hosted at `ws.example.com` and you run
+`pyserver` *(port `8000`)*, you can access the server at `8000.ws.example.com`.
+This assumes the workspace answers on port 80 or 443; otherwise add its port
+*(`8000.ws.example.com:8080`)*.
 
-A leading `*.` is ignored, so `WS_SERVER_PROXY_DOMAIN=*.ws.dev` behaves the same as
-`ws.dev`.
+A leading `*.` is ignored, so `WS_SERVER_PROXY_DOMAIN=*.ws.example.com` behaves the same as
+`ws.example.com`.
 
 #### Multiple domains *(since v0.0.22)*
 
@@ -78,12 +79,12 @@ You can provide multiple proxy domains by passing a space-delimited list:
 
 ```sh{2}
 docker run \
-  -e WS_SERVER_PROXY_DOMAIN="ws.dev local.ws.dev" \
+  -e WS_SERVER_PROXY_DOMAIN="ws.example.com local.ws.example.com" \
   ghcr.io/kloudkit/workspace:v0.5.3
 ```
 
-With the configuration above, services will be available on both domains: `*.ws.dev` and
-`*.local.ws.dev`.
+With the configuration above, services will be available on both domains: `*.ws.example.com`
+and `*.local.ws.example.com`.
 
 #### Custom subdomain pattern
 
@@ -96,12 +97,12 @@ To place the port elsewhere, include a `{{port}}` placeholder in the domain:
 
 ```sh{2}
 docker run \
-  -e WS_SERVER_PROXY_DOMAIN="{{port}}-project.ws.dev ws.dev" \
+  -e WS_SERVER_PROXY_DOMAIN="{{port}}-project.ws.example.com ws.example.com" \
   ghcr.io/kloudkit/workspace:v0.5.3
 ```
 
-With the configuration above, port `8000` is available at both `8000-project.ws.dev` and
-`8000.ws.dev`.
+With the configuration above, port `8000` is available at both `8000-project.ws.example.com`
+and `8000.ws.example.com`.
 
 ## Local DNS
 

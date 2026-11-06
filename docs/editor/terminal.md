@@ -19,8 +19,8 @@ experience with sensible defaults, rich colorization, and integrated tooling.
 The terminal prompt is powered by [`starship`][starship] and blends perfectly with our
 [color theme](/editor/theme-and-fonts).
 Modules are shown based on the specific context of the prompt.
-For instance, the Python module appears only when your current working directory includes
-a Python-based project.
+For instance, the Python module appears in a Python project, or while a virtual environment
+is active.
 
 ![Prompt](/editor/terminal/prompt.gif){.doc-image-shadow}
 
@@ -105,8 +105,9 @@ All X11 selections *(primary, secondary, clipboard)* map to the same browser cli
 ### ZSH
 
 The standard shell utilized is `zsh`, enhanced by the [`oh-my-zsh`][oh-my-zsh] framework.
-Tools and programming languages within the *workspace* that have corresponding
-*oh-my-zsh plugins* are automatically activated for each shell session.
+A fixed set of *oh-my-zsh plugins* is enabled by default: `1password`, `auto-venv`, `docker`,
+`encode64`, `fzf-history`, `git`, `golang`, `helm`, `kubectl`, `npm`, `python`, `pip`,
+`ssh-agent` and `zsh-autosuggestions`.
 
 To modify the default set of plugins, adjust the `env` variables listed below:
 
@@ -123,16 +124,24 @@ docker run \
 
 ```sh{2} [Append]
 docker run \
-  -e WS_ZSH_ADDITIONAL_PLUGINS="php" \
+  -e WS_ZSH_ADDITIONAL_PLUGINS="laravel" \
   ghcr.io/kloudkit/workspace:v0.5.3
 ```
 
 :::
 
+::: warning
+`WS_ZSH_PLUGINS` replaces the whole default set, including `fzf-history` *(the
+<kbd>Ctrl</kbd>+<kbd>R</kbd> search below)* and `zsh-autosuggestions`.
+List every plugin you want to keep, or use `WS_ZSH_ADDITIONAL_PLUGINS` instead.
+A name that is not an *oh-my-zsh* plugin is skipped without an error.
+:::
+
 ### History Search
 
 The workspace includes an interactive history search powered by [`fzf`][fzf].
-Press <kbd>Ctrl</kbd>+<kbd>R</kbd> to open a fuzzy finder over your shell history.
+Press <kbd>Ctrl</kbd>+<kbd>R</kbd> to search your shell history with `fzf` *(exact substring
+matches by default)*.
 
 By default, duplicate entries are removed and event numbers are hidden for a
 clean, distraction-free list. The following environment variables let you

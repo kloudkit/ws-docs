@@ -31,11 +31,11 @@ Setting your password is as simple as defining an `env` variable:
 
 ::: info Automatic Cleanup
 
-Authentication related environment variables are automatically removed once the workspace
-finishes starting up.
+The password and OIDC secrets are removed from the editor's environment once it starts, so
+editor terminals and extensions don't inherit them.
 
-This means they will not be visible in your terminal sessions, child processes, or any
-application running inside the workspace.
+This is not isolation: startup scripts and `docker exec` shells still receive them, and any
+process running as `kloud` can read the editor's original environment from `/proc`.
 :::
 
 ```sh{2}
@@ -50,26 +50,26 @@ To generate a hashed password, use the `ws-cli` tool
 *(replacing `"super_duper_secret"` with your desired password)*:
 
 ```sh
-$ echo -n super_duper_secret | ws secrets generate login
-$argon2id$v=19$m=4096,t=3,p=1$z4DjJlJgI6S7fAdQC35ZQw$Rpu8CLMWedxJaH0eiFCetyoRbg+S8ow/RRyVCZzM6QE
+$ echo -n super_duper_secret | ws-cli secrets generate login --raw
+$argon2id$v=19$m=65536,t=3,p=4$mfRoKKtjdqmC0fE73vEEfQ$tHJBsv7PlXsUYt/BgOUooS+zUJZgZcd/+/tfAY2t6Q8
 ```
 
 ::: tip
 
-You can generate the password hash **from within a running workspace** for subsequent executions.
-Then restart the instance and set the value for `WS_AUTH_PASSWORD_HASHED`:
+Generate the hash in a terminal of any running workspace, then set it as
+`WS_AUTH_PASSWORD_HASHED` on the next container:
 
 ```sh
-echo -n "your_password" | ws secrets generate --workspace --raw
+echo -n "your_password" | ws-cli secrets generate login --raw
 ```
 
 :::
 
-Then deploy the workspace:
+Then deploy the workspace, with the hash in single quotes so the shell leaves its `$` signs alone:
 
 ```sh{2}
 docker run \
-  -e WS_AUTH_PASSWORD_HASHED="$argon2id$v=19$m=4096,t=3,p=1$z4DjJlJgI6S7fAdQC35ZQw$Rpu8CLMWedxJaH0eiFCetyoRbg+S8ow/RRyVCZzM6QE" \
+  -e WS_AUTH_PASSWORD_HASHED='$argon2id$v=19$m=65536,t=3,p=4$mfRoKKtjdqmC0fE73vEEfQ$tHJBsv7PlXsUYt/BgOUooS+zUJZgZcd/+/tfAY2t6Q8' \
   ghcr.io/kloudkit/workspace:v0.5.3
 ```
 
@@ -92,15 +92,17 @@ for the full resolution chain and Kubernetes example.
 
 ### Rate Limiting
 
-The workspace has a built-in throttling mechanism to rate-limit password authentication
-attempts to two per minute and an additional twelve per hour.
+Failed sign-ins are limited per client IP address: two per minute and twelve per hour in total.
+While the limit is reached, every attempt is refused, even with the right password.
+Behind a reverse proxy, every user shares the proxy's address and its limit.
 
 ## OIDC Authentication *(since v0.4.0)*
 
 To sign in with your identity provider *(Keycloak, Entra ID, Authentik, or any OpenID
 Connect issuer)*, set `WS_AUTH_MODE=oidc`.
 The editor then signs users in itself on `WS_SERVER_PORT` *(since v0.6.0)*, the same port as
-password mode, and checks every request, forwarded ports included.
+password mode, and checks every request except static assets and `/healthz`, forwarded ports
+included.
 The workspace refuses to start when a required setting is missing or a password is also set.
 
 - <EnvVar group="auth" name="mode" />
@@ -109,13 +111,14 @@ The workspace refuses to start when a required setting is missing or a password 
 - <EnvVar group="auth" name="oidc_client_secret" />
 - <EnvVar group="auth" name="oidc_allowed_emails" />
 
-```sh{2-7}
+```sh{2-8}
 docker run \
   -p 8080:8080 \
   -e WS_AUTH_MODE=oidc \
   -e WS_AUTH_OIDC_ISSUER=https://idp.example.com/realms/ws \
   -e WS_AUTH_OIDC_CLIENT_ID=workspace \
   -e WS_AUTH_OIDC_CLIENT_SECRET=file:/run/secrets/workspace/auth/oidc_client_secret \
+  -v ./oidc_client_secret:/run/secrets/workspace/auth/oidc_client_secret:ro \
   -e WS_AUTH_OIDC_ALLOWED_EMAILS="alice@example.com *@team.example.com" \
   ghcr.io/kloudkit/workspace:v0.5.3
 ```
@@ -163,16 +166,19 @@ List exact addresses, or `*@domain` for everyone at a domain; matching ignores c
 The email comes from the ID token, or from the userinfo endpoint when the token has none.
 `email_verified` is not checked, so allow only domains your identity provider controls.
 
-A denied user sees an access-denied page with a *Sign in as a different user* button, which
-ends their session at the identity provider.
+A denied user sees an access-denied page with a *Sign in as a different user* button.
+It signs them out, and ends their session at the identity provider too when the provider
+advertises an `end_session_endpoint`.
 
 ![Access-denied page](/editor/authentication/oidc-denied.png){.doc-image-shadow}
 
 ### Forwarded Ports
 
 When [subdomain access](/editor/port-forwarding#subdomain-access) is configured, the session
-cookie is scoped to the parent of `WS_SERVER_PROXY_DOMAIN`, so one sign-in covers the editor
-and every forwarded port.
+cookie is scoped to the domain in `WS_SERVER_PROXY_DOMAIN` *(`ws.example.com` for
+`*.ws.example.com`)*.
+Serve the editor on that domain or a subdomain of it, and one sign-in covers the editor and every
+forwarded port.
 With several proxy domains, the most specific one that matches the host wins, and each domain
 signs in on its own.
 

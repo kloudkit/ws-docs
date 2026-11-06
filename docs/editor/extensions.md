@@ -36,10 +36,10 @@ To gain the most from all the new features and upgrades, we suggest using the
 
 ### Install at Boot
 
-Upon startup, Kloud Workspace automatically scans `~/.ws/extensions/` for `.vsix` files
-and installs them.
+When a container first starts, Kloud Workspace installs the `.vsix` files in
+`~/.ws/extensions/` *(top level only)*.
 
-You can also install additional extensions by marketplace ID:
+At the same first start, it also installs extensions by marketplace ID:
 
 - <EnvVar group="editor" name="additional_vs_extensions" />
 

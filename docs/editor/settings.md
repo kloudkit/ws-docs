@@ -16,11 +16,13 @@ see [Configuration](/settings/configuration).
 
 VS Code stands out as an incredibly customizable editor, empowering developers to shape
 their coding environment through personalized settings stored in a `settings.json` file.
-These settings manifest at three levels:
+These settings manifest at two levels:
 
 - [*User settings*](#user-settings).
 - [*Workspace settings*](#workspace-settings).
-- [*Environment variable settings*](#environment-variables).
+
+[Environment variables](#environment-variables) can write into the user settings when a
+container is first created.
 
 ::: warning
 The term [*workspace settings*](#workspace-settings) mentioned earlier specifically
@@ -46,8 +48,7 @@ As mentioned above, these settings should be considered a base-line of default t
 to, any desired changes should be handled at the *workspace* level.
 
 ::: warning NOTICE
-It is important to note, that changes made to these settings will be reset the next
-time the workspace container is launched.
+Changes made to these settings are lost when the workspace container is recreated.
 By mounting a volume to the settings directory, you ***opt-out*** of receiving
 future updates and configurations related to the editor that come with
 Kloud Workspace.
@@ -58,6 +59,8 @@ Kloud Workspace.
 To add or override existing defaults create a `settings.json` in a `.vscode` directory
 at the root of your project *(usually `/workspace/.vscode/settings.json`)*.
 These settings will take precedence over the [*user settings*](#user-settings).
+Workspace settings cannot change application-wide or machine-wide settings such as
+`update.mode`; set those in the user settings.
 
 The animation below displays the various tabs and the creation of the `.vscode` directory:
 
@@ -65,7 +68,8 @@ The animation below displays the various tabs and the creation of the `.vscode` 
 
 ## Environment Variables
 
-Workspace supports customizing VS Code settings at boot time via environment variables.
+When a container is first created, Kloud Workspace can write VS Code settings from environment
+variables into the user settings.
 This is useful for applying consistent settings without committing a `.vscode/settings.json`
 file.
 
@@ -101,7 +105,7 @@ docker run \
 **Override** variables completely replace the user settings with your configuration:
 
 ::: warning
-Using override removes all default workspace settings.
+Override removes all of Kloud Workspace's default user settings, including the theme and fonts.
 
 *Use merge for partial updates.*
 :::
@@ -125,13 +129,14 @@ docker run \
 
 ### Precedence
 
-When multiple settings sources are present, they are applied in the following order
-*(later sources take precedence)*:
+Set only one of the four variables.
+If several are set, only the first of `WS_EDITOR_SETTINGS_OVERRIDE`,
+`WS_EDITOR_SETTINGS_OVERRIDE_FILE`, `WS_EDITOR_SETTINGS_MERGE` and
+`WS_EDITOR_SETTINGS_MERGE_FILE` applies, and a warning is logged.
 
-1. Default user settings
-2. `WS_EDITOR_SETTINGS_MERGE` / `WS_EDITOR_SETTINGS_MERGE_FILE`
-3. `WS_EDITOR_SETTINGS_OVERRIDE` / `WS_EDITOR_SETTINGS_OVERRIDE_FILE`
-4. [Workspace settings](#workspace-settings) *(`.vscode/settings.json`)*
+The result is written into the user settings once, when the container is first created.
+[Workspace settings](#workspace-settings) *(`.vscode/settings.json`)* still take precedence
+over it.
 
 ## Important Notes
 
