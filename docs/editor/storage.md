@@ -10,16 +10,16 @@ see:
 ![Storage](/icons/storage.svg){.doc-image width=180px}
 
 By default, Docker storage is [*ephemeral*](https://www.merriam-webster.com/dictionary/ephemeral),
-meaning any data created inside a container is lost when the container stops, exits, or is
-removed.
+meaning any data created inside a container is lost when the container is removed or
+recreated, for example to upgrade the image.
 
 This ephemeral design ensures containers are lightweight and stateless, but it limits
 their suitability for use cases that require persistent data.
 
 ## Persistent Storage
 
-To retain data across container restarts *(or share it between containers)*, persistent
-storage is essential.
+To keep data when a container is recreated *(or to share it between containers)*, attach
+persistent storage.
 This is achieved by attaching external storage to the container, enabling data to be
 saved and accessed independently of the container's lifecycle.
 
@@ -67,11 +67,11 @@ Several workspace features store their configuration under `~/.ws` (`/home/kloud
 including [sideloaded extensions](/editor/extensions), [startup and session scripts](/settings/autoload-scripts),
 [drop-in CA certificates](/settings/tls#drop-in-directory-ws-ca-d),
 the [seed source](/settings/seed), and your shell and REPL history (`~/.ws/history`).
-On startup, `~/.ws` and its subdirectories are owned by `kloud`, even when the mounted
-volume starts out owned by `root`.
+When a container is first created, `~/.ws` and its standard subdirectories *(not their
+contents)* are re-owned by `kloud`, even when the mounted volume starts out owned by `root`.
 
-Because this directory lives inside the container, its contents are lost on restart unless
-you persist it separately:
+Because this directory lives inside the container, its contents are lost when the container
+is recreated, unless you persist it separately:
 
 ```sh{2}
 docker run \
