@@ -33,8 +33,7 @@ However, managing multiple key-pairs can be challenging.
 To simplify this, we've implemented a hierarchical lookup strategy that selects the
 appropriate key-pair based on its location within the `~/.ssh` directory.
 
-The strategy employs the following order for key-pair selection, with the process halting
-at the first successful match:
+SSH offers the keys in this order and stops at the first one the server accepts:
 
 - **User-defined:** keys explicitly specified by the user in `~/.ssh/config`
     [see below](#user-overrides).
@@ -42,13 +41,13 @@ at the first successful match:
   - `~/.ssh/id_ecdsa`
   - `~/.ssh/id_ed25519`
   - `~/.ssh/id_rsa`
-- **Internal:** for hosts with internal IP addresses *(i.e. `10.*`, `192.168.*`, etc.)*,
-    keys within the `~/.ssh/internal` subdirectory are used:
+- **Internal:** when you connect by a private IP address *(`10.*`, `172.16.*` to `172.31.*`,
+    `192.168.*`)*, keys in `~/.ssh/internal` are used, and host keys are not checked:
   - `~/.ssh/internal/id_ecdsa`
   - `~/.ssh/internal/id_ed25519`
   - `~/.ssh/internal/id_rsa`
-- **Domain specific:** for all other hosts, keys are matched based on the DNS name of the
-    host, with each DNS name corresponding to a subdirectory under `~/.ssh`.
+- **Domain specific:** for every host, keys in a subdirectory of `~/.ssh` named after the host
+    as you typed it *(no DNS lookup)*.
     For example, keys for `github.com` would be located in `~/.ssh/github.com`:
   - `~/.ssh/<HOST>/id_ecdsa`
   - `~/.ssh/<HOST>/id_ed25519`
@@ -82,7 +81,8 @@ Starting an `ssh-agent` is considered good practice because it securely stores y
 passphrase and keys in memory, allowing you to use SSH keys to establish connections
 without having to re-enter your passphrase each time.
 
-An `ssh-agent` daemon is started by default when the *workspace* is first booted.
+The *oh-my-zsh* `ssh-agent` plugin starts an agent with your first shell and loads your
+`~/.ssh/id_*` keys.
 
 ## Server
 

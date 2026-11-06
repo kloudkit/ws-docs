@@ -22,8 +22,7 @@ The `helm diff` and `helm unittest` plugins come with the
 ## Persisting Configurations
 
 Kloud Workspace runs in a Docker container, so any custom Helm configurations, such as
-added repositories and credentials, will not automatically persist after the container
-stops.
+added repositories and credentials, are lost when the container is recreated.
 
 To retain these configurations across workspace restarts or updates:
 
@@ -33,9 +32,8 @@ To retain these configurations across workspace restarts or updates:
   credentials, and related files remain intact even if the container is re-created.
 
 2. **Use the `WS_HELM_PRELOAD_CACHE` Environment Variable:**
-  You can streamline the process of autoloading Helm’s repository cache by setting the
-  `WS_HELM_PRELOAD_CACHE` environment variable.
-  This causes the workspace to automatically load your cached repos whenever it starts.
+  With it set, the workspace runs `helm repo update` for the repositories in your persisted
+  config when a new container starts, so their indexes are ready.
 
 ```sh
 docker run \

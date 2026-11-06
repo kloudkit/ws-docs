@@ -43,7 +43,7 @@ applicability and effectiveness of the provided solutions.
 Docker In Docker *(also known as dind)* allows developers to run a Docker container within
 an already running Docker container, in order to create sandboxed container environments.
 
-There are five possible methods to accomplish this:
+There are six possible methods to accomplish this:
 
 ::: warning CAVEAT
 Options `#3`, `#4`, `#5`, and `#6` utilize different forms of remote connections to the
@@ -124,9 +124,9 @@ docker run \
   ghcr.io/kloudkit/workspace:v0.5.3
 ```
 
-This method is optimized by the workspace as we internally configure a persistent
-`ssh-agent` behind the scenes for a quicker connection experience.
-For more information, visit our documentation on [`ssh`](/tools/ssh)
+The workspace's SSH client reuses each connection for 10 minutes *(`ControlPersist 10m`)*, so
+repeated Docker commands over SSH connect quickly.
+See the [`ssh`](/tools/ssh) page.
 
 ### 6. Use [`docker:dind`][dind] Running on a Remote Host
 
@@ -170,13 +170,10 @@ variable from within a running workspace.
 
 ## Automatically Configure the Docker Daemon
 
-Certain methods mentioned earlier *(`#1`, `#2`, and `#3`)* may require additional user
-permissions for interacting with the Docker socket.
-In certain instances *(specifically, `#1` and`#2`)*, the daemon may not be running upon
-startup.
-
-To speed up the process, during initialization, assign the `WS_DOCKER_ENABLE_CLIENT`
-environment variable to effortlessly initiate the daemon *(if necessary)*:
+Methods `#1` and `#2` need `WS_DOCKER_ENABLE_CLIENT`: without it, the Docker daemon never
+starts.
+With method `#3` the daemon stays off, and the variable only checks that the socket's group
+matches the `docker` group:
 
 ```sh{2}
 docker run \
@@ -186,7 +183,7 @@ docker run \
 
 ### Docker Group
 
-By default, the group assigned to `docker` is `999`.
+By default, the group assigned to `docker` is `990`.
 When working with host mounts, it's essential to ensure that the `docker.sock` file on
 the host is accessible within the container.
 
@@ -197,7 +194,7 @@ container, ensuring the container has the appropriate permissions, as seen below
 
 ```sh{2}
 docker run \
-  --group-add=8888
+  --group-add=8888 \
   -v /var/run/docker.sock:/var/run/docker.sock:ro \
   -e WS_DOCKER_ENABLE_CLIENT=1 \
   ghcr.io/kloudkit/workspace:v0.5.3

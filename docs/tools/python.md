@@ -52,7 +52,7 @@ libraries into the user site and `uv` to install global CLI tools.
 ```sh{2,3}
 docker run \
   -e WS_PIP_ADDITIONAL_PACKAGES="httpx==0.27.0 rich" \
-  -e WS_UV_ADDITIONAL_TOOLS="ruff poetry==1.8.0" \
+  -e WS_UV_ADDITIONAL_TOOLS="poetry==1.8.0 cookiecutter" \
   ghcr.io/kloudkit/workspace:v0.5.3
 ```
 
@@ -61,12 +61,11 @@ docker run \
 Kloud Workspace includes an **auto-venv** plugin that automatically activates Python
 virtual environments when you navigate into a project directory.
 
-When you `cd` into a directory containing a `.venv` or `venv` folder, the virtual
-environment is activated automatically.
-
-When you leave the project directory, it deactivates.
-
-This works seamlessly with `uv venv` or `python -m venv`:
+When you `cd` into a directory that contains a `.venv` or `venv` folder, its virtual
+environment is activated, and leaving the project deactivates it.
+It checks only the directory you `cd` into: a terminal opened inside a project, or a `cd`
+straight into a subdirectory, activates nothing.
+It works with environments created by `uv venv` or `python -m venv`.
 
 ## Linting & Formatting with `ruff`
 
@@ -87,15 +86,16 @@ Our default configuration is *deep and opinionated*:
 
 Kloud Workspace ships with a default Ruff configuration at `~/.config/ruff/ruff.toml` that
 suits most projects.
-If you need custom linting rules, add a `ruff.toml` file at your project’s root.
+If you need custom linting rules, add a `ruff.toml` or `.ruff.toml` file at your project's root;
+it replaces the default configuration instead of extending it.
 
-You can also copy the default configuration with:
+To start from the default, copy it into the project as `.ruff.toml`:
 
 ```bash
 ws-cli template apply ruff
 ```
 
-For more details, refer to the [`ws-cli` documentation](/tools/ws-cli#templates-ws-template).
+For more details, refer to the [`ws-cli` documentation](/tools/ws-cli#ws-cli-template).
 
 ## Language Server
 
@@ -113,11 +113,11 @@ For an enhanced *REPL* experience you can install `IPython`:
 
 ```sh
 pip install ipython
-# or: uv pip install ipython
 ```
 
-Kloud Workspace already includes a custom IPython profile *(`/etc/ipython/ipython_config`)*
+Kloud Workspace already includes a custom IPython profile *(`/etc/ipython/ipython_config.py`)*
 whose prompt colors and syntax‑highlighting align with the Kloud Workspace's overall theme.
 
-Once IPython is installed it will pick up these settings automatically, no additional
-configuration required.
+IPython installed with `pip` outside a virtual environment picks up these settings.
+Inside a virtual environment, also install `catppuccin[pygments]`, which the profile's colors
+need.
