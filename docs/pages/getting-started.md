@@ -104,6 +104,11 @@ spec:
 
 :::
 
+::: warning Helm chart on hold
+The Helm chart is on hold and is not updated with each release.
+The published chart still installs Kloud Workspace v0.1.2.
+:::
+
 ::: tip
 
 For advanced configuration via environment variables, see the
