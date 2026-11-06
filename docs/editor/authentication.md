@@ -1,36 +1,36 @@
 ---
-description: "Configure Kloud Workspace's opt-in authentication or integrate an external provider — the default deployment requires no authentication."
+description: "Turn on password or OIDC sign-in for Kloud Workspace, which requires no sign-in by default."
 see:
+  - name: Configuration
+    link: /settings/configuration
+  - name: Port Forwarding
+    link: /editor/port-forwarding
   - name: Secrets
     link: /settings/secrets
+  - name: TLS & Certificates
+    link: /settings/tls
 ---
 
 # Authentication
 
-Given that the majority of users will integrate the *workspace* with an external
-authentication provider *(or deploy on a local machine)*, the default deployment is
-configured to not require authentication.
-
-The following sections will help you set up our *opt-in* authentication mechanism.
-
-::: warning
-Remember to run `Sign out of Kloud Workspace` from the Command Palette when you are done
-working, as a password session renews itself for as long as the editor stays open.
-:::
-
-![Sign out animation](/editor/authentication/authentication.gif){.doc-image-shadow}
+The workspace requires no sign-in by default, for use on a local machine or behind your own
+authentication provider.
+To require one, set a password or connect an OpenID Connect identity provider.
 
 ## Password Authentication
 
-Passed authentication can be easily configured by setting an environment variable when
-deploying the *workspace*.
-Setting your password is as simple as defining an `env` variable:
+Set a password with one of these variables when you deploy the workspace:
 
 - <EnvVar group="auth" name="password" />
 - <EnvVar group="auth" name="password_hashed" />
 
-::: info Automatic Cleanup
+```sh{2}
+docker run \
+  -e WS_AUTH_PASSWORD=super_duper_secret \
+  ghcr.io/kloudkit/workspace:v0.6.0
+```
 
+::: info
 The password and OIDC secrets are removed from the editor's environment once it starts, so
 editor terminals and extensions don't inherit them.
 
@@ -38,39 +38,23 @@ This is not isolation: startup scripts and `docker exec` shells still receive th
 process running as `kloud` can read the editor's original environment from `/proc`.
 :::
 
-```sh{2}
-docker run \
-  -e WS_AUTH_PASSWORD=super_duper_secret \
-  ghcr.io/kloudkit/workspace:v0.5.3
-```
-
 ### Creating a Hashed Password
 
-To generate a hashed password, use the `ws-cli` tool
-*(replacing `"super_duper_secret"` with your desired password)*:
+Generate the hash with `ws-cli` in a terminal of any running workspace, replacing
+`super_duper_secret` with your password:
 
 ```sh
 $ echo -n super_duper_secret | ws-cli secrets generate login --raw
 $argon2id$v=19$m=65536,t=3,p=4$mfRoKKtjdqmC0fE73vEEfQ$tHJBsv7PlXsUYt/BgOUooS+zUJZgZcd/+/tfAY2t6Q8
 ```
 
-::: tip
-
-Generate the hash in a terminal of any running workspace, then set it as
-`WS_AUTH_PASSWORD_HASHED` on the next container:
-
-```sh
-echo -n "your_password" | ws-cli secrets generate login --raw
-```
-
-:::
-
-Then deploy the workspace, with the hash in single quotes so the shell leaves its `$` signs alone:
+Then set it as `WS_AUTH_PASSWORD_HASHED` on the next container, in single quotes so the shell
+leaves its `$` signs alone:
 
 ```sh{2}
 docker run \
   -e WS_AUTH_PASSWORD_HASHED='$argon2id$v=19$m=65536,t=3,p=4$mfRoKKtjdqmC0fE73vEEfQ$tHJBsv7PlXsUYt/BgOUooS+zUJZgZcd/+/tfAY2t6Q8' \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
 ### File-Based Passwords
@@ -84,7 +68,7 @@ convention path and leave the variable unset.
 docker run \
   -e WS_AUTH_PASSWORD_HASHED=file:/run/secrets/workspace/auth/password_hashed \
   -v ./password_hashed.txt:/run/secrets/workspace/auth/password_hashed:ro \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
 See [Resolving Secret Values](/settings/configuration#resolving-secret-values)
@@ -96,13 +80,12 @@ Failed sign-ins are limited per client IP address: two per minute and twelve per
 While the limit is reached, every attempt is refused, even with the right password.
 Behind a reverse proxy, every user shares the proxy's address and its limit.
 
-## OIDC Authentication *(since v0.4.0)*
+## OIDC Authentication <Badge type="info" text="since v0.4.0" />
 
 To sign in with your identity provider *(Keycloak, Entra ID, Authentik, or any OpenID
 Connect issuer)*, set `WS_AUTH_MODE=oidc`.
-The editor then signs users in itself on `WS_SERVER_PORT` *(since v0.6.0)*, the same port as
-password mode, and checks every request except static assets and `/healthz`, forwarded ports
-included.
+The editor then signs users in itself on `WS_SERVER_PORT`, the same port as password mode,
+and checks every request except static assets and `/healthz`, forwarded ports included.
 The workspace refuses to start when a required setting is missing or a password is also set.
 
 - <EnvVar group="auth" name="mode" />
@@ -120,24 +103,13 @@ docker run \
   -e WS_AUTH_OIDC_CLIENT_SECRET=file:/run/secrets/workspace/auth/oidc_client_secret \
   -v ./oidc_client_secret:/run/secrets/workspace/auth/oidc_client_secret:ro \
   -e WS_AUTH_OIDC_ALLOWED_EMAILS="alice@example.com *@team.example.com" \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
 ::: tip
 Serve the workspace over HTTPS.
 Behind a TLS terminator, forward `X-Forwarded-Proto: https` so the session cookie is marked
 `Secure` and the callback URL uses `https`.
-:::
-
-::: info Upgrading from the auth proxy
-Before v0.6.0, a separate sign-in proxy ran on port `38080`.
-
-- Publish `8080` instead; `WS_SERVER_AUTH_PROXY_PORT` and `WS_LOGGING_AUTH_PROXY_FILE` are gone,
-  and so is `ws logs --target auth_proxy`.
-- Set `WS_AUTH_OIDC_ALLOWED_EMAILS`: the workspace refuses to start without it, or with
-  `WS_AUTH_OIDC_ALLOWED_GROUPS` set.
-- A session now lasts `WS_AUTH_SESSION_TTL` *(one day)* from sign-in, not seven days.
-- `WS_AUTH_OIDC_FORBIDDEN_MESSAGE` and `WS_AUTH_OIDC_SESSION_REFRESH` are gone.
 :::
 
 ### Registering the Workspace
@@ -209,13 +181,34 @@ To sign everyone out, change the cookie secret.
 
 ## Signing Out
 
+::: warning
+Run `Sign out of Kloud Workspace` from the Command Palette when you are done working, as a
+password session renews itself for as long as the editor stays open.
+:::
+
+![Sign out animation](/editor/authentication/authentication.gif){.doc-image-shadow}
+
 The `Sign out of Kloud Workspace` command is only shown when a sign-out URL is known.
 It is derived from the active authentication mode and needs no configuration, but can be
 overridden:
 
 - <EnvVar group="editor" name="logout_url" />
 
-With OIDC *(since v0.5.3)*, signing out also ends your session at the identity provider when
-it advertises an `end_session_endpoint`, and you land on its signed-out page.
+### Signing Out with OIDC <Badge type="info" text="since v0.5.3" />
+
+With OIDC, signing out also ends your session at the identity provider when it advertises an
+`end_session_endpoint`, and you land on its signed-out page.
 Without one, only the workspace session ends, and the next visit may sign you straight back
 in.
+
+## Upgrading from the Auth Proxy
+
+Before v0.6.0, OIDC sign-in ran through a separate proxy on port `38080`; since v0.6.0 the
+editor signs OIDC users in itself, on `WS_SERVER_PORT`.
+
+- Publish `8080` instead; `WS_SERVER_AUTH_PROXY_PORT` and `WS_LOGGING_AUTH_PROXY_FILE` are gone,
+  and so is `ws-cli logs --target auth_proxy`.
+- Set `WS_AUTH_OIDC_ALLOWED_EMAILS`: the workspace refuses to start without it, or with
+  `WS_AUTH_OIDC_ALLOWED_GROUPS` set.
+- A session now lasts `WS_AUTH_SESSION_TTL` *(one day)* from sign-in, not seven days.
+- `WS_AUTH_OIDC_FORBIDDEN_MESSAGE` and `WS_AUTH_OIDC_SESSION_REFRESH` are gone.

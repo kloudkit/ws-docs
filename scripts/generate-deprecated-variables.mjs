@@ -1,6 +1,9 @@
 import fs from 'node:fs'
 import { resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { load } from 'js-yaml'
+
+const cell = text => text.trim().replace(/\s+/g, ' ').replaceAll('|', '\\|')
 
 const replacement = (use, message) => {
   if (use) {
@@ -12,29 +15,34 @@ const replacement = (use, message) => {
     return `[\`${use}\`](#${anchor})`
   }
 
-  return message ? `*${message}*` : '—'
+  return message ? `*${cell(message)}*` : 'None'
 }
 
-const configs = load(
-  fs.readFileSync(resolve('.vitepress/data/env.reference.yaml'), 'utf8')
-)
+export const render = deprecated => {
+  const rows = Object.keys(deprecated)
+    .sort()
+    .map(env => {
+      const { use, since, removed, message } = deprecated[env]
 
-const sections = []
+      return `| ~~*\`${env}\`*~~ | ${replacement(use, message)} | *v${since}* | *v${removed}* |`
+    })
 
-sections.push(
-  '| Name | Replacement | Since | Removal |',
-  '| --- | --- | :---: | :---: |',
-)
+  return [
+    '| Name | Replacement | Since | Removal |',
+    '| --- | --- | :---: | :---: |',
+    ...rows,
+  ].join('\n')
+}
 
-Object.keys(configs.deprecated)
-  .sort()
-  .forEach(env => {
-    const { use, since, removed, message } = configs.deprecated[env]
+const generate = () => {
+  const configs = load(
+    fs.readFileSync(resolve('.vitepress/data/env.reference.yaml'), 'utf8')
+  )
 
-    sections.push(
-      `| ~~*\`${env}\`*~~ | ${replacement(use, message)} | *v${since}* | *v${removed}* |`
-    )
-  })
+  fs.writeFileSync(resolve('docs/partials/deprecated-variables.md'), render(configs.deprecated))
+  console.log('✔ docs/partials/deprecated-variables.md updated')
+}
 
-fs.writeFileSync(resolve('docs/partials/deprecated-variables.md'), sections.join('\n'))
-console.log('✔ docs/partials/deprecated-variables.md updated')
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  generate()
+}

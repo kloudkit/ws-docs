@@ -46,8 +46,8 @@ Read the [contribution workflow](/contribute/contribution-workflow) before you o
 ## Fix a Page
 
 Most pages have an **Edit this page on GitHub** link at the bottom.
-The generated tables *(environment variables, tools, extensions, commands and the changelog)* come from other
-repositories, so report a fix to them as an issue instead.
+The generated tables *(environment variables, tools, extensions, commands and the changelog)*
+come from other repositories, so report a fix for them as an issue instead.
 
 [bug]: https://github.com/kloudkit/ws-meta/issues/new?template=bug_report.yaml
 [feature]: https://github.com/kloudkit/ws-meta/issues/new?template=feature_request.yaml

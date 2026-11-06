@@ -1,5 +1,5 @@
 ---
-description: "An opt-in bundle of container-image tools for Kloud Workspace — generate an SBOM, scan images for vulnerabilities, and inspect layers."
+description: "An opt-in bundle of container-image tools for Kloud Workspace: generate an SBOM, scan images for vulnerabilities, and inspect layers."
 see:
   - name: Features
     link: /editor/features
@@ -9,9 +9,8 @@ see:
 
 <!--@include: ../partials/feature-not-included.md -->
 
-A bundle of four image-investigation tools.
-Generate an SBOM, scan container images for known vulnerabilities, and inspect image
-layers.
+The `image-extras` feature installs four tools to generate an SBOM, scan container images for known vulnerabilities,
+and inspect image layers.
 
 ## Installation
 
@@ -19,26 +18,13 @@ Install the bundle using the [features](/editor/features) system:
 
 ```sh
 # Manual installation
-ws feature install image-extras
+ws-cli feature install image-extras
 
 # Or at boot time
 docker run \
   -e WS_FEATURES_ADDITIONAL_FEATURES="image-extras" \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
-
-## What's Included
-
-The `image-extras` feature installs four CLIs to `/usr/local/bin`:
-
-- **[`syft`](https://github.com/anchore/syft):** Generate a Software Bill of
-  Materials *(SBOM)* for a container image, directory, or filesystem.
-- **[`grype`](https://github.com/anchore/grype):** Vulnerability scanner.
-  Reads an SBOM from `syft` *(or scans an image directly)*.
-- **[`dive`](https://github.com/wagoodman/dive):** Interactive TUI for exploring a container
-   image's layers and discovering bloat.
-- **[`osv-scanner`](https://github.com/google/osv-scanner):** Layer-aware vulnerability
-  scanner from Google.
 
 ## Typical Workflow
 
@@ -55,3 +41,15 @@ osv-scanner scan image ghcr.io/kloudkit/workspace:dev
 # Inspect image layers interactively
 dive ghcr.io/kloudkit/workspace:dev
 ```
+
+## What's Included
+
+The `image-extras` feature installs four CLIs to `/usr/local/bin`:
+
+- **[`syft`](https://github.com/anchore/syft):** Generate a Software Bill of Materials *(SBOM)*
+  for a container image, directory, or filesystem.
+- **[`grype`](https://github.com/anchore/grype):** Vulnerability scanner.
+  Reads an SBOM from `syft` *(or scans an image directly)*.
+- **[`dive`](https://github.com/wagoodman/dive):** Interactive TUI for exploring a container image's layers
+  and discovering bloat.
+- **[`osv-scanner`](https://github.com/google/osv-scanner):** Layer-aware vulnerability scanner from Google.

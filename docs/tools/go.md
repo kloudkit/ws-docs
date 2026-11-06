@@ -1,5 +1,5 @@
 ---
-description: "Go comes pre-installed in Kloud Workspace with a full development toolchain — runtime, compiler, and tooling ready out of the box."
+description: "Go comes preinstalled in Kloud Workspace with gopls, Delve, staticcheck, more Go tools, and the Go VS Code extension."
 see:
   - name: Rust
     link: /tools/rust
@@ -11,67 +11,56 @@ see:
 
 ![Go logo](/icons/golang.svg){.doc-image width=160px}
 
-Go is pre-installed in Kloud Workspace and comes with a full development toolchain ready
-to use out of the box.
-
-Key features provided *out-of-the-box*:
+Go is preinstalled in Kloud Workspace, with its development tools and VS Code extension:
 
 - **Go** runtime and compiler.
-- The **Go** VS Code extension *(golang.go)* with rich language support.
-- A comprehensive set of Go development tools *(linting, debugging, testing, code generation)*.
+- The **Go** VS Code extension *(golang.go)*.
+- Go development tools *(linting, debugging, testing, code generation)*.
 - Auto-completion, go-to-definition, and refactoring powered by **gopls**.
 
-## Pre-installed Tools
+## Projects Below the Workspace Root
 
-Kloud Workspace ships with the following Go tools, all pre-compiled and available
-on `$PATH`:
-
-- **dlv:** Delve debugger for Go.
-- **gopls:** The official Go language server providing IDE features.
-- **staticcheck:** Advanced static analysis and linting.
-- **gomodifytags:** Modify struct field tags *(add, remove, clear)*.
-- **gotests:** Generate table-driven tests from function signatures.
-- **impl:** Generate method stubs for implementing interfaces.
-- **go-outline** Extract JSON representation of Go source file declarations.
-- **goplay:** Run Go snippets in the Go Playground from the editor.
-
-## VS Code Integration
-
-The pre-installed [Go extension](https://open-vsx.org/extension/golang/Go) provides:
-
-- IntelliSense and auto-completion via **gopls**.
-- Integrated debugging with **dlv**.
-- Test runner with code-lens support.
-- Code generation *(struct tags, interface stubs, test skeletons)*.
-- Linting and analysis via **staticcheck**.
-
-## Go Version Management
-
-Go downloads the toolchain a module asks for: `GOTOOLCHAIN` is `auto`, so a `go` or `toolchain`
-line newer than the preinstalled Go fetches that version.
-To keep another version alongside, install it with `go install golang.org/dl/go1.X.Y@latest`.
-
-## Creating Workspace Configuration
-
-When developing in Go, VS Code expects the project root to be located at the workspace
-root *(e.g., /workspace)*.
-
-However, this isn't always the case, especially when dealing with complex project
-structures.
-
-To handle such scenarios, create a `go.work` file at `/workspace/go.work` that lists the
-projects:
+VS Code expects a Go project's root to be the workspace root *(e.g., /workspace)*.
+When your projects sit elsewhere, as in more complex project structures,
+create a `go.work` file at `/workspace/go.work` that lists them:
 
 ```sh
 cd /workspace
 go work init ./project ./team/project ./hobby
 ```
 
-This setup allows you to work with multiple projects simultaneously, even if they are
-located at varying depths within the workspace.
+You can then work on several projects at once, even at different depths in the workspace.
 
 ::: info
-A `go.work.sum` file will be generated alongside the `go.work` file.
-This file contains the checksums of the downloaded dependencies, ensuring consistency
-across builds.
+Go generates a `go.work.sum` file next to the `go.work` file.
+It holds the checksums of the downloaded dependencies, which keeps builds consistent.
 :::
+
+## Go Version Management
+
+Go downloads the toolchain a module asks for:
+`GOTOOLCHAIN` is `auto`, so a `go` or `toolchain` line newer than the preinstalled Go fetches that version.
+To keep another version alongside, install it with `go install golang.org/dl/go1.X.Y@latest`.
+
+## Preinstalled Tools
+
+Kloud Workspace ships these Go tools, all precompiled and on `$PATH`:
+
+- **dlv:** Delve debugger for Go.
+- **gopls:** The official Go language server, which provides the IDE features.
+- **staticcheck:** Static analysis and linting.
+- **gomodifytags:** Modify struct field tags *(add, remove, clear)*.
+- **gotests:** Generate table-driven tests from function signatures.
+- **impl:** Generate method stubs for implementing interfaces.
+- **go-outline:** Extract a JSON representation of the declarations in a Go source file.
+- **goplay:** Run Go snippets in the Go Playground from the editor.
+
+## VS Code Integration
+
+The preinstalled [Go extension](https://open-vsx.org/extension/golang/Go) provides:
+
+- IntelliSense and auto-completion via **gopls**.
+- Integrated debugging with **dlv**.
+- Test runner with code-lens support.
+- Code generation *(struct tags, interface stubs, test skeletons)*.
+- Linting and analysis via **staticcheck**.

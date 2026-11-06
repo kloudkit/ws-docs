@@ -1,5 +1,5 @@
 ---
-description: "Git in Kloud Workspace ships with sane defaults and useful aliases out of the box, plus guidance for customizing your workflow."
+description: "Git in Kloud Workspace comes with sane defaults and aliases, sets your identity and signing key at startup, and can clone a repository for you."
 see:
   - name: SSH
     link: /tools/ssh
@@ -11,47 +11,26 @@ see:
 
 ![Git logo](/icons/git.svg){.doc-image}
 
-`git` is at the core of every developer's workflow, a tool that cannot be ignored.
-As such, a few features are provided out-of-the-box:
+Git comes set up in the workspace, with:
 
 - Sane defaults.
 - Common and useful aliases.
-- User identity injection via environment variables.
-- Auto-configured signature key for signed commits.
+- User identity from environment variables.
+- An automatically configured signing key for signed commits.
 - Automatic cloning of a remote repository on startup.
 
-## Configuration Lookup
+## Startup Configuration
 
-The configuration lookup sequence is as follows:
+When a new container starts,
+the workspace checks for the environment variables and files below to configure your user-level settings.
+For example, set your commit identity:
 
-- **Workspace level *(`/etc/gitconfig`)*:** sane default configurations, aliases,
-    and filters *(should not be overridden by the user)*.
-- **User level *(`~/.gitconfig`)*:** allowing users to define their personal preferences
-    and override configurations found in the *workspace level* file.
-
-## Credential Cache
-
-By default, Git caches your credentials in memory for one hour *(3600 seconds)* using the
-built‑in credential helper:
-
-```ini
-[credential]
-  helper = cache --timeout=3600
+```sh{2,3}
+docker run \
+  -e GIT_COMMITTER_NAME="Alice" \
+  -e GIT_COMMITTER_EMAIL="alice@example.com" \
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
-
-When authenticating with a remote that requires basic authentication *(such as over HTTPS)*,
-Git will automatically reuse the cached credentials until the timeout expires.
-
-The cached username and password are reused until the timeout expires.
-
-Need a different duration?
-Set `WS_GIT_CREDENTIAL_CACHE_TIMEOUT` *(seconds)* before launching the container.
-Use `-1` to keep credentials for *one year*.
-
-## Configuration Injection
-
-Upon startup, the existence of both `env`s and files we will checked in order to
-automatically configure user-level settings.
 
 ### Environment Variables
 
@@ -62,22 +41,31 @@ automatically configure user-level settings.
 
 ### Files
 
-- **`~/.ssh/signingkey.pub`:** when this file is present, it activates the automatic
-    setting of `[commit.gpgsign]` and `[tag.gpgsign]` configurations to `true`, signing
-    with SSH keys.
-- **`~/.ssh/signingkey`:** this is the private counterpart to `~/.ssh/signingkey.pub`,
-    used in the signing process.
+- **`~/.ssh/signingkey.pub`:** when this file is present, `[commit.gpgsign]` and `[tag.gpgsign]` are set to `true`,
+  signing with SSH keys.
+- **`~/.ssh/signingkey`:** the private counterpart to `~/.ssh/signingkey.pub`, used in the signing process.
+
+## Credential Cache
+
+By default, Git caches your credentials in memory for one hour *(3600 seconds)* with the built-in credential helper:
+
+```ini
+[credential]
+  helper = cache --timeout=3600
+```
+
+When a remote requires basic authentication *(such as over HTTPS)*,
+Git reuses the cached username and password until the timeout expires.
+
+For a different duration, set `WS_GIT_CREDENTIAL_CACHE_TIMEOUT` *(seconds)* before you start the container.
+Use `-1` to keep credentials for *one year*.
 
 ## Automated Workspace Cloning
 
-In various scenarios, a *workspace* instance may need to automatically clone a remote
-repository during startup.
-Common use cases include *CI*, short-lived instances used during integration testing, or
-environments in the cloud where persistent volumes are costly or impractical.
-
-To facilitate this, you can provide the environment variable `WS_GIT_CLONE_REPO`.
-If specified, the *workspace* will clone the repository into `WS_SERVER_ROOT`
-*(default: `/workspace`)* if the directory is empty.
+To clone a remote repository when a new container starts, set `WS_GIT_CLONE_REPO`.
+The workspace clones it into `WS_SERVER_ROOT` *(default: `/workspace`)* if the directory is empty.
+This suits *CI*, short-lived instances used during integration testing,
+and cloud environments where persistent volumes are costly or impractical.
 
 ::: info
 If the repository requires authentication, provide the credentials before the container starts:
@@ -87,19 +75,16 @@ Your own autoload scripts run after the clone, so they are too late.
 
 ## Aliases
 
-Aliases can be directly utilized via the `git <alias>` command.
-For instance, `git lg` will display a customized commit graph.
+Run each alias as `git <alias>`.
+For example, `git lg` shows a customized commit graph.
 
-The list is a compilation of useful aliases:
-
-- **`amend`:** Reapplies the last commit without modifying its commit message.
+- **`amend`:** Amends the last commit without changing its commit message.
 - **`clean-gone`:** Removes local branches that no longer have a corresponding remote.
-- **`lg`:** Displays a beautiful graphical representation of the commit history.
+- **`lg`:** Shows the commit history as a graph.
 - **`nah`:** Hard resets the changes and removes untracked files and directories.
-- **`pull-theirs`:** Executes a forceful `pull`, and resolve conflicts by favoring remote
-    changes over local ones.
+- **`pull-theirs`:** Pulls with `--force` and resolves conflicts by favoring remote changes over local ones.
 - **`uncommit`:** Soft resets the `HEAD` to the previous commit.
-- **`wip`:** Stages all changes and creates a new commit with a `"🚧 WIP"` message.
+- **`wip`:** Stages every change under the current directory and commits it with the message `🚧 WIP`.
 
 To list these aliases, run:
 
@@ -109,3 +94,12 @@ git config --get-regexp '^alias\.'
 
 The *oh-my-zsh* `git` plugin adds its own shell shortcuts *(such as `g` for `git`)*;
 `alias | grep git` lists those.
+
+## Configuration Lookup
+
+Git looks up its configuration in this order:
+
+- **Workspace level *(`/etc/gitconfig`)*:** the default configuration, aliases, and filters
+  *(leave this file as it is)*.
+- **User level *(`~/.gitconfig`)*:** your personal preferences, which override the configuration in the
+  *workspace level* file.

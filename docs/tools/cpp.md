@@ -1,5 +1,5 @@
 ---
-description: "Add a full C and C++ compile-debug-build toolchain to Kloud Workspace with the opt-in cpp feature for performance-critical work."
+description: "Add a full C and C++ compile, debug and build toolchain to Kloud Workspace with the opt-in cpp feature."
 see:
   - name: Features
     link: /editor/features
@@ -11,10 +11,7 @@ see:
 
 ![C/C++ logo](/icons/cpp.svg){.doc-image width=150px}
 
-C and C++ are foundational systems programming languages used for performance-critical
-software, embedded systems, game engines, and operating systems.
-
-The `cpp` feature brings a full compile-debug-build toolchain into the workspace.
+The `cpp` feature brings a full compile, debug and build toolchain for C and C++ into the workspace.
 
 ## Installation
 
@@ -22,12 +19,12 @@ Install the C/C++ toolchain using the [features](/editor/features) system:
 
 ```sh
 # Manual installation
-ws feature install cpp
+ws-cli feature install cpp
 
 # Or at boot time
 docker run \
   -e WS_FEATURES_ADDITIONAL_FEATURES="cpp" \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
 ## Selecting a Compiler Version
@@ -37,16 +34,16 @@ Choose a different major with the [`version` opt](/editor/features#optional-vari
 
 ```sh
 # Manual installation
-ws feature install cpp --opt version=13
+ws-cli feature install cpp --opt version=13
 
 # Or at boot time
 docker run \
   -e WS_FEATURES_ADDITIONAL_FEATURES="cpp" \
   -e WS_FEATURES_CPP_OPTS="version=13" \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
-> Supported versions: **13** and **14** *(default)*.
+Supported versions are **13** and **14** *(default)*.
 
 ::: warning
 

@@ -1,60 +1,51 @@
 ---
-description: "Kloud Workspace includes standardized, user-friendly SSH configurations for connecting to remote servers, in /etc/ssh/ssh_config."
+description: "Kloud Workspace ships an SSH client configuration in /etc/ssh/ssh_config that picks a key pair for each host from ~/.ssh."
 see:
   - name: Signed Commits
     link: /tools/git#files
   - name: Fonts
     link: /editor/theme-and-fonts
+  - name: Docker
+    link: /tools/docker
 ---
 
 # SSH
 
 ## Client
 
-Using SSH to connect to remote servers and services is a common task for developers.
-Kloud Workspace includes user-friendly, standardized SSH configurations to connect with
-remote servers.
-These configurations are all located within `/etc/ssh/ssh_config`.
+Kloud Workspace ships an SSH client configuration for connecting to remote servers, in `/etc/ssh/ssh_config`.
 
 ### User Overrides
 
-Users have the flexibility to enhance or modify the default SSH configurations by editing
-the `~/.ssh/config` file.
-Any settings defined in `~/.ssh/config` are prioritized and processed before the
-main configuration file *(`/etc/ssh/ssh_config`)*, enabling users to customize their
-settings without altering the primary configuration.
-
-This approach ensures that user-overrides or additions seamlessly take precedence.
+To add or change settings, edit `~/.ssh/config`.
+SSH processes it before the main configuration file *(`/etc/ssh/ssh_config`)*,
+so your settings take precedence and the main configuration stays unchanged.
 
 ### Key-Pair Lookup
 
-It's recommended to use unique key-pairs for each host to enhance security.
-However, managing multiple key-pairs can be challenging.
-To simplify this, we've implemented a hierarchical lookup strategy that selects the
-appropriate key-pair based on its location within the `~/.ssh` directory.
+A unique key pair for each host improves security, but many key pairs are harder to manage.
+The workspace selects the key pair by its location in the `~/.ssh` directory.
 
 SSH offers the keys in this order and stops at the first one the server accepts:
 
-- **User-defined:** keys explicitly specified by the user in `~/.ssh/config`
-    [see below](#user-overrides).
+- **User-defined:** keys you specify in `~/.ssh/config` *(see [User Overrides](#user-overrides))*.
 - **Global:** keys located directly in `~/.ssh`:
   - `~/.ssh/id_ecdsa`
   - `~/.ssh/id_ed25519`
   - `~/.ssh/id_rsa`
-- **Internal:** when you connect by a private IP address *(`10.*`, `172.16.*` to `172.31.*`,
-    `192.168.*`)*, keys in `~/.ssh/internal` are used, and host keys are not checked:
+- **Internal:** when you connect by a private IP address *(`10.*`, `172.16.*` to `172.31.*`, `192.168.*`)*,
+    keys in `~/.ssh/internal` are used, and host keys are not checked:
   - `~/.ssh/internal/id_ecdsa`
   - `~/.ssh/internal/id_ed25519`
   - `~/.ssh/internal/id_rsa`
 - **Domain specific:** for every host, keys in a subdirectory of `~/.ssh` named after the host
     as you typed it *(no DNS lookup)*.
-    For example, keys for `github.com` would be located in `~/.ssh/github.com`:
+    For example, keys for `github.com` go in `~/.ssh/github.com`:
   - `~/.ssh/<HOST>/id_ecdsa`
   - `~/.ssh/<HOST>/id_ed25519`
   - `~/.ssh/<HOST>/id_rsa`
 
-This structure ensures a more organized and secure approach to managing SSH keys,
-simplifying what can otherwise have been considered a complex process.
+With this layout, a key for a new host only needs a new directory, with no entry in `~/.ssh/config`.
 
 #### Example File Structure
 
@@ -74,15 +65,8 @@ simplifying what can otherwise have been considered a complex process.
 
 ### SSH Agent
 
-The `ssh-agent` is a background process that handles private keys used for public key
-authentication with SSH.
-
-Starting an `ssh-agent` is considered good practice because it securely stores your
-passphrase and keys in memory, allowing you to use SSH keys to establish connections
-without having to re-enter your passphrase each time.
-
-The *oh-my-zsh* `ssh-agent` plugin starts an agent with your first shell and loads your
-`~/.ssh/id_*` keys.
+The *oh-my-zsh* `ssh-agent` plugin starts an agent with your first shell and loads your `~/.ssh/id_*` keys,
+so you do not have to re-enter your passphrase for each connection.
 
 ## Server
 

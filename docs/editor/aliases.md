@@ -1,5 +1,5 @@
 ---
-description: "Built-in shell aliases in Kloud Workspace that shorten long, common commands into convenient keywords, plus how to define your own."
+description: "The shell aliases and functions Kloud Workspace ships for common commands, and how to add your own."
 see:
   - name: Autoload Scripts
     link: /settings/autoload-scripts
@@ -9,13 +9,7 @@ see:
 
 # Aliases
 
-Shell aliases are shortcuts that represent long or complex commands in a more convenient
-and concise form.
-By defining an alias, you can replace a commonly used command with a simple keyword or
-abbreviation.
-This helps to speed up your workflow, reduce typing, and minimize errors by using
-predefined command patterns.
-
+The workspace shell comes with short names for common commands, and loads the aliases you add.
 For example, `ll` runs `eza --long --all --classify`.
 
 ::: tip
@@ -23,15 +17,14 @@ To bypass an alias and run the original command, prefix it with `\`.
 For example, `\ls` runs the original `ls` instead of `eza`.
 :::
 
-## Pre-Configured Aliases
+## Preinstalled Aliases
 
-Kloud Workspace's shell environments come packed with automatically configured aliases.
-These aliases are typically loaded from:
+The aliases come from two sources:
 
-- **Oh My Zsh Plugins:** depending on the active *oh-my-zsh* plugins that defined using
-    `WS_ZSH_PLUGINS` *(see [terminal documentation](/editor/terminal) for more details)*.
-- **Kloud Workspace Configuration:** Scripts are defined within Kloud Workspace at
-    `/usr/share/ohmyzsh/custom`.
+- **Oh My Zsh plugins:** each active *oh-my-zsh* plugin, set with `WS_ZSH_PLUGINS`, adds its own
+    aliases *(see the [terminal documentation](/editor/terminal))*.
+- **Kloud Workspace configuration:** the scripts in `/usr/share/ohmyzsh/custom` define the aliases
+    and functions below.
 
 ### Workspace Aliases
 
@@ -66,22 +59,25 @@ The *oh-my-zsh* `la` and `lsa` aliases are removed.
 
 ## User-Defined Aliases
 
-You can define your aliases by editing the session configuration files.
-See the [autoload documentation](/settings/autoload-scripts) for more details.
+Add your own aliases to a `.zsh` file in `~/.ws/session.d/`:
 
-These aliases will be available whenever you start a new session, making it easier to
-access commonly used commands.
+```sh
+echo "alias proj='cd /workspace/my-project'" >> ~/.ws/session.d/aliases.zsh
+```
+
+Every new terminal session loads these files after the workspace's own aliases, so your alias wins
+over a preinstalled one with the same name.
+See the [autoload documentation](/settings/autoload-scripts) for more details.
 
 ## Finding Aliases
 
-If you're unsure which aliases are available or want to find specific aliases, you can use
-the following command to list them all:
+To list every alias in the current session:
 
 ```sh
 alias
 ```
 
-You can also pipe the output through `fzf`  to interactively search for specific aliases:
+To search them interactively, pipe the list through `fzf`:
 
 ```sh
 alias | fzf

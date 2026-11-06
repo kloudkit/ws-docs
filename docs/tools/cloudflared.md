@@ -1,8 +1,12 @@
 ---
-description: "Expose a Kloud Workspace to the internet with Cloudflare Tunnel — an outbound-only connection needing no inbound ports or public IP."
+description: "Expose Kloud Workspace to the internet with Cloudflare Tunnel, an outbound-only connection that needs no inbound ports or public IP."
 see:
   - name: Features
     link: /editor/features
+  - name: Authentication
+    link: /editor/authentication
+  - name: Port Forwarding
+    link: /editor/port-forwarding
 ---
 
 # Cloudflared <Badge type="tip" text="installable feature" />
@@ -11,7 +15,7 @@ see:
 
 [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/)
 exposes the workspace to the internet through an outbound-only connection to Cloudflare's edge,
-no inbound ports and no public IP on the host.
+with no inbound ports and no public IP on the host.
 
 The `cloudflared` feature installs the tunnel connector.
 Once a tunnel token is supplied, the workspace runs and supervises the tunnel automatically.
@@ -23,26 +27,35 @@ Install `cloudflared` using the [features](/editor/features) system:
 
 ```sh
 # Manual installation
-ws feature install cloudflared
+ws-cli feature install cloudflared
 
 # Or at boot time
 docker run \
   -e WS_FEATURES_ADDITIONAL_FEATURES="cloudflared" \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
 ## Running a Tunnel
 
+::: warning
+The workspace has no sign-in until you set one.
+Turn on [authentication](/editor/authentication) before you expose it through a tunnel.
+:::
+
 Create a remotely-managed tunnel in the [Cloudflare dashboard](https://one.dash.cloudflare.com/)
 and copy its **connector token**.
+In the tunnel's configuration, route your public hostname to `http://localhost:8080`, the editor's
+port inside the container.
 
-Provide it through `WS_CLOUDFLARED_TUNNEL_TOKEN` and the tunnel starts automatically on boot:
+Provide the token and the tunnel starts automatically on boot:
+
+- <EnvVar group="cloudflared" name="tunnel_token" />
 
 ```sh{2}
 docker run \
   -e WS_CLOUDFLARED_TUNNEL_TOKEN="<token>" \
   -e WS_FEATURES_ADDITIONAL_FEATURES="cloudflared" \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
 The tunnel is supervised: if it exits, it is restarted automatically.
@@ -62,5 +75,5 @@ it at `/run/secrets/workspace/cloudflared/tunnel_token`.
 Inspect the tunnel's output with [`ws-cli`](/tools/ws-cli):
 
 ```sh
-ws logs --target=cloudflared
+ws-cli logs --target=cloudflared
 ```

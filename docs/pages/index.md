@@ -1,66 +1,56 @@
 ---
-description: "Run a customized, pre-configured VS Code workspace on Docker, Kubernetes, or OpenShift, in the browser or via SSH."
+description: "What Kloud Workspace gives you: a customized, preconfigured VS Code on Docker, Kubernetes or OpenShift, in the browser or via SSH."
+see:
+  - name: Getting Started
+    link: /pages/getting-started
+  - name: Tools Overview
+    link: /tools/overview
+  - name: Features
+    link: /editor/features
+  - name: Configuration
+    link: /settings/configuration
 ---
 
-# Kloud Workspace
+# Introduction
 
-> 🔋 A batteries-included pre-configured development workspace inside a Docker container
+Kloud Workspace gives you a development environment that is ready when it starts:
+a customized, preconfigured [VS Code][] with languages, tools and extensions already installed.
 
-## Overview
+Run it with Docker, Kubernetes or OpenShift, and use it in the browser *(or via `ssh`)*.
+The editor is VS Code built from source, with telemetry turned off.
+The image is based on Debian 13 and runs as the user `kloud` *(uid 1000)*.
 
-Run your customized and pre-configured version of [VS Code][] using Docker, Kubernetes,
-or OpenShift and access it in the browser *(or via `ssh`)*.
+## What You Get
 
----
-
-Over the past decade, both companies and individual developers have increasingly embraced
-cloud-based workflows for CI, deployment, testing, and staging.
-Yet, the shift of actual development processes to the cloud has lagged behind.
-Despite the convenience and efficiency the cloud offers, developers have largely clung to
-the familiar comfort of the *desktop experience*, hesitating to move their development
-tools into the cloud.
-
-Recognizing this gap, Kloud Workspace was tailored to facilitate this transition.
-By packaging the widely-used *VS Code* IDE as a Docker container,
-and integrating the latest development environments along with essential tools and
-extensions, we offer a seamless bridge to the cloud.
-
-## Add-ons
-
-The *workspace* is tailored for both development and DevOps purposes.
-It ships with a set of preinstalled tools, meticulously curated to streamline and enhance
-your day-to-day workflow.
-
-These tools, thoughtfully integrated *(and pre-configured)*, encompass a suite of
-functionalities ranging from version control, build automation tools, and more.
-
-::: info
-For the full lists, see the [Tools overview](/tools/overview) and the
-[preinstalled extensions](/editor/extensions#prepackaged-extensions).
-:::
-
-### Tools
-
-See our [dedicated section on CLI tools](/tools/overview).
-
-### Extensions
-
-See our [dedicated section on VS Code extensions](/editor/extensions).
-
-### Terminal
-
-See our [dedicated section on the terminal](/editor/terminal).
+| What you get                                                       | Page                                           |
+| ------------------------------------------------------------------ | ---------------------------------------------- |
+| A workspace in your browser, started with one command              | [Getting Started](/pages/getting-started)      |
+| Sign-in with a password or OIDC, once you set one                  | [Authentication](/editor/authentication)       |
+| Persistent files, on volumes for `/workspace` and `~/.ws`          | [Storage](/editor/storage)                     |
+| Preinstalled tools: Python, Go, Docker, Helm, Claude Code and more | [Tools Overview](/tools/overview)              |
+| More tools on demand, such as C/C++, .NET and Rust                 | [Features](/editor/features)                   |
+| Preinstalled VS Code extensions, and more from Open VSX            | [Extensions](/editor/extensions)               |
+| Preconfigured VS Code settings that you can change                 | [Editor Settings](/editor/settings)            |
+| The Catppuccin Frappé theme and bundled fonts                      | [Theme & Fonts](/editor/theme-and-fonts)       |
+| zsh with a Starship prompt, history search and clipboard commands  | [Terminal](/editor/terminal)                   |
+| Aliases for common commands, and your own                          | [Aliases](/editor/aliases)                     |
+| Apps you run in the workspace, served at `/proxy/<port>/`          | [Port Forwarding](/editor/port-forwarding)     |
+| Configuration through `WS_*` environment variables                 | [Configuration](/settings/configuration)       |
+| Your own scripts, run when a new container starts                  | [Autoload Scripts](/settings/autoload-scripts) |
+| Files and secrets written when a new container starts              | [Seed](/settings/seed)                         |
+| Secrets encrypted with your own master key                         | [Secrets](/settings/secrets)                   |
+| HTTPS, and trust for your own CA certificates                      | [TLS & Certificates](/settings/tls)            |
+| Prometheus metrics, once you turn them on                          | [Metrics](/editor/metrics)                     |
+| A CLI for features, logs, secrets, seed files and the clipboard    | [ws-cli](/tools/ws-cli)                        |
 
 ## License
 
-::: info 👏 THANKS
-Many thanks to the [VS Code][] team for open-sourcing the editor that serves as the
-cornerstone of this project.
+::: info
+Thanks to the [VS Code][] team for open-sourcing the editor this project is built on.
 :::
 
 Kloud Workspace is released under the [**MIT License**][MIT].
-KloudKIT logos and other brand assets are proprietary, all rights reserved *(see the
-[brand license][Brand])*.
+KloudKIT logos and other brand assets are proprietary, all rights reserved *(see the [brand license][Brand])*.
 
 ![License](/icons/mit.svg) {.doc-image-inline style="width:100px"}
 

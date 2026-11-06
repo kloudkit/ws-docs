@@ -1,8 +1,10 @@
 ---
-description: "Ansible comes ready in Kloud Workspace for automating configuration management, deployment, and orchestration with declarative YAML."
+description: "Run Ansible playbooks in Kloud Workspace, with ansible-core, ansible-lint, community collections and an inventory for the workspace itself preinstalled."
 see:
   - name: Python
     link: /tools/python
+  - name: Features
+    link: /editor/features
   - name: Ansible Configurations
     link: https://docs.ansible.com/ansible/latest/reference_appendices/config.html
     target: _blank
@@ -12,36 +14,14 @@ see:
 
 ![Ansible logo](/icons/ansible.svg){.doc-image}
 
-> Ansible is a popular automation tool that simplifies IT tasks, such as configuration
-> management, application deployment, and orchestration.
->
-> It uses a declarative YAML syntax to ensure consistent and reliable setup of systems
-> and applications across diverse environments.
+The workspace ships `ansible-core`, `ansible-lint`, VS Code extensions for Ansible and popular
+community collections, with an inventory that targets the workspace itself.
 
-## Overview
+## Run a Playbook on the Workspace
 
-Kloud Workspace is pre-configured with `ansible-core`, `ansible-lint`, VS Code extensions
-for Ansible, and popular community collections, all ready to use right out of the box.
-
-::: danger
-The workspace ships a recent `ansible-core`, which needs *Python 3.9* or later on target
-machines.
-:::
-
-## Setting User Configurations
-
-Kloud Workspace includes default settings in the `/etc/ansible/ansible.cfg` file.
-You can override these settings with environment variables, or with an `ansible.cfg` in the
-current directory.
-
-Prefer environment variables: a local `ansible.cfg` replaces `/etc/ansible/ansible.cfg`
-entirely, including the `home` setting that points Ansible at the preinstalled collections.
-
-## Triggering Playbooks for Kloud Workspace
-
-Kloud Workspace includes a default Ansible inventory file *(`/etc/ansible/hosts`)* with a
-group named `workspace` that runs on `localhost` with root privileges.
-This can be used to trigger playbooks in the current workspace environment.
+The default Ansible inventory *(`/etc/ansible/hosts`)* has a group named `workspace` that runs on
+`localhost` with root privileges.
+Target it to run playbooks in the current workspace environment:
 
 ```yaml
 - name: Say hello to the world
@@ -53,3 +33,25 @@ This can be used to trigger playbooks in the current workspace environment.
       ansible.builtin.debug:
         msg: Hello world! 👋
 ```
+
+Save it as `hello.yaml` and run it:
+
+```sh
+ansible-playbook hello.yaml
+```
+
+Ansible reads that inventory by default, so no `-i` flag is needed.
+
+::: danger
+The workspace ships a recent `ansible-core`, which needs *Python 3.9* or later on target
+machines.
+:::
+
+## Override the Defaults
+
+Kloud Workspace includes default settings in the `/etc/ansible/ansible.cfg` file.
+You can override these settings with environment variables, or with an `ansible.cfg` in the
+current directory.
+
+Prefer environment variables: a local `ansible.cfg` replaces `/etc/ansible/ansible.cfg`
+entirely, including the `home` setting that points Ansible at the preinstalled collections.

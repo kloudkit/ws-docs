@@ -1,55 +1,44 @@
 ---
-description: "Persist data beyond a container's lifecycle in Kloud Workspace, working around Docker's ephemeral, stateless default storage."
+description: "Keep your files and workspace configuration when a Kloud Workspace container is recreated, by persisting /workspace and ~/.ws."
 see:
   - name: Autoload Scripts
     link: /settings/autoload-scripts
+  - name: Extensions
+    link: /editor/extensions
+  - name: Seed
+    link: /settings/seed
+  - name: TLS & Certificates
+    link: /settings/tls
 ---
 
 # Storage
 
 ![Storage](/icons/storage.svg){.doc-image width=180px}
 
-By default, Docker storage is [*ephemeral*](https://www.merriam-webster.com/dictionary/ephemeral),
-meaning any data created inside a container is lost when the container is removed or
-recreated, for example to upgrade the image.
-
-This ephemeral design ensures containers are lightweight and stateless, but it limits
-their suitability for use cases that require persistent data.
+Keep your files and the workspace's configuration when the container is recreated, by persisting
+two directories: `/workspace` and `~/.ws`.
 
 ## Persistent Storage
 
-To keep data when a container is recreated *(or to share it between containers)*, attach
-persistent storage.
-This is achieved by attaching external storage to the container, enabling data to be
-saved and accessed independently of the container's lifecycle.
+Any data created inside a container is lost when the container is removed or recreated, for
+example to upgrade the image.
+To keep it *(or to share it between containers)*, mount a named volume on each directory:
 
-One common method to implement persistent storage is by mounting a **named volume** to a
-specific directory within the container.
-Named volumes are managed by Docker, offering an efficient way to store and retrieve data
-without dealing directly with the host file system.
-
-::: tip Best Practice
-For simplicity and consistency, we recommend using **named volumes** over bind mounts
-whenever possible.
-:::
-
-### Mounting a Named Volume
-
-To persist data in Kloud Workspace, mount a volume to the `/workspace` directory:
-
-```sh{2}
+```sh{2-3}
 docker run \
+  -v ws:/home/kloud/.ws \
   -v workspace:/workspace \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
 In the command above:
 
-- The volume is named `workspace` *(you can use any name)*.
-- The volume is mounted to the `/workspace` directory inside the container.
-- Docker automatically creates the volume on first execution.
+- The volume named `workspace` is mounted on `/workspace`, the workspace root.
+- The volume named `ws` is mounted on `~/.ws`, where the workspace keeps its configuration.
+- You can use any volume names.
+- Docker automatically creates each volume on first execution.
 
-Alternatively, you can manually create the volume:
+Alternatively, you can manually create a volume:
 
 ```sh
 docker volume create workspace
@@ -61,52 +50,28 @@ To list all existing volumes:
 docker volume ls
 ```
 
+::: tip
+For simplicity and consistency, use **named volumes** over bind mounts whenever possible.
+:::
+
 ### Persisting `~/.ws`
 
 Several workspace features store their configuration under `~/.ws` (`/home/kloud/.ws`),
 including [sideloaded extensions](/editor/extensions), [startup and session scripts](/settings/autoload-scripts),
 [drop-in CA certificates](/settings/tls#drop-in-directory-ws-ca-d),
 the [seed source](/settings/seed), and your shell and REPL history (`~/.ws/history`).
+Because this directory lives inside the container, its contents are lost when the container
+is recreated, unless you persist it separately as shown above.
+
 When a container is first created, `~/.ws` and its standard subdirectories *(not their
 contents)* are re-owned by `kloud`, even when the mounted volume starts out owned by `root`.
 
-Because this directory lives inside the container, its contents are lost when the container
-is recreated, unless you persist it separately:
-
-```sh{2}
-docker run \
-  -v ws:/home/kloud/.ws \
-  -v workspace:/workspace \
-  ghcr.io/kloudkit/workspace:v0.5.3
-```
-
-## Named Volumes vs. Bind Mounts
-
-When configuring persistent storage, it’s important to understand the difference between
-**named volumes** and **bind mounts**.
-
-### Named Volumes
-
-- Managed by Docker and stored in a Docker-controlled location on the host.
-- Abstracted from the host file system, offering ease of use and portability.
-- The initial content of the container directory is copied to the volume automatically.
-
-### Bind Mounts
-
-- Directly link a specific directory or file on the host system to the container.
-- Provide greater control but require explicit paths and manual host management.
-- Can cause conflicting file ownership and permissions.
-- When using *Windows* based mounts, all files will have an insecure mode of `777`.
-- When using *Linux* based mounts, there may be an ownership discrepancy.
-
 ## Kubernetes
 
-When working with Kubernetes, we recommend creating a single `PersistentVolumeClaim` to
-manage the entire workspace efficiently.
-This approach simplifies volume management by utilizing *sub-paths* within the workspace.
+With Kubernetes, create a single `PersistentVolumeClaim` for the entire workspace and mount
+*sub-paths* of it, which keeps volume management simple.
 
-The following demonstrates this practice
-*(note that the paths and names are provided for illustrative purposes only)*:
+The following demonstrates this practice *(the paths and names are for illustration only)*:
 
 ```yaml{5,9,13}
 # Pod specs
@@ -126,3 +91,19 @@ volumeMounts:
 volumes:
   - name: data
 ```
+
+## Named Volumes vs. Bind Mounts
+
+### Named Volumes
+
+- Managed by Docker and stored in a Docker-controlled location on the host.
+- Abstracted from the host file system, offering ease of use and portability.
+- The initial content of the container directory is copied to the volume automatically.
+
+### Bind Mounts
+
+- Directly link a specific directory or file on the host system to the container.
+- Provide greater control but require explicit paths and manual host management.
+- Can cause conflicting file ownership and permissions.
+- When using *Windows* based mounts, all files will have an insecure mode of `777`.
+- When using *Linux* based mounts, there may be an ownership discrepancy.

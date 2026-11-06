@@ -1,22 +1,25 @@
 ---
-description: "Customize the VS Code editor in Kloud Workspace with JSON-based settings, separate from environment-variable configuration."
+description: "Change Kloud Workspace's VS Code settings for yourself, per project or when a container is created, apart from its environment variables."
 see:
   - name: Configuration
     link: /settings/configuration
+  - name: Theme & Fonts
+    link: /editor/theme-and-fonts
 ---
 
-# Settings
+# Editor Settings
+
+The workspace's VS Code comes with default settings; change them for yourself, per project, or
+when a container is first created.
 
 ::: tip
 For environment variable configuration *(non-editor settings)*,
 see [Configuration](/settings/configuration).
 :::
 
-## Overview
+## Where Settings Live
 
-VS Code stands out as an incredibly customizable editor, empowering developers to shape
-their coding environment through personalized settings stored in a `settings.json` file.
-These settings manifest at two levels:
+VS Code keeps its settings in `settings.json` files, at two levels:
 
 - [*User settings*](#user-settings).
 - [*Workspace settings*](#workspace-settings).
@@ -25,44 +28,38 @@ These settings manifest at two levels:
 container is first created.
 
 ::: warning
-The term [*workspace settings*](#workspace-settings) mentioned earlier specifically
-pertains to VS Code's settings and should not be confused with Kloud Workspace.
-
-To avoid any potential confusion, this document will consistently use the term
-Kloud Workspace when referring to the workspace image.
+*Workspace settings* is VS Code's term for a project's settings, not a reference to Kloud
+Workspace.
+This page always says Kloud Workspace when it means the workspace image.
 :::
 
-**Kloud Workspace** comes pre-configured with sane configuration that cover a wide-range
-of use-cases at the [*user settings*](#user-settings) level.
-If you wish to modify the pre-configured settings or use your own, follow the
-process of overriding the [*workspace settings*](#workspace-settings).
-However, keep in mind, it may affect certain tools, as stated in the
-[Important Notes](#important-notes) section below.
-The process of overriding and appending can be managed within the
-[*workspace*](#workspace-settings).
+Kloud Workspace sets defaults for a wide range of use cases at the
+[*user settings*](#user-settings) level.
+To override them or add your own, use the [*workspace settings*](#workspace-settings).
+This may affect certain tools, as the [Important Notes](#important-notes) below explain.
 
 ### User Settings
 
-The user-specific settings, are located in the `~/.local/share/ws-server/User/settings.json` file.
-As mentioned above, these settings should be considered a base-line of default to append
-to, any desired changes should be handled at the *workspace* level.
+The user settings are in the `~/.local/share/ws-server/User/settings.json` file.
+To open it in the editor, run `open-settings` in a terminal.
+Treat these settings as a baseline of defaults to add to, and make your changes at the
+*workspace* level.
 
-::: warning NOTICE
+::: warning
 Changes made to these settings are lost when the workspace container is recreated.
-By mounting a volume to the settings directory, you ***opt-out*** of receiving
-future updates and configurations related to the editor that come with
-Kloud Workspace.
+By mounting a volume to the settings directory, you opt out of receiving future updates and
+configurations related to the editor that come with Kloud Workspace.
 :::
 
 ### Workspace Settings
 
-To add or override existing defaults create a `settings.json` in a `.vscode` directory
+To add to or override the defaults, create a `settings.json` in a `.vscode` directory
 at the root of your project *(usually `/workspace/.vscode/settings.json`)*.
-These settings will take precedence over the [*user settings*](#user-settings).
+These settings take precedence over the [*user settings*](#user-settings).
 Workspace settings cannot change application-wide or machine-wide settings such as
 `update.mode`; set those in the user settings.
 
-The animation below displays the various tabs and the creation of the `.vscode` directory:
+The animation below shows the settings tabs and the creation of the `.vscode` directory:
 
 ![Settings animation](/settings/settings.gif){.doc-image-shadow}
 
@@ -87,17 +84,17 @@ preserving any defaults not explicitly specified:
 
 ::: code-group
 
-```sh{2} [inline]
+```sh{2} [Inline]
 docker run \
   -e WS_EDITOR_SETTINGS_MERGE='{"editor.fontSize": 16, "[python]": {"editor.tabSize": 4}}' \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
-```sh{2,3} [file]
+```sh{2,3} [File]
 docker run \
   -e WS_EDITOR_SETTINGS_MERGE_FILE=/workspace/.settings-merge.json \
   -v /path/to/my-settings.json:/workspace/.settings-merge.json \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
 :::
@@ -107,22 +104,22 @@ docker run \
 ::: warning
 Override removes all of Kloud Workspace's default user settings, including the theme and fonts.
 
-*Use merge for partial updates.*
+Use merge for partial updates.
 :::
 
 ::: code-group
 
-```sh{2} [inline]
+```sh{2} [Inline]
 docker run \
   -e WS_EDITOR_SETTINGS_OVERRIDE='{"editor.fontSize": 16}' \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
-```sh{2,3} [file]
+```sh{2,3} [File]
 docker run \
   -e WS_EDITOR_SETTINGS_OVERRIDE_FILE=/workspace/.settings.json \
   -v /path/to/my-settings.json:/workspace/.settings.json \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
 :::
@@ -140,10 +137,9 @@ over it.
 
 ## Important Notes
 
-- Exercise caution when modifying the `settings.json` file, as incorrect changes may
-    impact the functionality of Kloud Workspace.
+- Take care when you modify a `settings.json` file, as incorrect changes may impact the
+    functionality of Kloud Workspace.
 - Some settings may require a window refresh before taking effect.
-- Certain settings may come bundled with additional tool-based configurations that
-    affect how the tool interacts with Kloud Workspace.
-- If you feel there should be additional pre-configured settings, feel free to open
-    a [pull request](/contribute/).
+- Certain settings may come with additional tool-based configuration that affects how the
+    tool interacts with Kloud Workspace.
+- To propose more default settings, open a [pull request](/contribute/).

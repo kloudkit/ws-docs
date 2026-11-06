@@ -1,5 +1,5 @@
 ---
-description: "Configure Kloud Workspace through environment variables, following a convention-over-configuration approach with sensible defaults."
+description: "Configure Kloud Workspace with environment variables, pass them from an env file, and read secrets from mounted files."
 see:
   - name: Editor Settings
     link: /editor/settings
@@ -15,22 +15,46 @@ For VS Code editor settings *(JSON-based)*, see [Editor Settings](/editor/settin
 
 ![Dotenv logo](/icons/dotenv.svg){.doc-image}
 
-**Kloud Workspace** follows the *convention over configuration* principle, shipping with
-sensible defaults.
-
-Nearly every setting can be overridden with environment variables, giving you maximum
-flexibility.
+Kloud Workspace ships with sensible defaults, and nearly every setting can be overridden with an
+environment variable.
 
 Settings are environment variables.
 Secrets can also come from mounted files, and drop-in directories under `~/.ws` add startup
 scripts, certificates, extensions and [seed](/settings/seed) files.
 
+## Set Variables
+
+Pass variables to the container with `-e`:
+
+```sh
+docker run \
+  -e WS_METRICS_ENABLE=true \
+  -e TZ=Europe/London \
+  ghcr.io/kloudkit/workspace:v0.6.0
+```
+
+To keep them in a file, write one `NAME=value` per line, such as this `workspace.env`:
+
+```ini
+WS_METRICS_ENABLE=true
+TZ=Europe/London
+```
+
+Then pass the file with `--env-file`:
+
+```sh
+docker run --env-file workspace.env ghcr.io/kloudkit/workspace:v0.6.0
+```
+
+Docker skips lines that start with `#` and keeps quotes as part of the value, so leave values
+unquoted.
+
 ::: tip `WS_<GROUP>` Prefix Convention
 Variables that are consumed **solely** by Kloud Workspace start with `WS_<GROUP>_`
 followed by the name *(example: `WS_ZSH_PLUGINS`)*.
 
-When a variable is also consumed by an underlying tool, we keep its original name.
-Such variables can be reviewed in the [global variables](#global-variables) section.
+A variable that an underlying tool also reads keeps that tool's original name.
+Those are listed under [Global Variables](#global-variables).
 :::
 
 ::: tip Boolean Values
@@ -39,8 +63,8 @@ To enable a boolean environment variable, set it to a *truthy* value, either `1`
 
 ## Resolving Secret Values
 
-Secret-shaped variables resolve through a four-step chain so the same property works across
-Docker and Kubernetes without `_FILE` companions:
+These variables hold secrets, so each one can also be read from a file, and the same setting works
+across Docker and Kubernetes without `_FILE` companion variables:
 
 - <EnvVar group="auth" name="password" />
 - <EnvVar group="auth" name="password_hashed" />
@@ -52,28 +76,28 @@ Docker and Kubernetes without `_FILE` companions:
 - <EnvVar group="server" name="ssl_cert" />
 - <EnvVar group="server" name="ssl_key" />
 
-The resolver returns the first match:
+Each value comes from the first of these that applies:
 
-1. **Env literal:** `WS_X=value`.
+1. **Literal value:** `WS_X=value`.
 2. **`file:` prefix:** `WS_X=file:/path` reads the file *(the editor trims surrounding whitespace;
    `ws-cli` strips one trailing newline)*.
-3. **Convention default:** mount a file at `/run/secrets/workspace/<group>/<property>` and leave
+3. **Mounted file:** mount a file at `/run/secrets/workspace/<group>/<property>` and leave
    the variable unset.
-4. **Schema default:** typically unset.
+4. **Default:** typically unset.
 
 ::: code-group
 
-```sh [Env literal]
+```sh [Literal Value]
 docker run \
   -e WS_AUTH_PASSWORD=super_duper_secret \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
-```sh [file: prefix]
+```sh [file: Prefix]
 docker run \
   -e WS_AUTH_PASSWORD=file:/run/secrets/workspace/auth/password \
   -v ./password.txt:/run/secrets/workspace/auth/password:ro \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  ghcr.io/kloudkit/workspace:v0.6.0
 ```
 
 ```yaml [Kubernetes]
@@ -95,12 +119,12 @@ containers:
 :::
 
 ::: tip
-`ws-cli show env <group.prop>` (e.g. `ws-cli show env server.port`) reports where the
-value came from: `process` *(the environment)*, `file` *(a `file:` path)*, `mount`
+To see where a value came from, run `ws-cli show env` with its dotted key, such as
+`ws-cli show env server.port` for `WS_SERVER_PORT`.
+The source reads `process` *(the environment)*, `file` *(a `file:` path)*, `mount`
 *(the `/run/secrets/workspace` convention)*, `alias` *(a deprecated name)* or `declared`
 *(the default)*.
-Query the dotted key; the matching `WS_*` variable (e.g. `WS_SERVER_PORT`) is what you
-`export` to set it.
+Set the matching `WS_*` variable, not the dotted key, to change it.
 In an editor terminal, secrets passed as plain environment values are already removed, so they
 show as unset.
 :::
