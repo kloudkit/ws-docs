@@ -11,9 +11,9 @@ see:
 
 ![Seed](/icons/seed.svg){.doc-image}
 
-Seeding projects files and secrets from a durable source directory onto the filesystem on every
-container boot.
-Fill the source once and it re-projects each restart, with no hand-run setup scripts.
+Seed copies files and secrets from a durable source directory onto the filesystem each time a
+new container starts.
+Fill the source once, and every new container gets the files, with no hand-run setup scripts.
 
 One source tree carries two tiers: plain **bare files** copied verbatim, and a **`.seed.yaml`
 manifest** that layers merge, templating, and secrets over them.
@@ -23,7 +23,8 @@ manifest** that layers merge, templating, and secrets over them.
 - **Source:** <EnvVar group="seed" name="source" /> *(default `~/.ws/seed.d`)*. An empty or absent
   directory is a clean no-op.
 - **Manifest:** a single `<source>/.seed.yaml` at the source root, excluded from the bare mirror.
-- **Runs:** at boot, before the workspace's own configuration steps.
+- **Runs:** when a new container starts, after directory setup, CA trust and the 1Password
+  import, and before the other startup scripts *(yours included)*.
 - **Writes:** only where you own the destination, anywhere your account owns the nearest existing
   parent directory.
 
@@ -32,13 +33,14 @@ manifest** that layers merge, templating, and secrets over them.
 The path under the source maps directly onto the root filesystem:
 
 ```text
-~/.ws/seed.d/home/kloud/.gitconfig   →  ~/.gitconfig
-~/.ws/seed.d/etc/workspace/x         →  /etc/workspace/x
+~/.ws/seed.d/home/kloud/.ssh/config           →  ~/.ssh/config
+~/.ws/seed.d/home/kloud/.config/app/env.json  →  ~/.config/app/env.json
 ```
 
 A home file therefore lives at `seed.d/home/kloud/<path>`, not at the source root.
 Bare files copy verbatim with mode `644` *(new directories `744`)* and never write if the
 destination already exists, unless forced.
+Files the image already ships, such as `~/.gitconfig`, are skipped for that reason.
 
 ## The Manifest
 
@@ -49,30 +51,32 @@ It opens with a `version` key and two sections:
 version: v1
 
 secrets:
-  GH_TOKEN: kZ9...   # inline ciphertext, or file:/run/secrets/gh_token
+  GH_TOKEN: <salt>$<ciphertext>   # from ws-cli secrets encrypt, or file:/run/secrets/gh_token
 
 seeds:
-  ~/.gitconfig:
+  ~/.config/app/settings.json:
     op: merge
 
   ~/.ssh/id_ed25519:
     secret: true
 
   ~/.zshenv:
-    op: append
-    content: |
-      export EDITOR=nano
+    op: lineinfile
+    content: "export EDITOR=nano\n"
 ```
 
 The `seeds:` map is **keyed by destination**, `~`, `${ws_home}`, `${ws_server_root}` and
 `${ws_user}` expand.
+Other `$VAR` references in a key expand from the environment too, and an unset one becomes empty.
 
 The source for each entry is implied by that key: the **rhyming mirror file**
 *(`<source>/<dest-without-leading-slash>`)*, or an inline `content:` literal.
-There is no `file:` pointer inside `seeds:`.
+Outside `secret: true` entries, there is no `file:` pointer inside `seeds:`.
 
-Each entry must carry at least one behavior, `secret`, `mode`, a non-`copy` `op`, or `template`.
-A plain copy belongs in the mirror tier, so a copy-only manifest entry is a parse error.
+Each entry must carry at least one behavior: `secret`, `mode`, a non-`copy` `op`, `template` or
+an inline `content:`.
+A plain copy of a mirror file belongs in the mirror tier, so an entry with none of these is a parse
+error.
 
 When a destination is produced by both a bare file and a manifest entry, the manifest entry wins.
 
@@ -282,6 +286,8 @@ ws-cli seed rotate --master <current> --new-master <new>
 
 `seed rotate` rewrites ciphertext **in place** — there is no dry-run and no backup. It fails closed:
 every secret is decrypted under the current key *before* anything is written, so a wrong key changes
-nothing. If a run is interrupted, re-run it with the new key to finish.
+nothing.
+If a run is interrupted while writing, the source holds both old-key and new-key ciphertext, and
+`seed rotate` refuses it under either key; re-encrypt the items still under the old key by hand.
 
 :::

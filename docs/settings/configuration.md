@@ -21,9 +21,9 @@ sensible defaults.
 Nearly every setting can be overridden with environment variables, giving you maximum
 flexibility.
 
-All configuration is supplied **exclusively** through environment variables.
-No JSON, YAML, or CLI flags required. This makes the workspace fully *stateless* and
-cloud-friendly.
+Settings are environment variables.
+Secrets can also come from mounted files, and drop-in directories under `~/.ws` add startup
+scripts, certificates, extensions and [seed](/settings/seed) files.
 
 ::: tip `WS_<GROUP>` Prefix Convention
 Variables that are consumed **solely** by Kloud Workspace start with `WS_<GROUP>_`
@@ -55,7 +55,8 @@ Docker and Kubernetes without `_FILE` companions:
 The resolver returns the first match:
 
 1. **Env literal:** `WS_X=value`.
-2. **`file:` prefix:** `WS_X=file:/path` reads the file *(one trailing newline stripped, internal newlines preserved)*.
+2. **`file:` prefix:** `WS_X=file:/path` reads the file *(the editor trims surrounding whitespace;
+   `ws-cli` strips one trailing newline)*.
 3. **Convention default:** mount a file at `/run/secrets/workspace/<group>/<property>` and leave
    the variable unset.
 4. **Schema default:** typically unset.
@@ -100,6 +101,8 @@ value came from: `process` *(the environment)*, `file` *(a `file:` path)*, `moun
 *(the default)*.
 Query the dotted key; the matching `WS_*` variable (e.g. `WS_SERVER_PORT`) is what you
 `export` to set it.
+In an editor terminal, secrets passed as plain environment values are already removed, so they
+show as unset.
 :::
 
 <!--@include: ../partials/environment-variables.md -->

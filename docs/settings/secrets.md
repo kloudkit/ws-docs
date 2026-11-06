@@ -4,7 +4,7 @@ see:
   - name: Seed
     link: /settings/seed
   - name: ws secrets Command Reference
-    link: /tools/ws-cli#secrets-ws-secrets
+    link: /tools/ws-cli#ws-cli-secrets
     target: _self
   - name: Authentication
     link: /editor/authentication
@@ -19,8 +19,8 @@ Kloud Workspace applications often require sensitive credentials: database passw
 keys, SSH keys, and authentication tokens.
 Storing these in plaintext or version control is insecure.
 
-The `ws-cli secrets` command provides a means of managing secrets using
-**strong Argon2 encryption**, ensuring safe retrieval in your development environment.
+The `ws-cli secrets` command encrypts secrets with **AES-256-GCM**, using a key derived from your
+master key with Argon2id.
 
 ## Master Keys
 
@@ -30,30 +30,36 @@ A master key is required to encrypt and decrypt secrets.
 
 ```sh
 # Standard master key
-ws secrets generate master --output .master.key --mode 0o600
+ws-cli secrets generate master --output .master.key --mode 0o600
 
 # Longer 64-byte key
-ws secrets generate master --length 64 --output .master.key
+ws-cli secrets generate master --length 64 --output .master.key
 
 # Output to stdout (CI/CD)
-ws secrets generate master --raw
+ws-cli secrets generate master --raw
 ```
 
 The `--mode` flag sets file permissions *(e.g., `0o600` for owner-only access)*.
+Write octal with the `0o` prefix; a value without it is read as decimal.
 
 ### Master Key Lookup
 
-The master key will be retrieved from the following locations *(in order)*:
+The master key is read from the first of:
 
-1. `--master` flag.
-2. `WS_SECRETS_MASTER_KEY` environment variable.
-3. `WS_SECRETS_MASTER_KEY_FILE` environment variable.
-4. Default path: `/etc/workspace/master.key`
+1. The `--master` flag *(a path to an existing file, or the key itself)*.
+2. `WS_SECRETS_MASTER_KEY` set to the key.
+3. `WS_SECRETS_MASTER_KEY` set to `file:/path/to/key`.
+4. A file mounted at `/run/secrets/workspace/secrets/master_key`.
 
 ```sh
-export WS_SECRETS_MASTER_KEY_FILE=./master.key
-ws secrets encrypt "my-secret"
+export WS_SECRETS_MASTER_KEY=file:./master.key
+ws-cli secrets encrypt "my-secret"
 ```
+
+::: warning
+`--master` takes any value that is not an existing file as the key itself, so a mistyped path
+silently encrypts with the wrong key.
+:::
 
 ## Encryption & Decryption
 
@@ -61,21 +67,21 @@ ws secrets encrypt "my-secret"
 
 ```sh
 # Encrypt
-ws secrets encrypt "my-secret" --master .master.key
+ws-cli secrets encrypt "my-secret" --master .master.key
 
 # Decrypt
-ws secrets decrypt "encrypted-value" --master .master.key
+ws-cli secrets decrypt "encrypted-value" --master .master.key
 
 # Encrypt/Decrypt to files
-ws secrets encrypt "my-secret" --output encrypted.txt --master .master.key
-ws secrets decrypt "..." --output secret.txt --mode 0o600 --master .master.key
+ws-cli secrets encrypt "my-secret" --output encrypted.txt --master .master.key
+ws-cli secrets decrypt "..." --output secret.txt --mode 0o600 --master .master.key
 ```
 
 Supports `stdin` input and *multiline encrypted values* for better readability:
 
 ```sh
-echo "my-secret" | ws secrets encrypt - --master .master.key
-cat encrypted.txt | ws secrets decrypt - --master .master.key
+echo "my-secret" | ws-cli secrets encrypt - --master .master.key
+cat encrypted.txt | ws-cli secrets decrypt - --master .master.key
 ```
 
 ## Seed
@@ -88,14 +94,14 @@ entries in the seed manifest — see the [seed documentation](/settings/seed).
 Generate *Argon2id* password hashes for workspace login:
 
 ```sh
-PASSWORD=$(echo -n "password" | ws secrets generate login --raw)
+PASSWORD=$(echo -n "password" | ws-cli secrets generate login --raw)
 ```
 
 Use in Docker deployments:
 
 ```sh
 docker run \
-  -e WS_AUTH_PASSWORD_HASHED=$PASSWORD \
+  -e WS_AUTH_PASSWORD_HASHED="$PASSWORD" \
   ghcr.io/kloudkit/workspace:v0.5.3
 ```
 
@@ -105,10 +111,10 @@ See [authentication documentation](/editor/authentication) for details.
 
 ### Common Flags
 
-- **`--master <key>`:** Master key or file path.
+- **`--master <key>`:** Master key, or the path to a file holding it.
 - **`--output <file>`:** Write to file.
-- **`--mode <perm>`:** File permissions *(octal or decimal)*.
+- **`--mode <perm>`:** File permissions, as `0o`-prefixed octal or decimal *(default `0o600`)*.
 - **`--raw`:** Disable styling.
 - **`--force`:** Overwrite existing files.
 
-See [ws secrets command reference](/tools/ws-cli#secrets-ws-secrets) for complete syntax.
+See [ws secrets command reference](/tools/ws-cli#ws-cli-secrets) for complete syntax.

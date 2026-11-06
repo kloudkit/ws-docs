@@ -69,9 +69,8 @@ Available configuration values are as follows:
 docker run -d \
   -p 443:8080 \
   -v $(pwd)/certs:/certs:ro \
-  -e WS_SERVER_SSL_KEY=/certs/tls.key \
-  -e WS_SERVER_SSL_CERT="-----BEGIN CERTIFICATE-----..." \
-  -e WS_SERVER_PROXY_DOMAIN=ws.dev \
+  -e WS_SERVER_SSL_KEY=file:/certs/tls.key \
+  -e WS_SERVER_SSL_CERT=file:/certs/tls.crt \
   ghcr.io/kloudkit/workspace:v0.5.3
 ```
 
@@ -107,11 +106,14 @@ docker run \
 
 :::
 
+Only `.crt` files at the top of that directory are trusted.
+Startup also writes downloaded certificates into it, so a bind-mounted host folder receives
+them, and the downloads fail if the folder is read-only.
+
 ### Drop-in Directory `~/.ws/ca.d/`
 
-Drop `.crt` files into `~/.ws/ca.d/` and they are auto-trusted at boot —
-no environment variable, no host-side plumbing beyond the existing
-`~/.ws/` volume mount.
+Drop `.crt` files into `~/.ws/ca.d/` and they are trusted when the next container starts,
+with no environment variable and nothing to mount beyond `~/.ws/`.
 
 ::: warning
 The file extension **must** be `.crt`. `update-ca-certificates` only picks
@@ -124,10 +126,8 @@ docker run \
   ghcr.io/kloudkit/workspace:v0.5.3
 ```
 
-This is the recommended path for ad-hoc certificate injection on a
-running workspace — the same persisted volume already used for
-[autoload scripts](/settings/autoload-scripts), extensions, and the
-[seed source](/settings/seed).
+It uses the same persisted volume as [autoload scripts](/settings/autoload-scripts),
+extensions and the [seed source](/settings/seed).
 
 ### Install Certificate from HTTPS Endpoint
 
@@ -185,8 +185,8 @@ docker run \
 The installed certificates will be detected at startup and bundled along with all other
 available certificates *(into `/usr/local/share/ca-certificates/workspace-bundle.crt`)*.
 
-In addition, each `zsh` session will contain program specific environment variables
-that require the abovementioned bundles and are set automatically *(system-wide)*:
+In addition, when custom certificates are installed, every process started through `zsh`
+*(terminals and startup scripts)* gets these variables, pointing at the bundle:
 
 - `AWS_CA_BUNDLE`
 - `CARGO_HTTP_CAINFO`
