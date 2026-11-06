@@ -35,9 +35,8 @@ These tools, thoughtfully integrated *(and pre-configured)*, encompass a suite o
 functionalities ranging from version control, build automation tools, and more.
 
 ::: info
-The upcoming sections only list a subset of the included addons.
-For a full in-depth list, have a look at the various requirement definitions in
-[our repo](https://github.com/kloudkit/workspace).
+For the full lists, see the [Tools overview](/tools/overview) and the
+[preinstalled extensions](/editor/extensions#prepackaged-extensions).
 :::
 
 ### Tools
@@ -59,9 +58,12 @@ Many thanks to the [VS Code][] team for open-sourcing the editor that serves as 
 cornerstone of this project.
 :::
 
-This project is licensed under the [**MIT License**][Workspace].
+Kloud Workspace is released under the [**MIT License**][MIT].
+KloudKIT logos and other brand assets are proprietary, all rights reserved *(see the
+[brand license][Brand])*.
 
 ![License](/icons/mit.svg) {.doc-image-inline style="width:100px"}
 
 [VS Code]: https://github.com/Microsoft/vscode
-[Workspace]: https://github.com/kloudkit/workspace?tab=MIT-1-ov-file#MIT-1-ov-file
+[MIT]: https://github.com/kloudkit/ws-meta/blob/main/LICENSE
+[Brand]: https://github.com/kloudkit/ws-meta/blob/main/shared/brand/LICENSE

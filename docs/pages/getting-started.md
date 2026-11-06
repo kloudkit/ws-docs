@@ -11,7 +11,7 @@ Get started, make sure the *bare-minimum* system requirements are met:
 - 2GB RAM.
 - 2 vCPUs.
 - WebSockets enabled.
-- Linux OS *(Windows with WSL or Docker Desktop can also be used)*.
+- Linux OS *(macOS with Docker Desktop, or Windows with WSL or Docker Desktop, also work)*.
 
 ::: tip
 The minimum requirements take into consideration the overhead needed to run the Docker
@@ -26,17 +26,13 @@ Although Windows OS can be used, Linux is the recommended choice for optimal use
 
 ![ARM](/icons/arm.svg){.doc-image width=150px}
 
-We provide support for **ARM** systems, such as Apple M-series *(M1, M2, etc.)*, NVIDIA's
-Jetsons line, and Raspberry Pis.
-
-If Docker detects an ARM-based host, it will automatically pull the appropriate
-ARM-compatible image from our multi-architecture releases.
+Images are built for 64-bit **ARM** *(`arm64`)* too, so they run on Apple silicon, NVIDIA
+Jetson boards and Raspberry Pis with a 64-bit OS.
+On an ARM host, Docker pulls the `arm64` image automatically.
 
 ::: tip
-We only publish ARM-based images on specific tagged releases *(e.g., `v0.0.x`)*.
-The `latest` tag does **not** include ARM images.
-
-To run on ARM, be sure to use a versioned tag.
+Release tags *(such as `v0.6.0` and `v0.6`)* and `latest` include `arm64`.
+The `dev` and `pr-<N>` tags are built for `amd64` only.
 :::
 
 ## Installation

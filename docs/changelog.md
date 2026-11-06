@@ -1,5 +1,5 @@
 ---
-description: Release notes for Kloud Workspace, generated from commit history of each tagged release
+description: Curated release notes for each Kloud Workspace release since v0.2.0
 editLink: false
 ---
 
@@ -7,7 +7,7 @@ editLink: false
 
 ![Changelog](/icons/changelog.svg){.doc-image width=150px}
 
-Release notes for each tagged Kloud Workspace image, generated from the commit history.
+Curated release notes for each Kloud Workspace release since v0.2.0.
 
 The newest release is listed first.
 
