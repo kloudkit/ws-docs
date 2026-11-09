@@ -80,6 +80,16 @@ Failed sign-ins are limited per client IP address: two per minute and twelve per
 While the limit is reached, every attempt is refused, even with the right password.
 Behind a reverse proxy, every user shares the proxy's address and its limit.
 
+### Password Sessions
+
+A password session renews on every request, so it stays open while you work.
+It ends `WS_AUTH_SESSION_TTL` after your last request or `WS_AUTH_SESSION_MAX_TTL` after you
+signed in, whichever comes first, and the next page load asks for the password again.
+Changing the password signs everyone out.
+
+- <EnvVar group="auth" name="session_ttl" />
+- <EnvVar group="auth" name="session_max_ttl" />
+
 ## OIDC Authentication <Badge type="info" text="since v0.4.0" />
 
 To sign in with your identity provider *(Keycloak, Entra ID, Authentik, or any OpenID
@@ -182,13 +192,19 @@ To sign everyone out, change the cookie secret.
 ## Signing Out
 
 ::: warning
-Run `Sign out of Kloud Workspace` from the Command Palette when you are done working, as a
-password session renews itself for as long as the editor stays open.
+Sign out when you are done working, as a password session stays open for up to
+`WS_AUTH_SESSION_MAX_TTL` *(seven days)* while the editor is in use.
 :::
+
+Click the account entry at the right end of the status bar, or run
+`Sign out of Kloud Workspace` from the Command Palette.
+With OIDC the entry shows your email; with a password it reads `Sign out`.
+Either way you confirm before the session ends.
 
 ![Sign out animation](/editor/authentication/authentication.gif){.doc-image-shadow}
 
-The `Sign out of Kloud Workspace` command is only shown when a sign-out URL is known.
+The status bar entry and the `Sign out of Kloud Workspace` command are only shown when a
+sign-out URL is known.
 It is derived from the active authentication mode and needs no configuration, but can be
 overridden:
 
