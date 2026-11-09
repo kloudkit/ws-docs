@@ -69,24 +69,37 @@ docker run \
 
 ## Privately Hosted Gallery
 
-If you own a marketplace that implements the VS Code Extension Gallery API, you can point
-the workspace to it, either as a complete gallery or key by key:
+The workspace installs extensions from [Open VSX](https://open-vsx.org) by default. To use
+your own gallery instead, pick the case that matches it.
 
-- <EnvVar group="marketplace" name="gallery" />
+### Self-Hosted Open VSX
+
+Point each gallery URL at your instance. Set only the keys you serve; the rest keep their
+Open VSX value:
+
 - <EnvVar group="marketplace" name="service_url" />
 - <EnvVar group="marketplace" name="item_url" />
 - <EnvVar group="marketplace" name="extension_url_template" />
 - <EnvVar group="marketplace" name="resource_url_template" />
 - <EnvVar group="marketplace" name="control_url" />
 
-For example:
-
-```sh{2-3}
+```sh{2-5}
 docker run \
-  -e WS_MARKETPLACE_SERVICE_URL=https://my-extensions/api/gallery \
-  -e WS_MARKETPLACE_ITEM_URL=https://my-extensions/api/item \
-  ghcr.io/kloudkit/workspace:v0.5.3
+  -e WS_MARKETPLACE_SERVICE_URL=https://vsx.example.com/vscode/gallery \
+  -e WS_MARKETPLACE_ITEM_URL=https://vsx.example.com/vscode/item \
+  -e WS_MARKETPLACE_EXTENSION_URL_TEMPLATE='https://vsx.example.com/vscode/gallery/{publisher}/{name}/latest' \
+  -e WS_MARKETPLACE_RESOURCE_URL_TEMPLATE='https://vsx.example.com/vscode/asset/{publisher}/{name}/{version}/Microsoft.VisualStudio.Code.WebResources/{path}' \
+  ghcr.io/kloudkit/workspace:v0.6.1
 ```
+
+### Any Other Gallery
+
+For a gallery that implements the VS Code Extension Gallery API with a different layout,
+pass the whole gallery as JSON:
+
+- <EnvVar group="marketplace" name="gallery" />
+
+Any per-key variable above that is also set overrides its key in the JSON.
 
 ::: warning
 We strongly discourage you from setting this for the official VS Code Marketplace, since
