@@ -1,6 +1,10 @@
 ---
 description: "Claude Code is preinstalled in Kloud Workspace as both a system-wide CLI and a VS Code extension, with a themed statusline and managed settings."
 see:
+  - name: AI Overview
+    link: /ai/
+  - name: MCP Server
+    link: /ai/mcp
   - name: Extensions
     link: /editor/extensions
   - name: Configuration

@@ -3,6 +3,8 @@ description: "ws-cli is the Kloud Workspace command line: inspect the running wo
 see:
   - name: Features
     link: /editor/features
+  - name: MCP Server
+    link: /ai/mcp
   - name: GitHub Repository
     link: https://github.com/kloudkit/ws-cli
     target: _blank
