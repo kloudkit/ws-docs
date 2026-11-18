@@ -131,7 +131,9 @@ answer `404`.
 In the editor, right-click a port in the **Ports** view and pick **Port Visibility** >
 **Public**.
 A port you make public there stays public until you set it back to **Private**, close the port
-or close the editor window.
+or run `ws-cli port unshare`.
+Closing the editor window does not end it at once: the port stays public for up to 3 hours, or
+about 5 minutes after you open the editor again.
 The **Ports** view and `ws-cli` share one list: each shows every public port and can make any
 of them private.
 
