@@ -3,6 +3,8 @@ description: "Open web servers running in Kloud Workspace from your browser, on 
 see:
   - name: Authentication
     link: /editor/authentication
+  - name: ws-cli
+    link: /tools/ws-cli
   - name: TLS & Certificates
     link: /settings/tls
 ---
@@ -21,6 +23,7 @@ notification in the bottom-right corner links to each published service.
 Both access methods sit behind the workspace login: a forwarded port requires the same sign-in as
 the editor, and the workspace's own session cookies are removed before a request reaches
 your app.
+The one exception is a port you [make public](#public-ports) on its subdomain.
 
 ## Subpath Access
 
@@ -90,6 +93,62 @@ and `8000.ws.example.com`.
 
 ::: warning
 Configure the reverse proxy to forward the host header, or subdomain access does not work.
+:::
+
+## Public Ports
+
+Make a port public to show a page, a container or a dev server to someone without a workspace
+account.
+A public port answers on its subdomain without the sign-in for as long as you keep it public.
+
+Allow public ports and set a proxy domain:
+
+- <EnvVar group="server" name="proxy_allow_public" />
+- <EnvVar group="server" name="proxy_domain" />
+
+```sh{2-3}
+docker run \
+  -e WS_SERVER_PROXY_ALLOW_PUBLIC=true \
+  -e WS_SERVER_PROXY_DOMAIN=ws.example.com \
+  ghcr.io/kloudkit/workspace:v0.6.0
+```
+
+Then share the port from the terminal:
+
+```sh
+ws-cli port share 8000
+```
+
+The command prints the public URLs *(`https://8000.ws.example.com`)* and keeps the port public
+while it runs.
+Press `Ctrl+C` to make the port private again, or run `ws-cli port unshare 8000` from any
+terminal.
+
+To serve the current folder and share it in one step, run `ws-cli serve current --share`.
+While it is shared, dotfiles, folders without an `index.html` and links that leave the folder
+answer `404`.
+
+In the editor, right-click a port in the **Ports** view and pick **Port Visibility** >
+**Public**.
+A port you make public there stays public until you set it back to **Private**, close the port
+or close the editor window.
+The **Ports** view and `ws-cli` share one list: each shows every public port and can make any
+of them private.
+
+`ws-cli port list` shows the listening ports, which are public, their URLs and their state in
+the **Ports** view.
+`ws-cli port clear` closes the ports in the **Ports** view whose process has exited.
+
+Every port is private again when the workspace restarts.
+The workspace never shares its own port, and public ports log each change in the workspace
+logs.
+If sign-in is off, every port is already open, and `ws-cli port share` says so.
+
+::: warning Only Subdomains Can Be Public
+`/proxy/<port>/` and `/absproxy/<port>/` always need the sign-in.
+A page served on a subpath runs on the editor's own origin, so a visitor's page could act on
+the editor as you.
+Share a port on its subdomain instead, where it runs on an origin of its own.
 :::
 
 ## Local DNS
