@@ -32,14 +32,22 @@ export default {
       items: [
         { text: 'Aliases', link: '/editor/aliases' },
         { text: 'Authentication', link: '/editor/authentication' },
+        { text: 'Editor Settings', link: '/editor/settings' },
         { text: 'Extensions', link: '/editor/extensions' },
         { text: 'Features', link: '/editor/features' },
         { text: 'Metrics', link: '/editor/metrics' },
         { text: 'Port Forwarding', link: '/editor/port-forwarding' },
-        { text: 'Editor Settings', link: '/editor/settings' },
         { text: 'Storage', link: '/editor/storage' },
         { text: 'Terminal', link: '/editor/terminal' },
         { text: 'Theme & Fonts', link: '/editor/theme-and-fonts' },
+      ]
+    },
+    {
+      text: 'AI',
+      items: [
+        { text: 'Overview', link: '/ai/' },
+        { text: 'MCP Server', link: '/ai/mcp' },
+        { text: 'Claude Code', link: '/tools/claude' },
       ]
     },
     {
