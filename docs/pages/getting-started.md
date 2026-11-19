@@ -134,6 +134,7 @@ The minimum system requirements are:
 - 2 vCPUs.
 - WebSockets enabled.
 - Linux OS *(macOS with Docker Desktop, or Windows with WSL or Docker Desktop, also work)*.
+- Docker 23 or later, or containerd 1.5 or later, to pull the zstd-compressed image layers.
 
 ::: tip
 The minimums include the overhead of running the Docker engine.
