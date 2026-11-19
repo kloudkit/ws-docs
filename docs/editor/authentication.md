@@ -96,6 +96,8 @@ To sign in with your identity provider *(Keycloak, Entra ID, Authentik, or any O
 Connect issuer)*, set `WS_AUTH_MODE=oidc`.
 The editor then signs users in itself on `WS_SERVER_PORT`, the same port as password mode,
 and checks every request except static assets and `/healthz`, forwarded ports included.
+The one exception is a port you make [public](/editor/port-forwarding#public-ports) on its
+subdomain.
 The workspace refuses to start when a required setting is missing or a password is also set.
 
 - <EnvVar group="auth" name="mode" />
